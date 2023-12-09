@@ -26,7 +26,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/unAuthor
 
 $request = rtrim($_SERVER['REQUEST_URI'], '/') . '/';
 
-$userRole = isset($_SESSION['user_role']) ? $_SESSION['user_role'] : 'user';
+$userRole = isset($_SESSION['user_role']) ? $_SESSION['user_role'] : 'admin';
 
 
 $view = null;
