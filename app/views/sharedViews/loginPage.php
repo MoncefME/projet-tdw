@@ -1,8 +1,8 @@
 <?php
-class HomePage
+class LoginPage
 {
     public function showPage()
     {
-        echo 'homePage';
+        echo 'LoginPage';
     }
 }

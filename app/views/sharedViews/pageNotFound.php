@@ -1,8 +1,8 @@
 <?php
-class HomePage
+class PageNotFound
 {
     public function showPage()
     {
-        echo 'homePage';
+        echo 'Page Not Found';
     }
 }
