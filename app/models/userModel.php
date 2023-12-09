@@ -1,6 +1,4 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/Config/queries/userQueries.php");
-require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/app/controllers/databaseController.php');
 class UserModel
 {
     public function getUserById($userId)
