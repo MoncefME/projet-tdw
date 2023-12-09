@@ -7,12 +7,10 @@ class DatabaseModel
         $database = new PDO("mysql:host=localhost;dbname=carlog;charset=utf8", "root", "");
         return $database;
     }
-
     public function disconnect(&$database)
     {
         $database = null;
     }
-
     public function request($database, $query, $params = [])
     {
         $stmt = $database->prepare($query);

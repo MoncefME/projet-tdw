@@ -27,7 +27,7 @@
             <li><a href="/CarLog/admin/manageUsersPage/">Manage Users</a></li>
             <li><a href="/CarLog/admin/manageBrandsReviewsPage/">Manage Brands Reviews</a></li>
             <li><a href="/CarLog/admin/manageVehiculesReviewsPage/">Manage Vehicles Reviews</a></li>
-            <li><a href="/CarLog/loginPage/">Login</a></li>
+            <li><a href="/CarLog/logInPage/">Login</a></li>
             <li><a href="/CarLog/signUpPage/">Sign Up</a></li>
         </ul>
     </nav>

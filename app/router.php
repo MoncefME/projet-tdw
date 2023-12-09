@@ -105,7 +105,7 @@ switch ($request) {
         }
         break;
 
-    case '/CarLog/loginPage/':
+    case '/CarLog/logInPage/':
         $view = new LogInPage();
         break;
     case '/CarLog/signUpPage/':
