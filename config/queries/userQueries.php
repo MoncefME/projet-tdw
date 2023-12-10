@@ -6,6 +6,11 @@ class UserQueries
         return "SELECT * FROM users WHERE id = ?";
     }
 
+    public static function loginUser()
+    {
+        return "SELECT * FROM users where email = ? AND password = ?";
+    }
+
     public static function getAllUsers()
     {
         return "SELECT * FROM users";

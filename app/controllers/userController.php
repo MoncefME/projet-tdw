@@ -9,6 +9,19 @@ class UserController
         return $user;
     }
 
+    public function loginUser()
+    {
+        $userModel = new UserModel();
+
+        // $password = isset($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : '';
+        // $password = isset($_POST['password']) ? $_POST['password'] : '';
+        $password = $_POST['password'] ?? null;
+        $email = $_POST['email'] ?? null;
+
+        $success = $userModel->loginUser($email, $password);
+        return $success;
+    }
+
     public function getAllUsers()
     {
         $userModel = new UserModel();

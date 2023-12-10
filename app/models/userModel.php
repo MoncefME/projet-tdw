@@ -1,4 +1,6 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/Config/queries/userQueries.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/app/controllers/databaseController.php');
 class UserModel
 {
     public function getUserById($userId)
@@ -13,6 +15,20 @@ class UserModel
         $dbController->disConnect($database);
         return $user;
     }
+    public function loginUser($email, $password)
+    {
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
+
+        $query = UserQueries::loginUser();
+        $params = [$email, $password];
+
+        $success = $dbController->request($database, $query, $params);
+
+        $dbController->disConnect($database);
+        return $success !== false;
+    }
+
     public function getAllUsers()
     {
         $dbController = new DatabaseController();
