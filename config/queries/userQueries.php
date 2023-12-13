@@ -8,7 +8,7 @@ class UserQueries
 
     public static function loginUser()
     {
-        return "SELECT * FROM users where email = ? AND password = ?";
+        return "SELECT * FROM users where email = ?";
     }
 
     public static function getAllUsers()

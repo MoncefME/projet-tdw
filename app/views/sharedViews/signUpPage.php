@@ -3,6 +3,59 @@ class SignUpPage
 {
     public function showPage()
     {
-        echo 'SignUP Page';
+        $this->renderSigUpForm();
     }
+
+    private function showSignUpMesage()
+    {
+        if (isset($_SESSION['SIGNUP-MESSAGE'])) {
+            echo '<p class="error-message">' . $_SESSION['SIGNUP-MESSAGE'] . '</p>';
+            unset($_SESSION['SIGNUP-MESSAGE']);
+        }
+    }
+
+    private function renderSigUpForm()
+    {
+        $this->showSignUpMesage();
+        ?>
+        <form method="POST" action="/CarLog/app/api/auth/signup.php">
+            <div>
+                <label for="firstName">First Name</label>
+                <input type="text" name="firstName" id="firstName" placeholder="Enter your first name" required />
+            </div>
+            <div>
+                <label for="lastName">Last Name</label>
+                <input type="text" name="lastName" id="lastName" placeholder="Enter your last name" required />
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Enter your email" required />
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Enter your password" required />
+            </div>
+            <div>
+                <label for="birthDate">Birth Date</label>
+                <input type="date" name="birthDate" id="birthDate" required />
+            </div>
+            <div>
+                <label for="sex">Sex</label>
+                <select name="sex" id="sex" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div>
+                <label for="profilePicture">Profile Picture</label>
+                <input type="file" name="profilePicture" id="profilePicture" accept="image/*" />
+            </div>
+            <div>
+                <button type="submit">Register</button>
+            </div>
+        </form>
+        <?php
+
+    }
+
 }

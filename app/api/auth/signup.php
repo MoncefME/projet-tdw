@@ -3,4 +3,5 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/app/controllers/userController
 
 $userController = new UserController();
 $responce = $userController->addUser();
-echo 'Responce is ' . $responce;
+
+header("Location: /CarLog/signUpPage/");

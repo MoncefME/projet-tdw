@@ -3,4 +3,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/app/controllers/userController
 
 $userController = new UserController();
 $responce = $userController->loginUser();
-echo 'Responce is ' . $responce;
+
+
+if ($responce['status'] === 200) {
+    header("Location: /CarLog/homePage/");
+} else {
+    header("Location: /CarLog/loginPage/");
+}

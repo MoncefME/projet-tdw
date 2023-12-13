@@ -4,6 +4,11 @@ class HomePage
 {
     public function showPage()
     {
-        echo 'homePage';
+        if (isset($_SESSION['USER'])) {
+            echo 'homePage, Welcome : ' . $_SESSION['USER']['lastName'] . ' ' . $_SESSION['USER']['firstName'];
+        } else {
+            echo "homePage,as a Guest";
+        }
+
     }
 }

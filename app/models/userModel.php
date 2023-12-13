@@ -21,13 +21,56 @@ class UserModel
         $database = $dbController->connect();
 
         $query = UserQueries::loginUser();
-        $params = [$email, $password];
+        $params = [$email];
 
-        $success = $dbController->request($database, $query, $params);
-
+        $userMatchingEmail = $dbController->request($database, $query, $params);
         $dbController->disConnect($database);
-        return $success !== false;
+
+        if ($userMatchingEmail !== false && count($userMatchingEmail) > 0) {
+            $user = $userMatchingEmail[0];
+
+            switch ($user['status']) {
+                case 'VALID':
+                    if (password_verify($password, $user['password'])) {
+                        unset($user['password']);
+                        $response = [
+                            'status' => 200,
+                            'message' => 'Login successful!',
+                            'user' => $user
+                        ];
+                    } else {
+                        $response = [
+                            'status' => 401,
+                            'message' => 'Incorrect password'
+                        ];
+                    }
+                    break;
+
+                case 'PENDING':
+                    $response = [
+                        'status' => 201,
+                        'message' => 'Wait until the admin validates your account!'
+                    ];
+                    break;
+
+                default:
+                    $response = [
+                        'status' => 403,
+                        'message' => 'Account Banned!'
+                    ];
+                    break;
+            }
+        } else {
+            $response = [
+                'status' => 404,
+                'message' => 'User not found or database error.'
+            ];
+        }
+
+        return $response;
     }
+
+
 
     public function getAllUsers()
     {
@@ -49,8 +92,20 @@ class UserModel
         $params = [$password, $email, $firstName, $lastName, $role, $birthDate, $sex, $status, $profilPicture];
         $success = $dbController->request($database, $query, $params);
 
+        if ($success !== false) {
+            $response = [
+                'status' => 200,
+                'message' => 'Registration successful. Wait until the admin approves your registration.'
+            ];
+        } else {
+            $response = [
+                'status' => 200,
+                'message' => 'Registration successful. Wait until the admin approves your registration.'
+            ];
+        }
+
         $dbController->disConnect($database);
-        return $success !== false;
+        return $response;
     }
     public function deleteUser($userId)
     {

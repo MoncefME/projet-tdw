@@ -26,7 +26,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/unAuthor
 
 $request = rtrim($_SERVER['REQUEST_URI'], '/') . '/';
 
-$userRole = isset($_SESSION['user_role']) ? $_SESSION['user_role'] : 'admin';
+$userRole = isset($_SESSION['USER']) ? $_SESSION['USER']['role'] : 'GUEST';
 
 
 $view = null;
@@ -52,7 +52,7 @@ switch ($request) {
         $view = new NewsPage();
         break;
     case '/CarLog/profilePage/':
-        if ($userRole !== 'guest') {
+        if ($userRole !== 'GUEST') {
             $view = new ProfilePage();
         } else {
             $view = new LogInPage();
@@ -63,42 +63,42 @@ switch ($request) {
         break;
 
     case '/CarLog/admin/':
-        if ($userRole === 'admin') {
+        if ($userRole === 'ADMIN') {
             $view = new AdminDashboardPage();
         } else {
             $view = new UnAuthorizedPage();
         }
         break;
     case '/CarLog/admin/manageBrandsPage/':
-        if ($userRole === 'admin') {
+        if ($userRole === 'ADMIN') {
             $view = new ManageBrandsPage();
         } else {
             $view = new UnAuthorizedPage();
         }
         break;
     case '/CarLog/admin/manageNewsPage/':
-        if ($userRole === 'admin') {
+        if ($userRole === 'ADMIN') {
             $view = new ManageNewsPage();
         } else {
             $view = new UnAuthorizedPage();
         }
         break;
     case '/CarLog/admin/manageUsersPage/':
-        if ($userRole === 'admin') {
+        if ($userRole === 'ADMIN') {
             $view = new ManageUsersPage();
         } else {
             $view = new UnAuthorizedPage();
         }
         break;
     case '/CarLog/admin/manageBrandsReviewsPage/':
-        if ($userRole === 'admin') {
+        if ($userRole === 'ADMIN') {
             $view = new ManageBReviewsPage();
         } else {
             $view = new UnAuthorizedPage();
         }
         break;
     case '/CarLog/admin/manageVehiculesReviewsPage/':
-        if ($userRole === 'admin') {
+        if ($userRole === 'ADMIN') {
             $view = new ManageVReviewsPage();
         } else {
             $view = new UnAuthorizedPage();

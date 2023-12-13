@@ -13,13 +13,19 @@ class UserController
     {
         $userModel = new UserModel();
 
-        // $password = isset($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : '';
-        // $password = isset($_POST['password']) ? $_POST['password'] : '';
         $password = $_POST['password'] ?? null;
         $email = $_POST['email'] ?? null;
 
-        $success = $userModel->loginUser($email, $password);
-        return $success;
+        $response = $userModel->loginUser($email, $password);
+
+        session_start();
+        if ($response['status'] === 200) {
+            $user = $response['user'];
+            $_SESSION['USER'] = $user;
+        } else {
+            $_SESSION['LOGIN-MESSAGE'] = $response['message'];
+        }
+        return $response;
     }
 
     public function getAllUsers()
@@ -43,8 +49,16 @@ class UserController
         $status = 'PENDING';
         $profilePicture = isset($_POST['profilePicture']) ? $_POST['profilePicture'] : '';
 
-        $success = $userModel->addUser($password, $email, $firstName, $lastName, $role, $birthDate, $sex, $status, $profilePicture);
-        return $success;
+        $response = $userModel->addUser($password, $email, $firstName, $lastName, $role, $birthDate, $sex, $status, $profilePicture);
+
+        session_start();
+        if ($response['status'] == 200) {
+            $_SESSION['SIGNUP-MESSAGE'] = 'Registration successful. Wait until the admin approves your registration.';
+        } else {
+            $_SESSION['SIGNUP-MESSAGE'] = 'Error while signup';
+        }
+
+        return $response;
     }
 
     public function deleteUser($userId)
