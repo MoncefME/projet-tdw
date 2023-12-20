@@ -42,8 +42,8 @@ class AddBrandPage
                 </div>
 
                 <div>
-                    <label for="brandPicture">Brand Picture URL:</label>
-                    <input type="url" name="brandPicture" id="brandPicture" placeholder="Enter brand picture URL" required>
+                    <label for="brandPicture">Brand Picture:</label>
+                    <input type="file" name="brandPicture" id="brandPicture" accept="image/*" required>
                 </div>
             </div>
             <button type="submit">Add Brand</button>

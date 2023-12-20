@@ -4,8 +4,10 @@ class SharedViews
 
     public function adminSideBar()
     {
+
         ?>
         <div class="admin-sidebar">
+            <?php print_r($_SESSION['USER']['firstName']); ?>
             <ul>
                 <li><a href="/CarLog/admin/">Dashboard</a></li>
                 <li><a href="/CarLog/admin/manageUsersPage/">Manage Users</a></li>
@@ -14,6 +16,8 @@ class SharedViews
                 <li><a href="/CarLog/admin/manageBrandsReviewsPage/">Manage Brands Reviews</a></li>
                 <li><a href="/CarLog/admin/manageVehiculesReviewsPage/">Manage Vehicules Reviews</a></li>
                 <li><a href="/CarLog/admin/settings/">Settings</a></li>
+                <li><a href="/CarLog/admin/manageNewsPage/">Manage News</a></li>
+                <li><a href="/CarLog/app/api/auth/logout.php">Logout</a></li>
             </ul>
         </div>
         <?php

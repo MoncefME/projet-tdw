@@ -3,3 +3,5 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/app/controllers/brandControlle
 
 $brandController = new BrandController();
 $responce = $brandController->addBrand();
+
+header("Location: /CarLog/admin/manageBrandsPage/");

@@ -1,53 +1,54 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/app/models/brandModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/config/utils/uploadFile.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/config/utils/formValidation.php');
 class BrandController
 {
     public function getBrandById($brandId)
     {
         $brandModel = new BrandModel();
-        $brand = $brandModel->getBrandById($brandId);
-        return $brand;
+        return $brandModel->getBrandById($brandId);
     }
 
     public function getAllBrands()
     {
         $brandModel = new BrandModel();
-        $brands = $brandModel->getAllBrands();
-        return $brands;
+        return $brandModel->getAllBrands();
     }
 
     public function addBrand()
     {
         $brandModel = new BrandModel();
+        $formValidation = new FormValidation();
 
-        $name = isset($_POST['name']) ? $_POST['name'] : '';
-        $originCountry = isset($_POST['originCountry']) ? $_POST['originCountry'] : '';
-        $headquarter = isset($_POST['headquarter']) ? $_POST['headquarter'] : '';
-        $year = isset($_POST['year']) ? $_POST['year'] : '';
-        $brandPicture = isset($_POST['brandPicture']) ? $_POST['brandPicture'] : '';
+        $name = $formValidation->validateInput('name');
+        $originCountry = $formValidation->validateInput('originCountry');
+        $headquarter = $formValidation->validateInput('headquarter');
+        $year = $formValidation->validateInput('year');
 
-        $success = $brandModel->addBrand($name, $originCountry, $headquarter, $year, $brandPicture);
-        return $success;
+        $uploadHandler = new UploadFile();
+        $uploadedFileName = $uploadHandler->uploadBrandFile();
+
+        return $uploadedFileName ? $brandModel->addBrand($name, $originCountry, $headquarter, $year, $uploadedFileName) : false;
     }
 
     public function deleteBrand($brandId)
     {
         $brandModel = new BrandModel();
-        $success = $brandModel->deleteBrand($brandId);
-        return $success;
+        return $brandModel->deleteBrand($brandId);
     }
 
     public function updateBrand($brandId)
     {
         $brandModel = new BrandModel();
+        $formValidation = new FormValidation();
 
-        $name = isset($_POST['name']) ? $_POST['name'] : '';
-        $originCountry = isset($_POST['originCountry']) ? $_POST['originCountry'] : '';
-        $headquarter = isset($_POST['headquarter']) ? $_POST['headquarter'] : '';
-        $year = isset($_POST['year']) ? $_POST['year'] : '';
-        $brandPicture = isset($_POST['brandPicture']) ? $_POST['brandPicture'] : '';
+        $name = $formValidation->validateInput('name');
+        $originCountry = $formValidation->validateInput('originCountry');
+        $headquarter = $formValidation->validateInput('headquarter');
+        $year = $formValidation->validateInput('year');
+        $brandPicture = $formValidation->validateInput('brandPicture');
 
-        $success = $brandModel->updateBrand($brandId, $name, $originCountry, $headquarter, $year, $brandPicture);
-        return $success;
+        return $brandModel->updateBrand($brandId, $name, $originCountry, $headquarter, $year, $brandPicture);
     }
 }

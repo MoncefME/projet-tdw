@@ -6,7 +6,7 @@ $responce = $userController->loginUser();
 
 
 if ($responce['status'] === 200) {
-    header("Location: /CarLog/homePage/");
+    header("Location: /CarLog/");
 } else {
     header("Location: /CarLog/loginPage/");
 }

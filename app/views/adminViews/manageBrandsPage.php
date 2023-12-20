@@ -19,7 +19,7 @@ class ManageBrandsPage
     private function addBrandForm()
     {
         ?>
-        <form method="POST" action="/CarLog/app/api/brands/addBrand.php" class="addBrand-form">
+        <form method="POST" action="/CarLog/app/api/brands/addBrand.php" class="addBrand-form" enctype="multipart/form-data">
             <div>
                 <div>
                     <label for="name">Brand Name:</label>
@@ -42,9 +42,20 @@ class ManageBrandsPage
                 </div>
 
                 <div>
-                    <label for="brandPicture">Brand Picture URL:</label>
-                    <input type="url" name="brandPicture" id="brandPicture" placeholder="Enter brand picture URL" required>
+                    <label for="brandPicture">Brand Picture:</label>
+                    <input type="file" name="brandPicture" id="brandPicture" accept="image/*" required>
+                    <img id="previewImage" src="#" alt="Preview" style="display: none; width: 100px; height: 100px;">
                 </div>
+                <script>
+                    document.getElementById('brandPicture').addEventListener('change', function () {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            document.getElementById('previewImage').src = e.target.result;
+                            document.getElementById('previewImage').style.display = 'block';
+                        };
+                        reader.readAsDataURL(this.files[0]);
+                    });
+                </script>
             </div>
             <button type="submit">Add Brand</button>
         </form>
@@ -85,7 +96,8 @@ class ManageBrandsPage
                             <?php echo $brand['year'] ?>
                         </td>
                         <td>
-                            <?php echo $brand['brandPicture'] ?>
+                            <img src="/CarLog/public/uploads/brands/<?php echo $brand['brandPicture'] ?>"
+                                alt="<?php echo $brand['brandPicture'] ?>" width="50px" height="50px">
                         </td>
                         <td class="table-action-btn">
                             <button class="btn btn-primary">Edit</button>
