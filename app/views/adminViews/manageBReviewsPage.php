@@ -1,8 +1,17 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/sharedViews.php");
 class ManageBReviewsPage
 {
     public function showPage()
     {
-        echo 'ManageBrandsRevies';
+        ?>
+        <div class="page">
+            <?php
+            $sharedView = new SharedViews();
+            $sharedView->adminSideBar();
+            ?>
+            <p>Manage Business Reviews</p>
+        </div>
+        <?php
     }
 }

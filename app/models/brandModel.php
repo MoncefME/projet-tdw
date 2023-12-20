@@ -13,7 +13,7 @@ class BrandModel
         $brand = $dbController->request($database, $query, $params);
 
         $dbController->disConnect($database);
-        return $brand;
+        return $brand[0];
     }
     public function getAllBrands()
     {

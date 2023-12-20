@@ -17,6 +17,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/manageBRe
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/manageVReviewsPage.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/manageUsersPage.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/adminDashboardPage.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/manageVehiculesPage.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/settingsPage.php");
 
 /** Shared Pages */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/logInPage.php");
@@ -76,6 +78,13 @@ switch ($request) {
             $view = new UnAuthorizedPage();
         }
         break;
+    case '/CarLog/admin/manageVehiculesPage/':
+        if ($userRole === 'ADMIN') {
+            $view = new ManageVehiculesPage();
+        } else {
+            $view = new UnAuthorizedPage();
+        }
+        break;
     case '/CarLog/admin/manageNewsPage/':
         if ($userRole === 'ADMIN') {
             $view = new ManageNewsPage();
@@ -104,7 +113,13 @@ switch ($request) {
             $view = new UnAuthorizedPage();
         }
         break;
-
+    case '/CarLog/admin/settings/':
+        if ($userRole === 'ADMIN') {
+            $view = new SettingsPage();
+        } else {
+            $view = new UnAuthorizedPage();
+        }
+        break;
     case '/CarLog/loginPage/':
         $view = new LogInPage();
         break;

@@ -1,0 +1,120 @@
+.login-form, .signup-form{
+    width: 50%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+}
+
+.addBrand-form > div , .addVehicule-form > div{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+.addBrand-form , .addVehicule-form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+input {
+    border: 3px solid #000;
+    border-radius: 5px;
+    height: 50px;
+    line-height: normal;
+    color: #282828;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    user-select: auto;
+    font-size: 16px;
+    padding: 0 6px;
+    padding-left: 12px;  
+}
+input:focus{
+    border: 3px solid #5551ff;
+}
+
+button{
+    width: 100%;
+    display: inline-block;
+    outline: 0;
+    text-align: center;
+    cursor: pointer;
+    padding: 0px 16px;
+    border-radius: 2px;
+    min-width: 80px;
+    height: 32px;
+    background-color: rgb(0, 120, 212);
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    font-weight: 400;
+    box-sizing: border-box;
+    border: 1px solid rgb(0, 120, 212);
+}
+
+button:hover {
+    background-color: rgb(16, 110, 190);
+    border: 1px solid rgb(16, 110, 190);
+}
+
+/* figma form label css */
+label{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #000000;
+    margin-bottom: 8px;
+    display: block;
+    user-select: none;
+}
+
+.admin-sidebar{
+    width: 20%;
+    height: 100%;
+    background-color:  rgb(16, 110, 190);
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    border-right: 1px solid #ccc;
+}
+
+.admin-sidebar ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.admin-sidebar ul li{
+    margin-bottom: 10px;
+    background-color: #5551ff;
+}
+.admin-sidebar ul li:hover{
+    background-color: #db3333;
+}
+
+.admin-sidebar ul li a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+.page{
+    margin-left: 20%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.table-action-btn{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}

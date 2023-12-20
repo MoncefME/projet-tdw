@@ -12,16 +12,20 @@ class LoginPage
     private function showLoginError()
     {
         if (isset($_SESSION['LOGIN-MESSAGE'])) {
-            echo '<p class="error-message">' . $_SESSION['LOGIN-MESSAGE'] . '</p>';
+            ?>
+            <div class="error-message">
+                <?php echo $_SESSION['LOGIN-MESSAGE']; ?>
+            </div>
+            <?php
             unset($_SESSION['LOGIN-MESSAGE']);
         }
     }
 
     private function renderLoginForm()
     {
-        $this->showLoginError();
         ?>
-        <form method="POST" action="/CarLog/app/api/auth/login.php">
+        <form method="POST" action="/CarLog/app/api/auth/login.php" class="login-form">
+            <?php $this->showLoginError(); ?>
             <div>
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" placeholder="Enter your email" required />
@@ -32,6 +36,9 @@ class LoginPage
             </div>
             <div>
                 <button type="submit">Login</button>
+            </div>
+            <div>
+                <a href="/CarLog/signUpPage/">New member? Sign up here</a>
             </div>
         </form>
         <?php

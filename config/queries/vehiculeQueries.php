@@ -19,7 +19,7 @@ class VehiculeQueries
 
     public static function addVehicule()
     {
-        return "INSERT INTO vehicules (model, version, year, vehiculePicture, length, width, height, wheelbase, engine, performance, price, consumption, note, brand_id) 
+        return "INSERT INTO vehicules (model, version, year, vehiculePicture, length, width, height, wheelBase, engine, performance, price, consumption, brand_id,note) 
                 VALUES                (  ?  ,    ?   ,   ? ,       ?        ,   ?   ,   ?  ,   ?   ,     ?    ,   ?   ,      ?     ,   ?  ,      ?     ,   ? ,    ?    )";
     }
 

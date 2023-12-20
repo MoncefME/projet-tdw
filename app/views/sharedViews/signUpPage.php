@@ -9,16 +9,21 @@ class SignUpPage
     private function showSignUpMesage()
     {
         if (isset($_SESSION['SIGNUP-MESSAGE'])) {
-            echo '<p class="error-message">' . $_SESSION['SIGNUP-MESSAGE'] . '</p>';
+            ?>
+            <div class="error-message">
+                <?php echo $_SESSION['SIGNUP-MESSAGE']; ?>
+            </div>
+            <?php
             unset($_SESSION['SIGNUP-MESSAGE']);
         }
     }
 
     private function renderSigUpForm()
     {
-        $this->showSignUpMesage();
+
         ?>
-        <form method="POST" action="/CarLog/app/api/auth/signup.php">
+        <form method="POST" action="/CarLog/app/api/auth/signup.php" class="signup-form">
+            <?php $this->showSignUpMesage(); ?>
             <div>
                 <label for="firstName">First Name</label>
                 <input type="text" name="firstName" id="firstName" placeholder="Enter your first name" required />
