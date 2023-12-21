@@ -24,23 +24,26 @@ class LoginPage
     private function renderLoginForm()
     {
         ?>
-        <form method="POST" action="/CarLog/app/api/auth/login.php" class="login-form">
-            <?php $this->showLoginError(); ?>
-            <div>
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Enter your email" required />
-            </div>
-            <div>
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="Enter your password" required />
-            </div>
-            <div>
-                <button type="submit">Login</button>
-            </div>
-            <div>
+        <div class="login-page bg-img">
+            <img src="/CarLog/public/icons/logos/Color logo - no background.png" alt="logo" width="40%" height="auto" />
+            <form method="POST" action="/CarLog/app/api/auth/login.php" class="login-form">
+                <h1>Login</h1>
+                <?php $this->showLoginError(); ?>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Enter your email" required />
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Enter your password" required />
+                </div>
+                <div>
+                    <button type="submit">Login</button>
+                </div>
+
                 <a href="/CarLog/signUpPage/">New member? Sign up here</a>
-            </div>
-        </form>
+            </form>
+        </div>
         <?php
     }
 }

@@ -8,8 +8,7 @@ class ManageVehiculesPage
     {
         ?>
         <div class="page">
-            <p>Manage Vehicules Page</p>
-            <button class="btn btn-primary">Add Vehicule</button>
+            <h1>Manage Vehicules Page</h1>
             <?php
             $sharedView = new SharedViews();
             $sharedView->adminSideBar();
@@ -51,14 +50,17 @@ class ManageVehiculesPage
                             <?php echo $vehicule['year'] ?>
                         </td>
                         <td>
-                            <?php echo $vehicule['vehiculePicture'] ?>
+                            <img src="/CarLog/public/uploads/vehicules/<?php echo $vehicule['vehiculePicture'] ?>"
+                                alt="<?php echo $vehicule['vehiculePicture'] ?>" width="50px" height="50px">
                         </td>
+
                         <td>
                             <?php
                             $brandController = new BrandController();
                             $brand = $brandController->getBrandById($vehicule['brand_id']);
-                            echo $brand['name'];
                             ?>
+                            <img src="/CarLog/public/uploads/brands/<?php echo $brand['brandPicture'] ?>"
+                                alt="<?php echo $brand['brandPicture'] ?>" width="50px" height="50px">
                         </td>
                         <td class="table-action-btn">
                             <button class="btn btn-primary">Edit</button>
@@ -79,7 +81,8 @@ class ManageVehiculesPage
         $brandController = new BrandController();
         $brands = $brandController->getAllBrands();
         ?>
-        <form method="POST" action="/CarLog/app/api/vehicules/addVehicule.php" class="addVehicule-form">
+        <form method="POST" action="/CarLog/app/api/vehicules/addVehicule.php" class="addVehicule-form"
+            enctype="multipart/form-data">
             <div>
                 <div>
                     <label for="model">Model:</label>
@@ -95,8 +98,19 @@ class ManageVehiculesPage
                 </div>
                 <div>
                     <label for="vehiculePicture">Vehicle Picture:</label>
-                    <input type="text" name="vehiculePicture" id="vehiculePicture" placeholder="Enter vehicle picture" required>
+                    <input type="file" name="vehiculePicture" id="vehiculePicture" accept="image/*" required>
+                    <img id="previewImage" src="#" alt="Preview" style="display: none; width: 100px; height: 100px;">
                 </div>
+                <script>
+                    document.getElementById('vehiculePicture').addEventListener('change', function () {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            document.getElementById('previewImage').src = e.target.result;
+                            document.getElementById('previewImage').style.display = 'block';
+                        };
+                        reader.readAsDataURL(this.files[0]);
+                    });
+                </script>
                 <div>
                     <label for="length">Length:</label>
                     <input type="number" name="length" id="length" placeholder="Enter length" required>

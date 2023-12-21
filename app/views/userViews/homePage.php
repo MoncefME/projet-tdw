@@ -21,6 +21,9 @@ class HomePage
                 <?php if (isset($_SESSION['USER'])) { ?>
                     <a href="/CarLog/app/api/auth/logout.php" class="btn btn-danger">Logout</a>
                     <a href="/CarLog/profilePage/" class="btn btn-secondary">Profile</a>
+                    <?php if ($_SESSION['USER']['role'] === 'ADMIN') { ?>
+                        <a href="/CarLog/admin/" class="btn btn-primary">Dashboard</a>
+                    <?php } ?>
                 <?php } else { ?>
                     <a href="/CarLog/loginPage/" class="btn btn-primary">Log In</a>
                 <?php } ?>
