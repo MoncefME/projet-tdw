@@ -346,6 +346,8 @@ label{
 }
 
 .vehicle-info {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
     background-color: #f5f5f5;
     padding: 20px;
     border: 1px solid #ccc;
@@ -357,9 +359,20 @@ label{
 }
 
 .vehicle-info img {
+    width: 100%;
     width: 50px;
     height: 50px;
     object-fit: cover;
     border-radius: 50%;
+}
+
+.PENDING{
+    background-color: #282828;
+}
+.VALID{
+    background-color: #00ff00;
+}
+.REJECTED{
+    background-color: #ff0000;
 }
 

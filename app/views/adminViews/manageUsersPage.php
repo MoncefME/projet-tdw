@@ -16,6 +16,8 @@ class ManageUsersPage
         </div>
         <?php
     }
+
+
     private function showUsersTable()
     {
         $userController = new UserController();
@@ -30,6 +32,7 @@ class ManageUsersPage
                     <th>Role</th>
                     <th>Sex</th>
                     <th>Birth Date</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -57,11 +60,19 @@ class ManageUsersPage
                         <td>
                             <?php echo $user['birthDate'] ?>
                         </td>
+                        <td>
+                            <p class="<?php echo $user['status'] ?>">
+                                <?php echo $user['status'] ?>
+                            </p>
+                        </td>
                         <td class="table-action-btn">
-                            <button class="btn btn-primary">Edit</button>
-                            <button class="btn btn-danger">Delete</button>
-                            <button class="btn btn-warning">Reject</button>
-                            <button class="btn btn-success">Accept</button>
+                            <?php if ($user['id'] != $_SESSION['USER']['id']) { ?>
+                                <button class="btn btn-danger" onclick="deleteUser(<?php echo $user['id'] ?>)">Delete</button>
+                                <button class="btn btn-warning" onclick="rejectUser(<?php echo $user['id'] ?>)">Reject</button>
+                                <button class="btn btn-success" onclick="validateUser(<?php echo $user['id'] ?>)">Accept</button>
+                            <?php } else { ?>
+                                <p>YOU!!</p>
+                            <?php } ?>
                         </td>
                     </tr>
                     <?php

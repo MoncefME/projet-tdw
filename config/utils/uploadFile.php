@@ -2,7 +2,6 @@
 
 class UploadFile
 {
-
     public function uploadBrandFile()
     {
         $uploadDir = $_SERVER['DOCUMENT_ROOT'] . "/CarLog/public/uploads/brands/";
@@ -15,7 +14,7 @@ class UploadFile
             $uploadOk = 0;
         }
 
-        $maxFileSize = 2 * 1024 * 1024;
+        $maxFileSize = 4 * 1024 * 1024;
         if ($_FILES["brandPicture"]["size"] > $maxFileSize) {
             $uploadOk = 0;
         }
@@ -55,8 +54,55 @@ class UploadFile
         return false;
     }
 
+    public function uploadNewsFile()
+    {
+        $uploadDir = $_SERVER['DOCUMENT_ROOT'] . "/CarLog/public/uploads/news/";
+        $uploadFile = $uploadDir . $_FILES["newsPicture"]["name"];
+        $uploadOk = 1;
 
+        $fileType = $_FILES["newsPicture"]["type"];
+        $allowedTypes = ["image/jpeg", "image/png", "image/svg+xml"];
+        if (!in_array($fileType, $allowedTypes)) {
+            $uploadOk = 0;
+        }
 
+        $maxFileSize = 4 * 1024 * 1024;
+        if ($_FILES["newsPicture"]["size"] > $maxFileSize) {
+            $uploadOk = 0;
+        }
 
+        if ($uploadOk == 1) {
+            if (move_uploaded_file($_FILES["newsPicture"]["tmp_name"], $uploadFile)) {
+                return basename($_FILES["newsPicture"]["name"]);
+            }
+        }
 
+        return false;
+    }
+
+    public function uploadUserFile()
+    {
+        $uploadDir = $_SERVER['DOCUMENT_ROOT'] . "/CarLog/public/uploads/users/";
+        $uploadFile = $uploadDir . $_FILES["userPicture"]["name"];
+        $uploadOk = 1;
+
+        $fileType = $_FILES["userPicture"]["type"];
+        $allowedTypes = ["image/jpeg", "image/png", "image/svg+xml"];
+        if (!in_array($fileType, $allowedTypes)) {
+            $uploadOk = 0;
+        }
+
+        $maxFileSize = 4 * 1024 * 1024;
+        if ($_FILES["userPicture"]["size"] > $maxFileSize) {
+            $uploadOk = 0;
+        }
+
+        if ($uploadOk == 1) {
+            if (move_uploaded_file($_FILES["userPicture"]["tmp_name"], $uploadFile)) {
+                return basename($_FILES["userPicture"]["name"]);
+            }
+        }
+
+        return false;
+    }
 }

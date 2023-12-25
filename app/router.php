@@ -9,6 +9,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/homePage.p
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/newsPage.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/profilePage.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/reviewsPage.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/singleBrandPage.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/singleVehiculePage.php");
 
 /** Admin Pages */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/manageBrandsPage.php");
@@ -19,6 +21,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/manageUse
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/adminDashboardPage.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/manageVehiculesPage.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/settingsPage.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/editBrandPage.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/editVehiculePage.php");
 
 /** Shared Pages */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/logInPage.php");
@@ -27,13 +31,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/pageNotF
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/unAuthorizedPage.php");
 
 
-//TEST
-require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/singleBrandPage.php");
-require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/singleVehiculePage.php");
-
 $request = rtrim($_SERVER['REQUEST_URI'], '/') . '/';
 $request = strtok($request, '?');
-// $request = $_SERVER['REQUEST_URI'];
 
 $userRole = isset($_SESSION['USER']) ? $_SESSION['USER']['role'] : 'GUEST';
 
@@ -41,7 +40,6 @@ $userRole = isset($_SESSION['USER']) ? $_SESSION['USER']['role'] : 'GUEST';
 $view = null;
 
 switch ($request) {
-
     case '/CarLog/':
         $view = new HomePage();
         break;
@@ -104,11 +102,27 @@ switch ($request) {
             $view = new UnAuthorizedPage();
         }
         break;
+    case '/CarLog/admin/brand/':
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $view = new EditBrandPage($id);
+        } else {
+            $view = new PageNotFound();
+        }
+        break;
     case '/CarLog/admin/manageVehiculesPage/':
         if ($userRole === 'ADMIN') {
             $view = new ManageVehiculesPage();
         } else {
             $view = new UnAuthorizedPage();
+        }
+        break;
+    case "/CarLog/admin/vehicule/":
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $view = new EditVehiculePage($id);
+        } else {
+            $view = new PageNotFound();
         }
         break;
     case '/CarLog/admin/manageNewsPage/':

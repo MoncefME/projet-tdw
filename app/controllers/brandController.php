@@ -47,8 +47,15 @@ class BrandController
         $originCountry = $formValidation->validateInput('originCountry');
         $headquarter = $formValidation->validateInput('headquarter');
         $year = $formValidation->validateInput('year');
-        $brandPicture = $formValidation->validateInput('brandPicture');
 
-        return $brandModel->updateBrand($brandId, $name, $originCountry, $headquarter, $year, $brandPicture);
+        $uploadHandler = new UploadFile();
+        $uploadedFileName = $uploadHandler->uploadBrandFile();
+
+        if (!$uploadedFileName) {
+            $uploadedFileName = $formValidation->validateInput('currentPicture');
+        }
+
+
+        return $brandModel->updateBrand($brandId, $name, $originCountry, $headquarter, $year, $uploadedFileName);
     }
 }

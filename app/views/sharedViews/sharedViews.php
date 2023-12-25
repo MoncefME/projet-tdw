@@ -15,7 +15,7 @@ class SharedViews
                 <li><a href="/CarLog/admin/">Dashboard</a></li>
                 <li><a href="/CarLog/admin/manageUsersPage/">Manage Users</a></li>
                 <li><a href="/CarLog/admin/manageBrandsPage/">Manage Brands</a></li>
-                <li><a href="/CarLog/admin/manageVehiculesPage/">Manage Vehicles</a></li>
+                <li><a href="/CarLog/admin/manageVehiculesPage/">Manage Vehicules</a></li>
                 <li><a href="/CarLog/admin/manageBrandsReviewsPage/">Manage Brands Reviews</a></li>
                 <li><a href="/CarLog/admin/manageVehiculesReviewsPage/">Manage Vehicules Reviews</a></li>
                 <li><a href="/CarLog/admin/settings/">Settings</a></li>

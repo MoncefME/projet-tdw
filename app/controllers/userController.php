@@ -5,8 +5,7 @@ class UserController
     public function getUserById($userId)
     {
         $userModel = new UserModel();
-        $user = $userModel->getUserById($userId);
-        return $user;
+        return $userModel->getUserById($userId);
     }
 
     public function loginUser()
@@ -87,22 +86,19 @@ class UserController
     public function validateUser($userId)
     {
         $userModel = new UserModel();
-        $success = $userModel->validateUser($userId);
-        return $success;
+        return $userModel->validateUser($userId);
     }
 
     public function rejectUser($userId)
     {
         $userModel = new UserModel();
-        $success = $userModel->rejectUser($userId);
-        return $success;
+        return $userModel->rejectUser($userId);
     }
 
     public function updateUserRole($userId)
     {
         $userModel = new UserModel();
         $role = isset($_POST['role']) ? $_POST['role'] : 'USER';
-        $success = $userModel->updateUserRole($userId, $role);
-        return $success;
+        return $userModel->updateUserRole($userId, $role);
     }
 }

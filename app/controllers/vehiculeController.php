@@ -58,4 +58,36 @@ class VehiculeController
         return $success;
     }
 
+    public function updateVehicule($vehiculeId)
+    {
+        $vehiculeModel = new VehiculeModel();
+        $formValidation = new FormValidation();
+
+
+        $model = $formValidation->validateInput('model');
+        $version = $formValidation->validateInput('version');
+        $year = $formValidation->validateInput('year');
+        $length = $formValidation->validateInput('length');
+        $width = $formValidation->validateInput('width');
+        $height = $formValidation->validateInput('height');
+        $wheelBase = $formValidation->validateInput('wheelBase');
+        $engine = $formValidation->validateInput('engine');
+        $performance = $formValidation->validateInput('performance');
+        $price = $formValidation->validateInput('price');
+        $consumption = $formValidation->validateInput('consumption');
+        $brandId = $formValidation->validateInput('brand_id');
+        $note = $formValidation->validateInput('note');
+
+
+        $uploadHandler = new UploadFile();
+        $uploadedFileName = $uploadHandler->uploadVehiculeFile();
+
+        if (!$uploadedFileName) {
+            $uploadedFileName = $formValidation->validateInput('currentPicture');
+        }
+
+
+        return $vehiculeModel->updateVehicule($vehiculeId, $model, $version, $year, $uploadedFileName, $length, $width, $height, $wheelBase, $engine, $performance, $price, $consumption, $note, $brandId);
+    }
+
 }

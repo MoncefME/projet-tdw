@@ -37,13 +37,13 @@ class VehiculeQueries
                                      length = ?,
                                      width = ?,
                                      height = ?,
-                                     wheelbase = ?, 
+                                     wheelBase = ?, 
                                      engine = ?, 
                                      performance = ?, 
                                      price = ?, 
                                      consumption = ?, 
-                                     note = ?
-                                     brand_id = ?, 
+                                     note = ?,
+                                     brand_id = ? 
                 WHERE id = ?";
     }
 }

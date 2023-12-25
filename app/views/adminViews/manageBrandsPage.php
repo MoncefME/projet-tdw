@@ -43,19 +43,11 @@ class ManageBrandsPage
 
                 <div>
                     <label for="brandPicture">Brand Picture:</label>
-                    <input type="file" name="brandPicture" id="brandPicture" accept="image/*" required>
+                    <input type="file" name="brandPicture" id="brandPicture" accept="image/*" required
+                        onChange="previewInputImage(event)">
                     <img id="previewImage" src="#" alt="Preview" style="display: none; width: 100px; height: 100px;">
                 </div>
-                <script>
-                    document.getElementById('brandPicture').addEventListener('change', function () {
-                        var reader = new FileReader();
-                        reader.onload = function (e) {
-                            document.getElementById('previewImage').src = e.target.result;
-                            document.getElementById('previewImage').style.display = 'block';
-                        };
-                        reader.readAsDataURL(this.files[0]);
-                    });
-                </script>
+
             </div>
             <button type="submit">Add Brand</button>
         </form>
@@ -100,8 +92,9 @@ class ManageBrandsPage
                                 alt="<?php echo $brand['brandPicture'] ?>" width="50px" height="50px">
                         </td>
                         <td class="table-action-btn">
-                            <button class="btn btn-primary">Edit</button>
-                            <button class="btn btn-danger">Delete</button>
+                            <button class="btn btn-primary"
+                                onclick="location.href='/CarLog/admin/brand/?id=<?php echo $brand['id']; ?>'">Edit</button>
+                            <button class="btn btn-danger" onclick="deleteBrand(<?php echo $brand['id']; ?>)">Delete</button>
                         </td>
                     </tr>
                     <?php

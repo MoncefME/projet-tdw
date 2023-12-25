@@ -63,8 +63,9 @@ class ManageVehiculesPage
                                 alt="<?php echo $brand['brandPicture'] ?>" width="50px" height="50px">
                         </td>
                         <td class="table-action-btn">
-                            <button class="btn btn-primary">Edit</button>
-                            <button class="btn btn-danger">Delete</button>
+                            <button class="btn btn-primary"
+                                onclick="location.href='/CarLog/admin/vehicule/?id=<?php echo $vehicule['id']; ?>'">Edit</button>
+                            <button class="btn btn-danger" onclick="deleteVehicule(<?php echo $vehicule['id']; ?>)">Delete</button>
                         </td>
                     </tr>
                     <?php
@@ -98,19 +99,10 @@ class ManageVehiculesPage
                 </div>
                 <div>
                     <label for="vehiculePicture">Vehicle Picture:</label>
-                    <input type="file" name="vehiculePicture" id="vehiculePicture" accept="image/*" required>
+                    <input type="file" name="vehiculePicture" id="vehiculePicture" accept="image/*" required
+                        onChange="previewInputImage(event)">
                     <img id="previewImage" src="#" alt="Preview" style="display: none; width: 100px; height: 100px;">
                 </div>
-                <script>
-                    document.getElementById('vehiculePicture').addEventListener('change', function () {
-                        var reader = new FileReader();
-                        reader.onload = function (e) {
-                            document.getElementById('previewImage').src = e.target.result;
-                            document.getElementById('previewImage').style.display = 'block';
-                        };
-                        reader.readAsDataURL(this.files[0]);
-                    });
-                </script>
                 <div>
                     <label for="length">Length:</label>
                     <input type="number" name="length" id="length" placeholder="Enter length" required>
