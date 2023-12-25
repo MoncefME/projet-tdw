@@ -1,10 +1,15 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/sharedViews.php");
 class ProfilePage
 {
     public function showPage()
     {
+
+        $shardViews = new SharedViews();
+        $shardViews->showHeader();
         echo 'ProfilePage';
         $this->showUserInformation();
+        $shardViews->showFooter();
     }
 
     private function showUserInformation()

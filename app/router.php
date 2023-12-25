@@ -26,7 +26,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/signUpPa
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/pageNotFound.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/unAuthorizedPage.php");
 
+
+//TEST
+require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/singleBrandPage.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/singleVehiculePage.php");
+
 $request = rtrim($_SERVER['REQUEST_URI'], '/') . '/';
+$request = strtok($request, '?');
+// $request = $_SERVER['REQUEST_URI'];
 
 $userRole = isset($_SESSION['USER']) ? $_SESSION['USER']['role'] : 'GUEST';
 
@@ -41,11 +48,30 @@ switch ($request) {
     case '/CarLog/homePage/':
         $view = new HomePage();
         break;
+    case '/CarLog/guidePage/':
+        $view = new GuidePage();
+        break;
     case '/CarLog/contactPage/':
         $view = new ContactPage();
         break;
     case '/CarLog/brandsPage/':
         $view = new BrandsPage();
+        break;
+    case '/CarLog/brand/':
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $view = new SingleBrandPage($id);
+        } else {
+            $view = new PageNotFound();
+        }
+        break;
+    case '/CarLog/vehicule/':
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $view = new SingleVehiculePage($id);
+        } else {
+            $view = new PageNotFound();
+        }
         break;
     case '/CarLog/comparatorPage/':
         $view = new ComparatorPage();

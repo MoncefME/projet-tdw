@@ -10,7 +10,7 @@ class UploadFile
         $uploadOk = 1;
 
         $fileType = $_FILES["brandPicture"]["type"];
-        $allowedTypes = ["image/jpeg", "image/png"];
+        $allowedTypes = ["image/jpeg", "image/png", "image/svg+xml"];
         if (!in_array($fileType, $allowedTypes)) {
             $uploadOk = 0;
         }
@@ -36,7 +36,7 @@ class UploadFile
         $uploadOk = 1;
 
         $fileType = $_FILES["vehiculePicture"]["type"];
-        $allowedTypes = ["image/jpeg", "image/png"];
+        $allowedTypes = ["image/jpeg", "image/png", "image/svg+xml"];
         if (!in_array($fileType, $allowedTypes)) {
             $uploadOk = 0;
         }

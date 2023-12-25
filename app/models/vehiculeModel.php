@@ -13,7 +13,7 @@ class VehiculeModel
         $vehicule = $dbController->request($database, $query, $params);
 
         $dbController->disConnect($database);
-        return $vehicule;
+        return $vehicule[0];
     }
     public function getAllVehicules()
     {

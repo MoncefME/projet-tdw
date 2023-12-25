@@ -18,6 +18,13 @@ class VehiculeController
         return $vehicules;
     }
 
+    public function getVehiculesByBrand($brandId)
+    {
+        $vehiculeModel = new VehiculeModel();
+        $vehicules = $vehiculeModel->getVehiculesByBrand($brandId);
+        return $vehicules;
+    }
+
     public function addVehicule()
     {
         $vehiculeModel = new VehiculeModel();
