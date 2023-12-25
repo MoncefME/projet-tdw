@@ -256,3 +256,31 @@ label{
     justify-content: center;
     align-items: center;
 }
+
+.footer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(16, 110, 190);
+    font-size: 18px;
+    font-weight: 500;
+    gap: 10px;
+    padding-top: 20px;
+}
+
+.footer a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-links{
+    width: 100%;
+}
+.footer-links ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+}
