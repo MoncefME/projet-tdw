@@ -20,17 +20,26 @@ class BrandReviewsController
         $reviewsByBrand = $brandReviewModel->getReviewsByBrand($brandId);
         return $reviewsByBrand;
     }
-    public function addBrandReview()
+    public function getValidReviewsByBrand($brandId)
+    {
+        $brandReviewModel = new BrandReviewsModel();
+        $reviewsByBrand = $brandReviewModel->getValidReviewsByBrand($brandId);
+        return $reviewsByBrand;
+    }
+    public function addBrandReview($brand_id, $user_id)
     {
         $brandReviewModel = new BrandReviewsModel();
 
-        $user_id = isset($_POST['user_id']) ? $_POST['user_id'] : '';
-        $brand_id = isset($_POST['brand_id']) ? $_POST['brand_id'] : '';
-        $status = isset($_POST['status']) ? $_POST['status'] : '';
+        $status = 'PENDING';
         $comment = isset($_POST['comment']) ? $_POST['comment'] : '';
         $rating = isset($_POST['rating']) ? $_POST['rating'] : '';
 
         $success = $brandReviewModel->addBrandReview($user_id, $brand_id, $status, $comment, $rating);
+        if ($success) {
+            $_SESSION['REVIEW-MESSAGE'] = 'Review added successfully. Wait until the admin approves your review.';
+        } else {
+            $_SESSION['REVIEW-MESSAGE'] = 'Error while adding review';
+        }
         return $success;
     }
     public function updateBrandReview($brandReviewId)

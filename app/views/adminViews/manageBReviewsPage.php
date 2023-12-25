@@ -14,4 +14,5 @@ class ManageBReviewsPage
         </div>
         <?php
     }
+
 }

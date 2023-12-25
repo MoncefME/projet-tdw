@@ -376,3 +376,33 @@ label{
     background-color: #ff0000;
 }
 
+.vehicule-info-table{
+    width: 50%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+}
+
+.dashboard-links{
+    display : grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 20px;
+}
+
+.dashboard-links a{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 20px;
+    border : 1px solid #ccc;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+}
+.dashboard-links a:hover{
+    background-color: #f1f1f1;
+}
+

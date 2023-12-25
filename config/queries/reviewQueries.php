@@ -17,6 +17,11 @@ class ReviewQueries
         return "SELECT * FROM brandreviews WHERE brand_id = ?";
     }
 
+    public static function getValidReviewsByBrand()
+    {
+        return "SELECT * FROM brandreviews WHERE brand_id = ? AND status = 'VALID'";
+    }
+
     public static function addBrandReview()
     {
         return "INSERT INTO brandreviews (user_id, brand_id, status, comment, rating) VALUES (?, ?, ?, ?, ?)";

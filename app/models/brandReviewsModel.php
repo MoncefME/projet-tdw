@@ -39,6 +39,18 @@ class BrandReviewsModel
         $dbController->disConnect($database);
         return $reviewsByBrand;
     }
+    public function getValidReviewsByBrand($brandId)
+    {
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
+
+        $query = ReviewQueries::getValidReviewsByBrand();
+        $params = [$brandId];
+        $reviewsByBrand = $dbController->request($database, $query, $params);
+
+        $dbController->disConnect($database);
+        return $reviewsByBrand;
+    }
     public function addBrandReview($user_id, $brand_id, $status, $comment, $rating)
     {
         $dbController = new DatabaseController();
