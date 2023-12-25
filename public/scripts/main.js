@@ -73,6 +73,64 @@ function deleteVehicule(vehiculeId) {
     },
   });
 }
+
+function validateBrandReview(reviewId) {
+  $.ajax({
+    url: "/CarLog/app/api/reviews/brand/validateReview.php",
+    method: "POST",
+    data: { reviewId: reviewId },
+    success: function (response) {
+      location.reload();
+      console.log(response);
+    },
+    error: function (error) {
+      console.error(error);
+    },
+  });
+}
+function rejectBrandReview(reviewId) {
+  $.ajax({
+    url: "/CarLog/app/api/reviews/brand/rejectReview.php",
+    method: "POST",
+    data: { reviewId: reviewId },
+    success: function (response) {
+      location.reload();
+      console.log(response);
+    },
+    error: function (error) {
+      console.error(error);
+    },
+  });
+}
+function validateVehiculeReview(reviewId) {
+  $.ajax({
+    url: "/CarLog/app/api/reviews/vehicule/validateReview.php",
+    method: "POST",
+    data: { reviewId: reviewId },
+    success: function (response) {
+      location.reload();
+      console.log(response);
+    },
+    error: function (error) {
+      console.error(error);
+    },
+  });
+}
+function rejectVehiculeReview(reviewId) {
+  $.ajax({
+    url: "/CarLog/app/api/reviews/vehicule/rejectReview.php",
+    method: "POST",
+    data: { reviewId: reviewId },
+    success: function (response) {
+      location.reload();
+      console.log(response);
+    },
+    error: function (error) {
+      console.error(error);
+    },
+  });
+}
+
 function previewInputImage(event) {
   console.log("File input changed");
   var file = event.target.files[0];

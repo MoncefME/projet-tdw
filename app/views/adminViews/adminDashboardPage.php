@@ -38,11 +38,11 @@ class AdminDashboardPage
                 <img src="/CarLog/public/icons/admin-dashboard/settings.png" alt="settings" width="auto" height="200">
                 <p>Settings</p>
             </a>
-            <a href="CarLog/admin/manageNewsPage/">
+            <a href="/CarLog/admin/manageNewsPage/">
                 <img src="/CarLog/public/icons/admin-dashboard/manage-news.png" alt="news" width="auto" height="200">
                 <p>Manage News</p>
             </a>
-            <a href="/CarLog/admin/settings/">
+            <a href="/CarLog/admin/manageReviewsPage/">
                 <img src="/CarLog/public/icons/admin-dashboard/manage-reviews.png" alt="settings" width="auto" height="200">
                 <p>Manage Reviews</p>
             </a>

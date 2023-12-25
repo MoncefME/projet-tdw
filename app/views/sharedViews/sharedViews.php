@@ -12,14 +12,48 @@ class SharedViews
                 </a>
             </div>
             <ul>
-                <li><a href="/CarLog/admin/">Dashboard</a></li>
-                <li><a href="/CarLog/admin/manageUsersPage/">Manage Users</a></li>
-                <li><a href="/CarLog/admin/manageBrandsPage/">Manage Brands</a></li>
-                <li><a href="/CarLog/admin/manageVehiculesPage/">Manage Vehicules</a></li>
-                <li><a href="/CarLog/admin/manageBrandsReviewsPage/">Manage Brands Reviews</a></li>
-                <li><a href="/CarLog/admin/manageVehiculesReviewsPage/">Manage Vehicules Reviews</a></li>
-                <li><a href="/CarLog/admin/settings/">Settings</a></li>
-                <li><a href="/CarLog/admin/manageNewsPage/">Manage News</a></li>
+                <li>
+                    <a href="/CarLog/admin/">
+                        Dashboard
+                        <img src="/CarLog/public/icons/admin-dashboard/dashboard.png" width="25px">
+                    </a>
+                </li>
+                <li>
+                    <a href="/CarLog/admin/manageUsersPage/">
+                        Manage Users
+                        <img src="/CarLog/public/icons/admin-dashboard/manage-users.png" width="25px">
+                    </a>
+                </li>
+                <li>
+                    <a href="/CarLog/admin/manageBrandsPage/">
+                        Manage Brands
+                        <img src="/CarLog/public/icons/admin-dashboard/manage-brands.png" width="25px">
+                    </a>
+                </li>
+                <li>
+                    <a href="/CarLog/admin/manageVehiculesPage/">
+                        Manage Vehicules
+                        <img src="/CarLog/public/icons/admin-dashboard/manage-vehicules.png" width="25px">
+                    </a>
+                </li>
+                <li>
+                    <a href="/CarLog/admin/manageReviewsPage/">
+                        Manage Reviews
+                        <img src="/CarLog/public/icons/admin-dashboard/manage-reviews.png" width="25px">
+                    </a>
+                </li>
+                <li>
+                    <a href=" /CarLog/admin/settings/">
+                        Settings
+                        <img src="/CarLog/public/icons/admin-dashboard/settings.png" width="25px">
+                    </a>
+                </li>
+                <li>
+                    <a href="/CarLog/admin/manageNewsPage/">
+                        Manage News
+                        <img src="/CarLog/public/icons/admin-dashboard/manage-news.png" width="25px">
+                    </a>
+                </li>
             </ul>
             <ul>
                 <li><a href="/CarLog/app/api/auth/logout.php">Logout</a></li>
