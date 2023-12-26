@@ -2,6 +2,7 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/sharedViews.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/controllers/vehiculeController.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/controllers/brandController.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/controllers/vehiculeReviewsController.php");
 class SingleVehiculePage
 {
     private $id;
@@ -13,10 +14,13 @@ class SingleVehiculePage
     public function showPage()
     {
 
-        $shardViews = new SharedViews();
-        $shardViews->showHeader();
+        $sharedViews = new SharedViews();
+        $sharedViews->showHeader();
         $this->showInfoTable();
-        $shardViews->showFooter();
+        $this->showVehiculeReviews();
+        $this->showVehiculeReviewForm();
+        $sharedViews->showFooter();
+
     }
 
 
@@ -117,13 +121,76 @@ class SingleVehiculePage
         <?php
     }
 
-    public function showReviews()
+    public function showVehiculeReviews()
     {
-
+        $vehiculeReviewsController = new VehiculeReviewsController();
+        $vehiculeReviews = $vehiculeReviewsController->getValidReviewsByVehicule($this->id);
+        ?>
+        <h1>Reviews</h1>
+        <div class="login-form">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Comment</th>
+                        <th>Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach ($vehiculeReviews as $review) {
+                        ?>
+                        <tr>
+                            <td>
+                                <?php echo $review['comment']; ?>
+                            </td>
+                            <td>
+                                <?php echo $review['rating']; ?>
+                            </td>
+                        </tr>
+                        <?php
+                    } ?>
+                </tbody>
+            </table>
+        </div>
+        <?php
     }
 
-    public function showAddReviewForm()
+    private function showReviewMessage()
     {
+        ?>
+        <div class="review-message">
+            <?php
+            if (isset($_SESSION['REVIEW-MESSAGE'])) {
+                echo $_SESSION['REVIEW-MESSAGE'];
+                unset($_SESSION['REVIEW-MESSAGE']);
+            }
+            ?>
+        </div>
+        <?php
+    }
 
+    public function showVehiculeReviewForm()
+    {
+        ?>
+        <form method="POST" action="/CarLog/app/api/reviews/vehicule/addReview.php?vehiculeId=<?php echo $this->id ?>"
+            class="login-form">
+            <div>
+                <?php $this->showReviewMessage(); ?>
+                <div>
+                    <label for="comment">Comment:</label>
+                    <input type="text" name="comment" id="comment" placeholder="Enter comment" required>
+                </div>
+
+                <div>
+                    <label for="rating">Rating:</label>
+                    <input type="number" name="rating" id="rating" placeholder="Enter rating" required>
+                </div>
+
+                <div>
+                    <button type="submit">Add Review</button>
+                </div>
+            </div>
+        </form>
+        <?php
     }
 }

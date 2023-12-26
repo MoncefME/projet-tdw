@@ -3,6 +3,7 @@
         {
             "path": "/CarLog/",
             "view": "HomePage"
+            
         },
         {
             "path": "/CarLog/homePage/",

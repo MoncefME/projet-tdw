@@ -63,6 +63,10 @@ class ReviewQueries
         return "SELECT * FROM vehiculereviews WHERE vehicule_id = ?";
     }
 
+    public static function getValidReviewsByVehicule()
+    {
+        return "SELECT * FROM vehiculereviews WHERE vehicule_id = ? AND status = 'VALID'";
+    }
     public static function addVehiculeReview()
     {
         return "INSERT INTO vehiculereviews (user_id, vehicule_id, status, comment, rating) VALUES (?, ?, ?, ?, ?)";

@@ -38,6 +38,18 @@ class VehiculeReviewsModel
         $dbController->disConnect($database);
         return $reviewsByVehicule;
     }
+    public function getValidReviewsByVehicule($vehiculeId)
+    {
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
+
+        $query = ReviewQueries::getValidReviewsByVehicule();
+        $params = [$vehiculeId];
+        $reviewsByVehicule = $dbController->request($database, $query, $params);
+
+        $dbController->disConnect($database);
+        return $reviewsByVehicule;
+    }
     public function addVehiculeReview($user_id, $vehicule_id, $status, $comment, $rating)
     {
         $dbController = new DatabaseController();

@@ -74,11 +74,12 @@ function deleteVehicule(vehiculeId) {
   });
 }
 
-function validateBrandReview(reviewId) {
+function validateBrandReview(brandReviewId) {
+  console.log(brandReviewId);
   $.ajax({
     url: "/CarLog/app/api/reviews/brand/validateReview.php",
     method: "POST",
-    data: { reviewId: reviewId },
+    data: { brandReviewId: brandReviewId },
     success: function (response) {
       location.reload();
       console.log(response);
@@ -88,11 +89,11 @@ function validateBrandReview(reviewId) {
     },
   });
 }
-function rejectBrandReview(reviewId) {
+function rejectBrandReview(brandReviewId) {
   $.ajax({
     url: "/CarLog/app/api/reviews/brand/rejectReview.php",
     method: "POST",
-    data: { reviewId: reviewId },
+    data: { brandReviewId: brandReviewId },
     success: function (response) {
       location.reload();
       console.log(response);
@@ -102,28 +103,26 @@ function rejectBrandReview(reviewId) {
     },
   });
 }
-function validateVehiculeReview(reviewId) {
+function validateVehiculeReview(vehiculeReviewId) {
   $.ajax({
     url: "/CarLog/app/api/reviews/vehicule/validateReview.php",
     method: "POST",
-    data: { reviewId: reviewId },
+    data: { vehiculeReviewId: vehiculeReviewId },
     success: function (response) {
       location.reload();
-      console.log(response);
     },
     error: function (error) {
       console.error(error);
     },
   });
 }
-function rejectVehiculeReview(reviewId) {
+function rejectVehiculeReview(vehiculeReviewId) {
   $.ajax({
     url: "/CarLog/app/api/reviews/vehicule/rejectReview.php",
     method: "POST",
-    data: { reviewId: reviewId },
+    data: { vehiculeReviewId: vehiculeReviewId },
     success: function (response) {
       location.reload();
-      console.log(response);
     },
     error: function (error) {
       console.error(error);

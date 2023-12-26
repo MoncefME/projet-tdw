@@ -14,23 +14,32 @@ class VehiculeReviewsController
         $vehiculeReviews = $vehiculeReviewModel->getAllVehiculeReviews();
         return $vehiculeReviews;
     }
+    public function getValidReviewsByVehicule($vehiculeId)
+    {
+        $vehiculeReviewModel = new VehiculeReviewsModel();
+        $vehiculeReviews = $vehiculeReviewModel->getValidReviewsByVehicule($vehiculeId);
+        return $vehiculeReviews;
+    }
     public function getReviewsByVehicule($vehiculeId)
     {
         $vehiculeReviewModel = new VehiculeReviewsModel();
         $reviewsByVehicule = $vehiculeReviewModel->getReviewsByVehicule($vehiculeId);
         return $reviewsByVehicule;
     }
-    public function addVehiculeReview()
+    public function addVehiculeReview($vehicule_id, $user_id)
     {
         $vehiculeReviewModel = new VehiculeReviewsModel();
 
-        $user_id = isset($_POST['user_id']) ? $_POST['user_id'] : '';
-        $vehicule_id = isset($_POST['vehicule_id']) ? $_POST['vehicule_id'] : '';
-        $status = isset($_POST['status']) ? $_POST['status'] : 'PENDING';
+        $status = 'PENDING';
         $comment = isset($_POST['comment']) ? $_POST['comment'] : '';
         $rating = isset($_POST['rating']) ? $_POST['rating'] : '';
 
         $success = $vehiculeReviewModel->addVehiculeReview($user_id, $vehicule_id, $status, $comment, $rating);
+        if ($success) {
+            $_SESSION['REVIEW-MESSAGE'] = 'Review added successfully. Wait until the admin approves your review.';
+        } else {
+            $_SESSION['REVIEW-MESSAGE'] = 'Error while adding review';
+        }
         return $success;
     }
     public function updateVehiculeReview($vehiculeReviewId)

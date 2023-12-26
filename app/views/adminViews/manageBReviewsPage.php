@@ -24,7 +24,6 @@ class ManageBReviewsPage
         $reviews = $brandReviewsController->getAllBrandReviews();
 
         $brandConroller = new BrandController();
-        print_r($reviews);
         ?>
         <table class="table">
             <thead>
@@ -45,7 +44,6 @@ class ManageBReviewsPage
                         </td>
                         <td>
                             <?php
-                            // echo $review['brand_id'];
                             $brand = $brandConroller->getBrandById($review['brand_id']);
                             echo $brand['name'];
                             ?>
@@ -60,12 +58,11 @@ class ManageBReviewsPage
                             <?php echo $review['status']; ?>
                         </td>
                         <td>
-                        <td>
                             <button class="btn btn-primary"
                                 onclick="validateBrandReview(<?php echo $review['id'] ?>)">Validate</button>
                             <button class="btn btn-danger" onclick="rejectBrandReview(<?php echo $review['id'] ?>)">Reject</button>
                         </td>
-                        </td>
+
                     </tr>
                 <?php } ?>
             </tbody>

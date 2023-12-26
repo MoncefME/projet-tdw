@@ -89,7 +89,6 @@ class SingleBrandPage
                     <tr>
                         <th>Comment</th>
                         <th>Rating</th>
-                        <!-- <th>Details</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -103,7 +102,6 @@ class SingleBrandPage
                             <td>
                                 <?php echo $review['rating']; ?>
                             </td>
-                            <!-- <td><a href="/CarLog/review/?id=<?php echo $review["id"] ?>">Show Details</a></td> -->
                         </tr>
                         <?php
                     } ?>
