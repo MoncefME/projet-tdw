@@ -11,6 +11,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/profilePag
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/reviewsPage.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/singleBrandPage.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/singleVehiculePage.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/singleNewsPage.php");
 
 /** Admin Pages */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/manageBrandsPage.php");
@@ -78,6 +79,14 @@ switch ($request) {
         break;
     case '/CarLog/newsPage/':
         $view = new NewsPage();
+        break;
+    case '/CarLog/news/':
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $view = new SingleNewsPage($id);
+        } else {
+            $view = new PageNotFound();
+        }
         break;
     case '/CarLog/profilePage/':
         if ($userRole !== 'GUEST') {

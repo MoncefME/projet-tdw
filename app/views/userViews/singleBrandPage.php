@@ -18,7 +18,15 @@ class SingleBrandPage
         $this->showBrandInfo();
         $this->showBrandVehicles();
         $this->showBrandReviews();
-        $this->showBrandReviewForm();
+        if (isset($_SESSION['USER']) && $_SESSION['USER']['role'] != 'GUEST') {
+            $this->showBrandReviewForm();
+        } else {
+            ?>
+            <div class="review-message">
+                <p>You must be logged in to add a review</p>
+            </div>
+            <?php
+        }
         $shardViews->showFooter();
     }
     private function showBrandInfo()

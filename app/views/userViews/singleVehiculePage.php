@@ -18,7 +18,15 @@ class SingleVehiculePage
         $sharedViews->showHeader();
         $this->showInfoTable();
         $this->showVehiculeReviews();
-        $this->showVehiculeReviewForm();
+        if (isset($_SESSION['USER']) && $_SESSION['USER']['role'] != 'GUEST') {
+            $this->showVehiculeReviewForm();
+        } else {
+            ?>
+            <div class="review-message">
+                <p>You must be logged in to add a review</p>
+            </div>
+            <?php
+        }
         $sharedViews->showFooter();
 
     }
