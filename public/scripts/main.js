@@ -130,6 +130,20 @@ function rejectVehiculeReview(vehiculeReviewId) {
   });
 }
 
+function deleteNews(newsId) {
+  $.ajax({
+    url: "/CarLog/app/api/news/deleteNews.php",
+    method: "POST",
+    data: { newsId: newsId },
+    success: function (response) {
+      location.reload();
+    },
+    error: function (error) {
+      console.error(error);
+    },
+  });
+}
+
 function previewInputImage(event) {
   console.log("File input changed");
   var file = event.target.files[0];

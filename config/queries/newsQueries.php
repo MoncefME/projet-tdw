@@ -14,8 +14,9 @@ class NewsQueries
 
     public static function addNews()
     {
-        return "INSERT INTO news (title, content, link,tags) 
-                          VALUES (    ?,       ?,    ?,   ?)";
+        //id, title, content, link, created_at, updated_at, tags, views_count, likes_count 
+        return "INSERT INTO news (title, content, link,tags, created_at, updated_at, views_count, likes_count) 
+                          VALUES (    ?,       ?,    ?,   ?,    ?     ,    ?,           0,           0)";
     }
 
     public static function updateNews()

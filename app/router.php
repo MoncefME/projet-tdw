@@ -24,6 +24,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/manageVeh
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/settingsPage.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/editBrandPage.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/editVehiculePage.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/editNewsPage.php");
 
 /** Shared Pages */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/logInPage.php");
@@ -131,6 +132,14 @@ switch ($request) {
             $view = new ManageNewsPage();
         } else {
             $view = new UnAuthorizedPage();
+        }
+        break;
+    case '/CarLog/admin/news/':
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $view = new EditNewsPage($id);
+        } else {
+            $view = new PageNotFound();
         }
         break;
     case '/CarLog/admin/manageUsersPage/':
