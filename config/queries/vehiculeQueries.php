@@ -46,4 +46,6 @@ class VehiculeQueries
                                      brand_id = ? 
                 WHERE id = ?";
     }
+
+
 }

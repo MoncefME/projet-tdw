@@ -2,6 +2,7 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/sharedViews.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/controllers/vehiculeController.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/controllers/brandController.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/controllers/userController.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/controllers/vehiculeReviewsController.php");
 class SingleVehiculePage
 {
@@ -39,7 +40,20 @@ class SingleVehiculePage
 
         $brandController = new BrandController();
         $brand = $brandController->getBrandById($vehicule['brand_id']);
-        ?>
+
+        $userController = new UserController();
+
+
+        if (isset($_SESSION['USER'])) {
+            $isLiked = $userController->isVehicleLikedByUser($_SESSION['USER']['id'], $vehicule['id']);
+            ?>
+            <div>
+                <button onclick="addFavoriteVehicule(<?php echo $_SESSION['USER']['id']; ?>, <?php echo $vehicule['id']; ?>)"
+                    class="btn <?php echo $isLiked ? "btn-primary" : "btn-danger" ?> w-25">
+                    <?php echo $isLiked ? "Liked" : "Like"; ?>
+                </button>
+            </div>
+        <?php } ?>
         <table class="table vehicule-info-table">
             <tbody>
                 <tr>

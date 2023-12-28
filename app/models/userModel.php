@@ -167,4 +167,58 @@ class UserModel
         $dbController->disConnect($database);
         return $success !== false;
     }
+    public function getUserFavoriteVehicules($userId)
+    {
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
+
+        $query = UserQueries::getUserFavoriteVehicules();
+        $params = [$userId];
+        $userFavoriteVehicules = $dbController->request($database, $query, $params);
+
+        $dbController->disConnect($database);
+        return $userFavoriteVehicules;
+    }
+    public function addFavoriteVehicule($userId, $vehiculeId)
+    {
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
+
+        $query = UserQueries::addFavoriteVehicule();
+        // remove like
+        $qury2 = UserQueries::deleteFavoriteVehicule();
+        $params = [$userId, $vehiculeId];
+        $success = $dbController->request($database, $query, $params);
+
+        $dbController->disConnect($database);
+        return $success !== false;
+    }
+    public function deleteFavoriteVehicule($userId, $vehiculeId)
+    {
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
+
+        $query = UserQueries::deleteFavoriteVehicule();
+        $params = [$userId, $vehiculeId];
+        $success = $dbController->request($database, $query, $params);
+
+        $dbController->disConnect($database);
+        return $success !== false;
+    }
+
+    public function isVehicleLikedByUser($userId, $vehiculeId)
+    {
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
+
+        $query = UserQueries::isVehicleLikedByUser();
+        $params = [$userId, $vehiculeId];
+        $result = $dbController->request($database, $query, $params);
+
+        $dbController->disConnect($database);
+        return $result[0]['NB'] > 0;
+    }
+
+
 }
+

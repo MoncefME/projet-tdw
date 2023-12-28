@@ -101,4 +101,29 @@ class UserController
         $role = isset($_POST['role']) ? $_POST['role'] : 'USER';
         return $userModel->updateUserRole($userId, $role);
     }
+    public function getUserFavoriteVehicules($userId)
+    {
+        $userModel = new UserModel();
+        return $userModel->getUserFavoriteVehicules($userId);
+    }
+    public function addFavoriteVehicule($userId, $vehiculeId)
+    {
+        $userModel = new UserModel();
+        return $userModel->addFavoriteVehicule($userId, $vehiculeId);
+    }
+
+    public function isVehicleLikedByUser($userId, $vehiculeId)
+    {
+        $userModel = new UserModel();
+        return $userModel->isVehicleLikedByUser($userId, $vehiculeId);
+    }
+
+    public function deleteFavoriteVehicule($userId, $vehiculeId)
+    {
+        $userModel = new UserModel();
+        return $userModel->deleteFavoriteVehicule($userId, $vehiculeId);
+    }
+
+
+
 }

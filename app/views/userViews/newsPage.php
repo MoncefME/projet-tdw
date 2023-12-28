@@ -26,6 +26,7 @@ class NewsPage
                         <th>Tags</th>
                         <th>Views Count</th>
                         <th>Likes Count</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,6 +51,9 @@ class NewsPage
                             </td>
                             <td>
                                 <?php echo $news['likes_count']; ?>
+                            </td>
+                            <td>
+                                <a href="/CarLog/news/?id=<?php echo $news['id'] ?>">Show More</a>
                             </td>
                         </tr>
                         <?php

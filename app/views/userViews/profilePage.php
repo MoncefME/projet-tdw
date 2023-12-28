@@ -1,5 +1,6 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/sharedViews.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/controllers/userController.php");
 class ProfilePage
 {
     public function showPage()
@@ -7,8 +8,10 @@ class ProfilePage
 
         $shardViews = new SharedViews();
         $shardViews->showHeader();
-        echo 'ProfilePage';
+        echo '<h1>ProfilePage</h1>';
         $this->showUserInformation();
+        if (isset($_SESSION['USER']))
+            $this->showUserFavoriteVehicules();
         $shardViews->showFooter();
     }
 
@@ -47,6 +50,37 @@ class ProfilePage
             <label for="profilePicture">Profile Picture:</label>
             <img src="<?php echo $user['profilePicture']; ?>" alt="Profile Picture"><br>
         </form>
+        <?php
+    }
+
+    private function showUserFavoriteVehicules()
+    {
+        $userController = new UserController();
+        $userFavoriteVehicules = $userController->getUserFavoriteVehicules($_SESSION['USER']['id']);
+
+        ?>
+        <h1>Fav Vehicles</h1>
+        <div class="vehicles">
+            <?php
+            foreach ($userFavoriteVehicules as $vehicule) {
+                ?>
+                <div class="vehicle-info">
+                    <p>Model:
+                        <?php echo $vehicule['model']; ?>
+                    </p>
+                    <p>Version:
+                        <?php echo $vehicule['version']; ?>
+                    </p>
+                    <p>Year:
+                        <?php echo $vehicule['year']; ?>
+                    </p>
+                    <img src="/CarLog/public/uploads/vehicules/<?php echo $vehicule['vehiculePicture'] ?>"
+                        alt="<?php echo $vehicule['vehiculePicture'] ?>" width="50px" height="50px">
+                    <a href="/CarLog/vehicule/?id=<?php echo $vehicule["id"] ?>"> Show Details </a>
+                </div>
+                <?php
+            } ?>
+        </div>
         <?php
     }
 

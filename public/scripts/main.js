@@ -144,6 +144,20 @@ function deleteNews(newsId) {
   });
 }
 
+function addFavoriteVehicule(userId, vehiculeId) {
+  $.ajax({
+    url: "/CarLog/app/api/users/addFavoriteVehicule.php",
+    method: "POST",
+    data: { userId: userId, vehiculeId: vehiculeId },
+    success: function (response) {
+      location.reload();
+    },
+    error: function (error) {
+      console.error(error);
+    },
+  });
+}
+
 function previewInputImage(event) {
   console.log("File input changed");
   var file = event.target.files[0];

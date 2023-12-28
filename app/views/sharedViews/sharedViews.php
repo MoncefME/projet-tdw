@@ -64,19 +64,19 @@ class SharedViews
     private $linksData = [
         [
             'link' => 'https://www.facebook.com/moncef.moussaoui.79/',
-            'icon' => '<i class="fa-brands fa-facebook fa-xl"></i>',
+            'icon' => '/CarLog/public/icons/social-media/facebook.png',
         ],
         [
             'link' => 'https://www.linkedin.com/in/abdelmouncif-moussaoui-35021a206/',
-            'icon' => '<i class="fa-brands fa-linkedin fa-xl"></i>',
+            'icon' => '/CarLog/public/icons/social-media/linkedin.png',
         ],
         [
             'link' => 'https://www.instagram.com/moncefon/',
-            'icon' => '<i class="fa-brands fa-instagram fa-xl"></i>',
+            'icon' => '/CarLog/public/icons/social-media/instagram.png',
         ],
         [
             'link' => 'https://www.youtube.com/channel/UC28Px5uPpW3jNVyIe6E2vQw',
-            'icon' => '<i class="fa-brands fa-youtube fa-xl"></i>',
+            'icon' => '/CarLog/public/icons/social-media/twitter.png',
         ]
     ];
 
@@ -112,7 +112,7 @@ class SharedViews
         foreach ($this->linksData as $linkData) {
             ?>
             <a href="<?php echo $linkData['link']; ?>" target="_blank">
-                <?php echo $linkData['icon']; ?>
+                <img src="<?php echo $linkData['icon']; ?>" alt="social media icon" width="30px">
             </a>
             <?php
         }

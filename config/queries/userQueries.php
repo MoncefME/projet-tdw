@@ -46,4 +46,22 @@ class UserQueries
     {
         return "UPDATE users SET role = ? WHERE id = ?";
     }
+
+    public static function getUserFavoriteVehicules()
+    {
+        return "SELECT * FROM vehicules WHERE id IN (SELECT vehicule_id FROM userFavoriteVehicules WHERE user_id = ?)";
+    }
+    public static function addFavoriteVehicule()
+    {
+        return "INSERT INTO userFavoriteVehicules (user_id, vehicule_id) VALUES (?, ?)";
+    }
+    public static function deleteFavoriteVehicule()
+    {
+        return "DELETE FROM userFavoriteVehicules WHERE user_id = ? AND vehicule_id = ?";
+    }
+    public static function isVehicleLikedByUser()
+    {
+        return "SELECT COUNT(*) AS NB FROM userFavoriteVehicules WHERE user_id = ? AND vehicule_id = ?";
+    }
+
 }
