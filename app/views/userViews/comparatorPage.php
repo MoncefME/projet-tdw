@@ -2,6 +2,7 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/sharedViews.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/controllers/vehiculeController.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/controllers/brandController.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/controllers/comparisionController.php");
 
 class ComparatorPage
 {
@@ -21,6 +22,7 @@ class ComparatorPage
         echo '<h1>Comparator Page</h1>';
         $this->showComparator();
         //$this->showComparatorResult();
+        $this->showPopularComparisions();
         $shardViews->showFooter();
     }
 
@@ -86,5 +88,13 @@ class ComparatorPage
         </table>
         <?php
     }
+
+    private function showPopularComparisions()
+    {
+        $comparisionController = new ComparisionController();
+        $comparisions = $comparisionController->getAllComparisions();
+        print_r($comparisions);
+    }
+
 }
 

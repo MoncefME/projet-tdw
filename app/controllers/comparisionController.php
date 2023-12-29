@@ -1,4 +1,5 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/models/comparisionModel.php");
 class ComparisionController
 {
     public function getComparisionById($comparisionId)

@@ -195,7 +195,7 @@ function handleBrandChange(brandSelect, vehiculeNumber) {
   }
 
   $.ajax({
-    url: "/CarLog/app/api/brands/getBrandVehicules.php",
+    url: "/CarLog/app/api/comparisions/getBrandVehicules.php",
     method: "POST",
     data: { brandId: brandId },
     success: function (response) {
@@ -231,7 +231,7 @@ function handleModelChange(modelSelect, vehiculeNumber) {
   }
 
   $.ajax({
-    url: "/CarLog/app/api/brands/getBrandVehicules.php",
+    url: "/CarLog/app/api/comparisions/getBrandVehicules.php",
     method: "POST",
     data: { brandId: brandId },
     success: function (response) {
@@ -264,7 +264,7 @@ function handleYearsChange(yearSelect, vehiculeNumber) {
     resultDiv.empty();
 
     $.ajax({
-      url: "/CarLog/app/api/vehicules/getComparisionVehicule.php",
+      url: "/CarLog/app/api/comparisions/getComparisionVehicule.php",
       method: "POST",
       data: { brandId: brandId, model: model, year: year },
       success: function (response) {
@@ -303,7 +303,7 @@ function showComparisionTable() {
   var vehicule3Id = $('[name="vehiculeId-3"]').val();
   var vehicule4Id = $('[name="vehiculeId-4"]').val();
   $.ajax({
-    url: "/CarLog/app/api/vehicules/getComparisionVehicules.php",
+    url: "/CarLog/app/api/comparisions/getComparisionVehicules.php",
     method: "POST",
     data: {
       vehicule1Id: vehicule1Id,
@@ -341,7 +341,7 @@ function showComparisionTable() {
       comparisionVehicules.forEach(function (vehicule) {
         // CALL THE API
         $.ajax({
-          url: "/CarLog/app/api/brands/getBrandById.php",
+          url: "/CarLog/app/api/comparisions/getBrandById.php",
           method: "POST",
           data: { brandId: vehicule.brand_id },
           success: function (response) {
@@ -378,20 +378,32 @@ function showComparisionTable() {
       table.append(tableBody);
       table.show();
       $(".comparator-container").hide();
+      addComparision();
+    },
+    error: function (error) {
+      console.error(error);
+    },
+  });
+}
 
-      // $.ajax({
-      //   url: "/CarLog/app/api/comparisons/addComparison.php",
-      //   method: "POST",
-      //   data: {
-      //     vehicule1Id: vehicule1Id,
-      //     vehicule2Id: vehicule2Id,
-      //     vehicule3Id: vehicule3Id,
-      //     vehicule4Id: vehicule4Id,
-      //   },
-      //   success: function (response) {
-      //     console.log(response);
-      //   },
-      // });
+function addComparision() {
+  var vehicule1Id = $('[name="vehiculeId-1"]').val();
+  var vehicule2Id = $('[name="vehiculeId-2"]').val();
+  var vehicule3Id = $('[name="vehiculeId-3"]').val();
+  var vehicule4Id = $('[name="vehiculeId-4"]').val();
+  $.ajax({
+    url: "/CarLog/app/api/comparisions/addComparision.php",
+    method: "POST",
+    data: {
+      vehicule1Id: vehicule1Id,
+      vehicule2Id: vehicule2Id,
+      vehicule3Id: vehicule3Id,
+      vehicule4Id: vehicule4Id,
+    },
+    success: function (response) {
+      console.log("Comparision adding test");
+      console.log(response);
+      //location.reload();
     },
     error: function (error) {
       console.error(error);
