@@ -104,4 +104,11 @@ class VehiculeController
         return $years;
     }
 
+    public function getVehiculeByBrandModelYear($brandId, $model, $year)
+    {
+        $vehiculeModel = new VehiculeModel();
+        $vehicule = $vehiculeModel->getVehiculeByBrandModelYear($brandId, $model, $year);
+        return $vehicule;
+    }
+
 }

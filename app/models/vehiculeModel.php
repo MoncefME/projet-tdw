@@ -101,4 +101,17 @@ class VehiculeModel
         return $years;
     }
 
+    public function getVehiculeByBrandModelYear($brandId, $model, $year)
+    {
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
+
+        $query = VehiculeQueries::getVehiculeByBrandModelYear();
+        $params = [$brandId, $model, $year];
+        $vehicule = $dbController->request($database, $query, $params);
+
+        $dbController->disConnect($database);
+        return $vehicule[0];
+    }
+
 }

@@ -56,4 +56,9 @@ class VehiculeQueries
         return "SELECT year FROM vehicules WHERE brand_id = ? AND model = ?";
     }
 
+    public static function getVehiculeByBrandModelYear()
+    {
+        return "SELECT * FROM vehicules WHERE brand_id = ? AND model = ? AND year = ?";
+    }
+
 }

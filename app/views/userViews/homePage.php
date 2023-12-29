@@ -45,7 +45,10 @@ class HomePage
     {
         ?>
         <div class="comparator">
-            <p>This is a Comparator</p>
+            <?php
+            $comparatorPage = new ComparatorPage();
+            $comparatorPage->showComparator();
+            ?>
         </div>
         <?php
     }
