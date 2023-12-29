@@ -90,4 +90,18 @@ class VehiculeController
         return $vehiculeModel->updateVehicule($vehiculeId, $model, $version, $year, $uploadedFileName, $length, $width, $height, $wheelBase, $engine, $performance, $price, $consumption, $note, $brandId);
     }
 
+    public function getModelsByBrandId($brandId)
+    {
+        $vehiculeModel = new VehiculeModel();
+        $models = $vehiculeModel->getModelsByBrandId($brandId);
+        return $models;
+    }
+
+    public function getYearsByBrandAndModel($brandId, $model)
+    {
+        $vehiculeModel = new VehiculeModel();
+        $years = $vehiculeModel->getYearsByBrandAndModel($brandId, $model);
+        return $years;
+    }
+
 }

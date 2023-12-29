@@ -1,69 +1,88 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/sharedViews.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/controllers/vehiculeController.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/controllers/brandController.php");
+
 class ComparatorPage
 {
+    private $vehicule1;
+    private $vehicule2;
+    private $vehicule3;
+    private $vehicule4;
+    private $vehiculeController;
+    private $brandController;
+
+    public function __construct()
+    {
+        $this->vehiculeController = new VehiculeController();
+        $this->brandController = new BrandController();
+    }
+
     public function showPage()
     {
         $shardViews = new SharedViews();
         $shardViews->showHeader();
         echo 'ComparatorPage';
-        //$this->showComparator();
+        $this->showComparator();
         $shardViews->showFooter();
     }
 
-    private function showComparator()
+    public function showComparator()
     {
-        $brandController = new BrandController();
-        $brands = $brandController->getAllBrands();
-
         ?>
-        <div>
+        <div class="comparator-container">
+            <?php
+            $this->showVehiculeComparisonForm($this->vehicule1);
+            $this->showVehiculeComparisonForm($this->vehicule2);
+            $this->showVehiculeComparisonForm($this->vehicule3);
+            $this->showVehiculeComparisonForm($this->vehicule4);
+            ?>
+        </div>
+        <button>Compare</button>
+        <?php
+    }
+
+    private function showVehiculeComparisonForm()
+    {
+        $brands = $this->brandController->getAllBrands();
+        ?>
+        <div class="vehicule-form-container">
             <form>
                 <div>
-                    <select name="brand" id="brandSelect" onchange="enableModelSelect()">
-                        <?php foreach ($brands as $brand) { ?>
-                            <option value="<?php echo $brand['id']; ?>">
-                                <?php echo $brand['name']; ?>
-                            </option>
-                        <?php } ?>
+                    <label>Brand</label>
+                    <select name="brand" onchange="getBrandVehicules(this)">
+                        <?php
+                        foreach ($brands as $brand) {
+                            echo '<option value="' . $brand['id'] . '">' . $brand['name'] . '</option>';
+                        }
+                        ?>
                     </select>
                 </div>
                 <div>
-                    <select name="model" id="modelSelect" disabled onchange="enableYearSelect()">
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="fiat">Fiat</option>
-                        <option value="audi">Audi</option>
+                    <label>Model</label>
+                    <select name="model">
+                        <?php
+                        // $models = $vehiculeController->getModelsByBrandId($brand['id']);
+                        // foreach ($models as $model) {
+                        //     echo '<option value="' . $model . '">' . $model . '</option>';
+                        // }
+                        ?>
                     </select>
                 </div>
                 <div>
-                    <select name="year" id="yearSelect" disabled>
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="fiat">Fiat</option>
-                        <option value="audi">Audi</option>
+                    <label>Year</label>
+                    <select name="year">
+                        <?php
+                        // $years = $vehiculeController->getYearsByBrandAndModel($brand['id'], $model);
+                        // foreach ($years as $year) {
+                        //     echo '<option value="' . $year . '">' . $year . '</option>';
+                        // }
+                        ?>
                     </select>
                 </div>
             </form>
         </div>
-
-        <script>
-            function enableModelSelect() {
-                var brandSelect = document.getElementById("brandSelect");
-                var modelSelect = document.getElementById("modelSelect");
-                var yearSelect = document.getElementById("yearSelect");
-
-                modelSelect.disabled = false;
-                yearSelect.disabled = true;
-            }
-            function enableYearSelect() {
-                var brandSelect = document.getElementById("brandSelect");
-                var modelSelect = document.getElementById("modelSelect");
-                var yearSelect = document.getElementById("yearSelect");
-
-                yearSelect.disabled = false;
-            }
-        </script>
         <?php
     }
 }
+

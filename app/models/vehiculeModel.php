@@ -75,5 +75,30 @@ class VehiculeModel
         return $success;
     }
 
+    public function getModelsByBrandId($brandId)
+    {
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
+
+        $query = VehiculeQueries::getModelsByBrandId();
+        $params = [$brandId];
+        $models = $dbController->request($database, $query, $params);
+
+        $dbController->disConnect($database);
+        return $models;
+    }
+
+    public function getYearsByBrandAndModel($brandId, $model)
+    {
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
+
+        $query = VehiculeQueries::getYearsByBrandAndModel();
+        $params = [$brandId, $model];
+        $years = $dbController->request($database, $query, $params);
+
+        $dbController->disConnect($database);
+        return $years;
+    }
 
 }

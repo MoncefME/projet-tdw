@@ -169,3 +169,19 @@ function previewInputImage(event) {
   };
   reader.readAsDataURL(file);
 }
+
+function getBrandVehicules(brandSelect) {
+  var brandId = brandSelect.value;
+  console.log(brandId);
+  $.ajax({
+    url: "/CarLog/app/api/brands/getBrandVehicules.php",
+    method: "POST",
+    data: { brandId: brandId },
+    success: function (response) {
+      $("#modelSelect").html(response);
+    },
+    error: function (error) {
+      console.error(error);
+    },
+  });
+}

@@ -409,3 +409,12 @@ label{
     background-color: #f1f1f1;
 }
 
+.comparator-container{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.vehicule-form-container{
+    width: 25%;
+}
+
