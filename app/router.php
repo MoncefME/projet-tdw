@@ -12,6 +12,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/reviewsPag
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/singleBrandPage.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/singleVehiculePage.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/singleNewsPage.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/singleComparisionPage.php");
 
 /** Admin Pages */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/manageBrandsPage.php");
@@ -33,7 +34,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/signUpPa
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/pageNotFound.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/unAuthorizedPage.php");
 
-
+/** Controllers */
 $request = rtrim($_SERVER['REQUEST_URI'], '/') . '/';
 $request = strtok($request, '?');
 
@@ -76,6 +77,15 @@ switch ($request) {
         break;
     case '/CarLog/comparatorPage/':
         $view = new ComparatorPage();
+        break;
+    case '/CarLog/comparision/':
+        if (isset($_GET['idA']) || isset($_GET['idB'])) {
+            $vehiculeA = $_GET['idA'];
+            $vehiculeB = $_GET['idB'];
+            $view = new SingleComparisionPage($vehiculeA, $vehiculeB);
+        } else {
+            $view = new PageNotFound();
+        }
         break;
     case '/CarLog/newsPage/':
         $view = new NewsPage();

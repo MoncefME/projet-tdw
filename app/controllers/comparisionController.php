@@ -19,4 +19,10 @@ class ComparisionController
         return $comparisionModel->addComparision($user_id, $vehicule_1_id, $vehicule_2_id, $vehicule_3_id, $vehicule_4_id);
     }
 
+    public function getMostComparedVehiculePairs()
+    {
+        $comparisionModel = new ComparisionModel();
+        return $comparisionModel->getMostComparedVehiculePairs();
+    }
+
 }

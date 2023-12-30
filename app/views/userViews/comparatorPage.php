@@ -8,7 +8,6 @@ class ComparatorPage
 {
     private $brandController;
     private $brands;
-
     public function __construct()
     {
         $this->brandController = new BrandController();
@@ -17,12 +16,12 @@ class ComparatorPage
 
     public function showPage()
     {
+
         $shardViews = new SharedViews();
         $shardViews->showHeader();
         echo '<h1>Comparator Page</h1>';
         $this->showComparator();
-        //$this->showComparatorResult();
-        $this->showPopularComparisions();
+        $this->showPopularComparisons();
         $shardViews->showFooter();
     }
 
@@ -37,7 +36,7 @@ class ComparatorPage
             $this->showVehiculeComparisonForm('4');
             ?>
         </div>
-        <button class="btn btn-primary" onclick="showComparisionTable()">Compare</button>
+        <button class="btn btn-primary" onclick="showComparisionTable(true)">Compare</button>
         <?php
         $this->showComparatorResult();
     }
@@ -84,17 +83,64 @@ class ComparatorPage
     {
         ?>
         <table class="comparision-result-table table table-striped table-bordered" style="display: none;">
-
         </table>
         <?php
     }
 
-    private function showPopularComparisions()
+    private function showPopularComparisons()
     {
         $comparisionController = new ComparisionController();
-        $comparisions = $comparisionController->getAllComparisions();
-        print_r($comparisions);
+        $mostComparedVehiculePairs = $comparisionController->getMostComparedVehiculePairs();
+        ?>
+        <h1>Popular Comparisons</h1>
+        <div class="popular-comparisions-container">
+            <?php
+            foreach ($mostComparedVehiculePairs as $pair) {
+                $vehiculeController = new VehiculeController();
+                $vehiculeA = $vehiculeController->getVehiculeById($pair['vehicule_id_A']);
+                $vehiculeB = $vehiculeController->getVehiculeById($pair['vehicule_id_B']);
+                $this->showComparisionCard($vehiculeA, $vehiculeB);
+            }
+            ?>
+        </div>
+        <?php
     }
+
+    private function showComparisionCard($vehiculeA, $vehiculeB)
+    {
+        ?>
+        <div class="comparision-card">
+            <div class="vehiculeA">
+                <a href="/CarLog/vehicule/?id=<?php echo $vehiculeA["id"] ?>">
+                    <img src="/CarLog/public/uploads/vehicules/<?= $vehiculeA['vehiculePicture']; ?>" width="50">
+                </a>
+                <p>
+                    <?= $vehiculeA['model']; ?>
+                </p>
+                <p>
+                    <?= $vehiculeA['year']; ?>
+                </p>
+            </div>
+            <div>
+                <a href="/CarLog/comparision/?idA=<?php echo $vehiculeA["id"] ?>&idB=<?php echo $vehiculeB["id"] ?>">
+                    VS
+                </a>
+            </div>
+            <div class="vehiculeB">
+                <a href="/CarLog/vehicule/?id=<?php echo $vehiculeB["id"] ?>">
+                    <img src="/CarLog/public/uploads/vehicules/<?= $vehiculeB['vehiculePicture']; ?>" width="50">
+                </a>
+                <p>
+                    <?= $vehiculeB['model']; ?>
+                </p>
+                <p>
+                    <?= $vehiculeB['year']; ?>
+                </p>
+            </div>
+        </div>
+        <?php
+    }
+
 
 }
 

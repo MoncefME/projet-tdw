@@ -297,11 +297,13 @@ function handleYearsChange(yearSelect, vehiculeNumber) {
   }
 }
 
-function showComparisionTable() {
+function showComparisionTable(isNewComparision) {
+  console.log(isNewComparision);
   var vehicule1Id = $('[name="vehiculeId-1"]').val();
   var vehicule2Id = $('[name="vehiculeId-2"]').val();
   var vehicule3Id = $('[name="vehiculeId-3"]').val();
   var vehicule4Id = $('[name="vehiculeId-4"]').val();
+  if (vehicule3Id || vehicule4Id) isNewComparision = true;
   $.ajax({
     url: "/CarLog/app/api/comparisions/getComparisionVehicules.php",
     method: "POST",
@@ -312,73 +314,95 @@ function showComparisionTable() {
       vehicule4Id: vehicule4Id,
     },
     success: function (response) {
-      var comparisionVehicules = JSON.parse(response);
-      var table = $(".comparision-result-table");
-      table.empty();
-      var headerRow = $("<thead></thead>");
-      headerRow.append("<th></th>");
-      comparisionVehicules.forEach(function (vehicle, index) {
-        headerRow.append("<th>Vehicule " + (index + 1) + "</th>");
-      });
-      table.append(headerRow);
+      response = JSON.parse(response);
 
-      var tableBody = $("<tbody></tbody>");
-      // SHOW THE IMAGE
-      var imageRow = $("<tr><td>Image</td></tr>");
-      comparisionVehicules.forEach(function (vehicule) {
-        imageRow.append(
-          '<td><img src="/CarLog/public/uploads/vehicules/' +
-            vehicule.vehiculePicture +
-            '" alt="' +
-            vehicule.model +
-            '" width="80"></td>'
-        );
-      });
-      tableBody.append(imageRow);
-
-      //SHOW THE BRAND IMAGE
-      var brandRow = $("<tr><td>Brand</td></tr>");
-      comparisionVehicules.forEach(function (vehicule) {
-        // CALL THE API
-        $.ajax({
-          url: "/CarLog/app/api/comparisions/getBrandById.php",
-          method: "POST",
-          data: { brandId: vehicule.brand_id },
-          success: function (response) {
-            var brand = JSON.parse(response);
-            brandRow.append(
-              '<td><img src="/CarLog/public/uploads/brands/' +
-                brand.brandPicture +
-                '" alt="' +
-                brand.brandName +
-                '" width="80"></td>'
-            );
-          },
-          error: function (error) {
-            console.error(error);
-          },
+      if (response.error) {
+        alert(response.error);
+        // Swal.fire({
+        //   icon: "error",
+        //   title: "Oops...",
+        //   text: response.error,
+        // });
+        console.log(response.error);
+      } else {
+        var comparisionVehicules = response;
+        // remove null values
+        comparisionVehicules = comparisionVehicules.filter(function (vehicule) {
+          return vehicule !== null;
         });
-      });
-      tableBody.append(brandRow);
+        console.log(comparisionVehicules);
+        var table = $(".comparision-result-table");
+        table.empty();
+        var headerRow = $("<thead></thead>");
+        headerRow.append("<th></th>");
+        comparisionVehicules.forEach(function (vehicle, index) {
+          headerRow.append("<th>Vehicule " + (index + 1) + "</th>");
+        });
+        table.append(headerRow);
 
-      for (var attribute in comparisionVehicules[0]) {
-        if (
-          attribute == "id" ||
-          attribute == "vehiculePicture" ||
-          attribute == "brand_id"
-        )
-          continue;
-        var row = $("<tr><td>" + attribute + "</td></tr>");
+        var tableBody = $("<tbody></tbody>");
+        // SHOW THE IMAGE
+        var imageRow = $("<tr><td>Image</td></tr>");
         comparisionVehicules.forEach(function (vehicule) {
-          row.append("<td>" + vehicule[attribute] + "</td>");
+          console.log(vehicule.vehiculePicture);
+          imageRow.append(
+            '<td><img src="/CarLog/public/uploads/vehicules/' +
+              vehicule.vehiculePicture +
+              '" alt="' +
+              vehicule.model +
+              '" width="80"></td>'
+          );
         });
-        tableBody.append(row);
-      }
+        tableBody.append(imageRow);
 
-      table.append(tableBody);
-      table.show();
-      $(".comparator-container").hide();
-      addComparision();
+        //SHOW THE BRAND IMAGE
+        var brandRow = $("<tr><td>Brand</td></tr>");
+        comparisionVehicules.forEach(function (vehicule) {
+          // CALL THE API
+          $.ajax({
+            url: "/CarLog/app/api/comparisions/getBrandById.php",
+            method: "POST",
+            data: { brandId: vehicule.brand_id },
+            success: function (response) {
+              var brand = JSON.parse(response);
+              brandRow.append(
+                '<td><img src="/CarLog/public/uploads/brands/' +
+                  brand.brandPicture +
+                  '" alt="' +
+                  brand.brandName +
+                  '" width="80"></td>'
+              );
+            },
+            error: function (error) {
+              console.error(error);
+            },
+          });
+        });
+        tableBody.append(brandRow);
+
+        for (var attribute in comparisionVehicules[0]) {
+          if (
+            attribute == "id" ||
+            attribute == "vehiculePicture" ||
+            attribute == "brand_id"
+          )
+            continue;
+          var row = $("<tr><td>" + attribute + "</td></tr>");
+          comparisionVehicules.forEach(function (vehicule) {
+            row.append("<td>" + vehicule[attribute] + "</td>");
+          });
+          tableBody.append(row);
+        }
+
+        table.append(tableBody);
+        table.show();
+
+        // $(".comparator-container").hide();
+        // if (!isNewComparision) {
+        //   $(".comparator-container").show();
+        // }
+        if (isNewComparision) addComparision();
+      }
     },
     error: function (error) {
       console.error(error);
@@ -403,7 +427,6 @@ function addComparision() {
     success: function (response) {
       console.log("Comparision adding test");
       console.log(response);
-      //location.reload();
     },
     error: function (error) {
       console.error(error);

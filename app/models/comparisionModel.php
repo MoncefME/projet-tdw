@@ -39,4 +39,41 @@ class ComparisionModel
         $dbController->disConnect($database);
         return $success !== false;
     }
+
+    public function getComparisionsByVehiculeId($vehiculeId)
+    {
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
+
+        $query = ComparisionQueries::getComparisionsByVehiculeId();
+        $params = [$vehiculeId, $vehiculeId, $vehiculeId, $vehiculeId];
+        $comparisions = $dbController->request($database, $query, $params);
+
+        $dbController->disConnect($database);
+        return $comparisions;
+    }
+
+    // public function getVehiculesIdMostCompared()
+    // {
+    //     $dbController = new DatabaseController();
+    //     $database = $dbController->connect();
+
+    //     $query = ComparisionQueries::getVehiculesIdMostCompared();
+    //     $mostComparedVehicules = $dbController->request($database, $query);
+
+    //     $dbController->disConnect($database);
+    //     return $mostComparedVehicules;
+    // }
+
+    public function getMostComparedVehiculePairs()
+    {
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
+
+        $query = ComparisionQueries::getMostComparedVehiculePairs();
+        $mostComparedVehiculePairs = $dbController->request($database, $query);
+
+        $dbController->disConnect($database);
+        return $mostComparedVehiculePairs;
+    }
 }
