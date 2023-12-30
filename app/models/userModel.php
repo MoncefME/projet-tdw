@@ -219,6 +219,5 @@ class UserModel
         return $result[0]['NB'] > 0;
     }
 
-
 }
 

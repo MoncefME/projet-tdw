@@ -1,7 +1,7 @@
 <?php
 class FormValidation
 {
-    public function validateInput($inputName)
+    public static function validateInput($inputName)
     {
         return isset($_POST[$inputName]) ? $_POST[$inputName] : '';
     }

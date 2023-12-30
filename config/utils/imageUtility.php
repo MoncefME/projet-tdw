@@ -25,7 +25,7 @@ class ImageUtility
         return $logoUrl;
     }
 
-    public function getVehiculePicture($vehicule)
+    public static function getVehiculePicture($vehicule)
     {
         $picture = $vehicule['vehiculePicture'];
         $picturePath = "/CarLog/public/uploads/vehicules/" . $picture;
@@ -37,7 +37,7 @@ class ImageUtility
         return $pictureUrl;
     }
 
-    public function getNewsPicture($news)
+    public static function getNewsPicture($news)
     {
         $picture = $news['newsPicture'];
         $picturePath = "/CarLog/public/uploads/news/" . $picture;

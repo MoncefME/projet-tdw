@@ -53,17 +53,6 @@ class ComparisionModel
         return $comparisions;
     }
 
-    // public function getVehiculesIdMostCompared()
-    // {
-    //     $dbController = new DatabaseController();
-    //     $database = $dbController->connect();
-
-    //     $query = ComparisionQueries::getVehiculesIdMostCompared();
-    //     $mostComparedVehicules = $dbController->request($database, $query);
-
-    //     $dbController->disConnect($database);
-    //     return $mostComparedVehicules;
-    // }
 
     public function getMostComparedVehiculePairs()
     {

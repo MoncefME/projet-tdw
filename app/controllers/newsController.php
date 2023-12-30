@@ -16,24 +16,25 @@ class NewsController
     public function addNews()
     {
         $newModel = new NewsModel();
-        $formValidation = new FormValidation();
 
-        $title = $formValidation->validateInput('title');
-        $content = $formValidation->validateInput('content');
-        $link = $formValidation->validateInput('link');
-        $tags = $formValidation->validateInput('tags');
+        $title = FormValidation::validateInput('title');
+        $content = FormValidation::validateInput('content');
+        $link = FormValidation::validateInput('link');
+        $tags = FormValidation::validateInput('tags');
+
+        $uploadHandler = new UploadFile();
+        $uploadedFileName = $uploadHandler->uploadNewsFile();
 
         return $newModel->addNews($title, $content, $link, $tags);
     }
     public function updateNews($newsId)
     {
         $newModel = new NewsModel();
-        $formValidation = new FormValidation();
 
-        $title = $formValidation->validateInput('title');
-        $content = $formValidation->validateInput('content');
-        $link = $formValidation->validateInput('link');
-        $tags = $formValidation->validateInput('tags');
+        $title = FormValidation::validateInput('title');
+        $content = FormValidation::validateInput('content');
+        $link = FormValidation::validateInput('link');
+        $tags = FormValidation::validateInput('tags');
 
         return $newModel->updateNews($newsId, $title, $content, $link, $tags);
     }

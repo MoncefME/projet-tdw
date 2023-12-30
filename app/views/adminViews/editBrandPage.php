@@ -62,8 +62,8 @@ class EditBrandPage
                     <input type="file" name="brandPicture" id="brandPicture" accept="image/*"
                         onChange="previewInputImage(event)">
                     <input type="hidden" name="currentPicture" value="<?php echo $brand['brandPicture'] ?>">
-                    <img id="previewImage" src="/CarLog/public/uploads/brands/<?php echo $brand['brandPicture'] ?>"
-                        alt="Preview" style="width: 100px; height: 100px;">
+                    <img id="previewImage" src="<?= ImageUtility::getBrandLogo($brand) ?>" alt="Preview"
+                        style="width: 100px; height: 100px;">
                 </div>
 
             </div>
@@ -71,9 +71,6 @@ class EditBrandPage
         </form>
         <?php
     }
-
-
-
 }
 
 

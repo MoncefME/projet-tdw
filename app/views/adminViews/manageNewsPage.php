@@ -11,7 +11,7 @@ class ManageNewsPage
             <?php
             $sharedView = new SharedViews();
             $sharedView->adminSideBar();
-            // $this->showNewsTable();
+            $this->showNewsTable();
             $this->addNewsForm();
             ?>
         </div>

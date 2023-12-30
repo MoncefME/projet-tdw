@@ -57,6 +57,13 @@ class EditNewsPage
                         value="<?php echo $news['tags'] ?>">
                 </div>
 
+                <div>
+                    <label for="newsPicture">News Picture:</label>
+                    <input type="file" name="newsPicture" id="newsPicture" accept="image/*" onChange="previewInputImage(event)">
+                    <input type="hidden" name="currentPicture" value="<?php echo $news['newsPicture'] ?>">
+                    <img id="previewImage" src="<?= ImageUtility::getNewsPicture($news) ?>" alt="Preview"
+                        style="width: 100px; height: 100px;">
+                </div>
             </div>
             <button type="submit">Edit News</button>
         </form>

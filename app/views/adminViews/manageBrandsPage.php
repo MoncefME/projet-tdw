@@ -10,6 +10,7 @@ class ManageBrandsPage
             <?php
             $sharedView = new SharedViews();
             $sharedView->adminSideBar();
+
             $this->addBrandForm();
             $this->showBrandsTable();
             ?>
@@ -19,6 +20,7 @@ class ManageBrandsPage
     private function addBrandForm()
     {
         ?>
+
         <form method="POST" action="/CarLog/app/api/brands/addBrand.php" class="addBrand-form" enctype="multipart/form-data">
             <div>
                 <div>
@@ -93,8 +95,8 @@ class ManageBrandsPage
                         </td>
                         <td class="table-action-btn">
                             <button class="btn btn-primary"
-                                onclick="location.href='/CarLog/admin/brand/?id=<?php echo $brand['id']; ?>'">Edit</button>
-                            <button class="btn btn-danger" onclick="deleteBrand(<?php echo $brand['id']; ?>)">Delete</button>
+                                onclick="location.href='<?= ApiRouter::EDIT_BRAND_URL($brand['id']) ?>'">Edit</button>
+                            <button class="btn btn-danger" onclick="deleteBrand(<?= $brand['id'] ?>)">Delete</button>
                         </td>
                     </tr>
                     <?php
