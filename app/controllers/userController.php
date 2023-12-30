@@ -1,5 +1,7 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/app/models/userModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/config/utils/uploadFile.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/config/utils/formValidation.php');
 class UserController
 {
     public function getUserById($userId)
@@ -11,15 +13,17 @@ class UserController
     public function loginUser()
     {
         $userModel = new UserModel();
+        $formValidation = new FormValidation();
 
-        $password = $_POST['password'] ?? null;
-        $email = $_POST['email'] ?? null;
+        $password = $formValidation->validateInput('password');
+        $email = $formValidation->validateInput('email');
 
         $response = $userModel->loginUser($email, $password);
 
         session_start();
         if ($response['status'] === 200) {
             $user = $response['user'];
+            unset($user['password']);
             $_SESSION['USER'] = $user;
         } else {
             $_SESSION['LOGIN-MESSAGE'] = $response['message'];
@@ -37,18 +41,25 @@ class UserController
     public function addUser()
     {
         $userModel = new UserModel();
+        $formValidation = new FormValidation();
 
         $password = isset($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : '';
-        $email = isset($_POST['email']) ? $_POST['email'] : '';
-        $firstName = isset($_POST['firstName']) ? $_POST['firstName'] : '';
-        $lastName = isset($_POST['lastName']) ? $_POST['lastName'] : '';
+        $email = $formValidation->validateInput('email');
+        $firstName = $formValidation->validateInput('firstName');
+        $lastName = $formValidation->validateInput('lastName');
         $role = isset($_POST['role']) ? $_POST['role'] : 'USER';
-        $birthDate = isset($_POST['birthDate']) ? $_POST['birthDate'] : '';
-        $sex = isset($_POST['sex']) ? $_POST['sex'] : '';
+        $birthDate = $formValidation->validateInput('birthDate');
+        $sex = $formValidation->validateInput('sex');
         $status = 'PENDING';
-        $profilePicture = isset($_POST['profilePicture']) ? $_POST['profilePicture'] : '';
+        //$profilePicture = isset($_POST['profilePicture']) ? $_POST['profilePicture'] : '';
 
-        $response = $userModel->addUser($password, $email, $firstName, $lastName, $role, $birthDate, $sex, $status, $profilePicture);
+        $uploadHandler = new UploadFile();
+        $uploadedFileName = $uploadHandler->uploadUserFile();
+
+        if (!$uploadedFileName) {
+            $uploadedFileName = 'default.png';
+        }
+        $response = $userModel->addUser($password, $email, $firstName, $lastName, $role, $birthDate, $sex, $status, $uploadedFileName);
 
         session_start();
         if ($response['status'] == 200) {
@@ -70,16 +81,24 @@ class UserController
     public function updateUserInfo($userId)
     {
         $userModel = new UserModel();
+        $formValidation = new FormValidation();
 
-        $password = isset($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : '';
-        $email = isset($_POST['email']) ? $_POST['email'] : '';
-        $firstName = isset($_POST['firstName']) ? $_POST['firstName'] : '';
-        $lastName = isset($_POST['lastName']) ? $_POST['lastName'] : '';
-        $birthDate = isset($_POST['birthDate']) ? $_POST['birthDate'] : '';
-        $sex = isset($_POST['sex']) ? $_POST['sex'] : '';
-        $profilePicture = isset($_POST['profilePicture']) ? $_POST['profilePicture'] : '';
+        //$password = isset($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : null;
+        $email = $formValidation->validateInput('email');
+        $firstName = $formValidation->validateInput('firstName');
+        $lastName = $formValidation->validateInput('lastName');
+        $birthDate = $formValidation->validateInput('birthDate');
+        //$profilePicture = isset($_POST['profilePicture']) ? $_POST['profilePicture'] : '';
 
-        $success = $userModel->updateUserInfo($userId, $password, $email, $firstName, $lastName, $birthDate, $sex, $profilePicture);
+        $uploadHandler = new UploadFile();
+        $uploadedFileName = $uploadHandler->uploadUserFile();
+
+        if (!$uploadedFileName) {
+            echo 'no file uploaded';
+            $uploadedFileName = $formValidation->validateInput('currentPicture');
+        }
+
+        $success = $userModel->updateUserInfo($userId, $email, $firstName, $lastName, $birthDate, $uploadedFileName);
         return $success;
     }
 

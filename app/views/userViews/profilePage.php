@@ -5,7 +5,6 @@ class ProfilePage
 {
     public function showPage()
     {
-
         $shardViews = new SharedViews();
         $shardViews->showHeader();
         echo '<h1>ProfilePage</h1>';
@@ -17,9 +16,12 @@ class ProfilePage
 
     private function showUserInformation()
     {
-        $user = $_SESSION['USER'];
+        // $user = $_SESSION['USER'];
+        $userController = new UserController();
+        $user = $userController->getUserById($_SESSION['USER']['id']);
+        $_SESSION['USER'] = $user;
         ?>
-        <form class="login-form">
+        <form class="login-form" action="/CarLog/app/api/users/updateUserInfos.php" method="POST" enctype="multipart/form-data">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" value="<?php echo $user['email']; ?>"><br>
 
@@ -28,6 +30,9 @@ class ProfilePage
 
             <label for="lastName">Last Name:</label>
             <input type="text" id="lastName" name="lastName" value="<?php echo $user['lastName']; ?>"><br>
+
+            <!-- <label for="password">NewPassword:</label>
+            <input type="password" id="password" name="password"><br> -->
 
             <label for="role">Role:</label>
             <div>
@@ -47,8 +52,16 @@ class ProfilePage
                 <?php echo $user['status']; ?>
             </div><br>
 
-            <label for="profilePicture">Profile Picture:</label>
-            <img src="<?php echo $user['profilePicture']; ?>" alt="Profile Picture"><br>
+            <div>
+                <label for="profilePicture">Profile Picture:</label>
+                <input type="file" name="profilePicture" id="profilePicture" accept="image/*"
+                    onChange="previewInputImage(event)">
+                <input type="hidden" name="currentPicture" value="<?php echo $user['profilePicture'] ?>">
+                <img id="previewImage" src="/CarLog/public/uploads/users/<?php echo $user['profilePicture'] ?>" alt="Preview"
+                    style="width: 100px; height: 100px;">
+            </div>
+
+            <button type="submit" name="submit">Update</button>
         </form>
         <?php
     }

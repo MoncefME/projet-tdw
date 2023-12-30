@@ -1,6 +1,7 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/sharedViews.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/controllers/userController.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/config/utils/imageUtility.php");
 class ManageUsersPage
 {
     public function showPage()
@@ -21,6 +22,7 @@ class ManageUsersPage
     private function showUsersTable()
     {
         $userController = new UserController();
+        $imageUtility = new ImageUtility();
         $users = $userController->getAllUsers();
         ?>
         <table class="table">
@@ -32,6 +34,7 @@ class ManageUsersPage
                     <th>Role</th>
                     <th>Sex</th>
                     <th>Birth Date</th>
+                    <th>Picture</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -59,6 +62,10 @@ class ManageUsersPage
                         </td>
                         <td>
                             <?php echo $user['birthDate'] ?>
+                        </td>
+                        <td>
+                            <img src="<?php echo $imageUtility->getUserProfilePicture($user); ?>" alt="profile picture" width="50px"
+                                height="50px">
                         </td>
                         <td>
                             <p class="<?php echo $user['status'] ?>">

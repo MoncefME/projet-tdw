@@ -13,7 +13,7 @@ class UserModel
         $user = $dbController->request($database, $query, $params);
 
         $dbController->disConnect($database);
-        return $user;
+        return $user[0];
     }
     public function loginUser($email, $password)
     {
@@ -119,13 +119,13 @@ class UserModel
         $dbController->disConnect($database);
         return $success !== false;
     }
-    public function updateUserInfo($userId, $password, $email, $firstName, $lastName, $birthDate, $sex, $profilePicture)
+    public function updateUserInfo($userId, $email, $firstName, $lastName, $birthDate, $profilePicture)
     {
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
         $query = UserQueries::updateUserInfo();
-        $params = [$password, $email, $firstName, $lastName, $birthDate, $sex, $profilePicture, $userId];
+        $params = [$email, $firstName, $lastName, $birthDate, $profilePicture, $userId];
         $success = $dbController->request($database, $query, $params);
 
         $dbController->disConnect($database);

@@ -433,3 +433,17 @@ function addComparision() {
     },
   });
 }
+
+$(document).ready(function () {
+  let currentIndex = 0;
+  const images = $(".slider img");
+  const totalImages = images.length;
+
+  function showNextImage() {
+    $(images[currentIndex]).css("z-index", 1);
+    currentIndex = (currentIndex + 1) % totalImages;
+    $(images[currentIndex]).css("z-index", 2);
+  }
+
+  setInterval(showNextImage, 2000);
+});

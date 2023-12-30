@@ -83,26 +83,28 @@ class UploadFile
     public function uploadUserFile()
     {
         $uploadDir = $_SERVER['DOCUMENT_ROOT'] . "/CarLog/public/uploads/users/";
-        $uploadFile = $uploadDir . $_FILES["userPicture"]["name"];
+        $uploadFile = $uploadDir . $_FILES["profilePicture"]["name"];
         $uploadOk = 1;
 
-        $fileType = $_FILES["userPicture"]["type"];
+        $fileType = $_FILES["profilePicture"]["type"];
         $allowedTypes = ["image/jpeg", "image/png", "image/svg+xml"];
         if (!in_array($fileType, $allowedTypes)) {
             $uploadOk = 0;
         }
 
         $maxFileSize = 4 * 1024 * 1024;
-        if ($_FILES["userPicture"]["size"] > $maxFileSize) {
+        if ($_FILES["profilePicture"]["size"] > $maxFileSize) {
             $uploadOk = 0;
         }
 
         if ($uploadOk == 1) {
-            if (move_uploaded_file($_FILES["userPicture"]["tmp_name"], $uploadFile)) {
-                return basename($_FILES["userPicture"]["name"]);
+            if (move_uploaded_file($_FILES["profilePicture"]["tmp_name"], $uploadFile)) {
+                return basename($_FILES["profilePicture"]["name"]);
             }
         }
 
         return false;
     }
+
+
 }

@@ -99,14 +99,15 @@ class ComparatorPage
                 $vehiculeController = new VehiculeController();
                 $vehiculeA = $vehiculeController->getVehiculeById($pair['vehicule_id_A']);
                 $vehiculeB = $vehiculeController->getVehiculeById($pair['vehicule_id_B']);
-                $this->showComparisionCard($vehiculeA, $vehiculeB);
+                $pair_occurrence_count = $pair['pair_occurrence_count'];
+                $this->showComparisionCard($vehiculeA, $vehiculeB, $pair_occurrence_count);
             }
             ?>
         </div>
         <?php
     }
 
-    private function showComparisionCard($vehiculeA, $vehiculeB)
+    private function showComparisionCard($vehiculeA, $vehiculeB, $pair_occurrence_count)
     {
         ?>
         <div class="comparision-card">
@@ -125,6 +126,9 @@ class ComparatorPage
                 <a href="/CarLog/comparision/?idA=<?php echo $vehiculeA["id"] ?>&idB=<?php echo $vehiculeB["id"] ?>">
                     VS
                 </a>
+                <p>
+                    <?= $pair_occurrence_count; ?>
+                </p>
             </div>
             <div class="vehiculeB">
                 <a href="/CarLog/vehicule/?id=<?php echo $vehiculeB["id"] ?>">

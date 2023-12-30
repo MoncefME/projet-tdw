@@ -76,8 +76,8 @@ class ComparisionQueries
             WHERE vehicule_3_id IS NOT NULL AND vehicule_4_id IS NOT NULL
         ) AS all_vehicle_pairs
         GROUP BY vehicule_id_A, vehicule_id_B
-        ORDER BY pair_occurrence_count DESC";
+        ORDER BY pair_occurrence_count DESC
+        LIMIT 5";
     }
-
 
 }

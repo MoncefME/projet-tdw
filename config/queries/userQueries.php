@@ -29,7 +29,7 @@ class UserQueries
 
     public static function updateUserInfo()
     {
-        return "UPDATE users SET password = ?, email = ?, firstName = ?, lastName = ?, birthDate = ?, sex = ?, profilePicture = ? WHERE id = ?";
+        return "UPDATE users SET  email = ?, firstName = ?, lastName = ?, birthDate = ?, profilePicture = ? WHERE id = ?";
     }
 
     public static function validateUser()
