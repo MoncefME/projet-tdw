@@ -21,18 +21,25 @@ class BrandsPage
                 <p>Choose a brand </p>
             </div>
             <div class="brands-grid">
-                <?php foreach ($brands as $brand) { ?>
-                    <a href="/CarLog/brand/?id=<?php echo $brand['id']; ?>">
-                        <img src="/CarLog/public/uploads/brands/<?php echo $brand['brandPicture'] ?>"
-                            alt="<?php echo $brand['brandPicture'] ?>" width="50px" height="50px">
-                        <span>
-                            <?php echo $brand['name']; ?>
-                        </span>
-                    </a>
-                <?php } ?>
+                <?php foreach ($brands as $brand) {
+                    $this->showBrandCard($brand);
+                } ?>
             </div>
             <a id="show-more">Show more </a>
         </div>
+        <?php
+    }
+
+    private function showBrandCard($brand)
+    {
+        ?>
+        <a href="/CarLog/brand/?id=<?php echo $brand['id']; ?>">
+            <img src="<?= ImageUtility::getBrandLogo($brand) ?>" alt="<?php echo $brand['brandPicture'] ?>" width="50px"
+                height="50px">
+            <span>
+                <?php echo $brand['name']; ?>
+            </span>
+        </a>
         <?php
     }
 }

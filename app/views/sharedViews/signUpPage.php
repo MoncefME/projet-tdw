@@ -23,7 +23,7 @@ class SignUpPage
 
         ?>
         <div class="signup-page">
-            <img src="/CarLog/public/icons/logos/Black logo - no background.png" alt="logo" width="40%" height="auto" />
+            <img src="<?= CARLOG_LOGO ?>" alt="logo" width="40%" height="auto" />
             <form method="POST" action="/CarLog/app/api/auth/signup.php" class="signup-form">
                 <h1>SignUp</h1>
                 <div class="signup-form-container">

@@ -64,7 +64,7 @@ class ManageUsersPage
                             <?php echo $user['birthDate'] ?>
                         </td>
                         <td>
-                            <img src="<?php echo $imageUtility->getUserProfilePicture($user); ?>" alt="profile picture" width="50px"
+                            <img src="<?= ImageUtility::getUserProfilePicture($user); ?>" alt="profile picture" width="50px"
                                 height="50px">
                         </td>
                         <td>

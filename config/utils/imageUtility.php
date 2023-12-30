@@ -1,7 +1,7 @@
 <?php
 class ImageUtility
 {
-    public function getUserProfilePicture($user)
+    public static function getUserProfilePicture($user)
     {
         $profilePicture = $user['profilePicture'];
         $picturePath = "/CarLog/public/uploads/users/" . $profilePicture;
@@ -13,7 +13,7 @@ class ImageUtility
         return $pictureUrl;
     }
 
-    public function getBrandLogo($brand)
+    public static function getBrandLogo($brand)
     {
         $logo = $brand['brandPicture'];
         $logoPath = "/CarLog/public/uploads/brands/" . $logo;

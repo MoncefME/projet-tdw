@@ -1,5 +1,4 @@
 <?php
-
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/sharedViews.php");
 
 class LoginPage
@@ -25,7 +24,7 @@ class LoginPage
     {
         ?>
         <div class="login-page bg-img">
-            <img src="/CarLog/public/icons/logos/Color logo - no background.png" alt="logo" width="40%" height="auto" />
+            <img src="<?= CARLOG_LOGO ?>" alt="logo" width="40%" height="auto" />
             <form method="POST" action="/CarLog/app/api/auth/login.php" class="login-form">
                 <h1>Login</h1>
                 <?php $this->showLoginError(); ?>
