@@ -4,16 +4,45 @@ class AdminDashboardPage
 {
     public function showPage()
     {
+        $sharedView = new SharedViews();
         ?>
-        <div class="page">
+        <div class="dashboard__page">
             <?php
-            $sharedView = new SharedViews();
             $sharedView->adminSideBar();
             ?>
-            <h1>Admin Dashboard</h1>
+            <div class="dashboard__content">
+                <h1>Admin Dashboard</h1>
+                <?php
+                $this->showLinks();
+                ?>
+            </div>
+        </div>
+        <?php
+    }
+
+    public function showLinks()
+    {
+        ?>
+        <div class="dashboard__links">
             <?php
-            $this->showLinks();
+            foreach ($this->linksData as $link) {
+                $this->showLinkCard($link);
+            }
             ?>
+        </div>
+        <?php
+    }
+
+    private function showLinkCard($Link)
+    {
+        ?>
+        <div class="dashboard__link__card">
+            <a href="<?= $Link['url'] ?>">
+                <img src="<?= $Link['img'] ?>" alt="<?= $Link['alt'] ?>">
+                <p>
+                    <?= $Link['text'] ?>
+                </p>
+            </a>
         </div>
         <?php
     }
@@ -24,6 +53,12 @@ class AdminDashboardPage
             "img" => "/CarLog/public/icons/admin-dashboard/manage-users.png",
             "alt" => "user",
             "text" => "Manage User"
+        ],
+        [
+            "url" => ApiRouter::ADMIN_MANAGE_NEWS_URL,
+            "img" => "/CarLog/public/icons/admin-dashboard/manage-news.png",
+            "alt" => "news",
+            "text" => "Manage News"
         ],
         [
             "url" => ApiRouter::ADMIN_MANAGE_BRANDS_URL,
@@ -44,42 +79,11 @@ class AdminDashboardPage
             "text" => "Settings"
         ],
         [
-            "url" => ApiRouter::ADMIN_MANAGE_NEWS_URL,
-            "img" => "/CarLog/public/icons/admin-dashboard/manage-news.png",
-            "alt" => "news",
-            "text" => "Manage News"
-        ],
-        [
             "url" => ApiRouter::ADMIN_MANAGE_REVIEWS_URL,
             "img" => "/CarLog/public/icons/admin-dashboard/manage-reviews.png",
             "alt" => "settings",
             "text" => "Manage Reviews"
         ]
     ];
-
-    public function showLinks()
-    {
-        ?>
-        <div class="dashboard-links">
-            <?php
-            foreach ($this->linksData as $link) {
-                $this->showLinkCard($link);
-            }
-            ?>
-        </div>
-        <?php
-    }
-
-    private function showLinkCard($Link)
-    {
-        ?>
-        <a href="<?= $Link['url'] ?>">
-            <img src="<?= $Link['img'] ?>" alt="<?= $Link['alt'] ?>" width="auto" height="200">
-            <p>
-                <?= $Link['text'] ?>
-            </p>
-        </a>
-        <?php
-    }
 }
 

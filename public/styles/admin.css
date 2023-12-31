@@ -1,0 +1,435 @@
+:root{
+    --primary-color: rgb(16, 110, 190);
+    --secondary-color: rgb(32, 139, 232);
+    --white-color: #fff;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+/* Path: public/styles/admin.css */
+
+.dashboard__page{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+}
+.dashboard__sidebar{
+    width: 20%;
+    height: 100%;
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.dashboard__content{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    padding: 20px;
+}
+.dashboard__content h1{
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--primary-color);
+    line-height : 1.5 !important;
+}
+
+.dashboard__links{
+    width: 100%;
+    height: 100%;
+    display :grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    padding: 20px;
+}
+.dashboard__link__card{
+    width: 100%;
+    height: 100%;
+    background-color: var(--white-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.dashboard__link__card:hover{
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+    background-color: var(--primary-color);
+}
+.dashboard__link__card:hover a{
+    color: var(--white-color);
+}
+.dashboard__link__card a{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+}
+.dashboard__link__card img{
+    width:100px;
+    height: auto;
+    object-fit: contain;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.dashboard__link__card a:hover img{
+    filter : invert(1);
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+
+/*dashboard sidebar*/
+.dashboard__sidebar__logo{
+    width: 100%;
+    height: 100px;
+    padding: 20px;
+}
+.dashboard__sidebar__logo a{
+    text-decoration: none;
+}
+.dashboard__sidebar__logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.dashboard__sidebar__menu{
+    width: 100%;
+    height: 100%;
+}
+.dashboard__sidebar__menu ul{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    align-items: center;
+}
+.dashboard__sidebar__menu ul li{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 20px;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+.dashboard__sidebar__menu ul li a{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items:  center;
+    gap: 10px;
+    text-decoration: none;
+    color: black;
+    font-size: 17px;
+    font-weight: 600;
+}
+.dashboard__sidebar__menu ul li:hover {
+    background-color: white;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.dashboard__sidebar__menu ul li:hover img {
+    transform: scale(1.1);
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.dashboard__sidebar__menu ul li a img{
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.dashboard__sidebar__menu ul li.active{
+    background-color: white;
+}
+
+/***************/
+/*manager users*
+/***************/
+.users__table,
+ .brands__table , 
+ .vehicules__table ,
+ .vehicule__reviews__table,
+  .brand__reviews__table,
+   .news__table{
+    min-width: 100%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    padding: 20px;
+    overflow-y: scroll;
+    /*overflow-x: hidden; */
+}
+.brands__table > div , .vehicules__table > div{
+    width: 100%;
+    height: 100%;
+}
+.news__table  {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.vehicule__reviews__table > div , .brand__reviews__table > div , .news__table > div{
+    min-width: 100%;
+    max-width: 100%;
+}
+.users__table table,.brands__table table{
+    width: 100%;
+    height: auto;
+    border-collapse: collapse;
+}
+.table__action__btn{
+    width: 50%; 
+    max-width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+
+}
+
+
+::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 100%;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--white-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+th{
+    padding-right: 0 !important;
+}
+
+
+/***************/
+/*manager brands*
+/***************/
+.dashboard__header-brands , .dashboard__header-users , .dashboard__header-vehicules ,.dashboard__header-news{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+
+.brands__form , .vehicules__form , .news__form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    padding: 20px;
+    overflow-y: scroll;
+}
+.brands__form form , .vehicules__form form , .news__form form{
+    width: 100%;
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+}
+.brands__form__inputs__container{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+.brands__form__inputs__container div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+}
+.brands__form__inputs__container div:last-child{
+    grid-column: 1 / 3;
+}
+.brands__form__inputs__container ~ button ,
+ .vehicules__form__inputs__container ~ button , 
+ .news__form__inputs__container ~ button{
+    width: 100%;
+}
+.brands__form__inputs__container label , .vehicules__form__inputs__container label , .news__form__inputs__container label{
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+.brands__form__inputs__container input:not([type="file"]), 
+.brands__form__inputs__container select,
+.vehicules__form__inputs__container input:not([type="file"]),
+.vehicules__form__inputs__container select,
+.news__form__inputs__container input:not([type="file"])
+{
+    width: 100%;
+    height: 40px;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    padding: 0 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+.brands__form__inputs__container input[type="file"],
+.vehicules__form__inputs__container input[type="file"],
+.news__form__inputs__container input[type="file"]{
+    width: 100%;
+    height: 40px;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    padding: 0 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+}
+.brands__form__inputs__container input[type="file"]::file-selector-button,
+.vehicules__form__inputs__container input[type="file"]::file-selector-button,
+.news__form__inputs__container input[type="file"]::file-selector-button
+{
+    border: none;
+    padding: 0.2em 0.4em;
+    border-radius: 0.2em;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    transition: 1s;
+}
+.brands__form__inputs__container input[type="file"]::file-selector-button:hover,
+.vehicules__form__inputs__container input[type="file"]::file-selector-button:hover
+.news__form__inputs__container input[type="file"]::file-selector-button:hover
+{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    transition: 1s;
+}
+.brands__form__inputs__container input[type="file"]::file-selector-button:active,
+.vehicules__form__inputs__container input[type="file"]::file-selector-button:active{
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    transition: 1s;
+}
+
+/***************/
+/*manager vehicules*
+/***************/
+.vehicules__form__inputs__container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+    margin-bottom: 20px;
+}
+.vehicules__form__inputs__container div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+
+.manage__reviews__links{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 40px;
+    padding: 0 20px;
+}
+
+.news__form__inputs__container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+    margin-bottom: 20px;
+}
+.news__form__inputs__container div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+.news__form__inputs__container div:last-child{
+    grid-column: 1 / -1; 
+}
+.news__form__inputs__container textarea{
+    width: 100%;
+    height: 200px;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+/* .brand_logo_input{
+    grid-row: span 2;
+} */
+
+
+
+
+
+
+

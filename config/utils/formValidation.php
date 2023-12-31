@@ -5,4 +5,5 @@ class FormValidation
     {
         return isset($_POST[$inputName]) ? $_POST[$inputName] : '';
     }
+
 }

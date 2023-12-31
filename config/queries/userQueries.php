@@ -13,7 +13,11 @@ class UserQueries
 
     public static function getAllUsers()
     {
-        return "SELECT * FROM users";
+        return "SELECT * FROM users where id != ?";
+    }
+    public static function getUsersByPage()
+    {
+        return "SELECT * FROM users WHERE id != ? LIMIT ?, 5";
     }
 
     public static function addUser()

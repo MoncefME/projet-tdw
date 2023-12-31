@@ -5,62 +5,34 @@ class SharedViews
     public function adminSideBar()
     {
         ?>
-        <div class="admin-sidebar">
-            <div class="header-logo">
+        <div class="dashboard__sidebar">
+            <div class="dashboard__sidebar__logo">
                 <a href="/CarLog/">
-                    <img src="/CarLog/public/icons/logos/Black logo - no background.png" alt="logo" width="200" height="auto">
+                    <img src="<?= CARLOG_LOGO_WHITE ?>" alt="CarLog Logo">
                 </a>
             </div>
-            <ul>
-                <li>
-                    <a href="/CarLog/admin/">
-                        Dashboard
-                        <img src="/CarLog/public/icons/admin-dashboard/dashboard.png" width="25px">
-                    </a>
-                </li>
-                <li>
-                    <a href="/CarLog/admin/manageUsersPage/">
-                        Manage Users
-                        <img src="/CarLog/public/icons/admin-dashboard/manage-users.png" width="25px">
-                    </a>
-                </li>
-                <li>
-                    <a href="/CarLog/admin/manageBrandsPage/">
-                        Manage Brands
-                        <img src="/CarLog/public/icons/admin-dashboard/manage-brands.png" width="25px">
-                    </a>
-                </li>
-                <li>
-                    <a href="/CarLog/admin/manageVehiculesPage/">
-                        Manage Vehicules
-                        <img src="/CarLog/public/icons/admin-dashboard/manage-vehicules.png" width="25px">
-                    </a>
-                </li>
-                <li>
-                    <a href="/CarLog/admin/manageReviewsPage/">
-                        Manage Reviews
-                        <img src="/CarLog/public/icons/admin-dashboard/manage-reviews.png" width="25px">
-                    </a>
-                </li>
-                <li>
-                    <a href=" /CarLog/admin/settings/">
-                        Settings
-                        <img src="/CarLog/public/icons/admin-dashboard/settings.png" width="25px">
-                    </a>
-                </li>
-                <li>
-                    <a href="/CarLog/admin/manageNewsPage/">
-                        Manage News
-                        <img src="/CarLog/public/icons/admin-dashboard/manage-news.png" width="25px">
-                    </a>
-                </li>
-            </ul>
-            <ul>
-                <li><a href="/CarLog/app/api/auth/logout.php">Logout</a></li>
-            </ul>
+            <div class="dashboard__sidebar__menu">
+                <ul>
+                    <?php
+                    foreach ($this->sidebarLinks as $link) {
+                        ?>
+                        <li class="<?= ($_SERVER['REQUEST_URI'] === $link['link']) ? 'active' : '' ?>">
+                            <a href="<?= $link['link'] ?>">
+                                <img src="<?= $link['icon'] ?>" alt="icon">
+                                <span>
+                                    <?= $link['text'] ?>
+                                </span>
+                            </a>
+                        </li>
+                        <?php
+                    }
+                    ?>
+                </ul>
+            </div>
         </div>
         <?php
     }
+
     private $linksData = [
         [
             'link' => 'https://www.facebook.com/moncef.moussaoui.79/',
@@ -77,6 +49,49 @@ class SharedViews
         [
             'link' => 'https://www.youtube.com/channel/UC28Px5uPpW3jNVyIe6E2vQw',
             'icon' => '/CarLog/public/icons/social-media/twitter.png',
+        ]
+    ];
+
+    private $sidebarLinks = [
+        [
+            'link' => '/CarLog/admin/',
+            'icon' => '/CarLog/public/icons/admin-dashboard/dashboard.png',
+            'text' => 'Dashboard'
+        ],
+        [
+            'link' => '/CarLog/admin/manageUsersPage/',
+            'icon' => '/CarLog/public/icons/admin-dashboard/manage-users.png',
+            'text' => 'Manage Users'
+        ],
+        [
+            'link' => '/CarLog/admin/manageBrandsPage/',
+            'icon' => '/CarLog/public/icons/admin-dashboard/manage-brands.png',
+            'text' => 'Manage Brands'
+        ],
+        [
+            'link' => '/CarLog/admin/manageVehiculesPage/',
+            'icon' => '/CarLog/public/icons/admin-dashboard/manage-vehicules.png',
+            'text' => 'Manage Vehicules'
+        ],
+        [
+            'link' => '/CarLog/admin/manageReviewsPage/',
+            'icon' => '/CarLog/public/icons/admin-dashboard/manage-reviews.png',
+            'text' => 'Manage Reviews'
+        ],
+        [
+            'link' => '/CarLog/admin/manageNewsPage/',
+            'icon' => '/CarLog/public/icons/admin-dashboard/manage-news.png',
+            'text' => 'Manage News'
+        ],
+        [
+            'link' => '/CarLog/admin/settings/',
+            'icon' => '/CarLog/public/icons/admin-dashboard/settings.png',
+            'text' => 'Settings'
+        ],
+        [
+            'link' => '/CarLog/app/api/auth/logout.php',
+            'icon' => '/CarLog/public/icons/admin-dashboard/logout.png',
+            'text' => 'Logout'
         ]
     ];
 

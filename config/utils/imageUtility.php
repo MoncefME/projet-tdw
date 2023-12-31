@@ -8,7 +8,7 @@ class ImageUtility
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . $picturePath)) {
             $pictureUrl = $picturePath;
         } else {
-            $pictureUrl = "/CarLog/public/uploads/users/default.png";
+            $pictureUrl = "/CarLog/public/images/defaults/user.png";
         }
         return $pictureUrl;
     }
@@ -20,7 +20,7 @@ class ImageUtility
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . $logoPath)) {
             $logoUrl = $logoPath;
         } else {
-            $logoUrl = "/CarLog/public/uploads/brands/default.png";
+            $logoUrl = "/CarLog/public/images/defaults/brand.png";
         }
         return $logoUrl;
     }
@@ -32,19 +32,19 @@ class ImageUtility
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . $picturePath)) {
             $pictureUrl = $picturePath;
         } else {
-            $pictureUrl = "/CarLog/public/uploads/vehicules/default.png";
+            $pictureUrl = "/CarLog/public/images/defaults/vehicule.png";
         }
         return $pictureUrl;
     }
 
     public static function getNewsPicture($news)
     {
-        $picture = $news['newsPicture'];
+        $picture = $news['title'];
         $picturePath = "/CarLog/public/uploads/news/" . $picture;
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . $picturePath)) {
             $pictureUrl = $picturePath;
         } else {
-            $pictureUrl = "/CarLog/public/uploads/news/default.png";
+            $pictureUrl = "/CarLog/public/images/defaults/new.png";
         }
         return $pictureUrl;
     }

@@ -4,16 +4,20 @@ class ManageBReviewsPage
 {
     public function showPage()
     {
+        $sharedView = new SharedViews();
         ?>
-        <div class="page">
+        <div class="dashboard__page">
             <?php
-            $sharedView = new SharedViews();
             $sharedView->adminSideBar();
             ?>
-            <p>Manage Brand Reviews</p>
-            <?php
-            $this->showBrandReviewsTable();
-            ?>
+            <div class="dashboard__content">
+                <div class="dashboard__header-brands">
+                    <h1>Manage Brand Reviews</h1>
+                </div>
+                <?php
+                $this->showBrandReviewsTable();
+                ?>
+            </div>
         </div>
         <?php
     }
@@ -22,51 +26,66 @@ class ManageBReviewsPage
     {
         $brandReviewsController = new BrandReviewsController();
         $reviews = $brandReviewsController->getAllBrandReviews();
-
+        $userController = new UserController();
         $brandConroller = new BrandController();
         ?>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>User ID</th>
-                    <th>Brand</th>
-                    <th>Rating</th>
-                    <th>Comment</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($reviews as $review) { ?>
+        <div class="brand__reviews__table">
+            <div id="loader">Loading...</div>
+            <table class="table table-hover" id="brandReviewTable" style="display: none;">
+                <thead>
                     <tr>
-                        <td>
-                            <?php echo $review['user_id']; ?>
-                        </td>
-                        <td>
-                            <?php
-                            $brand = $brandConroller->getBrandById($review['brand_id']);
-                            echo $brand['name'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php echo $review['rating']; ?>
-                        </td>
-                        <td>
-                            <?php echo $review['comment']; ?>
-                        </td>
-                        <td>
-                            <?php echo $review['status']; ?>
-                        </td>
-                        <td>
-                            <button class="btn btn-primary"
-                                onclick="validateBrandReview(<?php echo $review['id'] ?>)">Validate</button>
-                            <button class="btn btn-danger" onclick="rejectBrandReview(<?php echo $review['id'] ?>)">Reject</button>
-                        </td>
-
+                        <th>User </th>
+                        <th>Brand</th>
+                        <th>Rating</th>
+                        <th>Comment</th>
+                        <th>Status</th>
+                        <th>Actions</th>
                     </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($reviews as $review) { ?>
+                        <tr>
+                            <td>
+                                <?php
+                                $user = $userController->getUserById($review['user_id']);
+                                ?>
+                                <img src="<?= ImageUtility::getUserProfilePicture($user) ?>" alt="User Picture" width="50"
+                                    height="auto">
+                            </td>
+                            <td>
+                                <?php
+                                $brand = $brandConroller->getBrandById($review['brand_id']);
+                                ?>
+                                <img src="<?= ImageUtility::getBrandLogo($brand) ?>" alt="Brand Picture" width="50" height="auto">
+                            </td>
+                            <td>
+                                <?php echo $review['rating']; ?>
+                            </td>
+                            <td>
+                                <?php echo $review['comment']; ?>
+                            </td>
+                            <td>
+                                <p
+                                    class="badge <?= $review['status'] === 'PENDING' ? 'badge-warning' : ($review['status'] === 'VALID' ? 'badge-success' : 'badge-danger') ?>">
+                                    <?= $review['status'] ?>
+                                </p>
+                            </td>
+
+                            <td>
+                                <div class="table__action__btn">
+                                    <button class="btn btn-success" onclick="validateBrandReview(<?= $review['id'] ?>)">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                    <button class="btn btn-danger" onclick="rejectBrandReview(<?= $review['id'] ?>)">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
         <?php
     }
 

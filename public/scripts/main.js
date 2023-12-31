@@ -447,3 +447,102 @@ $(document).ready(function () {
 
   setInterval(showNextImage, 2000);
 });
+
+$(document).ready(function () {
+  $("#userTable").DataTable({
+    pageLength: 4,
+    ordering: true,
+    searching: true,
+    responsive: true,
+    lengthMenu: [4],
+    columnDefs: [
+      { orderable: false, targets: [5, 7] },
+      { searchable: false, targets: [5, 7] },
+    ],
+  });
+  $("#brandTable").DataTable({
+    pageLength: 4,
+    ordering: true,
+    searching: true,
+    responsive: true,
+    lengthMenu: [4],
+    columnDefs: [{ orderable: false, targets: [2] }],
+  });
+  $("#vehiculeTable").DataTable({
+    pageLength: 4,
+    ordering: true,
+    searching: true,
+    responsive: true,
+    lengthMenu: [4],
+  });
+  $("#vehiculeReviewTable").DataTable({
+    pageLength: 4,
+    ordering: true,
+    searching: true,
+    responsive: true,
+    lengthMenu: [4],
+    columnDefs: [{ orderable: false, targets: [2] }],
+    initComplete: function () {
+      $("#loader").hide();
+      $("#vehiculeReviewTable").show();
+    },
+  });
+  $("#brandReviewTable").DataTable({
+    pageLength: 4,
+    ordering: true,
+    searching: true,
+    responsive: true,
+    lengthMenu: [4],
+    columnDefs: [{ orderable: false, targets: [2] }],
+    initComplete: function () {
+      $("#loader").hide();
+      $("#brandReviewTable").show();
+    },
+  });
+  $("#newTable").DataTable({
+    pageLength: 4,
+    ordering: true,
+    searching: true,
+    responsive: true,
+    lengthMenu: [4],
+    columnDefs: [{ orderable: false, targets: [2] }],
+  });
+});
+
+$(document).ready(function () {
+  $("#brandsTable").show();
+  $("#toggleButtonBrand").click(function () {
+    $("#brandsTable").toggle();
+    $("#brandForm").toggle();
+
+    var buttonText = $("#brandsTable").is(":visible")
+      ? "Show Form"
+      : "Show Table";
+
+    $("#toggleButtonBrand span").text(buttonText);
+  });
+
+  $("#vehiculesTable").show();
+  $("#toggleButtonVehicule").click(function () {
+    $("#vehiculesTable").toggle();
+    $("#vehiculeForm").toggle();
+
+    var buttonText = $("#vehiculesTable").is(":visible")
+      ? "Show Form"
+      : "Show Table";
+
+    $("#toggleButtonVehicule span").text(buttonText);
+  });
+
+  $("#newsTable").show();
+  $("#toggleButtonNews").click(function () {
+    $("#newsTable").toggle();
+    $("#newForm").toggle();
+
+    var buttonText = $("#newsTable").is(":visible")
+      ? "Show Form"
+      : "Show Table";
+
+    $("#toggleButtonNews span").text(buttonText);
+  });
+});

@@ -33,7 +33,8 @@ class UserController
     public function getAllUsers()
     {
         $userModel = new UserModel();
-        return $userModel->getAllUsers();
+        $userId = $_SESSION['USER']['id'];
+        return $userModel->getAllUsers($userId);
     }
 
     public function addUser()

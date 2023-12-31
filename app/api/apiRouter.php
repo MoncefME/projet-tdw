@@ -16,10 +16,9 @@ class ApiRouter
     {
         return API_BASE_URL . '/brands/deleteBrand.php?brandId=' . $brandId;
     }
-    public static function ADD_BRAND_ENDPOINT()
-    {
-        return API_BASE_URL . '/brands/addBrand.php';
-    }
+
+    const ADD_BRAND_ENDPOINT = API_BASE_URL . '/brands/addBrand.php';
+
 
     /*************VEHICULES*************/
     public static function EDIT_VEHICULE_ENDPOINT($vehiculeId)
@@ -30,10 +29,9 @@ class ApiRouter
     {
         return API_BASE_URL . '/vehicules/deleteVehicule.php?vehiculeId=' . $vehiculeId;
     }
-    public static function ADD_VEHICULE_ENDPOINT()
-    {
-        return API_BASE_URL . '/vehicules/addVehicule.php';
-    }
+
+    const ADD_VEHICULE_ENDPOINT = API_BASE_URL . '/vehicules/addVehicule.php';
+
     /*************COMPARISIONS*************/
     const ADD_COMPARISION_ENDPOINT = API_BASE_URL . '/comparisions/addComparision.php';
     public static function GET_BRAND_ENDPOINT($brandId)
@@ -56,10 +54,8 @@ class ApiRouter
     {
         return API_BASE_URL . '/news/deleteNews.php?newsId=' . $newsId;
     }
-    public static function ADD_NEWS_ENDPOINT()
-    {
-        return API_BASE_URL . '/news/addNews.php';
-    }
+    const ADD_NEWS_ENDPOINT = API_BASE_URL . '/news/addNews.php';
+
 
     /*************REVIEWS*************/
     /* BRANDS REVIEWS */
