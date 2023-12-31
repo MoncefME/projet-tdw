@@ -10,7 +10,7 @@ class SignUpPage
     {
         if (isset($_SESSION['SIGNUP-MESSAGE'])) {
             ?>
-            <div class="error-message">
+            <div class="error__message">
                 <?php echo $_SESSION['SIGNUP-MESSAGE']; ?>
             </div>
             <?php
@@ -22,48 +22,64 @@ class SignUpPage
     {
 
         ?>
-        <div class="signup-page">
-            <img src="<?= CARLOG_LOGO ?>" alt="logo" width="40%" height="auto" />
-            <form method="POST" action="/CarLog/app/api/auth/signup.php" class="signup-form">
-                <h1>SignUp</h1>
-                <div class="signup-form-container">
+        <div class="login__page">
+            <form method="POST" action="<?= ApiRouter::SIGNUP_ENDPOINT ?>" class="signup__form">
+                <div class="login__form__header">
+                    <h1>Signup</h1>
+                    <img src="<?= CARLOG_LOGO ?>" alt="logo" width="40%" height="auto" onclick="location.href='/CarLog/'" />
+                </div>
+                <div class="signup__form__inputs">
                     <?php $this->showSignUpMesage(); ?>
                     <div>
-                        <label for="firstName">First Name</label>
-                        <input type="text" name="firstName" id="firstName" placeholder="Enter your first name" required />
-                    </div>
-                    <div>
-                        <label for="lastName">Last Name</label>
-                        <input type="text" name="lastName" id="lastName" placeholder="Enter your last name" required />
-                    </div>
-                    <div>
-                        <label for="email">Email</label>
+                        <label for="email">
+                            <i class="fas fa-envelope"></i>
+                            Email
+                        </label>
                         <input type="email" name="email" id="email" placeholder="Enter your email" required />
                     </div>
                     <div>
-                        <label for="password">Password</label>
+                        <label for="password">
+                            <i class="fas fa-lock"></i>
+                            Password
+                        </label>
                         <input type="password" name="password" id="password" placeholder="Enter your password" required />
                     </div>
                     <div>
-                        <label for="birthDate">Birth Date</label>
-                        <input type="date" name="birthDate" id="birthDate" required />
+                        <label for="firstName">
+                            <i class="fas fa-user"></i>
+                            First Name</label>
+                        <input type="text" name="firstName" id="firstName" placeholder="Enter your first name" required />
                     </div>
                     <div>
-                        <label for="sex">Sex</label>
-                        <select name="sex" id="sex" required>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                        </select>
+                        <label for="lastName">
+                            <i class="fas fa-user"></i>
+                            Last Name</label>
+                        <input type="text" name="lastName" id="lastName" placeholder="Enter your last name" required />
                     </div>
-
-                    <input type="file" name="profilePicture" id="profilePicture" accept="image/*" />
+                    <div class="signup__inputs__group">
+                        <div>
+                            <label for="sex">Sex
+                            </label>
+                            <select name="sex" id="sex" required>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="birthDate">Birth Date</label>
+                            <input type="date" name="birthDate" id="birthDate" required />
+                        </div>
+                        <div>
+                            <input type="file" name="profilePicture" id="profilePicture" accept="image/*" />
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit">Register</button>
+                    </div>
                 </div>
-
-                <button type="submit">Register</button>
                 <a href="/CarLog/loginPage/">Already a member? Login Here</a>
             </form>
         </div>
         <?php
     }
-
 }

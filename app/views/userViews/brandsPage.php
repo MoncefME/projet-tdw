@@ -10,22 +10,36 @@ class BrandsPage
         $shardViews->showFooter();
     }
 
-    private function showBrandsCards()
+    public function showBrandsCards()
     {
         $brandController = new BrandController();
         $brands = $brandController->getAllBrands();
         ?>
-        <div>
-            <div class="brands-title">
+        <div class="brands__view__container">
+            <div class="brands__view__title">
                 <h1>Brands</h1>
                 <p>Choose a brand </p>
             </div>
-            <div class="brands-grid">
-                <?php foreach ($brands as $brand) {
+            <div class="brand__grid">
+                <?php
+                if (count($brands) > 8) {
+                    $newBrands = array_slice($brands, 0, 8);
+                } else {
+                    $newBrands = $brands;
+                }
+                foreach ($newBrands as $brand) {
                     $this->showBrandCard($brand);
                 } ?>
+                <div id="hiddenBrands" style="display: none;">
+                    <?php
+                    $remainingBrands = array_slice($brands, 8);
+                    foreach ($remainingBrands as $brand) {
+                        $this->showBrandCard($brand);
+                    }
+                    ?>
+                </div>
             </div>
-            <a id="show-more">Show more </a>
+            <a id="show-more" onclick="toggleHiddenBrands()">Show more</a>
         </div>
         <?php
     }
@@ -33,13 +47,15 @@ class BrandsPage
     private function showBrandCard($brand)
     {
         ?>
-        <a href="/CarLog/brand/?id=<?php echo $brand['id']; ?>">
-            <img src="<?= ImageUtility::getBrandLogo($brand) ?>" alt="<?php echo $brand['brandPicture'] ?>" width="50px"
-                height="50px">
-            <span>
-                <?php echo $brand['name']; ?>
-            </span>
-        </a>
+        <div class="brand__card">
+            <a href="<?= ApiRouter::BRAND_URL($brand['id']) ?>">
+                <img src="<?= ImageUtility::getBrandLogo($brand) ?>" alt="<?= $brand['brandPicture'] ?>" width="50px"
+                    height="50px">
+                <span>
+                    <?php echo $brand['name']; ?>
+                </span>
+            </a>
+        </div>
         <?php
     }
 }

@@ -270,7 +270,7 @@ function handleYearsChange(yearSelect, vehiculeNumber) {
       success: function (response) {
         var vehicule = JSON.parse(response);
 
-        var card = $('<div class="vehicule-card"></div>');
+        var card = $('<div class="vehicule__card"></div>');
         card.append(
           '<img src="/CarLog/public/uploads/vehicules/' +
             vehicule.vehiculePicture +
@@ -288,7 +288,9 @@ function handleYearsChange(yearSelect, vehiculeNumber) {
             vehicule.id +
             '">'
         );
-        resultDiv.append(card);
+
+        // Add animation
+        card.hide().appendTo(resultDiv).fadeIn();
       },
       error: function (error) {
         console.error(error);
@@ -333,7 +335,7 @@ function showComparisionTable(isNewComparision) {
         console.log(comparisionVehicules);
         var table = $(".comparision-result-table");
         table.empty();
-        var headerRow = $("<thead></thead>");
+        var headerRow = $("<thead class='thead-light'></thead>");
         headerRow.append("<th></th>");
         comparisionVehicules.forEach(function (vehicle, index) {
           headerRow.append("<th>Vehicule " + (index + 1) + "</th>");
@@ -546,3 +548,10 @@ $(document).ready(function () {
     $("#toggleButtonNews span").text(buttonText);
   });
 });
+
+function toggleHiddenBrands() {
+  $("#hiddenBrands").slideToggle("slow");
+  $("#show-more").text(function () {
+    return $("#hiddenBrands").is(":visible") ? "Show less" : "Show more";
+  });
+}

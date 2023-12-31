@@ -28,7 +28,7 @@ class ComparatorPage
     public function showComparator()
     {
         ?>
-        <div class="comparator-container">
+        <div class="comparator__container">
             <?php
             $this->showVehiculeComparisonForm('1');
             $this->showVehiculeComparisonForm('2');
@@ -44,7 +44,7 @@ class ComparatorPage
     private function showVehiculeComparisonForm($vehiculeNumber)
     {
         ?>
-        <div class="vehicule-form-container-<?= $vehiculeNumber; ?>">
+        <div class="vehicule__form__container">
             <form>
                 <div>
                     <label>Brand</label>

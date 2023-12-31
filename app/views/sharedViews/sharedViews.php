@@ -98,13 +98,13 @@ class SharedViews
     public function showHeader()
     {
         ?>
-        <div class="header">
-            <div class="header-logo">
+        <div class="page__header">
+            <div class="page__header__logo">
                 <a href="/CarLog/">
-                    <img src="/CarLog/public/icons/logos/Black logo - no background.png" alt="logo" width="200" height="auto">
+                    <img src="<?= CARLOG_LOGO ?>" alt="logo" width="200" height="auto">
                 </a>
             </div>
-            <div class="header__social-media">
+            <div class="header__socialmedia">
                 <?php $this->showSocialMedia(); ?>
             </div>
             <div class="header__login">
@@ -126,8 +126,8 @@ class SharedViews
     {
         foreach ($this->linksData as $linkData) {
             ?>
-            <a href="<?php echo $linkData['link']; ?>" target="_blank">
-                <img src="<?php echo $linkData['icon']; ?>" alt="social media icon" width="30px">
+            <a href="<?= $linkData['link']; ?>" target="_blank">
+                <img src="<?= $linkData['icon']; ?>" alt="social media icon" width="25px">
             </a>
             <?php
         }
@@ -136,12 +136,10 @@ class SharedViews
     public function showFooter()
     {
         ?>
-        <div class="footer">
-            <div>
-                <?php $this->showSocialMedia(); ?>
-            </div>
-            <div class="footer-links">
+        <div class="page__footer">
+            <div class="page__footer__links">
                 <ul>
+                    <li><a href="/CarLog/">Home</a></li>
                     <li><a href="/CarLog/brandsPage/">Brands</a></li>
                     <li><a href="/CarLog/comparatorPage/">Comparator</a></li>
                     <li><a href="/CarLog/newsPage/">News</a></li>
@@ -150,7 +148,11 @@ class SharedViews
                     <li><a href="/CarLog/reviewsPage/">Reviews</a></li>
                 </ul>
             </div>
-            <p> &copy; 2023 CarLog</p>
+            <div class="footer__socialmedia">
+                <?php $this->showSocialMedia(); ?>
+            </div>
+            <p> All rights reserved to &copy;<img src="<?= CARLOG_LOGO_WHITE ?>" alt="CarLog Logo" width="80" height="auto">
+            </p>
         </div>
         <?php
     }
