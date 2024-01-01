@@ -1,8 +1,13 @@
+p{
+    margin-bottom: 0  !important;
+}
+
 .page__content{
     width: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: gainsboro;
 }
@@ -137,6 +142,8 @@
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    -webkit-transition: all 0.1s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 .brand__card a{
     width: 100%;
@@ -148,6 +155,13 @@
     text-decoration: none;
     color: black;
     letter-spacing: 3px;
+
+}
+.brand__card:hover{
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+    -webkit-transition: all 0.1s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: rgb(225, 225, 225);;
 }
 #show-more{
     width: 100%;
@@ -163,12 +177,10 @@
 }
 .homepage__comparator{
     width: 100%;
-    /* height: 80vh; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
     background-color: rgb(199, 199, 199);
     padding: 20px;
 }
@@ -181,7 +193,13 @@
     display: flex;
     justify-content: start;
     align-items: center;
+    margin-top: 20px;
 }
+.comparator__container ~ button{
+    width: 50%;
+    margin-top: 20px;
+}
+
 
 .vehicule__form__container{
     width: 100%;
@@ -223,3 +241,242 @@
         font-weight: bold;
         
   }
+
+
+  .popular__comparisions__container{
+    width: 100%;
+    /* height: 80vh; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    /* background-color: rgb(199, 199, 199); */
+    padding: 20px;
+  }
+  .comparision__cards{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* overflow:scroll; */
+    gap: 20px;
+    padding: 20px;
+  }
+  .comparision__card{
+    width: 100%;
+    height: 100%;
+    min-height: 150px;
+    min-width:200px;
+    max-width:300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    -webkit-transition: all 0.1s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  .comparision__card:hover{
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+    -webkit-transition: all 0.1s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: rgb(225, 225, 225);;
+  }
+  .vehiculeA , .vehiculeB , .Versus{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .brand__information__container{
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: white;
+    padding: 20px;
+  }
+.brand__information__summary{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand__vehicules__container{
+    width: 70%;
+    /* height: 70vh; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background-color: white;
+}
+.vehicule__main__section{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    /* justify-content: space-evenly;
+    align-items: center;
+    gap: 20px; */
+}
+.reviews__section{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: white;
+    padding: 20px;
+}
+.vehicles__list{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    padding: 20px;
+    overflow-y: scroll;
+}
+.vehicle__info__card{
+    width: 100%;
+    height: 100%;
+    max-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    -webkit-transition: all 0.1s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.add__review__form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background-color: white;
+
+}
+.add__review__form form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background-color: white;
+}
+.add__review__form form div{
+    width: 100%;
+}
+.reviews__table{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+    background-color: white;
+}
+
+
+/***************************/
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .rating input {
+    display: none;
+  }
+  
+  .rating label {
+    float: right;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.3s;
+  }
+  
+  .rating label:before {
+    content: '\2605';
+    font-size: 30px;
+  }
+  
+  .rating input:checked ~ label,
+  .rating label:hover,
+  .rating label:hover ~ label {
+    color: var(--primary-color);
+    transition: color 0.3s;
+  }
+  .comment__input input{
+    width: 100%;
+    height: 100px;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    padding: 0 10px;
+    font-size: 1em; 
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+  }
+
+/*****************************/
+.vehicule__information__container{
+    position: relative;
+    width: 70%;
+    height: 100%;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20px;
+    background-color: white;
+    padding: 20px;
+}
+.vehicule__like__btn {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+.vehicule__like__btn button {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+.vehicule__like__btn button.liked{
+    background-color: var(--primary-color);
+}
+.vehicule__information__summary{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

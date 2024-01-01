@@ -1,5 +1,6 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/app/models/vehiculeReviewsModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/config/utils/formValidation.php');
 class VehiculeReviewsController
 {
     public function getVehiculeReviewById($vehiculeReviewId)

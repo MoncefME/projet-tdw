@@ -2,13 +2,19 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/sharedViews.php");
 class ContactPage
 {
+
     public function showPage()
     {
         $shardViews = new SharedViews();
-        $shardViews->showHeader();
-        echo 'ContactPage';
-        $this->showContactInformations();
-        $shardViews->showFooter();
+        ?>
+        <div class="page__content">
+            <?php
+            $shardViews->showHeader();
+            $this->showContactInformations();
+            $shardViews->showFooter();
+            ?>
+        </div>
+        <?php
     }
     private function showContactInformations()
     {

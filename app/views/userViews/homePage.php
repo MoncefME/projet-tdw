@@ -58,6 +58,10 @@ class HomePage
         <div class="homepage__comparator">
             <?php
             $comparatorPage = new ComparatorPage();
+            ?>
+            <h1>Compare your car</h1>
+            <p>Select minimum 2 distinct Cars</p>
+            <?php
             $comparatorPage->showComparator();
             ?>
         </div>

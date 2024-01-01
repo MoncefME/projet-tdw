@@ -1,5 +1,6 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/app/models/brandReviewsModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/config/utils/FormValidation.php');
 class BrandReviewsController
 {
     public function getBrandReviewById($brandReviewId)
@@ -29,6 +30,7 @@ class BrandReviewsController
         $status = 'PENDING';
         $comment = FormValidation::validateInput('comment');
         $rating = FormValidation::validateInput('rating');
+
 
         $success = $brandReviewModel->addBrandReview($user_id, $brand_id, $status, $comment, $rating);
         if ($success) {

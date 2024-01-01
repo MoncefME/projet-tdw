@@ -2,12 +2,19 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/sharedViews.php");
 class BrandsPage
 {
+
     public function showPage()
     {
         $shardViews = new SharedViews();
-        $shardViews->showHeader();
-        $this->showBrandsCards();
-        $shardViews->showFooter();
+        ?>
+        <div class="page__content">
+            <?php
+            $shardViews->showHeader();
+            $this->showBrandsCards();
+            $shardViews->showFooter();
+            ?>
+        </div>
+        <?php
     }
 
     public function showBrandsCards()
