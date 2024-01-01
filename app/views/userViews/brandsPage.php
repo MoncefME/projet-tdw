@@ -37,14 +37,14 @@ class BrandsPage
                 foreach ($newBrands as $brand) {
                     $this->showBrandCard($brand);
                 } ?>
-                <div id="hiddenBrands" style="display: none;">
-                    <?php
-                    $remainingBrands = array_slice($brands, 8);
-                    foreach ($remainingBrands as $brand) {
-                        $this->showBrandCard($brand);
-                    }
-                    ?>
-                </div>
+            </div>
+            <div id="hiddenBrands" style="display: none; padding-top: 0;" class="brand__grid">
+                <?php
+                $remainingBrands = array_slice($brands, 8);
+                foreach ($remainingBrands as $brand) {
+                    $this->showBrandCard($brand);
+                }
+                ?>
             </div>
             <a id="show-more" onclick="toggleHiddenBrands()">Show more</a>
         </div>
@@ -57,9 +57,9 @@ class BrandsPage
         <div class="brand__card">
             <a href="<?= ApiRouter::BRAND_URL($brand['id']) ?>">
                 <img src="<?= ImageUtility::getBrandLogo($brand) ?>" alt="<?= $brand['brandPicture'] ?>" width="50px"
-                    height="50px">
+                    height="auto">
                 <span>
-                    <?php echo $brand['name']; ?>
+                    <?= $brand['name']; ?>
                 </span>
             </a>
         </div>

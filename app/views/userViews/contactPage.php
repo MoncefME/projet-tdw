@@ -19,17 +19,29 @@ class ContactPage
     private function showContactInformations()
     {
         ?>
-        <div class="contact-informations">
-            <div class="contact-informations__address">
-                <h3>Address</h3>
-                <p>Str. Mihai Eminescu, nr. 1, Iasi, Romania</p>
-            </div>
-            <div class="contact-informations__phone">
-                <h3>Phone</h3>
-                <p>0745 123 456</p>
-            </div>
+        <div class="contact__informations__container">
+            <?php
+            foreach ($this->contactInformations as $key => $value) {
+                ?>
+                <div class="contact__information">
+                    <div class="contact__information__key">
+                        <?php echo $key; ?>
+                    </div>
+                    <div class="contact__information__value">
+                        <?php echo $value; ?>
+                    </div>
+                </div>
+                <?php
+            }
 
+            ?>
         </div>
         <?php
     }
+
+    private $contactInformations = [
+        "email" => "ka_moussaoui@esi.dz",
+        "phone" => "0553383214",
+        "address" => "Alger, Algerie"
+    ];
 }
