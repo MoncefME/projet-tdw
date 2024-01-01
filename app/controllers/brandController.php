@@ -19,12 +19,11 @@ class BrandController
     public function addBrand()
     {
         $brandModel = new BrandModel();
-        $formValidation = new FormValidation();
 
-        $name = $formValidation->validateInput('name');
-        $originCountry = $formValidation->validateInput('originCountry');
-        $headquarter = $formValidation->validateInput('headquarter');
-        $year = $formValidation->validateInput('year');
+        $name = FormValidation::validateInput('name');
+        $originCountry = FormValidation::validateInput('originCountry');
+        $headquarter = FormValidation::validateInput('headquarter');
+        $year = FormValidation::validateInput('year');
 
         $uploadHandler = new UploadFile();
         $uploadedFileName = $uploadHandler->uploadBrandFile();
@@ -41,20 +40,18 @@ class BrandController
     public function updateBrand($brandId)
     {
         $brandModel = new BrandModel();
-        $formValidation = new FormValidation();
 
-        $name = $formValidation->validateInput('name');
-        $originCountry = $formValidation->validateInput('originCountry');
-        $headquarter = $formValidation->validateInput('headquarter');
-        $year = $formValidation->validateInput('year');
+        $name = FormValidation::validateInput('name');
+        $originCountry = FormValidation::validateInput('originCountry');
+        $headquarter = FormValidation::validateInput('headquarter');
+        $year = FormValidation::validateInput('year');
 
         $uploadHandler = new UploadFile();
         $uploadedFileName = $uploadHandler->uploadBrandFile();
 
         if (!$uploadedFileName) {
-            $uploadedFileName = $formValidation->validateInput('currentPicture');
+            $uploadedFileName = FormValidation::validateInput('currentPicture');
         }
-
 
         return $brandModel->updateBrand($brandId, $name, $originCountry, $headquarter, $year, $uploadedFileName);
     }

@@ -1,38 +1,36 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/app/models/brandReviewsModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/config/utils/FormValidation.php');
 class BrandReviewsController
 {
     public function getBrandReviewById($brandReviewId)
     {
         $brandReviewModel = new BrandReviewsModel();
-        $brandReview = $brandReviewModel->getBrandReviewById($brandReviewId);
-        return $brandReview;
+        return $brandReviewModel->getBrandReviewById($brandReviewId);
     }
     public function getAllBrandReviews()
     {
         $brandReviewModel = new BrandReviewsModel();
-        $brandReviews = $brandReviewModel->getAllBrandReviews();
-        return $brandReviews;
+        return $brandReviewModel->getAllBrandReviews();
     }
     public function getReviewsByBrand($brandId)
     {
         $brandReviewModel = new BrandReviewsModel();
-        $reviewsByBrand = $brandReviewModel->getReviewsByBrand($brandId);
-        return $reviewsByBrand;
+        return $brandReviewModel->getReviewsByBrand($brandId);
     }
     public function getValidReviewsByBrand($brandId)
     {
         $brandReviewModel = new BrandReviewsModel();
-        $reviewsByBrand = $brandReviewModel->getValidReviewsByBrand($brandId);
-        return $reviewsByBrand;
+        return $brandReviewModel->getValidReviewsByBrand($brandId);
     }
     public function addBrandReview($brand_id, $user_id)
     {
         $brandReviewModel = new BrandReviewsModel();
 
         $status = 'PENDING';
-        $comment = isset($_POST['comment']) ? $_POST['comment'] : '';
-        $rating = isset($_POST['rating']) ? $_POST['rating'] : '';
+        $comment = FormValidation::validateInput('comment');
+        $rating = FormValidation::validateInput('rating');
+
 
         $success = $brandReviewModel->addBrandReview($user_id, $brand_id, $status, $comment, $rating);
         if ($success) {
@@ -46,31 +44,28 @@ class BrandReviewsController
     {
         $brandReviewModel = new BrandReviewsModel();
 
-        $user_id = isset($_POST['user_id']) ? $_POST['user_id'] : '';
-        $brand_id = isset($_POST['brand_id']) ? $_POST['brand_id'] : '';
-        $status = isset($_POST['status']) ? $_POST['status'] : '';
-        $comment = isset($_POST['comment']) ? $_POST['comment'] : '';
-        $rating = isset($_POST['rating']) ? $_POST['rating'] : '';
+        $user_id = FormValidation::validateInput('user_id');
+        $brand_id = FormValidation::validateInput('brand_id');
+        $status = FormValidation::validateInput('status');
+        $comment = FormValidation::validateInput('comment');
+        $rating = FormValidation::validateInput('rating');
 
-        $success = $brandReviewModel->updateBrandReview($brandReviewId, $user_id, $brand_id, $status, $comment, $rating);
-        return $success;
+        return $brandReviewModel->updateBrandReview($brandReviewId, $user_id, $brand_id, $status, $comment, $rating);
+
     }
     public function deleteBrandReview($brandReviewId)
     {
         $brandReviewModel = new BrandReviewsModel();
-        $success = $brandReviewModel->deleteBrandReview($brandReviewId);
-        return $success;
+        return $brandReviewModel->deleteBrandReview($brandReviewId);
     }
     public function validateBrandReview($brandReviewId)
     {
         $brandReviewModel = new BrandReviewsModel();
-        $success = $brandReviewModel->validateBrandReview($brandReviewId);
-        return $success;
+        return $brandReviewModel->validateBrandReview($brandReviewId);
     }
     public function rejectBrandReview($brandReviewId)
     {
         $brandReviewModel = new BrandReviewsModel();
-        $success = $brandReviewModel->rejectBrandReview($brandReviewId);
-        return $success;
+        return $brandReviewModel->rejectBrandReview($brandReviewId);
     }
 }

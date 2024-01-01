@@ -1,24 +1,22 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/app/models/vehiculeReviewsModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/config/utils/formValidation.php');
 class VehiculeReviewsController
 {
     public function getVehiculeReviewById($vehiculeReviewId)
     {
         $vehiculeReviewModel = new VehiculeReviewsModel();
-        $vehiculeReview = $vehiculeReviewModel->getVehiculeReviewById($vehiculeReviewId);
-        return $vehiculeReview;
+        return $vehiculeReviewModel->getVehiculeReviewById($vehiculeReviewId);
     }
     public function getAllVehiculeReviews()
     {
         $vehiculeReviewModel = new VehiculeReviewsModel();
-        $vehiculeReviews = $vehiculeReviewModel->getAllVehiculeReviews();
-        return $vehiculeReviews;
+        return $vehiculeReviewModel->getAllVehiculeReviews();
     }
     public function getValidReviewsByVehicule($vehiculeId)
     {
         $vehiculeReviewModel = new VehiculeReviewsModel();
-        $vehiculeReviews = $vehiculeReviewModel->getValidReviewsByVehicule($vehiculeId);
-        return $vehiculeReviews;
+        return $vehiculeReviewModel->getValidReviewsByVehicule($vehiculeId);
     }
     public function getReviewsByVehicule($vehiculeId)
     {
@@ -31,8 +29,8 @@ class VehiculeReviewsController
         $vehiculeReviewModel = new VehiculeReviewsModel();
 
         $status = 'PENDING';
-        $comment = isset($_POST['comment']) ? $_POST['comment'] : '';
-        $rating = isset($_POST['rating']) ? $_POST['rating'] : '';
+        $comment = FormValidation::validateInput('comment');
+        $rating = FormValidation::validateInput('rating');
 
         $success = $vehiculeReviewModel->addVehiculeReview($user_id, $vehicule_id, $status, $comment, $rating);
         if ($success) {
@@ -46,31 +44,27 @@ class VehiculeReviewsController
     {
         $vehiculeReviewModel = new VehiculeReviewsModel();
 
-        $user_id = isset($_POST['user_id']) ? $_POST['user_id'] : '';
-        $vehicule_id = isset($_POST['vehicule_id']) ? $_POST['vehicule_id'] : '';
+        $user_id = FormValidation::validateInput('user_id');
+        $vehicule_id = FormValidation::validateInput('vehicule_id');
         $status = isset($_POST['status']) ? $_POST['status'] : 'PENDING';
-        $comment = isset($_POST['comment']) ? $_POST['comment'] : '';
-        $rating = isset($_POST['rating']) ? $_POST['rating'] : '';
+        $comment = FormValidation::validateInput('comment');
+        $rating = FormValidation::validateInput('rating');
 
-        $success = $vehiculeReviewModel->updateVehiculeReview($vehiculeReviewId, $user_id, $vehicule_id, $status, $comment, $rating);
-        return $success;
+        return $vehiculeReviewModel->updateVehiculeReview($vehiculeReviewId, $user_id, $vehicule_id, $status, $comment, $rating);
     }
     public function deleteVehiculeReview($vehiculeReviewId)
     {
         $vehiculeReviewModel = new VehiculeReviewsModel();
-        $success = $vehiculeReviewModel->deleteVehiculeReview($vehiculeReviewId);
-        return $success;
+        return $vehiculeReviewModel->deleteVehiculeReview($vehiculeReviewId);
     }
     public function validateVehiculeReview($vehiculeReviewId)
     {
         $vehiculeReviewModel = new VehiculeReviewsModel();
-        $success = $vehiculeReviewModel->validateVehiculeReview($vehiculeReviewId);
-        return $success;
+        return $vehiculeReviewModel->validateVehiculeReview($vehiculeReviewId);
     }
     public function rejectVehiculeReview($vehiculeReviewId)
     {
         $vehiculeReviewModel = new VehiculeReviewsModel();
-        $success = $vehiculeReviewModel->rejectVehiculeReview($vehiculeReviewId);
-        return $success;
+        return $vehiculeReviewModel->rejectVehiculeReview($vehiculeReviewId);
     }
 }

@@ -4,16 +4,20 @@ class ManageVReviewsPage
 {
     public function showPage()
     {
+        $sharedView = new SharedViews();
         ?>
-        <div class="page">
+        <div class="dashboard__page">
             <?php
-            $sharedView = new SharedViews();
             $sharedView->adminSideBar();
             ?>
-            <p>Manage Vehicule Reviews</p>
-            <?php
-            $this->showVehiculeReviewsTable();
-            ?>
+            <div class="dashboard__content">
+                <div class="dashboard__header-brands">
+                    <h1>Manage Vehicule Reviews</h1>
+                </div>
+                <?php
+                $this->showVehiculeReviewsTable();
+                ?>
+            </div>
         </div>
         <?php
     }
@@ -22,52 +26,67 @@ class ManageVReviewsPage
     {
         $vehiculeReviewsController = new VehiculeReviewsController();
         $reviews = $vehiculeReviewsController->getAllVehiculeReviews();
-
+        $userController = new UserController();
         $vehiculeController = new VehiculeController();
         ?>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>User ID</th>
-                    <th>Brand</th>
-                    <th>Rating</th>
-                    <th>Comment</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($reviews as $review) { ?>
+        <div class="vehicule__reviews__table">
+            <div id="loader">Loading...</div>
+            <table class=" table table-hover" id="vehiculeReviewTable" style="display: none;">
+                <thead class="thead-light">
                     <tr>
-                        <td>
-                            <?php echo $review['user_id']; ?>
-                        </td>
-                        <td>
-                            <?php
-                            $vehicule = $vehiculeController->getVehiculeById($review['vehicule_id']);
-                            echo $vehicule['model'] . '-' . $vehicule['version'] . '-' . $vehicule['year'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php echo $review['rating']; ?>
-                        </td>
-                        <td>
-                            <?php echo $review['comment']; ?>
-                        </td>
-                        <td>
-                            <?php echo $review['status']; ?>
-                        </td>
-
-                        <td>
-                            <button class="btn btn-primary"
-                                onclick="validateVehiculeReview(<?php echo $review['id'] ?>)">Validate</button>
-                            <button class="btn btn-danger"
-                                onclick="rejectVehiculeReview(<?php echo $review['id'] ?>)">Reject</button>
-                        </td>
+                        <th>User</th>
+                        <th>Vehicule</th>
+                        <th>Rating</th>
+                        <th>Comment</th>
+                        <th>Status</th>
+                        <th>Actions</th>
                     </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($reviews as $review) { ?>
+                        <tr>
+                            <td>
+                                <?php
+                                $user = $userController->getUserById($review['user_id']);
+                                ?>
+                                <img src="<?= ImageUtility::getUserProfilePicture($user) ?>" alt="User Picture" width="50"
+                                    height="auto">
+                            </td>
+                            <td>
+                                <?php
+                                $vehicule = $vehiculeController->getVehiculeById($review['vehicule_id']);
+                                ?>
+                                <img src="<?= ImageUtility::getVehiculePicture($vehicule) ?>" alt="Vehicule Picture" width="50"
+                                    height="auto">
+                            </td>
+                            <td>
+                                <?php echo $review['rating']; ?>
+                            </td>
+                            <td>
+                                <?php echo $review['comment']; ?>
+                            </td>
+                            <td>
+                                <p
+                                    class="badge <?= $review['status'] === 'PENDING' ? 'badge-warning' : ($review['status'] === 'VALID' ? 'badge-success' : 'badge-danger') ?>">
+                                    <?= $review['status'] ?>
+                                </p>
+                            </td>
+
+                            <td>
+                                <div class="table__action__btn">
+                                    <button class="btn btn-success" onclick="validateVehiculeReview(<?= $review['id'] ?>)">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                    <button class="btn btn-danger" onclick="rejectVehiculeReview(<?= $review['id'] ?>)">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
         <?php
     }
 

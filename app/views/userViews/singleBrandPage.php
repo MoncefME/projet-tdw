@@ -10,24 +10,28 @@ class SingleBrandPage
     {
         $this->id = $id;
     }
+
+
     public function showPage()
     {
-
         $shardViews = new SharedViews();
-        $shardViews->showHeader();
-        $this->showBrandInfo();
-        $this->showBrandVehicles();
-        $this->showBrandReviews();
-        if (isset($_SESSION['USER']) && $_SESSION['USER']['role'] != 'GUEST') {
-            $this->showBrandReviewForm();
-        } else {
+        ?>
+        <div class="page__content">
+            <?php
+            $shardViews->showHeader();
+            $this->showBrandInfo();
             ?>
-            <div class="review-message">
-                <p>You must be logged in to add a review</p>
+            <div class="vehicule__main__section">
+                <?php
+                $this->showBrandVehicles();
+                $this->showBrandReviews();
+                ?>
             </div>
             <?php
-        }
-        $shardViews->showFooter();
+            $shardViews->showFooter();
+            ?>
+        </div>
+        <?php
     }
     private function showBrandInfo()
     {
@@ -35,21 +39,35 @@ class SingleBrandPage
         $brand = $brandController->getBrandById($this->id);
 
         ?>
-        <div class="header">
-            <p>Name:
-                <?php echo $brand['name']; ?>
-            </p>
-            <p>Origin Country:
-                <?php echo $brand['originCountry']; ?>
-            </p>
-            <p>Headquarter:
-                <?php echo $brand['headquarter']; ?>
-            </p>
-            <p>Year:
-                <?php echo $brand['year']; ?>
-            </p>
-            <img src="/CarLog/public/uploads/brands/<?php echo $brand['brandPicture'] ?>"
-                alt="<?php echo $brand['brandPicture'] ?>" width="50px" height="50px">
+        <div class="brand__information__container">
+            <div>
+                <img src="<?= ImageUtility::getBrandLogo($brand) ?>" alt="<?php echo $brand['brandPicture'] ?>" width="150"
+                    height="auto">
+            </div>
+            <div>
+                <div class="brand__information__summary">
+                    <p>Name:
+                        <?= $brand['name']; ?>
+                    </p>
+                    <p>Origin Country:
+                        <?= $brand['originCountry']; ?>
+                    </p>
+                    <p>Headquarter:
+                        <?= $brand['headquarter']; ?>
+                    </p>
+                    <p>Year:
+                        <?= $brand['year']; ?>
+                    </p>
+                </div>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo delectus earum, natus saepe mollitia,
+                    accusamus
+                    vero voluptatum quasi maxime aliquam laborum tempore quas, repudiandae laboriosam ad est beatae
+                    similique
+                    placeat?
+                </p>
+            </div>
+
         </div>
         <?php
     }
@@ -58,29 +76,30 @@ class SingleBrandPage
     {
         $vehiculeController = new VehiculeController();
         $vehicules = $vehiculeController->getVehiculesByBrand($this->id);
-
         ?>
-        <h1>Vehicles</h1>
-        <div class="vehicles">
-            <?php
-            foreach ($vehicules as $vehicule) {
-                ?>
-                <div class="vehicle-info">
-                    <p>Model:
-                        <?php echo $vehicule['model']; ?>
-                    </p>
-                    <p>Version:
-                        <?php echo $vehicule['version']; ?>
-                    </p>
-                    <p>Year:
-                        <?php echo $vehicule['year']; ?>
-                    </p>
-                    <img src="/CarLog/public/uploads/vehicules/<?php echo $vehicule['vehiculePicture'] ?>"
-                        alt="<?php echo $vehicule['vehiculePicture'] ?>" width="50px" height="50px">
-                    <a href="/CarLog/vehicule/?id=<?php echo $vehicule["id"] ?>"> Show Details </a>
-                </div>
+        <div class="brand__vehicules__container">
+            <h1>Vehicles</h1>
+            <div class="vehicles__list">
                 <?php
-            } ?>
+                foreach ($vehicules as $vehicule) {
+                    ?>
+                    <div class="vehicle__info__card">
+                        <p>Model:
+                            <?php echo $vehicule['model']; ?>
+                        </p>
+                        <p>Version:
+                            <?php echo $vehicule['version']; ?>
+                        </p>
+                        <p>Year:
+                            <?php echo $vehicule['year']; ?>
+                        </p>
+                        <img src="<?= ImageUtility::getVehiculePicture($vehicule); ?>"
+                            alt="<?php echo $vehicule['vehiculePicture'] ?>" width="100px" height="auto">
+                        <a href="/CarLog/vehicule/?id=<?php echo $vehicule["id"] ?>"> Show Details </a>
+                    </div>
+                    <?php
+                } ?>
+            </div>
         </div>
         <?php
     }
@@ -89,32 +108,52 @@ class SingleBrandPage
     {
         $brandReviewsController = new BrandReviewsController();
         $brandReviews = $brandReviewsController->getValidReviewsByBrand($this->id);
+        $userController = new UserController();
         ?>
-        <h1>Reviews</h1>
-        <div class="login-form">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Comment</th>
-                        <th>Rating</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach ($brandReviews as $review) {
-                        ?>
+        <div class="reviews__section">
+            <h1>Reviews</h1>
+            <div class="reviews__table">
+                <table class="table table-striped">
+                    <thead>
                         <tr>
-                            <td>
-                                <?php echo $review['comment']; ?>
-                            </td>
-                            <td>
-                                <?php echo $review['rating']; ?>
-                            </td>
+                            <th>User</th>
+                            <th>Comment</th>
+                            <th>Rating</th>
                         </tr>
+                    </thead>
+                    <tbody>
                         <?php
-                    } ?>
-                </tbody>
-            </table>
+                        foreach ($brandReviews as $review) {
+                            $user = $userController->getUserById($review['user_id']);
+                            ?>
+                            <tr>
+                                <td>
+                                    <img src="<?= ImageUtility::getUserProfilePicture($user) ?>" alt="user profile picture"
+                                        width="50px" height="50px">
+                                </td>
+                                <td>
+                                    <?php echo $review['comment']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $review['rating']; ?>
+                                </td>
+                            </tr>
+                            <?php
+                        } ?>
+                    </tbody>
+                </table>
+            </div>
+            <?php
+            if (isset($_SESSION['USER']) && $_SESSION['USER']['role'] != 'GUEST') {
+                $this->showBrandReviewForm();
+            } else {
+                ?>
+                <div class="review-message">
+                    <p>You must be logged in to add a review</p>
+                </div>
+                <?php
+            }
+            ?>
         </div>
         <?php
     }
@@ -136,25 +175,20 @@ class SingleBrandPage
     public function showBrandReviewForm()
     {
         ?>
-        <form method="POST" action="/CarLog/app/api/reviews/brand/addReview.php?brandId=<?php echo $this->id ?>"
-            class="login-form">
-            <div>
-                <?php $this->showReviewMessage(); ?>
+        <div class="add__review__form">
+            <form method="POST" action="/CarLog/app/api/reviews/brand/addReview.php?brandId=<?php echo $this->id ?>">
                 <div>
-                    <label for="comment">Comment:</label>
-                    <input type="text" name="comment" id="comment" placeholder="Enter comment" required>
+                    <div class="comment__input">
+                        <input type="text" name="comment" id="comment" placeholder="Enter comment" required>
+                    </div>
+                    <?= ReviewsPage::showReviews(); ?>
+                    <div>
+                        <button type="submit" class="btn btn-info">Add Review</button>
+                        <?php $this->showReviewMessage(); ?>
+                    </div>
                 </div>
-
-                <div>
-                    <label for="rating">Rating:</label>
-                    <input type="number" name="rating" id="rating" placeholder="Enter rating" required>
-                </div>
-
-                <div>
-                    <button type="submit">Add Review</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
         <?php
     }
 

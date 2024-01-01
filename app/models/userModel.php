@@ -72,13 +72,14 @@ class UserModel
 
 
 
-    public function getAllUsers()
+    public function getAllUsers($userId)
     {
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
         $query = UserQueries::getAllUsers();
-        $users = $dbController->request($database, $query);
+        $params = [$userId];
+        $users = $dbController->request($database, $query, $params);
 
         $dbController->disConnect($database);
         return $users;
@@ -218,7 +219,6 @@ class UserModel
         $dbController->disConnect($database);
         return $result[0]['NB'] > 0;
     }
-
 
 }
 

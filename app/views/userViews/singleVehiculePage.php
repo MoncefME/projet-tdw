@@ -12,28 +12,39 @@ class SingleVehiculePage
         $this->id = $id;
     }
 
+    // public function showPage()
+    // {
+
+    //     $sharedViews = new SharedViews();
+    //     $sharedViews->showHeader();
+    //     $this->();
+    //     $sharedViews->showFooter();
+    // }
+
     public function showPage()
     {
-
-        $sharedViews = new SharedViews();
-        $sharedViews->showHeader();
-        $this->showInfoTable();
-        $this->showVehiculeReviews();
-        if (isset($_SESSION['USER']) && $_SESSION['USER']['role'] != 'GUEST') {
-            $this->showVehiculeReviewForm();
-        } else {
+        $shardViews = new SharedViews();
+        ?>
+        <div class="page__content">
+            <?php
+            $shardViews->showHeader();
             ?>
-            <div class="review-message">
-                <p>You must be logged in to add a review</p>
+            <div class="vehicule__main__section">
+                <?php
+                $this->showVehiculeInfo();
+                ?>
+                <div class="reviews__section">
+                    <?= $this->showVehiculeReviews(); ?>
+                </div>
             </div>
             <?php
-        }
-        $sharedViews->showFooter();
-
+            $shardViews->showFooter();
+            ?>
+        </div>
+        <?php
     }
 
-
-    public function showInfoTable()
+    public function showVehiculeInfo()
     {
         $vehiculeController = new VehiculeController();
         $vehicule = $vehiculeController->getVehiculeById($this->id);
@@ -41,19 +52,43 @@ class SingleVehiculePage
         $brandController = new BrandController();
         $brand = $brandController->getBrandById($vehicule['brand_id']);
 
-        $userController = new UserController();
-
-
-        if (isset($_SESSION['USER'])) {
-            $isLiked = $userController->isVehicleLikedByUser($_SESSION['USER']['id'], $vehicule['id']);
-            ?>
+        ?>
+        <div class="vehicule__information__container">
+            <?= $this->showVehiculeLikeButton($vehicule); ?>
             <div>
-                <button onclick="addFavoriteVehicule(<?php echo $_SESSION['USER']['id']; ?>, <?php echo $vehicule['id']; ?>)"
-                    class="btn <?php echo $isLiked ? "btn-primary" : "btn-danger" ?> w-25">
-                    <?php echo $isLiked ? "Liked" : "Like"; ?>
-                </button>
+                <img src="<?= ImageUtility::getVehiculePicture($vehicule); ?>" alt="<?php echo $vehicule['vehiculePicture'] ?>"
+                    width="400" height="auto">
             </div>
-        <?php } ?>
+            <div>
+                <div class="information-grid">
+                    <?php foreach ($vehicule as $key => $value) {
+                        if ($key == 'id' || $key == 'brand_id' || $key == 'vehiculePicture')
+                            continue;
+                        ?>
+                        <div class="vehicule__information__card">
+                            <p>
+                                <?= ucfirst($key) ?>:
+                                <?= $value ?>
+                            </p>
+                        </div>
+                    <?php } ?>
+                </div>
+
+            </div>
+        </div>
+        <?php
+    }
+
+
+    public function showVehiculeInformations()
+    {
+        $vehiculeController = new VehiculeController();
+        $vehicule = $vehiculeController->getVehiculeById($this->id);
+
+        $brandController = new BrandController();
+        $brand = $brandController->getBrandById($vehicule['brand_id']);
+
+        ?>
         <table class="table vehicule-info-table">
             <tbody>
                 <tr>
@@ -147,12 +182,14 @@ class SingleVehiculePage
     {
         $vehiculeReviewsController = new VehiculeReviewsController();
         $vehiculeReviews = $vehiculeReviewsController->getValidReviewsByVehicule($this->id);
+        $userController = new UserController();
         ?>
         <h1>Reviews</h1>
-        <div class="login-form">
+        <div class="reviews__table">
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th>User</th>
                         <th>Comment</th>
                         <th>Rating</th>
                     </tr>
@@ -160,8 +197,13 @@ class SingleVehiculePage
                 <tbody>
                     <?php
                     foreach ($vehiculeReviews as $review) {
+                        $user = $userController->getUserById($review['user_id']);
                         ?>
                         <tr>
+                            <td>
+                                <img src="<?= ImageUtility::getUserProfilePicture($user) ?>" alt="user profile picture" width="50px"
+                                    height="50px">
+                            </td>
                             <td>
                                 <?php echo $review['comment']; ?>
                             </td>
@@ -173,9 +215,22 @@ class SingleVehiculePage
                     } ?>
                 </tbody>
             </table>
+            <?php
+            if (isset($_SESSION['USER']) && $_SESSION['USER']['role'] != 'GUEST') {
+                $this->showVehiculeReviewForm();
+            } else {
+                ?>
+                <div class="review-message">
+                    <p>You must be logged in to add a review</p>
+                </div>
+                <?php
+            }
+            ?>
         </div>
         <?php
     }
+
+
 
     private function showReviewMessage()
     {
@@ -194,25 +249,40 @@ class SingleVehiculePage
     public function showVehiculeReviewForm()
     {
         ?>
-        <form method="POST" action="/CarLog/app/api/reviews/vehicule/addReview.php?vehiculeId=<?php echo $this->id ?>"
-            class="login-form">
-            <div>
-                <?php $this->showReviewMessage(); ?>
+        <div class="add__review__form">
+            <form method="POST" action="/CarLog/app/api/reviews/vehicule/addReview.php?vehiculeId=<?php echo $this->id ?>"
+                class="login-form">
                 <div>
-                    <label for="comment">Comment:</label>
-                    <input type="text" name="comment" id="comment" placeholder="Enter comment" required>
+                    <div class="comment__input">
+                        <input type="text" name="comment" id="comment" placeholder="Enter comment" required>
+                    </div>
+                    <?= ReviewsPage::showReviews(); ?>
+                    <div>
+                        <button type="submit" class="btn btn-info">Add Review</button>
+                        <?php $this->showReviewMessage(); ?>
+                    </div>
                 </div>
-
-                <div>
-                    <label for="rating">Rating:</label>
-                    <input type="number" name="rating" id="rating" placeholder="Enter rating" required>
-                </div>
-
-                <div>
-                    <button type="submit">Add Review</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
         <?php
+    }
+
+    public function showVehiculeLikeButton($vehicule)
+    {
+        $userController = new UserController();
+        if (isset($_SESSION['USER'])) {
+            $isLiked = $userController->isVehicleLikedByUser($_SESSION['USER']['id'], $vehicule['id']);
+            ?>
+            <div class="vehicule__like__btn">
+                <button onclick="addFavoriteVehicule(<?php echo $_SESSION['USER']['id']; ?>, <?php echo $vehicule['id']; ?>)"
+                    class="<?php echo $isLiked ? 'liked' : '' ?>">
+                    <?php if ($isLiked) { ?>
+                        <img src="/CarLog/public/icons/liked.png" alt="like-filled" width="20" height="20">
+                    <?php } else { ?>
+                        <img src="/CarLog/public/icons/like.png" alt="like" width="20" height="20">
+                    <?php } ?>
+                </button>
+            </div>
+        <?php }
     }
 }

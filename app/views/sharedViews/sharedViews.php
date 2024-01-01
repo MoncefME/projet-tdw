@@ -5,62 +5,34 @@ class SharedViews
     public function adminSideBar()
     {
         ?>
-        <div class="admin-sidebar">
-            <div class="header-logo">
+        <div class="dashboard__sidebar">
+            <div class="dashboard__sidebar__logo">
                 <a href="/CarLog/">
-                    <img src="/CarLog/public/icons/logos/Black logo - no background.png" alt="logo" width="200" height="auto">
+                    <img src="<?= CARLOG_LOGO_WHITE ?>" alt="CarLog Logo">
                 </a>
             </div>
-            <ul>
-                <li>
-                    <a href="/CarLog/admin/">
-                        Dashboard
-                        <img src="/CarLog/public/icons/admin-dashboard/dashboard.png" width="25px">
-                    </a>
-                </li>
-                <li>
-                    <a href="/CarLog/admin/manageUsersPage/">
-                        Manage Users
-                        <img src="/CarLog/public/icons/admin-dashboard/manage-users.png" width="25px">
-                    </a>
-                </li>
-                <li>
-                    <a href="/CarLog/admin/manageBrandsPage/">
-                        Manage Brands
-                        <img src="/CarLog/public/icons/admin-dashboard/manage-brands.png" width="25px">
-                    </a>
-                </li>
-                <li>
-                    <a href="/CarLog/admin/manageVehiculesPage/">
-                        Manage Vehicules
-                        <img src="/CarLog/public/icons/admin-dashboard/manage-vehicules.png" width="25px">
-                    </a>
-                </li>
-                <li>
-                    <a href="/CarLog/admin/manageReviewsPage/">
-                        Manage Reviews
-                        <img src="/CarLog/public/icons/admin-dashboard/manage-reviews.png" width="25px">
-                    </a>
-                </li>
-                <li>
-                    <a href=" /CarLog/admin/settings/">
-                        Settings
-                        <img src="/CarLog/public/icons/admin-dashboard/settings.png" width="25px">
-                    </a>
-                </li>
-                <li>
-                    <a href="/CarLog/admin/manageNewsPage/">
-                        Manage News
-                        <img src="/CarLog/public/icons/admin-dashboard/manage-news.png" width="25px">
-                    </a>
-                </li>
-            </ul>
-            <ul>
-                <li><a href="/CarLog/app/api/auth/logout.php">Logout</a></li>
-            </ul>
+            <div class="dashboard__sidebar__menu">
+                <ul>
+                    <?php
+                    foreach ($this->sidebarLinks as $link) {
+                        ?>
+                        <li class="<?= ($_SERVER['REQUEST_URI'] === $link['link']) ? 'active' : '' ?>">
+                            <a href="<?= $link['link'] ?>">
+                                <img src="<?= $link['icon'] ?>" alt="icon">
+                                <span>
+                                    <?= $link['text'] ?>
+                                </span>
+                            </a>
+                        </li>
+                        <?php
+                    }
+                    ?>
+                </ul>
+            </div>
         </div>
         <?php
     }
+
     private $linksData = [
         [
             'link' => 'https://www.facebook.com/moncef.moussaoui.79/',
@@ -80,16 +52,59 @@ class SharedViews
         ]
     ];
 
+    private $sidebarLinks = [
+        [
+            'link' => '/CarLog/admin/',
+            'icon' => '/CarLog/public/icons/admin-dashboard/dashboard.png',
+            'text' => 'Dashboard'
+        ],
+        [
+            'link' => '/CarLog/admin/manageUsersPage/',
+            'icon' => '/CarLog/public/icons/admin-dashboard/manage-users.png',
+            'text' => 'Manage Users'
+        ],
+        [
+            'link' => '/CarLog/admin/manageBrandsPage/',
+            'icon' => '/CarLog/public/icons/admin-dashboard/manage-brands.png',
+            'text' => 'Manage Brands'
+        ],
+        [
+            'link' => '/CarLog/admin/manageVehiculesPage/',
+            'icon' => '/CarLog/public/icons/admin-dashboard/manage-vehicules.png',
+            'text' => 'Manage Vehicules'
+        ],
+        [
+            'link' => '/CarLog/admin/manageReviewsPage/',
+            'icon' => '/CarLog/public/icons/admin-dashboard/manage-reviews.png',
+            'text' => 'Manage Reviews'
+        ],
+        [
+            'link' => '/CarLog/admin/manageNewsPage/',
+            'icon' => '/CarLog/public/icons/admin-dashboard/manage-news.png',
+            'text' => 'Manage News'
+        ],
+        [
+            'link' => '/CarLog/admin/settings/',
+            'icon' => '/CarLog/public/icons/admin-dashboard/settings.png',
+            'text' => 'Settings'
+        ],
+        [
+            'link' => '/CarLog/app/api/auth/logout.php',
+            'icon' => '/CarLog/public/icons/admin-dashboard/logout.png',
+            'text' => 'Logout'
+        ]
+    ];
+
     public function showHeader()
     {
         ?>
-        <div class="header">
-            <div class="header-logo">
+        <div class="page__header">
+            <div class="page__header__logo">
                 <a href="/CarLog/">
-                    <img src="/CarLog/public/icons/logos/Black logo - no background.png" alt="logo" width="200" height="auto">
+                    <img src="<?= CARLOG_LOGO ?>" alt="logo" width="200" height="auto">
                 </a>
             </div>
-            <div class="header__social-media">
+            <div class="header__socialmedia">
                 <?php $this->showSocialMedia(); ?>
             </div>
             <div class="header__login">
@@ -111,8 +126,8 @@ class SharedViews
     {
         foreach ($this->linksData as $linkData) {
             ?>
-            <a href="<?php echo $linkData['link']; ?>" target="_blank">
-                <img src="<?php echo $linkData['icon']; ?>" alt="social media icon" width="30px">
+            <a href="<?= $linkData['link']; ?>" target="_blank">
+                <img src="<?= $linkData['icon']; ?>" alt="social media icon" width="25px">
             </a>
             <?php
         }
@@ -121,12 +136,10 @@ class SharedViews
     public function showFooter()
     {
         ?>
-        <div class="footer">
-            <div>
-                <?php $this->showSocialMedia(); ?>
-            </div>
-            <div class="footer-links">
+        <div class="page__footer">
+            <div class="page__footer__links">
                 <ul>
+                    <li><a href="/CarLog/">Home</a></li>
                     <li><a href="/CarLog/brandsPage/">Brands</a></li>
                     <li><a href="/CarLog/comparatorPage/">Comparator</a></li>
                     <li><a href="/CarLog/newsPage/">News</a></li>
@@ -135,7 +148,11 @@ class SharedViews
                     <li><a href="/CarLog/reviewsPage/">Reviews</a></li>
                 </ul>
             </div>
-            <p> &copy; 2023 CarLog</p>
+            <div class="footer__socialmedia">
+                <?php $this->showSocialMedia(); ?>
+            </div>
+            <p> All rights reserved to &copy;<img src="<?= CARLOG_LOGO_WHITE ?>" alt="CarLog Logo" width="80" height="auto">
+            </p>
         </div>
         <?php
     }

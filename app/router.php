@@ -1,8 +1,9 @@
 <?php
 session_start();
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/api/apiRouter.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/api/apiRouter.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/config/config.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/config/utils/imageUtility.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/config/utils/formValidation.php');
 
 /** User Pages */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/brandsPage.php");
@@ -128,8 +129,8 @@ switch ($request) {
         }
         break;
     case '/CarLog/admin/brand/':
-        if (isset($_GET['id'])) {
-            $id = $_GET['id'];
+        if (isset($_GET['brandId'])) {
+            $id = $_GET['brandId'];
             $view = new EditBrandPage($id);
         } else {
             $view = new PageNotFound();
@@ -143,8 +144,8 @@ switch ($request) {
         }
         break;
     case "/CarLog/admin/vehicule/":
-        if (isset($_GET['id'])) {
-            $id = $_GET['id'];
+        if (isset($_GET['vehiculeId'])) {
+            $id = $_GET['vehiculeId'];
             $view = new EditVehiculePage($id);
         } else {
             $view = new PageNotFound();

@@ -3,7 +3,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/app/controllers/databaseContro
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/Config/queries/reviewQueries.php");
 class BrandReviewsModel
 {
-
     public function getBrandReviewById($brandReviewId)
     {
         $dbController = new DatabaseController();

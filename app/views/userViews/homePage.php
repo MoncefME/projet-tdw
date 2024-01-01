@@ -2,27 +2,35 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/app/controllers/userController.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/app/controllers/brandController.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/app/views/sharedViews/sharedViews.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/app/views/userViews/brandsPage.php');
 class HomePage
 {
     public function showPage()
     {
-        $shardViews = new SharedViews();
-        $shardViews->showHeader();
-        $this->showSlider();
-        $this->showNavBar();
-        $this->showBrandsCards();
-        $this->showComparator();
-        $shardViews->showFooter();
+        $brandsPage = new BrandsPage();
+        ?>
+        <div class="page__content">
+            <?php
+            $shardViews = new SharedViews();
+            $shardViews->showHeader();
+            $this->showSlider();
+            $this->showNavBar();
+            $brandsPage->showBrandsCards();
+            $this->showComparator();
+            $shardViews->showFooter();
+            ?>
+        </div>
+        <?php
     }
 
 
     private function showSlider()
     {
         ?>
-        <div class="slider">
-            <img src="/CarLog/public/images/slider/background-1.jpg" alt="slider1">
+        <div class="homepage__slider">
+            <!-- <img src="/CarLog/public/images/slider/background-1.jpg" alt="slider1">
             <img src="/CarLog/public/images/slider/background-2.jpg" alt="slider2">
-            <img src="/CarLog/public/images/slider/background-3.jpg" alt="slider3">
+            <img src="/CarLog/public/images/slider/background-3.jpg" alt="slider3"> -->
         </div>
         <?php
     }
@@ -30,8 +38,9 @@ class HomePage
     private function showNavBar()
     {
         ?>
-        <div class="navbar">
+        <div class="homepage__navbar">
             <ul>
+                <li><a href="/CarLog/">Home</a></li>
                 <li><a href="/CarLog/brandsPage/">Brands</a></li>
                 <li><a href="/CarLog/comparatorPage/">Comparator</a></li>
                 <li><a href="/CarLog/newsPage/">News</a></li>
@@ -46,39 +55,18 @@ class HomePage
     private function showComparator()
     {
         ?>
-        <div class="comparator">
+        <div class="homepage__comparator">
             <?php
             $comparatorPage = new ComparatorPage();
+            ?>
+            <h1>Compare your car</h1>
+            <p>Select minimum 2 distinct Cars</p>
+            <?php
             $comparatorPage->showComparator();
             ?>
         </div>
         <?php
     }
 
-    private function showBrandsCards()
-    {
-        $brandController = new BrandController();
-        $brands = $brandController->getAllBrands();
-        ?>
-        <div>
-            <div class="brands-title">
-                <h1>Brands</h1>
-                <p>Choose a brand </p>
-            </div>
-            <div class="brands-grid">
-                <?php foreach ($brands as $brand) { ?>
-                    <a href="/CarLog/brand/?id=<?php echo $brand['id']; ?>">
-                        <img src="/CarLog/public/uploads/brands/<?php echo $brand['brandPicture'] ?>"
-                            alt="<?php echo $brand['brandPicture'] ?>" width="50px" height="50px">
-                        <span>
-                            <?php echo $brand['name']; ?>
-                        </span>
-                    </a>
-                <?php } ?>
-            </div>
-            <a id="show-more">Show more </a>
-        </div>
-        <?php
-    }
 }
 

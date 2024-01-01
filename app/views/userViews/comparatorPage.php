@@ -16,19 +16,27 @@ class ComparatorPage
 
     public function showPage()
     {
-
         $shardViews = new SharedViews();
-        $shardViews->showHeader();
-        echo '<h1>Comparator Page</h1>';
-        $this->showComparator();
-        $this->showPopularComparisons();
-        $shardViews->showFooter();
+        ?>
+        <div class="page__content">
+            <?php
+            $shardViews->showHeader();
+            ?>
+            <h1>Compare your car</h1>
+            <p>Select minimum 2 distinct Cars</p>
+            <?php
+            $this->showComparator();
+            $this->showPopularComparisons();
+            $shardViews->showFooter();
+            ?>
+        </div>
+        <?php
     }
 
     public function showComparator()
     {
         ?>
-        <div class="comparator-container">
+        <div class="comparator__container">
             <?php
             $this->showVehiculeComparisonForm('1');
             $this->showVehiculeComparisonForm('2');
@@ -44,7 +52,7 @@ class ComparatorPage
     private function showVehiculeComparisonForm($vehiculeNumber)
     {
         ?>
-        <div class="vehicule-form-container-<?= $vehiculeNumber; ?>">
+        <div class="vehicule__form__container">
             <form>
                 <div>
                     <label>Brand</label>
@@ -92,17 +100,19 @@ class ComparatorPage
         $comparisionController = new ComparisionController();
         $mostComparedVehiculePairs = $comparisionController->getMostComparedVehiculePairs();
         ?>
-        <h1>Popular Comparisons</h1>
-        <div class="popular-comparisions-container">
-            <?php
-            foreach ($mostComparedVehiculePairs as $pair) {
-                $vehiculeController = new VehiculeController();
-                $vehiculeA = $vehiculeController->getVehiculeById($pair['vehicule_id_A']);
-                $vehiculeB = $vehiculeController->getVehiculeById($pair['vehicule_id_B']);
-                $pair_occurrence_count = $pair['pair_occurrence_count'];
-                $this->showComparisionCard($vehiculeA, $vehiculeB, $pair_occurrence_count);
-            }
-            ?>
+        <div class="popular__comparisions__container">
+            <h1>Popular Comparisons</h1>
+            <div class="comparision__cards">
+                <?php
+                foreach ($mostComparedVehiculePairs as $pair) {
+                    $vehiculeController = new VehiculeController();
+                    $vehiculeA = $vehiculeController->getVehiculeById($pair['vehicule_id_A']);
+                    $vehiculeB = $vehiculeController->getVehiculeById($pair['vehicule_id_B']);
+                    $pair_occurrence_count = $pair['pair_occurrence_count'];
+                    $this->showComparisionCard($vehiculeA, $vehiculeB, $pair_occurrence_count);
+                }
+                ?>
+            </div>
         </div>
         <?php
     }
@@ -110,19 +120,21 @@ class ComparatorPage
     private function showComparisionCard($vehiculeA, $vehiculeB, $pair_occurrence_count)
     {
         ?>
-        <div class="comparision-card">
+        <div class="comparision__card">
             <div class="vehiculeA">
                 <a href="/CarLog/vehicule/?id=<?php echo $vehiculeA["id"] ?>">
                     <img src="/CarLog/public/uploads/vehicules/<?= $vehiculeA['vehiculePicture']; ?>" width="50">
                 </a>
-                <p>
-                    <?= $vehiculeA['model']; ?>
-                </p>
-                <p>
-                    <?= $vehiculeA['year']; ?>
-                </p>
+                <div>
+                    <p>
+                        <?= $vehiculeA['model']; ?>
+                    </p>
+                    <p>
+                        <?= $vehiculeA['year']; ?>
+                    </p>
+                </div>
             </div>
-            <div>
+            <div class="Versus">
                 <a href="/CarLog/comparision/?idA=<?php echo $vehiculeA["id"] ?>&idB=<?php echo $vehiculeB["id"] ?>">
                     VS
                 </a>
@@ -134,12 +146,14 @@ class ComparatorPage
                 <a href="/CarLog/vehicule/?id=<?php echo $vehiculeB["id"] ?>">
                     <img src="/CarLog/public/uploads/vehicules/<?= $vehiculeB['vehiculePicture']; ?>" width="50">
                 </a>
-                <p>
-                    <?= $vehiculeB['model']; ?>
-                </p>
-                <p>
-                    <?= $vehiculeB['year']; ?>
-                </p>
+                <div>
+                    <p>
+                        <?= $vehiculeB['model']; ?>
+                    </p>
+                    <p>
+                        <?= $vehiculeB['year']; ?>
+                    </p>
+                </div>
             </div>
         </div>
         <?php

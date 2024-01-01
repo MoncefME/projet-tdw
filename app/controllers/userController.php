@@ -13,10 +13,9 @@ class UserController
     public function loginUser()
     {
         $userModel = new UserModel();
-        $formValidation = new FormValidation();
 
-        $password = $formValidation->validateInput('password');
-        $email = $formValidation->validateInput('email');
+        $password = FormValidation::validateInput('password');
+        $email = FormValidation::validateInput('email');
 
         $response = $userModel->loginUser($email, $password);
 
@@ -34,24 +33,22 @@ class UserController
     public function getAllUsers()
     {
         $userModel = new UserModel();
-        $users = $userModel->getAllUsers();
-        return $users;
+        $userId = $_SESSION['USER']['id'];
+        return $userModel->getAllUsers($userId);
     }
 
     public function addUser()
     {
         $userModel = new UserModel();
-        $formValidation = new FormValidation();
 
         $password = isset($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : '';
-        $email = $formValidation->validateInput('email');
-        $firstName = $formValidation->validateInput('firstName');
-        $lastName = $formValidation->validateInput('lastName');
+        $email = FormValidation::validateInput('email');
+        $firstName = FormValidation::validateInput('firstName');
+        $lastName = FormValidation::validateInput('lastName');
         $role = isset($_POST['role']) ? $_POST['role'] : 'USER';
-        $birthDate = $formValidation->validateInput('birthDate');
-        $sex = $formValidation->validateInput('sex');
+        $birthDate = FormValidation::validateInput('birthDate');
+        $sex = FormValidation::validateInput('sex');
         $status = 'PENDING';
-        //$profilePicture = isset($_POST['profilePicture']) ? $_POST['profilePicture'] : '';
 
         $uploadHandler = new UploadFile();
         $uploadedFileName = $uploadHandler->uploadUserFile();
@@ -74,32 +71,28 @@ class UserController
     public function deleteUser($userId)
     {
         $userModel = new UserModel();
-        $success = $userModel->deleteUser($userId);
-        return $success;
+        return $userModel->deleteUser($userId);
     }
 
     public function updateUserInfo($userId)
     {
         $userModel = new UserModel();
-        $formValidation = new FormValidation();
 
         //$password = isset($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : null;
-        $email = $formValidation->validateInput('email');
-        $firstName = $formValidation->validateInput('firstName');
-        $lastName = $formValidation->validateInput('lastName');
-        $birthDate = $formValidation->validateInput('birthDate');
-        //$profilePicture = isset($_POST['profilePicture']) ? $_POST['profilePicture'] : '';
+        $email = FormValidation::validateInput('email');
+        $firstName = FormValidation::validateInput('firstName');
+        $lastName = FormValidation::validateInput('lastName');
+        $birthDate = FormValidation::validateInput('birthDate');
 
         $uploadHandler = new UploadFile();
         $uploadedFileName = $uploadHandler->uploadUserFile();
 
         if (!$uploadedFileName) {
             echo 'no file uploaded';
-            $uploadedFileName = $formValidation->validateInput('currentPicture');
+            $uploadedFileName = FormValidation::validateInput('currentPicture');
         }
 
-        $success = $userModel->updateUserInfo($userId, $email, $firstName, $lastName, $birthDate, $uploadedFileName);
-        return $success;
+        return $userModel->updateUserInfo($userId, $email, $firstName, $lastName, $birthDate, $uploadedFileName);
     }
 
     public function validateUser($userId)
@@ -114,12 +107,6 @@ class UserController
         return $userModel->rejectUser($userId);
     }
 
-    public function updateUserRole($userId)
-    {
-        $userModel = new UserModel();
-        $role = isset($_POST['role']) ? $_POST['role'] : 'USER';
-        return $userModel->updateUserRole($userId, $role);
-    }
     public function getUserFavoriteVehicules($userId)
     {
         $userModel = new UserModel();

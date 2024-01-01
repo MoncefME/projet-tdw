@@ -270,7 +270,7 @@ function handleYearsChange(yearSelect, vehiculeNumber) {
       success: function (response) {
         var vehicule = JSON.parse(response);
 
-        var card = $('<div class="vehicule-card"></div>');
+        var card = $('<div class="vehicule__card"></div>');
         card.append(
           '<img src="/CarLog/public/uploads/vehicules/' +
             vehicule.vehiculePicture +
@@ -288,7 +288,9 @@ function handleYearsChange(yearSelect, vehiculeNumber) {
             vehicule.id +
             '">'
         );
-        resultDiv.append(card);
+
+        // Add animation
+        card.hide().appendTo(resultDiv).fadeIn();
       },
       error: function (error) {
         console.error(error);
@@ -333,7 +335,7 @@ function showComparisionTable(isNewComparision) {
         console.log(comparisionVehicules);
         var table = $(".comparision-result-table");
         table.empty();
-        var headerRow = $("<thead></thead>");
+        var headerRow = $("<thead class='thead-light'></thead>");
         headerRow.append("<th></th>");
         comparisionVehicules.forEach(function (vehicle, index) {
           headerRow.append("<th>Vehicule " + (index + 1) + "</th>");
@@ -447,3 +449,109 @@ $(document).ready(function () {
 
   setInterval(showNextImage, 2000);
 });
+
+$(document).ready(function () {
+  $("#userTable").DataTable({
+    pageLength: 4,
+    ordering: true,
+    searching: true,
+    responsive: true,
+    lengthMenu: [4],
+    columnDefs: [
+      { orderable: false, targets: [5, 7] },
+      { searchable: false, targets: [5, 7] },
+    ],
+  });
+  $("#brandTable").DataTable({
+    pageLength: 4,
+    ordering: true,
+    searching: true,
+    responsive: true,
+    lengthMenu: [4],
+    columnDefs: [{ orderable: false, targets: [2] }],
+  });
+  $("#vehiculeTable").DataTable({
+    pageLength: 4,
+    ordering: true,
+    searching: true,
+    responsive: true,
+    lengthMenu: [4],
+  });
+  $("#vehiculeReviewTable").DataTable({
+    pageLength: 4,
+    ordering: true,
+    searching: true,
+    responsive: true,
+    lengthMenu: [4],
+    columnDefs: [{ orderable: false, targets: [2] }],
+    initComplete: function () {
+      $("#loader").hide();
+      $("#vehiculeReviewTable").show();
+    },
+  });
+  $("#brandReviewTable").DataTable({
+    pageLength: 4,
+    ordering: true,
+    searching: true,
+    responsive: true,
+    lengthMenu: [4],
+    columnDefs: [{ orderable: false, targets: [2] }],
+    initComplete: function () {
+      $("#loader").hide();
+      $("#brandReviewTable").show();
+    },
+  });
+  $("#newTable").DataTable({
+    pageLength: 4,
+    ordering: true,
+    searching: true,
+    responsive: true,
+    lengthMenu: [4],
+    columnDefs: [{ orderable: false, targets: [2] }],
+  });
+});
+
+$(document).ready(function () {
+  $("#brandsTable").show();
+  $("#toggleButtonBrand").click(function () {
+    $("#brandsTable").toggle();
+    $("#brandForm").toggle();
+
+    var buttonText = $("#brandsTable").is(":visible")
+      ? "Show Form"
+      : "Show Table";
+
+    $("#toggleButtonBrand span").text(buttonText);
+  });
+
+  $("#vehiculesTable").show();
+  $("#toggleButtonVehicule").click(function () {
+    $("#vehiculesTable").toggle();
+    $("#vehiculeForm").toggle();
+
+    var buttonText = $("#vehiculesTable").is(":visible")
+      ? "Show Form"
+      : "Show Table";
+
+    $("#toggleButtonVehicule span").text(buttonText);
+  });
+
+  $("#newsTable").show();
+  $("#toggleButtonNews").click(function () {
+    $("#newsTable").toggle();
+    $("#newForm").toggle();
+
+    var buttonText = $("#newsTable").is(":visible")
+      ? "Show Form"
+      : "Show Table";
+
+    $("#toggleButtonNews span").text(buttonText);
+  });
+});
+
+function toggleHiddenBrands() {
+  $("#hiddenBrands").slideToggle("slow");
+  $("#show-more").text(function () {
+    return $("#hiddenBrands").is(":visible") ? "Show less" : "Show more";
+  });
+}

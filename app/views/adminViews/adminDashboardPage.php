@@ -4,16 +4,18 @@ class AdminDashboardPage
 {
     public function showPage()
     {
+        $sharedView = new SharedViews();
         ?>
-        <div class="page">
+        <div class="dashboard__page">
             <?php
-            $sharedView = new SharedViews();
             $sharedView->adminSideBar();
             ?>
-            <h1>Admin Dashboard</h1>
-            <?php
-            $this->showLinks();
-            ?>
+            <div class="dashboard__content">
+                <h1>Admin Dashboard</h1>
+                <?php
+                $this->showLinks();
+                ?>
+            </div>
         </div>
         <?php
     }
@@ -21,33 +23,67 @@ class AdminDashboardPage
     public function showLinks()
     {
         ?>
-        <div class="dashboard-links">
-            <a href="/CarLog/admin/manageUsersPage/">
-                <img src="/CarLog/public/icons/admin-dashboard/manage-users.png" alt="user" width="auto" height="200">
-                <p>Manage User</p>
-            </a>
-            <a href="/CarLog/admin/manageBrandsPage/">
-                <img src="/CarLog/public/icons/admin-dashboard/manage-brands.png" alt="brand" width="auto" height="200">
-                <p>Manage Brands</p>
-            </a>
-            <a href="/CarLog/admin/manageVehiculesPage/">
-                <img src="/CarLog/public/icons/admin-dashboard/manage-vehicules.png" alt="vehicule" width="auto" height="200">
-                <p>Manage Vehicules </p>
-            </a>
-            <a href="/CarLog/admin/settings/">
-                <img src="/CarLog/public/icons/admin-dashboard/settings.png" alt="settings" width="auto" height="200">
-                <p>Settings</p>
-            </a>
-            <a href="/CarLog/admin/manageNewsPage/">
-                <img src="/CarLog/public/icons/admin-dashboard/manage-news.png" alt="news" width="auto" height="200">
-                <p>Manage News</p>
-            </a>
-            <a href="/CarLog/admin/manageReviewsPage/">
-                <img src="/CarLog/public/icons/admin-dashboard/manage-reviews.png" alt="settings" width="auto" height="200">
-                <p>Manage Reviews</p>
+        <div class="dashboard__links">
+            <?php
+            foreach ($this->linksData as $link) {
+                $this->showLinkCard($link);
+            }
+            ?>
+        </div>
+        <?php
+    }
+
+    private function showLinkCard($Link)
+    {
+        ?>
+        <div class="dashboard__link__card">
+            <a href="<?= $Link['url'] ?>">
+                <img src="<?= $Link['img'] ?>" alt="<?= $Link['alt'] ?>">
+                <p>
+                    <?= $Link['text'] ?>
+                </p>
             </a>
         </div>
         <?php
     }
+
+    private $linksData = [
+        [
+            "url" => ApiRouter::ADMIN_MANAGE_USERS_URL,
+            "img" => "/CarLog/public/icons/admin-dashboard/manage-users.png",
+            "alt" => "user",
+            "text" => "Manage User"
+        ],
+        [
+            "url" => ApiRouter::ADMIN_MANAGE_NEWS_URL,
+            "img" => "/CarLog/public/icons/admin-dashboard/manage-news.png",
+            "alt" => "news",
+            "text" => "Manage News"
+        ],
+        [
+            "url" => ApiRouter::ADMIN_MANAGE_BRANDS_URL,
+            "img" => "/CarLog/public/icons/admin-dashboard/manage-brands.png",
+            "alt" => "brand",
+            "text" => "Manage Brands"
+        ],
+        [
+            "url" => ApiRouter::ADMIN_MANAGE_VEHICULES_URL,
+            "img" => "/CarLog/public/icons/admin-dashboard/manage-vehicules.png",
+            "alt" => "vehicule",
+            "text" => "Manage Vehicules"
+        ],
+        [
+            "url" => ApiRouter::ADMIN_SETTINGS_URL,
+            "img" => "/CarLog/public/icons/admin-dashboard/settings.png",
+            "alt" => "settings",
+            "text" => "Settings"
+        ],
+        [
+            "url" => ApiRouter::ADMIN_MANAGE_REVIEWS_URL,
+            "img" => "/CarLog/public/icons/admin-dashboard/manage-reviews.png",
+            "alt" => "settings",
+            "text" => "Manage Reviews"
+        ]
+    ];
 }
 
