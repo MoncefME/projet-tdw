@@ -555,3 +555,16 @@ function toggleHiddenBrands() {
     return $("#hiddenBrands").is(":visible") ? "Show less" : "Show more";
   });
 }
+
+$(document).ready(function () {
+  $("#summernote").summernote({
+    height: 300, // set the height of the editor
+    placeholder: "Enter content",
+    callbacks: {
+      onChange: function (contents, $editable) {
+        // Update the hidden input field with the editor content
+        $("#content").val(contents);
+      },
+    },
+  });
+});

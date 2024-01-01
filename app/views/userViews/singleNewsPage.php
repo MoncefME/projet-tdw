@@ -8,37 +8,62 @@ class SingleNewsPage
     {
         $this->id = $id;
     }
+
     public function showPage()
     {
-
-        $sharedViews = new SharedViews();
-        $sharedViews->showHeader();
-        $this->showInfoTable();
-        $sharedViews->showFooter();
-
+        $shardViews = new SharedViews();
+        ?>
+        <div class="page__content">
+            <?php
+            $shardViews->showHeader();
+            $this->showNewsContent();
+            $shardViews->showFooter();
+            ?>
+        </div>
+        <?php
     }
 
-    private function showInfoTable()
+    private function showNewsContent()
     {
         $newsController = new NewsController();
         $news = $newsController->getNewsById($this->id);
+        $tags = explode(',', $news['tags']);
         ?>
-        <div>
-            <h1>
-                <?php echo $news['title']; ?>
-            </h1>
-            <p>
-                <?php echo $news['content']; ?>
-            </p>
-            <p>
-                <?php echo $news['created_at']; ?>
-            </p>
-            <a href=<?php echo $news['link']; ?>>
-                Original article
-            </a>
-            <p>
-                <?php echo $news['tags']; ?>
-            </p>
+        <div class="single__news__content">
+            <div class="news__header">
+                <div class="news__cover__img">
+                    <img src="/CarLog/public/images/background-1.jpg">
+                </div>
+                <div class="news__title">
+                    <h1>
+                        <?= $news['title']; ?>
+                    </h1>
+                    <p>
+                        <?= $news['created_at']; ?>
+                        <a href=<?= $news['link']; ?>>
+                            Original article
+                        </a>
+                    </p>
+                    <div class="news__tags">
+                        <p>
+                            <?php
+                            foreach ($tags as $tag) {
+                                $tag = trim($tag);
+                                if (!empty($tag)) {
+                                    echo '<span class="badge badge-primary">' . $tag . '</span> ';
+                                }
+                            }
+                            ?>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="news__body">
+                <p>
+                    <?php echo $news['content']; ?>
+                </p>
+            </div>
         </div>
         <?php
     }
