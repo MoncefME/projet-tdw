@@ -17,20 +17,34 @@ class SingleComparisionPage
         $this->brands = $brandController->getAllBrands();
     }
 
+    // public function showPage()
+    // {
+    //     $shardViews = new SharedViews();
+    //     $shardViews->showHeader();
+    //     echo "<h1>Comparing " . $this->vehiculeA['model'] . " with " . $this->vehiculeB['model'] . "</h1>";
+    //     $this->showComparator();
+    //     // $this->showPopularComparisons();
+    //     $shardViews->showFooter();
+    // }
+
     public function showPage()
     {
         $shardViews = new SharedViews();
-        $shardViews->showHeader();
-        echo "<h1>Comparing " . $this->vehiculeA['model'] . " with " . $this->vehiculeB['model'] . "</h1>";
-        $this->showComparator();
-        // $this->showPopularComparisons();
-        $shardViews->showFooter();
+        ?>
+        <div class="page__content">
+            <?php
+            $shardViews->showHeader();
+            $this->showComparator();
+            $shardViews->showFooter();
+            ?>
+        </div>
+        <?php
     }
 
     public function showComparator()
     {
         ?>
-        <div class="comparator-container">
+        <div class="comparator__container">
             <?php
             $this->showExistingVehiculeComparisonForm('1', $this->vehiculeA);
             $this->showExistingVehiculeComparisonForm('2', $this->vehiculeB);
@@ -42,6 +56,8 @@ class SingleComparisionPage
         <?php
         $this->showComparatorResult();
     }
+
+
 
     private function showExistingVehiculeComparisonForm($vehiculeNumber, $vehicule)
     {
@@ -57,7 +73,7 @@ class SingleComparisionPage
 
 
         ?>
-        <div class="vehicule-form-container-<?= $vehiculeNumber; ?>">
+        <div class="vehicule__form__container">
 
             <form>
                 <div>
@@ -86,9 +102,9 @@ class SingleComparisionPage
                 </div>
             </form>
             <div class="result-<?= $vehiculeNumber; ?>">
-                <div class="vehicule-card">
-                    <img src="/CarLog/public/uploads/vehicules/<?php echo $vehicule['vehiculePicture']; ?>"
-                        alt="<?php echo $vehicule['model']; ?>" width="80">
+                <div class="vehicule__card">
+                    <img src="<?= ImageUtility::getVehiculePicture($vehicule) ?>" alt="<?php echo $vehicule['model']; ?>"
+                        width="80">
                     <p>
                         <?php echo $vehicule['model']; ?>
                     </p>
@@ -109,7 +125,7 @@ class SingleComparisionPage
     private function showVehiculeComparisonForm($vehiculeNumber)
     {
         ?>
-        <div class="vehicule-form-container-<?= $vehiculeNumber; ?>">
+        <div class="vehicule__form__container">
             <form>
                 <div>
                     <label>Brand</label>

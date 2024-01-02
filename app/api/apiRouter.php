@@ -86,10 +86,9 @@ class ApiRouter
     }
 
     /*************USERS*************/
-    public static function EDIT_USER_ENDPOINT($userId)
-    {
-        return API_BASE_URL . '/users/editUser.php?userId=' . $userId;
-    }
+
+    const EDIT_USER_INFOS = API_BASE_URL . '/users/updateUserInfos.php';
+
     public static function DELETE_USER_ENDPOINT($userId)
     {
         return API_BASE_URL . '/users/deleteUser.php?userId=' . $userId;

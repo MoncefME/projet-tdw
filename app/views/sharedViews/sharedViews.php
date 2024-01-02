@@ -109,13 +109,25 @@ class SharedViews
             </div>
             <div class="header__login">
                 <?php if (isset($_SESSION['USER'])) { ?>
-                    <a href="/CarLog/app/api/auth/logout.php" class="btn btn-danger">Logout</a>
-                    <a href="/CarLog/profilePage/" class="btn btn-secondary">Profile</a>
+                    <a href="/CarLog/app/api/auth/logout.php" class="btn btn-danger">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </a>
+                    <a href="/CarLog/profilePage/" class="btn btn-secondary">
+                        <i class="fas fa-user"></i>
+                        Profile
+                    </a>
                     <?php if ($_SESSION['USER']['role'] === 'ADMIN') { ?>
-                        <a href="/CarLog/admin/" class="btn btn-primary">Dashboard</a>
+                        <a href="/CarLog/admin/" class="btn btn-primary">
+                            <i class="fas fa-user-shield"></i>
+                            Admin
+                        </a>
                     <?php } ?>
                 <?php } else { ?>
-                    <a href="/CarLog/loginPage/" class="btn btn-primary">Log In</a>
+                    <a href="/CarLog/loginPage/" class="btn btn-primary">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Login
+                    </a>
                 <?php } ?>
             </div>
         </div>

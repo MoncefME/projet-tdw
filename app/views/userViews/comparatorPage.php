@@ -104,8 +104,8 @@ class ComparatorPage
             <h1>Popular Comparisons</h1>
             <div class="comparision__cards">
                 <?php
+                $vehiculeController = new VehiculeController();
                 foreach ($mostComparedVehiculePairs as $pair) {
-                    $vehiculeController = new VehiculeController();
                     $vehiculeA = $vehiculeController->getVehiculeById($pair['vehicule_id_A']);
                     $vehiculeB = $vehiculeController->getVehiculeById($pair['vehicule_id_B']);
                     $pair_occurrence_count = $pair['pair_occurrence_count'];
@@ -122,8 +122,8 @@ class ComparatorPage
         ?>
         <div class="comparision__card">
             <div class="vehiculeA">
-                <a href="/CarLog/vehicule/?id=<?php echo $vehiculeA["id"] ?>">
-                    <img src="/CarLog/public/uploads/vehicules/<?= $vehiculeA['vehiculePicture']; ?>" width="50">
+                <a href="<?= ApiRouter::VEHICULE_URL($vehiculeA); ?>">
+                    <img src="<?= ImageUtility::getVehiculePicture($vehiculeA); ?>" width="50" height="auto">
                 </a>
                 <div>
                     <p>
@@ -135,16 +135,17 @@ class ComparatorPage
                 </div>
             </div>
             <div class="Versus">
-                <a href="/CarLog/comparision/?idA=<?php echo $vehiculeA["id"] ?>&idB=<?php echo $vehiculeB["id"] ?>">
+                <a href="<?= ApiRouter::COMPARISION_URL($vehiculeA['id'], $vehiculeB['id']); ?>">
                     VS
                 </a>
                 <p>
+                    <i class="fas fa-eye"></i>
                     <?= $pair_occurrence_count; ?>
                 </p>
             </div>
             <div class="vehiculeB">
-                <a href="/CarLog/vehicule/?id=<?php echo $vehiculeB["id"] ?>">
-                    <img src="/CarLog/public/uploads/vehicules/<?= $vehiculeB['vehiculePicture']; ?>" width="50">
+                <a href="<?= ApiRouter::VEHICULE_URL($vehiculeB); ?>">
+                    <img src="<?= ImageUtility::getVehiculePicture($vehiculeB); ?>" width="50" height="auto">
                 </a>
                 <div>
                     <p>
