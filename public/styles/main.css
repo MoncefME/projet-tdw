@@ -2,6 +2,15 @@ p{
     margin-bottom: 0  !important;
 }
 
+.shared__pages{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 .page__content{
     width: 100%;
     min-height: 100vh;

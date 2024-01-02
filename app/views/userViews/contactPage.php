@@ -10,6 +10,7 @@ class ContactPage
         <div class="page__content">
             <?php
             $shardViews->showHeader();
+            echo "<h1>Contact Us</h1>";
             $this->showContactInformations();
             $shardViews->showFooter();
             ?>
@@ -19,16 +20,50 @@ class ContactPage
     private function showContactInformations()
     {
         ?>
-        <div class="contact-informations">
-            <div class="contact-informations__address">
-                <h3>Address</h3>
-                <p>Str. Mihai Eminescu, nr. 1, Iasi, Romania</p>
+        <div class="contactpage__container">
+            <div class="contact__form">
+                <form>
+                    <div>
+                        <input type="text" name="name" placeholder="Name" />
+                    </div>
+                    <div>
+                        <input type="email" name="email" placeholder="Email" />
+                    </div>
+                    <div>
+                        <textarea name="message" placeholder="Message"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-dark">
+                            <i class="fas fa-paper-plane"></i>
+                            Send
+                        </button>
+                    </div>
+                </form>
             </div>
-            <div class="contact-informations__phone">
-                <h3>Phone</h3>
-                <p>0745 123 456</p>
+            <div class="contact__informations">
+                <ul>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Address : </span>
+                        <p>Oued Semar , Algiers </p>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt"></i>
+                        <span>Phone : </span>
+                        <p>+213 553383214</p>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>Email : </span>
+                        <p>ka_moussaoui@esi.dz</p>
+                    </li>
+                    <li>
+                        <i class="fas fa-globe"></i>
+                        <span>Website : </span>
+                        <p>www.carlog.com</p>
+                    </li>
+                </ul>
             </div>
-
         </div>
         <?php
     }
