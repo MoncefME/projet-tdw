@@ -438,7 +438,7 @@ function addComparision() {
 
 $(document).ready(function () {
   let currentIndex = 0;
-  const images = $(".slider img");
+  const images = $(".homepage__slider img");
   const totalImages = images.length;
 
   function showNextImage() {
