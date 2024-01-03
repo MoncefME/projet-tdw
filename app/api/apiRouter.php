@@ -160,4 +160,5 @@ class ApiRouter
     {
         return '/CarLog/admin/news/?id=' . $newsId;
     }
+    const EDIT_CONTACT_ENDPOINT = API_BASE_URL . '/settings/updateContactInformations.php';
 }

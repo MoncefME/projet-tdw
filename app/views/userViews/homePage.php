@@ -28,6 +28,7 @@ class HomePage
     {
         ?>
         <div class="homepage__slider">
+            <p>//TODO : Slider</p>
             <!-- <img src="/CarLog/public/images/slider/background-1.jpg" alt="slider1">
             <img src="/CarLog/public/images/slider/background-2.jpg" alt="slider2">
             <img src="/CarLog/public/images/slider/background-3.jpg" alt="slider3"> -->

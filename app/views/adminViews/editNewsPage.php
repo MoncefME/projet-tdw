@@ -36,7 +36,7 @@ class EditNewsPage
         $news = $newsController->getNewsById($this->id);
         ?>
         <div class="news__form">
-            <form method="POST" action="<? -ApiRouter::EDIT_NEWS_ENDPOINT($news['id']) ?>" enctype="multipart/form-data">
+            <form method="POST" action="<?= ApiRouter::EDIT_NEWS_ENDPOINT($news['id']) ?>" enctype="multipart/form-data">
                 <div class="news__form__inputs__container">
                     <div>
                         <label for="title">Title:</label>
@@ -55,11 +55,12 @@ class EditNewsPage
                         <input type="text" name="tags" id="tags" placeholder="Enter tags" required
                             value="<?php echo $news['tags'] ?>">
                     </div>
-                    <div>
+                    <!-- <div>
                         <label for="content">Content:</label>
                         <textarea name="content" id="content" placeholder="Enter content"
-                            required><?php echo $news['content'] ?></textarea>
-                    </div>
+                            required><?= $news['content'] ?></textarea>
+                    </div> -->
+
 
                     <!-- <div>
                     <label for="newsPicture">News Picture:</label>
@@ -68,6 +69,13 @@ class EditNewsPage
                     <img id="previewImage" src="<?= ImageUtility::getNewsPicture($news) ?>" alt="Preview"
                         style="width: 100px; height: 100px;">
                 </div> -->
+                </div>
+                <div>
+                    <label for="content">Content:</label>
+                    <div id="summernote" placeholder="Enter content">
+                        <?= $news['content'] ?>
+                    </div>
+                    <input type="hidden" name="content" id="content">
                 </div>
                 <button type="submit" class="btn btn-dark">
                     <i class="fas fa-plus"></i>
