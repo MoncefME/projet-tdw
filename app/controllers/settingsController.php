@@ -10,7 +10,7 @@ class SettingsController
         return $settingsModel->getContactInformations();
     }
 
-    public function updateNews()
+    public function updateContactInformations()
     {
         $settingsModel = new SettingsModel();
 
@@ -36,6 +36,22 @@ class SettingsController
 
         return $settingsModel->getGuideAchat($title, $content, $updated_at);
 
+    }
+    public function addGuideAchat()
+    {
+        $settingsModel = new SettingsModel();
+        $title = FormValidation::validateInput('title');
+        $content = FormValidation::validateInput('content');
+
+        return $settingsModel->addGuideAchat($title, $content);
+    }
+    public function updateGuideAchat()
+    {
+        $settingsModel = new SettingsModel();
+        $title = FormValidation::validateInput('title');
+        $content = FormValidation::validateInput('content');
+
+        return $settingsModel->updateGuideAchat($title, $content);
     }
 
 }

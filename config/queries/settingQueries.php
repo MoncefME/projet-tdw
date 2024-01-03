@@ -12,10 +12,14 @@ class SettingQueries
 
     public static function getGuideAchat()
     {
-        return "SELECT * FROM guideachat";
+        return "SELECT * FROM guidedachat";
     }
     public static function updateGuideAchat()
     {
-        return "UPDATE guideachat SET title = ?, content = ?, updated_at = ? WHERE id = 1";
+        return "UPDATE guidedachat SET title = ?, content = ?, updated_at = ? WHERE id = 1";
+    }
+    public static function addGuideAchat()
+    {
+        return "INSERT INTO guidedachat (title, content, updated_at) VALUES (?, ?, ?)";
     }
 }

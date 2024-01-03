@@ -38,6 +38,19 @@ class SettingsModel
         $dbController->disConnect($database);
         return $guideAchat[0];
     }
+    public function addGuideAchat($title, $content)
+    {
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
+
+        $query = SettingQueries::addGuideAchat();
+        $current_time = date("Y-m-d H:i:s");
+        $params = [$title, $content, $current_time];
+
+        $success = $dbController->request($database, $query, $params);
+        $dbController->disConnect($database);
+        return $success !== false;
+    }
     public function updateGuideAchat($title, $content)
     {
         $dbController = new DatabaseController();
@@ -51,5 +64,6 @@ class SettingsModel
         $dbController->disConnect($database);
         return $success !== false;
     }
+
 
 }
