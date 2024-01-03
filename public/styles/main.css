@@ -150,6 +150,7 @@ p{
     background-color: white;
     border-radius: 10px;
     padding: 20px;
+    border: solid 2px white;  
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
     -webkit-transition: all 0.1s ease-in-out;
     transition: all 0.3s ease-in-out;
@@ -164,13 +165,16 @@ p{
     text-decoration: none;
     color: black;
     letter-spacing: 3px;
+    box-sizing: border-box;
+      
 
 }
 .brand__card:hover{
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+    border: solid 2px var(--primary-color);
     -webkit-transition: all 0.1s ease-in-out;
     transition: all 0.3s ease-in-out;
-    background-color: rgb(225, 225, 225);;
+    /* background-color: rgb(225, 225, 225);; */
 }
 #show-more{
     width: 100%;

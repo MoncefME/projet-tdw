@@ -57,7 +57,6 @@ class SingleNewsPage
                         </p>
                     </div>
                 </div>
-
             </div>
             <div class="news__body">
                 <p>

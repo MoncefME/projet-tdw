@@ -85,13 +85,13 @@ class SingleBrandPage
                     ?>
                     <div class="vehicle__info__card">
                         <p>Model:
-                            <?php echo $vehicule['model']; ?>
+                            <?= $vehicule['model']; ?>
                         </p>
                         <p>Version:
-                            <?php echo $vehicule['version']; ?>
+                            <?= $vehicule['version']; ?>
                         </p>
                         <p>Year:
-                            <?php echo $vehicule['year']; ?>
+                            <?= $vehicule['year']; ?>
                         </p>
                         <img src="<?= ImageUtility::getVehiculePicture($vehicule); ?>"
                             alt="<?php echo $vehicule['vehiculePicture'] ?>" width="100px" height="auto">

@@ -10,7 +10,6 @@ class ContactPage
         <div class="page__content">
             <?php
             $shardViews->showHeader();
-            echo "<h1>Contact Us</h1>";
             $this->showContactInformations();
             $shardViews->showFooter();
             ?>
@@ -41,6 +40,7 @@ class ContactPage
                 </form>
             </div>
             <div class="contact__informations">
+                <h2>Contact Informations</h2>
                 <ul>
                     <li>
                         <i class="fas fa-map-marker-alt"></i>
@@ -61,6 +61,17 @@ class ContactPage
                         <i class="fas fa-globe"></i>
                         <span>Website : </span>
                         <p>www.carlog.com</p>
+                    </li>
+                    <li>
+                        <i class="fab fa-facebook"></i>
+                        <span>Facebook</span>
+                        <p><a href="github.com/MoncefME">Facebook</a></p>
+                    </li>
+                    <li>
+                        <i class="fab fa-twitter"></i>
+                        <span>Twitter</span>
+                        <p><a href="github.com/MoncefME">Twitter</a></p>
+
                     </li>
                 </ul>
             </div>

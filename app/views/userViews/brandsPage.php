@@ -37,16 +37,22 @@ class BrandsPage
                 foreach ($newBrands as $brand) {
                     $this->showBrandCard($brand);
                 } ?>
-                <div id="hiddenBrands" style="display: none;">
-                    <?php
-                    $remainingBrands = array_slice($brands, 8);
-                    foreach ($remainingBrands as $brand) {
-                        $this->showBrandCard($brand);
-                    }
-                    ?>
-                </div>
             </div>
-            <a id="show-more" onclick="toggleHiddenBrands()">Show more</a>
+            <div id="hiddenBrands" style="display: none; padding-top: 0;" class="brand__grid">
+                <?php
+                $remainingBrands = array_slice($brands, 8);
+                foreach ($remainingBrands as $brand) {
+                    $this->showBrandCard($brand);
+                }
+                ?>
+            </div>
+            <?php
+            if (count($brands) > 8) {
+                ?>
+                <a id="show-more" onclick="toggleHiddenBrands()">Show more</a>
+                <?php
+            }
+            ?>
         </div>
         <?php
     }

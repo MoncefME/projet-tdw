@@ -172,17 +172,14 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
 }
 
 .contact__form {
-  width: 70%;
+  width: 100%;
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-  /* background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .3); */
 }
 
 .contact__form form {
@@ -224,14 +221,16 @@
 }
 
 .contact__informations {
-  width: 30%;
+  width: 40%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: start;
   grid-gap: 10px;
+  padding: 20px;
 }
+
 
 .contact__informations ul {
   width: 100%;

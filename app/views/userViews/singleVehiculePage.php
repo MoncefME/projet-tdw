@@ -12,34 +12,19 @@ class SingleVehiculePage
         $this->id = $id;
     }
 
-    // public function showPage()
-    // {
-
-    //     $sharedViews = new SharedViews();
-    //     $sharedViews->showHeader();
-    //     $this->();
-    //     $sharedViews->showFooter();
-    // }
-
     public function showPage()
     {
         $shardViews = new SharedViews();
         ?>
         <div class="page__content">
-            <?php
-            $shardViews->showHeader();
-            ?>
+            <?= $shardViews->showHeader(); ?>
             <div class="vehicule__main__section">
-                <?php
-                $this->showVehiculeInfo();
-                ?>
+                <?= $this->showVehiculeInfo(); ?>
                 <div class="reviews__section">
                     <?= $this->showVehiculeReviews(); ?>
                 </div>
             </div>
-            <?php
-            $shardViews->showFooter();
-            ?>
+            <?= $shardViews->showFooter(); ?>
         </div>
         <?php
     }
@@ -49,14 +34,11 @@ class SingleVehiculePage
         $vehiculeController = new VehiculeController();
         $vehicule = $vehiculeController->getVehiculeById($this->id);
 
-        $brandController = new BrandController();
-        $brand = $brandController->getBrandById($vehicule['brand_id']);
-
         ?>
         <div class="vehicule__information__container">
             <?= $this->showVehiculeLikeButton($vehicule); ?>
             <div>
-                <img src="<?= ImageUtility::getVehiculePicture($vehicule); ?>" alt="<?php echo $vehicule['vehiculePicture'] ?>"
+                <img src="<?= ImageUtility::getVehiculePicture($vehicule); ?>" alt="<?= $vehicule['vehiculePicture'] ?>"
                     width="400" height="auto">
             </div>
             <div>
@@ -73,110 +55,12 @@ class SingleVehiculePage
                         </div>
                     <?php } ?>
                 </div>
-
             </div>
         </div>
         <?php
     }
 
 
-    public function showVehiculeInformations()
-    {
-        $vehiculeController = new VehiculeController();
-        $vehicule = $vehiculeController->getVehiculeById($this->id);
-
-        $brandController = new BrandController();
-        $brand = $brandController->getBrandById($vehicule['brand_id']);
-
-        ?>
-        <table class="table vehicule-info-table">
-            <tbody>
-                <tr>
-                    <td>Model:</td>
-                    <td>
-                        <?php echo $vehicule['model']; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Brand</td>
-                    <td><img src="/CarLog/public/uploads/brands/<?php echo $brand['brandPicture'] ?>"
-                            alt="<?php echo $brand['brandPicture'] ?>" width="50px" height="50px"></td>
-                </tr>
-                <tr>
-                    <td>Version:</td>
-                    <td>
-                        <?php echo $vehicule['version']; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Year:</td>
-                    <td>
-                        <?php echo $vehicule['year']; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Vehicle Picture:</td>
-                    <td><img src="/CarLog/public/uploads/vehicules/<?php echo $vehicule['vehiculePicture'] ?>"
-                            alt="<?php echo $vehicule['vehiculePicture'] ?>" width="50px" height="50px"></td>
-                </tr>
-                <tr>
-                    <td>Length:</td>
-                    <td>
-                        <?php echo $vehicule['length']; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Width:</td>
-                    <td>
-                        <?php echo $vehicule['width']; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Height:</td>
-                    <td>
-                        <?php echo $vehicule['height']; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Wheel Base:</td>
-                    <td>
-                        <?php echo $vehicule['wheelBase']; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Engine:</td>
-                    <td>
-                        <?php echo $vehicule['engine']; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Performance:</td>
-                    <td>
-                        <?php echo $vehicule['performance']; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Price:</td>
-                    <td>
-                        <?php echo $vehicule['price']; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Consumption:</td>
-                    <td>
-                        <?php echo $vehicule['consumption']; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Note:</td>
-                    <td>
-                        <?php echo $vehicule['note']; ?>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <?php
-    }
 
     public function showVehiculeReviews()
     {
@@ -202,7 +86,7 @@ class SingleVehiculePage
                         <tr>
                             <td>
                                 <img src="<?= ImageUtility::getUserProfilePicture($user) ?>" alt="user profile picture" width="50px"
-                                    height="50px">
+                                    height="50px" style="border-radius:100%;">
                             </td>
                             <td>
                                 <?php echo $review['comment']; ?>
@@ -259,7 +143,7 @@ class SingleVehiculePage
                     <?= ReviewsPage::showReviews(); ?>
                     <div>
                         <button type="submit" class="btn btn-info">Add Review</button>
-                        <?php $this->showReviewMessage(); ?>
+                        <?= $this->showReviewMessage(); ?>
                     </div>
                 </div>
             </form>
