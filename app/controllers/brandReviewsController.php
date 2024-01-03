@@ -68,4 +68,9 @@ class BrandReviewsController
         $brandReviewModel = new BrandReviewsModel();
         return $brandReviewModel->rejectBrandReview($brandReviewId);
     }
+    public function getNumberOfPendingBrandReviews()
+    {
+        $brandReviewModel = new BrandReviewsModel();
+        return $brandReviewModel->getNumberOfPendingBrandReviews();
+    }
 }

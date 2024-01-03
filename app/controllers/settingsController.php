@@ -3,7 +3,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/app/models/settingsModel.php')
 require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/config/utils/formValidation.php');
 class SettingsController
 {
-
     public function getContactInformations()
     {
         $settingsModel = new SettingsModel();
@@ -29,12 +28,7 @@ class SettingsController
     public function getGuideAchat()
     {
         $settingsModel = new SettingsModel();
-        $title = FormValidation::validateInput('title');
-        $content = FormValidation::validateInput('content');
-        // $created_at = FormValidation::validateInput('created_at');
-        $updated_at = FormValidation::validateInput('updated_at');
-
-        return $settingsModel->getGuideAchat($title, $content, $updated_at);
+        return $settingsModel->getGuideAchat();
 
     }
     public function addGuideAchat()
@@ -53,5 +47,4 @@ class SettingsController
 
         return $settingsModel->updateGuideAchat($title, $content);
     }
-
 }

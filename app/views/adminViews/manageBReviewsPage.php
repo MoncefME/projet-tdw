@@ -30,8 +30,7 @@ class ManageBReviewsPage
         $brandConroller = new BrandController();
         ?>
         <div class="brand__reviews__table">
-            <div id="loader">Loading...</div>
-            <table class="table table-hover" id="brandReviewTable" style="display: none;">
+            <table class="table table-hover" id="brandReviewTable">
                 <thead>
                     <tr>
                         <th>User </th>

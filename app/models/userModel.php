@@ -219,6 +219,17 @@ class UserModel
         $dbController->disConnect($database);
         return $result[0]['NB'] > 0;
     }
+    public function getNumberOfPendingUsers()
+    {
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
+
+        $query = UserQueries::getNumberOfPendingUsers();
+        $result = $dbController->request($database, $query);
+
+        $dbController->disConnect($database);
+        return $result[0]['NB'];
+    }
 
 }
 

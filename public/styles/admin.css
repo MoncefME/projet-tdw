@@ -74,6 +74,7 @@
     color: var(--white-color);
 }
 .dashboard__link__card a{
+    position : relative;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -96,6 +97,11 @@
     filter : invert(1);
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
+}
+.notification__count{
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 

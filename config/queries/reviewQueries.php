@@ -46,6 +46,10 @@ class ReviewQueries
     {
         return "UPDATE brandreviews SET status = 'REJECTED' WHERE id = ?";
     }
+    public static function getNumberOfPendingBrandReviews()
+    {
+        return "SELECT COUNT(*) AS NB FROM brandreviews WHERE status = 'PENDING'";
+    }
 
     /** Vehicule Reviews Queries */
     public static function getVehiculeReviewById()
@@ -90,5 +94,9 @@ class ReviewQueries
     public static function rejectVehiculeReview()
     {
         return "UPDATE vehiculereviews SET status = 'REJECTED' WHERE id = ?";
+    }
+    public static function getNumberOfPendingVehiculeReviews()
+    {
+        return "SELECT COUNT(*) AS NB FROM vehiculereviews WHERE status = 'PENDING'";
     }
 }

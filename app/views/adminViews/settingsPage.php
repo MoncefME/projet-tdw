@@ -114,11 +114,12 @@ class SettingsPage
                     </p>
                 </div>
                 <div>
-                    <label for="content">Content:</label>
-                    <div id="summernote" placeholder="Enter content">
-                        <?php echo $guidAchat['content']; ?>
-                    </div>
-                    <input type="hidden" name="content" id="content">
+                    <label>Title</label>
+                    <input type="text" name="title" value="<?php echo $guidAchat['title']; ?>">
+                </div>
+                <div>
+                    <label>Conten</label>
+                    <textarea name="content" cols="30" rows="10"><?php echo $guidAchat['content']; ?></textarea>
                 </div>
                 <button class="btn btn-danger" type="submit" name="update_guid_achat">Update</button>
             </form>

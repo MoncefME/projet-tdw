@@ -1,5 +1,6 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/controllers/vehiculeController.php");
+
 $vehiculeController = new VehiculeController();
 
 $vehicule1Id = $_POST['vehicule1Id'] ?? null;
@@ -27,8 +28,7 @@ if (count($vehicles) == 0 || count($vehicles) == 1) {
         echo json_encode(['error' => 'You must select unique vehicles']);
         return;
     } else {
-        // $responce = array_filter([$vehicule1, $vehicule2, $vehicule3, $vehicule4]);
-        // echo json_encode($responce);
+
         echo json_encode([$vehicule1, $vehicule2, $vehicule3, $vehicule4]);
         return;
     }
