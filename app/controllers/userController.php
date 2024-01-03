@@ -15,9 +15,9 @@ class UserController
         $userModel = new UserModel();
 
         $password = FormValidation::validateInput('password');
-        $email = FormValidation::validateInput('email');
+        $username = FormValidation::validateInput('username');
 
-        $response = $userModel->loginUser($email, $password);
+        $response = $userModel->loginUser($username, $password);
 
         session_start();
         if ($response['status'] === 200) {
@@ -42,7 +42,7 @@ class UserController
         $userModel = new UserModel();
 
         $password = isset($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : '';
-        $email = FormValidation::validateInput('email');
+        $username = FormValidation::validateInput('username');
         $firstName = FormValidation::validateInput('firstName');
         $lastName = FormValidation::validateInput('lastName');
         $role = isset($_POST['role']) ? $_POST['role'] : 'USER';
@@ -56,7 +56,7 @@ class UserController
         if (!$uploadedFileName) {
             $uploadedFileName = 'default.png';
         }
-        $response = $userModel->addUser($password, $email, $firstName, $lastName, $role, $birthDate, $sex, $status, $uploadedFileName);
+        $response = $userModel->addUser($password, $username, $firstName, $lastName, $role, $birthDate, $sex, $status, $uploadedFileName);
 
         session_start();
         if ($response['status'] == 200) {
@@ -79,7 +79,7 @@ class UserController
         $userModel = new UserModel();
 
         //$password = isset($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : null;
-        $email = FormValidation::validateInput('email');
+        $username = FormValidation::validateInput('username');
         $firstName = FormValidation::validateInput('firstName');
         $lastName = FormValidation::validateInput('lastName');
         $birthDate = FormValidation::validateInput('birthDate');
@@ -92,7 +92,7 @@ class UserController
             $uploadedFileName = FormValidation::validateInput('currentPicture');
         }
 
-        return $userModel->updateUserInfo($userId, $email, $firstName, $lastName, $birthDate, $uploadedFileName);
+        return $userModel->updateUserInfo($userId, $username, $firstName, $lastName, $birthDate, $uploadedFileName);
     }
 
     public function validateUser($userId)

@@ -48,7 +48,9 @@ p{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 10px;
     background-color: var(--secondary-color);
+    padding-bottom: 20px;
 }
 .page__footer__links{
     width: 100%;
@@ -69,6 +71,16 @@ p{
 }
 .page__footer__links ul li a{
     color: white;
+    text-decoration: none;
+    border-bottom: 2px dashed white;
+    -webkit-transition: all 0.1s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.page__footer__links ul li a:hover{
+    color: black;
+    border-bottom: 2px dashed black;
+    -webkit-transition: all 0.1s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 .page__footer p{
     text-align: center;
@@ -106,13 +118,15 @@ p{
     font-size: large;
     color: white;
     text-decoration: none;
-    font-weight: normal;
+    font-weight: bold;
+    border-bottom: 2px dashed white;
     -webkit-transition: all 0.1s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
 .homepage__navbar ul li a:hover{
-    font-weight: bold;
+    
     color: black;
+    border-bottom: 2px dashed rgb(0, 0, 0);
     -webkit-transition: all 0.1s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
@@ -170,7 +184,7 @@ p{
 
 }
 .brand__card:hover{
-    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px 0 var(--primary-color);
     border: solid 2px var(--primary-color);
     -webkit-transition: all 0.1s ease-in-out;
     transition: all 0.3s ease-in-out;
@@ -194,7 +208,7 @@ p{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(199, 199, 199);
+    background-color: var(--tertiary-color);
     padding: 20px;
 }
 .homepage__comparator button{
@@ -205,7 +219,6 @@ p{
     height: 100%;
     display: flex;
     justify-content: start;
-    align-items: center;
     margin-top: 20px;
 }
 .comparator__container ~ button{

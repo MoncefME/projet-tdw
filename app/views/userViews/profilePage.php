@@ -35,8 +35,8 @@ class ProfilePage
             <form class="edit-user-infos__form" action="<?= ApiRouter::EDIT_USER_INFOS ?>" method="POST"
                 enctype="multipart/form-data">
                 <div>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" value="<?= $user['email']; ?>"><br>
+                    <label for="username">username:</label>
+                    <input type="text" id="username" name="username" value="<?= $user['username']; ?>"><br>
                 </div>
                 <div class="user__badges">
                     <div>
@@ -102,7 +102,7 @@ class ProfilePage
         $userFavoriteVehicules = $userController->getUserFavoriteVehicules($_SESSION['USER']['id']);
         if (count($userFavoriteVehicules) == 0) {
             ?>
-            <h1>No Favorite Vehicles</h1>
+            <p>No Favorite Vehicles</p>
             <?php
             return;
         } else {

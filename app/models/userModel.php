@@ -15,19 +15,19 @@ class UserModel
         $dbController->disConnect($database);
         return $user[0];
     }
-    public function loginUser($email, $password)
+    public function loginUser($username, $password)
     {
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
         $query = UserQueries::loginUser();
-        $params = [$email];
+        $params = [$username];
 
-        $userMatchingEmail = $dbController->request($database, $query, $params);
+        $userMatchingusername = $dbController->request($database, $query, $params);
         $dbController->disConnect($database);
 
-        if ($userMatchingEmail !== false && count($userMatchingEmail) > 0) {
-            $user = $userMatchingEmail[0];
+        if ($userMatchingusername !== false && count($userMatchingusername) > 0) {
+            $user = $userMatchingusername[0];
 
             switch ($user['status']) {
                 case 'VALID':
@@ -84,13 +84,13 @@ class UserModel
         $dbController->disConnect($database);
         return $users;
     }
-    public function addUser($password, $email, $firstName, $lastName, $role, $birthDate, $sex, $status, $profilPicture)
+    public function addUser($password, $username, $firstName, $lastName, $role, $birthDate, $sex, $status, $profilPicture)
     {
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
         $query = UserQueries::addUser();
-        $params = [$password, $email, $firstName, $lastName, $role, $birthDate, $sex, $status, $profilPicture];
+        $params = [$password, $username, $firstName, $lastName, $role, $birthDate, $sex, $status, $profilPicture];
         $success = $dbController->request($database, $query, $params);
 
         if ($success !== false) {
@@ -120,13 +120,13 @@ class UserModel
         $dbController->disConnect($database);
         return $success !== false;
     }
-    public function updateUserInfo($userId, $email, $firstName, $lastName, $birthDate, $profilePicture)
+    public function updateUserInfo($userId, $username, $firstName, $lastName, $birthDate, $profilePicture)
     {
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
         $query = UserQueries::updateUserInfo();
-        $params = [$email, $firstName, $lastName, $birthDate, $profilePicture, $userId];
+        $params = [$username, $firstName, $lastName, $birthDate, $profilePicture, $userId];
         $success = $dbController->request($database, $query, $params);
 
         $dbController->disConnect($database);

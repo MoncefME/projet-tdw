@@ -2,10 +2,17 @@
 
 class DatabaseModel
 {
+
+    private $DB_HOST = 'localhost';
+    private $DB_USER = 'root';
+    private $DB_PASS = '';
+    private $DB_NAME = 'carlog';
+    private $DB_PORT = '3006';
+
     public function connect()
     {
         try {
-            $database = new PDO("mysql:host=localhost;port=3006;dbname=carlog2;charset=utf8", "root", "");
+            $database = new PDO("mysql:host=" . $this->DB_HOST . ";port=" . $this->DB_PORT . ";dbname=" . $this->DB_NAME . ";charset=utf8", $this->DB_USER, $this->DB_PASS);
             return $database;
         } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();

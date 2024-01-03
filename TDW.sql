@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3006
--- Generation Time: Dec 28, 2023 at 08:15 PM
+-- Generation Time: Jan 03, 2024 at 08:55 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,56 +41,7 @@ CREATE TABLE `brandreviews` (
 --
 
 INSERT INTO `brandreviews` (`id`, `user_id`, `brand_id`, `status`, `comment`, `rating`) VALUES
-(1, 33, 22, 'VALID', 'Great brand!', 4.5),
-(2, 34, 22, 'PENDING', 'Interesting products', 3.2),
-(3, 35, 22, 'REJECTED', 'Not satisfied with the service', 2.1),
-(4, 36, 22, 'VALID', 'Top-notch quality', 4.8),
-(5, 37, 22, 'PENDING', 'Average experience', 3.5),
-(6, 38, 23, 'VALID', 'Love their products', 4.2),
-(7, 39, 23, 'PENDING', 'Would like to see more variety', 3),
-(8, 40, 23, 'REJECTED', 'Not impressed', 2.5),
-(9, 41, 23, 'VALID', 'Excellent customer service', 4.7),
-(10, 42, 23, 'PENDING', 'Mixed feelings', 3),
-(11, 33, 24, 'VALID', 'Positive experience', 4),
-(12, 34, 24, 'PENDING', 'Waiting for improvements', 3.3),
-(13, 35, 24, 'REJECTED', 'Unsatisfactory service', 1.9),
-(14, 36, 24, 'VALID', 'Impressed with the brand', 4.6),
-(15, 37, 24, 'PENDING', 'Average quality', 3.2),
-(16, 33, 25, 'VALID', 'Highly recommend their products', 4.4),
-(17, 34, 25, 'PENDING', 'Good value for money', 3.7),
-(18, 35, 25, 'REJECTED', 'Poor customer service', 2),
-(19, 36, 25, 'VALID', 'Great overall experience', 4.9),
-(20, 37, 25, 'PENDING', 'Could be better', 3.4),
-(21, 38, 26, 'VALID', 'Very satisfied with the brand', 4.6),
-(22, 39, 26, 'PENDING', 'Expecting more features', 3.5),
-(23, 40, 26, 'REJECTED', 'Quality issues', 1.8),
-(24, 41, 26, 'VALID', 'Top-notch products', 4.8),
-(25, 42, 26, 'PENDING', 'Average performance', 3.3),
-(26, 33, 27, 'VALID', 'Excellent service and support', 4.7),
-(27, 34, 27, 'PENDING', 'Hoping for improvements', 3.2),
-(28, 35, 27, 'REJECTED', 'Unreliable products', 1.5),
-(29, 36, 27, 'VALID', 'Impressed with the variety', 4.5),
-(30, 37, 27, 'PENDING', 'Average quality', 3),
-(31, 38, 28, 'VALID', 'Great brand to associate with', 4.5),
-(32, 39, 28, 'PENDING', 'Looking for more options', 3.1),
-(33, 40, 28, 'REJECTED', 'Unsatisfactory experience', 2.2),
-(34, 41, 28, 'VALID', 'Quality products', 4.7),
-(35, 42, 28, 'PENDING', 'Mixed feelings', 3),
-(36, 33, 29, 'VALID', 'Positive vibes with the brand', 4.3),
-(37, 34, 29, 'PENDING', 'Waiting for improvements', 3.2),
-(38, 35, 29, 'REJECTED', 'Unsatisfactory service', 1.9),
-(39, 36, 29, 'VALID', 'Impressed with the brand', 4.6),
-(40, 37, 29, 'PENDING', 'Average quality', 3.2),
-(41, 38, 30, 'VALID', 'Great brand to associate with', 4.5),
-(42, 39, 30, 'PENDING', 'Looking for more options', 3.1),
-(43, 40, 30, 'REJECTED', 'Unsatisfactory experience', 2.2),
-(44, 41, 30, 'VALID', 'Quality products', 4.7),
-(45, 42, 30, 'PENDING', 'Mixed feelings', 3),
-(46, 42, 31, 'VALID', 'Impressive innovation', 4.9),
-(47, 41, 31, 'PENDING', 'Waiting for new releases', 3.8),
-(48, 40, 31, 'REJECTED', 'Disappointed with recent changes', 2.3),
-(49, 39, 31, 'VALID', 'Satisfied with the brand', 4.5),
-(50, 38, 31, 'PENDING', 'Looking forward to future products', 3.6);
+(58, 40, 35, 'PENDING', 'This brand is very cool', 4);
 
 -- --------------------------------------------------------
 
@@ -112,16 +63,36 @@ CREATE TABLE `brands` (
 --
 
 INSERT INTO `brands` (`id`, `name`, `originCountry`, `headquarter`, `year`, `brandPicture`) VALUES
-(22, 'Brand1', 'Country1', 'HQ1', 2001, '9ff.png'),
-(23, 'Brand2', 'Country2', 'HQ2', 2002, 'abadal.png'),
-(24, 'Brand3', 'Country3', 'HQ3', 2003, 'abarth.png'),
-(25, 'Brand4', 'Country4', 'HQ4', 2004, 'abbott-detroit.png'),
-(26, 'Brand5', 'Country5', 'HQ5', 2005, 'ac.png'),
-(27, 'Brand6', 'Country6', 'HQ6', 2006, 'aspark.png'),
-(28, 'Brand7', 'Country7', 'HQ7', 2007, 'apollo.png'),
-(29, 'Brand8', 'Country8', 'HQ8', 2008, 'bestune.png'),
-(30, 'Brand9', 'Country9', 'HQ9', 2009, 'bugatti.png'),
-(31, 'Brand10', 'Country10', 'HQ10', 2010, 'caparo.png');
+(35, 'Toyota', 'Japan', 'Toyota City', 1937, 'toyota.png'),
+(36, 'Ford', 'USA', 'Dearborn', 1903, 'ford.png'),
+(37, 'Honda', 'Japan', 'Tokyo City', 1948, 'honda.png'),
+(38, 'Chevrolet', 'USA', 'Detroit', 1911, 'chevrolet.jpg'),
+(39, 'Volkswagen', 'Germany', 'Wolfsburg', 1927, 'volkswagen.jpg'),
+(40, 'Nissan', 'Japan', 'Yokohama', 1933, 'nissan.png'),
+(41, 'Hyundai', 'South Korea', 'Seoul', 1967, 'hyundai.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comparisons`
+--
+
+CREATE TABLE `comparisons` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `vehicule_1_id` int(11) DEFAULT NULL,
+  `vehicule_2_id` int(11) DEFAULT NULL,
+  `vehicule_3_id` int(11) DEFAULT NULL,
+  `vehicule_4_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `comparisons`
+--
+
+INSERT INTO `comparisons` (`id`, `user_id`, `vehicule_1_id`, `vehicule_2_id`, `vehicule_3_id`, `vehicule_4_id`) VALUES
+(32, 1, NULL, NULL, 26, 28),
+(33, 1, NULL, NULL, 26, 28);
 
 -- --------------------------------------------------------
 
@@ -146,15 +117,10 @@ CREATE TABLE `news` (
 --
 
 INSERT INTO `news` (`id`, `title`, `content`, `link`, `created_at`, `updated_at`, `tags`, `views_count`, `likes_count`) VALUES
-(11, 'Electric Revolution: Tesla Unveils New Model with Mind-Blowing Range', 'Tesla, the pioneer in electric vehicles, has just revealed its latest model that boasts an unprecedented range of over 500 miles on a single charge. This breakthrough sets a new standard for the electric car industry.', 'https://www.google.com/', '2023-12-27 22:57:16', '2023-12-28 14:18:19', 'electric vehicles, Tesla, innovation, sustainable transportation', 100, 50),
-(12, 'Title2', 'Content2', 'link2', '2023-12-27 22:57:16', '2023-12-27 23:16:38', 'tag3,tag4', 120, 70),
-(13, 'Title3', 'Content3', 'link3', '2023-12-27 22:57:16', '2023-12-27 22:57:16', 'tag5,tag6', 80, 40),
-(14, 'Title4', 'Content4', 'link4', '2023-12-27 22:57:16', '2023-12-27 22:57:16', 'tag7,tag8', 150, 90),
-(15, 'Title5', 'Content5', 'link5', '2023-12-27 22:57:16', '2023-12-27 22:57:16', 'tag9,tag10', 200, 120),
-(16, 'Title6', 'Content6', 'link6', '2023-12-27 22:57:16', '2023-12-27 22:57:16', 'tag11,tag12', 90, 30),
-(17, 'Title7', 'Content7', 'link7', '2023-12-27 22:57:16', '2023-12-27 22:57:16', 'tag13,tag14', 110, 60),
-(18, 'Title8', 'Content8', 'link8', '2023-12-27 22:57:16', '2023-12-27 22:57:16', 'tag15,tag16', 130, 80),
-(19, 'Title9', 'Content9', 'link9', '2023-12-27 22:57:16', '2023-12-27 22:57:16', 'tag17,tag18', 70, 20);
+(24, 'Breaking News: Major Discovery in Space Exploration', '<p>The scientific community is abuzz with excitement as astronomers have made a groundbreaking discovery in our universe. In a press conference held earlier today, researchers announced the identification of a new celestial phenomenon that challenges our current understanding of astrophysics.</p>\r\n<p>This unexpected finding opens up new possibilities for space exploration and has the potential to reshape our understanding of the cosmos. Scientists are now working tirelessly to analyze the data collected from various observatories around the world.</p>\r\n<ul>\r\n  <li><strong>Key Discoveries:</strong> Multiple exoplanets in the habitable zone, Unusual gamma-ray bursts</li>\r\n  <li><strong>Researchers:</strong> Dr. Emily Johnson, Dr. Michael Rodriguez, and the international team of astronomers</li>\r\n</ul>\r\n<p>Stay tuned for more updates on this extraordinary discovery as scientists delve deeper into the mysteries of the universe.</p>', 'test', '2024-01-01 22:49:46', '2024-01-01 22:49:46', 'test ,  news , car , good ', 0, 0),
+(25, 'Feature Article with Stylish Formatting', '<h1 style=\"font-size: 36px; text-align: start; color: #3498db;\">Tech Innovations Shaping the Future</h1>\r\n\r\n<p>In a world driven by technological advancements, innovation continues to redefine the way we live and work. From artificial intelligence to renewable energy, the following features highlight some of the remarkable tech trends shaping our future:</p>\r\n\r\n<ol>\r\n\r\n  <li><strong>The Rise of AI:</strong> Exploring the impact of artificial intelligence on industries and everyday life.</li>\r\n\r\n  <li><strong>Sustainable Tech:</strong> Innovations in green technology and their role in combating climate change.</li>\r\n\r\n  <li><strong>Immersive Experiences:</strong> Virtual reality and augmented reality transforming entertainment and education.</li>\r\n\r\n</ol>\r\n\r\n<p>Join us on a journey through the cutting-edge developments that promise to revolutionize our world.</p>\r\n\r\n', 'https://ckeditor.com/', '2024-01-01 22:58:33', '2024-01-01 23:12:55', 'new , amazing , nice , good , google', 0, 0),
+(26, 'test', '<p>asdfasdf</p><p>asdf</p><p>asdf</p><p>asd</p><p>fadfad</p><p>fad</p><p>fa</p><p>df</p><p>adsf</p><p>adf</p>', 'test', '2024-01-01 23:25:15', '2024-01-01 23:25:15', 'test', 0, 0),
+(27, 'asdfasdfasdf', '<h1>this is a big text</h1><p>nice one mojio jo jo</p><p><span style=\"background-color: rgb(255, 255, 0);\">hello this is&nbsp;</span></p><p><span style=\"background-color: rgb(255, 255, 0);\">what about having&nbsp;</span>&nbsp;asdf adf</p><p><br></p><ol><li><ol><li>this is amazing</li></ol></li></ol><p><ol></ol></p><p style=\"text-align: center; \">what about his&nbsp;</p><p style=\"text-align: center; \">this is amazing&nbsp;</p>', 'asdfasdfasdf', '2024-01-01 23:28:20', '2024-01-01 23:28:20', 'asdf,a,a,,a,a,a,a,a,a', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -166,6 +132,17 @@ CREATE TABLE `newsimages` (
   `id` int(11) NOT NULL,
   `news_id` int(11) DEFAULT NULL,
   `image_url` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sliderimages`
+--
+
+CREATE TABLE `sliderimages` (
+  `id` int(11) NOT NULL,
+  `src` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -184,11 +161,8 @@ CREATE TABLE `userfavoritevehicules` (
 --
 
 INSERT INTO `userfavoritevehicules` (`user_id`, `vehicule_id`) VALUES
-(1, 13),
-(1, 15),
-(1, 16),
-(1, 17),
-(1, 18);
+(1, 26),
+(40, 26);
 
 -- --------------------------------------------------------
 
@@ -199,7 +173,7 @@ INSERT INTO `userfavoritevehicules` (`user_id`, `vehicule_id`) VALUES
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
+  `username` varchar(255) NOT NULL,
   `firstName` varchar(255) DEFAULT NULL,
   `lastName` varchar(255) DEFAULT NULL,
   `role` enum('USER','ADMIN') DEFAULT NULL,
@@ -213,18 +187,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `password`, `email`, `firstName`, `lastName`, `role`, `birthDate`, `sex`, `status`, `profilePicture`) VALUES
-(1, '$2y$10$cbaohRdiLFMtfiQ5us0gdesjNNRadKc3JOSibIKU5TY9mZrXU2wMq', 'admin@admin', 'admin', 'admin', 'ADMIN', '2023-12-11', 'MALE', 'VALID', 'admin.png'),
-(33, '$2y$10$3hX6fz28TmsaPf75PZfRweRRolr6sOFftHgCvpilH/APLEiwnUkmC', 'user1@example.com', 'User1', 'Last1', 'USER', '1990-01-01', 'MALE', 'VALID', 'user1.jpg'),
-(34, '$2y$10$3hX6fz28TmsaPf75PZfRweRRolr6sOFftHgCvpilH/APLEiwnUkmC', 'user2@example.com', 'User2', 'Last2', 'USER', '1991-02-02', 'FEMALE', 'VALID', 'user2.jpg'),
-(35, '$2y$10$3hX6fz28TmsaPf75PZfRweRRolr6sOFftHgCvpilH/APLEiwnUkmC', 'user3@example.com', 'User3', 'Last3', 'ADMIN', '1992-03-03', 'MALE', 'VALID', 'user3.jpg'),
-(36, '$2y$10$3hX6fz28TmsaPf75PZfRweRRolr6sOFftHgCvpilH/APLEiwnUkmC', 'user4@example.com', 'User4', 'Last4', 'USER', '1993-04-04', 'FEMALE', 'PENDING', 'user4.jpg'),
-(37, '$2y$10$3hX6fz28TmsaPf75PZfRweRRolr6sOFftHgCvpilH/APLEiwnUkmC', 'user5@example.com', 'User5', 'Last5', 'USER', '1994-05-05', 'MALE', 'VALID', 'user5.jpg'),
-(38, '$2y$10$3hX6fz28TmsaPf75PZfRweRRolr6sOFftHgCvpilH/APLEiwnUkmC', 'user6@example.com', 'User6', 'Last6', 'ADMIN', '1995-06-06', 'FEMALE', 'VALID', 'user6.jpg'),
-(39, '$2y$10$3hX6fz28TmsaPf75PZfRweRRolr6sOFftHgCvpilH/APLEiwnUkmC', 'user7@example.com', 'User7', 'Last7', 'USER', '1996-07-07', 'MALE', 'PENDING', 'user7.jpg'),
-(40, '$2y$10$3hX6fz28TmsaPf75PZfRweRRolr6sOFftHgCvpilH/APLEiwnUkmC', 'user8@example.com', 'User8', 'Last8', 'USER', '1997-08-08', 'FEMALE', 'REJECTED', 'user8.jpg'),
-(41, '$2y$10$3hX6fz28TmsaPf75PZfRweRRolr6sOFftHgCvpilH/APLEiwnUkmC', 'user9@example.com', 'User9', 'Last9', 'ADMIN', '1998-09-09', 'MALE', 'VALID', 'user9.jpg'),
-(42, '$2y$10$3hX6fz28TmsaPf75PZfRweRRolr6sOFftHgCvpilH/APLEiwnUkmC', 'user10@example.com', 'User10', 'Last10', 'USER', '1999-10-10', 'FEMALE', 'PENDING', 'user10.jpg');
+INSERT INTO `users` (`id`, `password`, `username`, `firstName`, `lastName`, `role`, `birthDate`, `sex`, `status`, `profilePicture`) VALUES
+(1, '$2y$10$WQoAVvXzVvvZEAz5iv6nKOZyHKL.Aaa.YUrbOrHpOR1e0XebMGcK2', 'admin', 'admin', 'admin', 'ADMIN', '2023-12-11', 'MALE', 'VALID', 'Moncef.jpeg'),
+(35, '$2y$10$3hX6fz28TmsaPf75PZfRweRRolr6sOFftHgCvpilH/APLEiwnUkmC', 'user1', 'Moncefon', 'Moussaoui', 'ADMIN', '2002-07-29', 'MALE', 'VALID', 'Flag_of_Palestine.png'),
+(40, '$2y$10$MEKiGD0diu2fONc89ZAc3u/xG8//iu1gasCYpDyGg1HFf0zwvMnMG', 'user2', 'User8', 'Last8', 'USER', '1997-08-08', 'FEMALE', 'VALID', 'logo-mta.jpg');
 
 -- --------------------------------------------------------
 
@@ -246,57 +212,7 @@ CREATE TABLE `vehiculereviews` (
 --
 
 INSERT INTO `vehiculereviews` (`id`, `user_id`, `vehicule_id`, `status`, `comment`, `rating`) VALUES
-(12, 33, 12, 'VALID', 'Excellent performance', 4.5),
-(13, 34, 12, 'PENDING', 'Waiting for upgrades', 3.2),
-(14, 35, 12, 'REJECTED', 'Issues with fuel consumption', 2.1),
-(15, 36, 12, 'VALID', 'Smooth ride', 4.8),
-(16, 37, 12, 'PENDING', 'Average experience', 3.5),
-(17, 38, 13, 'VALID', 'Impressive features', 4.2),
-(18, 39, 13, 'PENDING', 'Expecting more variety', 3),
-(19, 40, 13, 'REJECTED', 'Not impressed with the design', 2.5),
-(20, 41, 13, 'VALID', 'Excellent fuel efficiency', 4.7),
-(21, 42, 13, 'PENDING', 'Mixed feelings about performance', 3),
-(22, 33, 14, 'VALID', 'Smooth ride and handling', 4.4),
-(23, 34, 14, 'PENDING', 'Good value for money', 3.7),
-(24, 35, 14, 'REJECTED', 'Issues with maintenance', 2),
-(25, 36, 14, 'VALID', 'Great overall experience', 4.9),
-(26, 37, 14, 'PENDING', 'Could be better', 3.4),
-(27, 38, 15, 'VALID', 'Very satisfied with the vehicle', 4.6),
-(28, 39, 15, 'PENDING', 'Expecting more features', 3.5),
-(29, 40, 15, 'REJECTED', 'Quality issues with components', 1.8),
-(30, 41, 15, 'VALID', 'Top-notch performance', 4.8),
-(31, 42, 15, 'PENDING', 'Average fuel efficiency', 3.3),
-(32, 33, 16, 'VALID', 'Excellent safety features', 4.7),
-(33, 34, 16, 'PENDING', 'Hoping for improvements', 3.2),
-(34, 35, 16, 'REJECTED', 'Unreliable components', 1.5),
-(35, 36, 16, 'VALID', 'Impressed with the design', 4.5),
-(36, 37, 16, 'PENDING', 'Average comfort level', 3),
-(37, 38, 17, 'VALID', 'Great for family trips', 4.5),
-(38, 39, 17, 'PENDING', 'Looking for more options', 3.1),
-(39, 40, 17, 'REJECTED', 'Unsatisfactory experience with features', 2.2),
-(40, 41, 17, 'VALID', 'Quality build', 4.7),
-(41, 42, 17, 'PENDING', 'Mixed feelings about the performance', 3),
-(42, 33, 18, 'VALID', 'Positive experience with maintenance', 4.3),
-(43, 34, 18, 'PENDING', 'Waiting for improvements', 3.2),
-(44, 35, 18, 'REJECTED', 'Unsatisfactory service', 1.9),
-(45, 36, 18, 'VALID', 'Impressed with the features', 4.6),
-(46, 37, 18, 'PENDING', 'Average quality', 3.2),
-(47, 38, 19, 'VALID', 'Great for city driving', 4.5),
-(48, 39, 19, 'PENDING', 'Looking for more options', 3.1),
-(49, 40, 19, 'REJECTED', 'Unsatisfactory experience', 2.2),
-(50, 41, 19, 'VALID', 'Quality components', 4.7),
-(51, 42, 19, 'PENDING', 'Mixed feelings', 3),
-(52, 33, 20, 'VALID', 'Positive vibes with the vehicle', 4.3),
-(53, 34, 20, 'PENDING', 'Waiting for improvements', 3.2),
-(54, 35, 20, 'REJECTED', 'Unsatisfactory service', 1.9),
-(55, 36, 20, 'VALID', 'Impressed with the vehicle', 4.6),
-(56, 37, 20, 'PENDING', 'Average quality', 3.2),
-(57, 42, 21, 'VALID', 'Highly recommend this vehicle', 4.9),
-(58, 41, 21, 'PENDING', 'Waiting for new models', 3.8),
-(59, 40, 21, 'REJECTED', 'Disappointed with recent changes', 2.3),
-(60, 39, 21, 'REJECTED', 'Satisfied with the overall experience', 4.5),
-(61, 38, 21, 'PENDING', 'Looking forward to future upgrades', 3.6),
-(63, 33, 13, 'REJECTED', 'this is a test', 2);
+(68, 1, 26, 'VALID', 'This car is amazing ', 4);
 
 -- --------------------------------------------------------
 
@@ -327,16 +243,9 @@ CREATE TABLE `vehicules` (
 --
 
 INSERT INTO `vehicules` (`id`, `model`, `version`, `year`, `vehiculePicture`, `length`, `width`, `height`, `wheelBase`, `engine`, `performance`, `price`, `consumption`, `brand_id`, `note`) VALUES
-(12, 'Model1', 'Version1', 2001, 'zenos.png', 4.50, 2.00, 1.80, 2.70, 'Engine1', 'Performance1', 30000.00, 8.50, 22, 'Note1'),
-(13, 'Model2', 'Version2', 2002, 'kaiser.png', 4.70, 2.20, 1.90, 2.80, 'Engine2', 'Performance2', 35000.00, 9.00, 23, 'Note2'),
-(14, 'Model3', 'Version3', 2003, 'cisitalia.png', 4.90, 2.40, 2.00, 3.00, 'Engine3', 'Performance3', 40000.00, 9.50, 24, 'Note3'),
-(15, 'Model4', 'Version4', 2004, 'elfin.png', 5.10, 2.60, 2.10, 3.20, 'Engine4', 'Performance4', 45000.00, 10.00, 25, 'Note4'),
-(16, 'Model5', 'Version5', 2005, 'diatto.png', 5.30, 2.80, 2.20, 3.40, 'Engine5', 'Performance5', 50000.00, 10.50, 26, 'Note5'),
-(17, 'Model6', 'Version6', 2006, 'fiat.png', 5.50, 3.00, 2.30, 3.60, 'Engine6', 'Performance6', 55000.00, 11.00, 27, 'Note6'),
-(18, 'Model7', 'Version7', 2007, 'honda.png', 5.70, 3.20, 2.40, 3.80, 'Engine7', 'Performance7', 60000.00, 11.50, 28, 'Note7'),
-(19, 'Model8', 'Version8', 2008, 'dayun.png', 5.90, 3.40, 2.50, 4.00, 'Engine8', 'Performance8', 65000.00, 12.00, 29, 'Note8'),
-(20, 'Model9', 'Version9', 2009, 'byd.png', 6.10, 3.60, 2.60, 4.20, 'Engine9', 'Performance9', 70000.00, 12.50, 30, 'Note9'),
-(21, 'Model10', 'Version10', 2010, 'ikco.png', 6.30, 3.80, 2.70, 4.40, 'Engine10', 'Performance10', 75000.00, 13.00, 31, 'Note10');
+(26, 'Camry', 'XLE', 2023, 'camry-xle-2023.png', 192.10, 72.40, 56.90, 111.20, '2.5L 4-cylinder', '185 hp', 27999.99, 28.50, 35, 'A reliable midsize sedan.'),
+(27, 'Rav4', 'Limited', 2023, 'rav4_limited.jpg', 180.90, 73.00, 67.00, 105.90, '2.5L 4-cylinder', '203 hp', 32999.99, 26.30, 35, 'A versatile compact SUV.'),
+(28, 'Highlander', 'Platinum', 2023, '2023_toyota_highlander_hybrid_le_01.png', 194.90, 76.00, 68.10, 112.20, '3.5L V6', '295 hp', 41999.99, 23.10, 35, 'A spacious and comfortable midsize SUV.');
 
 --
 -- Indexes for dumped tables
@@ -357,6 +266,17 @@ ALTER TABLE `brands`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `comparisons`
+--
+ALTER TABLE `comparisons`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `vehicule1_fk` (`vehicule_1_id`),
+  ADD KEY `vehicule2_fk` (`vehicule_2_id`),
+  ADD KEY `vehicule3_fk` (`vehicule_3_id`),
+  ADD KEY `vehicule4_fk` (`vehicule_4_id`),
+  ADD KEY `user_fk` (`user_id`);
+
+--
 -- Indexes for table `news`
 --
 ALTER TABLE `news`
@@ -370,6 +290,12 @@ ALTER TABLE `newsimages`
   ADD KEY `news_id` (`news_id`);
 
 --
+-- Indexes for table `sliderimages`
+--
+ALTER TABLE `sliderimages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `userfavoritevehicules`
 --
 ALTER TABLE `userfavoritevehicules`
@@ -381,7 +307,7 @@ ALTER TABLE `userfavoritevehicules`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `email` (`username`);
 
 --
 -- Indexes for table `vehiculereviews`
@@ -406,19 +332,25 @@ ALTER TABLE `vehicules`
 -- AUTO_INCREMENT for table `brandreviews`
 --
 ALTER TABLE `brandreviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
+--
+-- AUTO_INCREMENT for table `comparisons`
+--
+ALTER TABLE `comparisons`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `newsimages`
@@ -427,22 +359,28 @@ ALTER TABLE `newsimages`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT for table `sliderimages`
+--
+ALTER TABLE `sliderimages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `vehiculereviews`
 --
 ALTER TABLE `vehiculereviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `vehicules`
 --
 ALTER TABLE `vehicules`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Constraints for dumped tables
@@ -454,6 +392,16 @@ ALTER TABLE `vehicules`
 ALTER TABLE `brandreviews`
   ADD CONSTRAINT `brandreviews_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `brandreviews_ibfk_2` FOREIGN KEY (`brand_id`) REFERENCES `brands` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `comparisons`
+--
+ALTER TABLE `comparisons`
+  ADD CONSTRAINT `user_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `vehicule1_fk` FOREIGN KEY (`vehicule_1_id`) REFERENCES `vehicules` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `vehicule2_fk` FOREIGN KEY (`vehicule_2_id`) REFERENCES `vehicules` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `vehicule3_fk` FOREIGN KEY (`vehicule_3_id`) REFERENCES `vehicules` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `vehicule4_fk` FOREIGN KEY (`vehicule_4_id`) REFERENCES `vehicules` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `newsimages`

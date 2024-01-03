@@ -8,7 +8,7 @@ class UserQueries
 
     public static function loginUser()
     {
-        return "SELECT * FROM users where email = ?";
+        return "SELECT * FROM users where username = ?";
     }
 
     public static function getAllUsers()
@@ -22,7 +22,7 @@ class UserQueries
 
     public static function addUser()
     {
-        return "INSERT INTO users (password, email, firstName, lastName, role, birthDate, sex, status, profilePicture) 
+        return "INSERT INTO users (password, username, firstName, lastName, role, birthDate, sex, status, profilePicture) 
                 VALUES            (   ?    ,   ?  ,     ?    ,     ?   ,  ?  ,     ?    ,  ? ,   ?   ,       ?       )";
     }
 
@@ -33,7 +33,7 @@ class UserQueries
 
     public static function updateUserInfo()
     {
-        return "UPDATE users SET  email = ?, firstName = ?, lastName = ?, birthDate = ?, profilePicture = ? WHERE id = ?";
+        return "UPDATE users SET  username = ?, firstName = ?, lastName = ?, birthDate = ?, profilePicture = ? WHERE id = ?";
     }
 
     public static function validateUser()

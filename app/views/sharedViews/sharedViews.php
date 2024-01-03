@@ -160,10 +160,12 @@ class SharedViews
                     <li><a href="/CarLog/reviewsPage/">Reviews</a></li>
                 </ul>
             </div>
-            <div class="footer__socialmedia">
-                <?php $this->showSocialMedia(); ?>
+            <div>
+                <!-- <?php $this->showSocialMedia(); ?> -->
+                <img src="<?= CARLOG_LOGO_WHITE ?>" alt="CarLog Logo" width="200" height="auto">
             </div>
-            <p> All rights reserved to &copy;<img src="<?= CARLOG_LOGO_WHITE ?>" alt="CarLog Logo" width="80" height="auto">
+
+            <p> All rights reserved to &copy; Moncef Moussaoui 2023
             </p>
         </div>
         <?php

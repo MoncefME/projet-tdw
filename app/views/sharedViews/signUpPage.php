@@ -31,11 +31,11 @@ class SignUpPage
                 <div class="signup__form__inputs">
                     <?php $this->showSignUpMesage(); ?>
                     <div>
-                        <label for="email">
+                        <label for="username">
                             <i class="fas fa-envelope"></i>
-                            Email
+                            username
                         </label>
-                        <input type="email" name="email" id="email" placeholder="Enter your email" required />
+                        <input type="text" name="username" id="username" placeholder="Enter your username" required />
                     </div>
                     <div>
                         <label for="password">

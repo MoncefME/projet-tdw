@@ -35,7 +35,7 @@ class ManageUsersPage
                 <thead class="thead-light">
                     <tr>
                         <th>Full Name</th>
-                        <th>Email</th>
+                        <th>username</th>
                         <th>Role</th>
                         <th>Sex</th>
                         <th>Birth Date</th>
@@ -54,7 +54,7 @@ class ManageUsersPage
                                 <?php echo $user['firstName'] . " " . $user['lastName'] ?>
                             </td>
                             <td>
-                                <?php echo $user['email'] ?>
+                                <?php echo $user['username'] ?>
                             </td>
                             <td>
                                 <p class="badge <?= $user['role'] === 'ADMIN' ? 'badge-primary' : 'badge-secondary' ?>">
