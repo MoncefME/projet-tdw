@@ -10,10 +10,21 @@ class GuidePage
         <div class="page__content">
             <?php
             $shardViews->showHeader();
-            echo "guid page";
+            $this->showGuideAchat();
             $shardViews->showFooter();
             ?>
         </div>
         <?php
     }
+    public function showGuideAchat()
+    {
+        $settingsController = new SettingsController();
+        $guideAchat = $settingsController->getGuideAchat();
+        ?>
+        <div class="guide_achat__container">
+            <?= $guideAchat['content'] ?>
+        </div>
+        <?php
+    }
 }
+
