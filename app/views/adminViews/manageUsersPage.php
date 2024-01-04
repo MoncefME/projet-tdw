@@ -31,17 +31,18 @@ class ManageUsersPage
         $users = $userController->getAllUsers();
         ?>
         <div class="users__table">
-            <table class="table table-hover " id="userTable">
+            <table id="userTable" data-toggle="table" data-pagination="true" data-search="true"
+                class="table  table-striped table-borderless  table-hover" data-page-size="4">
                 <thead class="thead-light">
                     <tr>
-                        <th>Full Name</th>
-                        <th>username</th>
-                        <th>Role</th>
-                        <th>Sex</th>
-                        <th>Birth Date</th>
-                        <th>Picture</th>
-                        <th>Status</th>
-                        <th>Action</th>
+                        <th data-field="full_name" data-sortable="true">Full Name</th>
+                        <th data-field="username" data-sortable="true">Username</th>
+                        <th data-field="role" data-sortable="true">Role</th>
+                        <th data-field="sex" data-sortable="true">Sex</th>
+                        <th data-field="birth_date" data-sortable="true">Birth Date</th>
+                        <th data-field="picture">Picture</th>
+                        <th data-field="status" data-sortable="true">Status</th>
+                        <th data-field="actions">Action</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -30,15 +30,16 @@ class ManageBReviewsPage
         $brandConroller = new BrandController();
         ?>
         <div class="brand__reviews__table">
-            <table class="table table-hover" id="brandReviewTable">
+            <table data-toggle="table" data-pagination="true" data-search="true"
+                class="table  table-striped table-borderless  table-hover" data-page-size="4" id="brandReviewTable">
                 <thead>
                     <tr>
-                        <th>User </th>
-                        <th>Brand</th>
-                        <th>Rating</th>
-                        <th>Comment</th>
-                        <th>Status</th>
-                        <th>Actions</th>
+                        <th data-field="user">User</th>
+                        <th data-field="brand">Brand</th>
+                        <th data-field="rating" data-sortable="true">Rating</th>
+                        <th data-field="comment">Comment</th>
+                        <th data-field="status">Status</th>
+                        <th data-field="actions">Actions</th>
                     </tr>
                 </thead>
                 <tbody>

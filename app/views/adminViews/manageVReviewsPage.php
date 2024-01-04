@@ -30,15 +30,16 @@ class ManageVReviewsPage
         $vehiculeController = new VehiculeController();
         ?>
         <div class="vehicule__reviews__table">
-            <table class=" table table-hover" id="vehiculeReviewTable">
+            <table data-toggle="table" data-pagination="true" data-search="true"
+                class="table  table-striped table-borderless  table-hover" data-page-size="4" id="vehiculeReviewTable">
                 <thead class="thead-light">
                     <tr>
-                        <th>User</th>
-                        <th>Vehicule</th>
-                        <th>Rating</th>
-                        <th>Comment</th>
-                        <th>Status</th>
-                        <th>Actions</th>
+                        <th data-field="user" data-sortable="true">User</th>
+                        <th data-field="vehicle" data-sortable="true">Vehicle</th>
+                        <th data-field="rating" data-sortable="true">Rating</th>
+                        <th data-field="comment">Comment</th>
+                        <th data-field="status" data-sortable="true">Status</th>
+                        <th data-field="actions">Actions</th>
                     </tr>
                 </thead>
                 <tbody>

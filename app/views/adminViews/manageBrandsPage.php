@@ -70,21 +70,20 @@ class ManageBrandsPage
         $brands = $brandController->getAllBrands();
         ?>
         <div class="brands__table" id="brandsTable" style="display: none;">
-            <table class="table table-hover " id="brandTable">
+            <table data-toggle="table" data-pagination="true" data-search="true"
+                class="table  table-striped table-borderless  table-hover" data-page-size="4" id="brandTable">
                 <thead class="thead-light">
                     <tr>
-                        <th>Name</th>
-                        <th>Country</th>
-                        <th>Headquarter</th>
-                        <th>Year </th>
-                        <th>Picture</th>
-                        <th>Action</th>
+                        <th data-field="name">Name</th>
+                        <th data-field="originCountry">Country</th>
+                        <th data-field="headquarter">Headquarter</th>
+                        <th data-field="year" data-sortable="true">Year</th>
+                        <th data-field="brandPicture">Picture</th>
+                        <th data-field="action">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                    foreach ($brands as $brand) {
-                        ?>
+                    <?php foreach ($brands as $brand) { ?>
                         <tr>
                             <td>
                                 <?php echo $brand['name'] ?>
@@ -96,9 +95,9 @@ class ManageBrandsPage
                                 <?php echo $brand['headquarter'] ?>
                             </td>
                             <td>
-                                <p class="badge badge-info">
+                                <span class="badge badge-info">
                                     <?php echo $brand['year'] ?>
-                                </p>
+                                </span>
                             </td>
                             <td>
                                 <img src="<?= ImageUtility::getBrandLogo($brand); ?>" alt="<?php echo $brand['brandPicture'] ?>"
@@ -114,9 +113,7 @@ class ManageBrandsPage
                                 </button>
                             </td>
                         </tr>
-                        <?php
-                    }
-                    ?>
+                    <?php } ?>
                 </tbody>
             </table>
         </div>

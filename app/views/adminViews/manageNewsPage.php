@@ -55,11 +55,6 @@ class ManageNewsPage
                     </div>
 
                 </div>
-                <!-- <div>
-                    <label for="content">Content:</label>
-                    <div id="summernote" placeholder="Enter content"></div>
-                    <input type="hidden" name="content" id="content">
-                </div> -->
                 <button type="submit" class="btn btn-dark">
                     <i class="fas fa-plus"></i>
                     <span> Add News</span>
@@ -74,20 +69,17 @@ class ManageNewsPage
         $news = $newsController->getAllNews();
         ?>
         <div class="news__table" id="newsTable" style="display: none;">
-            <table class="table table-hover" id="newTable">
+            <table id="newTable" data-toggle="table" data-pagination="true" data-search="true"
+                class="table  table-striped table-borderless  table-hover" data-page-size="4">
                 <thead class="thead-light">
                     <tr>
-                        <th>Title</th>
-                        <th>Created At</th>
-                        <th>Updated At</th>
-                        <th>Tags</th>
-                        <th>
-                            <i class="fas fa-eye"></i>
-                        </th>
-                        <th>
-                            <i class="fas fa-heart"></i>
-                        </th>
-                        <th>Actions</th>
+                        <th data-field="title" data-sortable="true">Title</th>
+                        <th data-field="created_at" data-sortable="true">Created At</th>
+                        <th data-field="updated_at" data-sortable="true">Updated At</th>
+                        <th data-field="tags">Tags</th>
+                        <th data-field="views_count" data-sortable="true"><i class="fas fa-eye"></i></th>
+                        <th data-field="likes_count" data-sortable="true"><i class="fas fa-heart"></i></th>
+                        <th data-field="actions">Actions</th>
                     </tr>
                 </thead>
                 <tbody>

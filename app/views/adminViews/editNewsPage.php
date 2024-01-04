@@ -68,23 +68,7 @@ class EditNewsPage
                         <textarea name="content" id="content" placeholder="Enter content"
                             required><?= $news['content'] ?></textarea>
                     </div>
-
-
-                    <!-- <div>
-                    <label for="newsPicture">News Picture:</label>
-                    <input type="file" name="newsPicture" id="newsPicture" accept="image/*" onChange="previewInputImage(event)">
-                    <input type="hidden" name="currentPicture" value="<?= $news['newsPicture'] ?>">
-                    <img id="previewImage" src="<?= ImageUtility::getNewsPicture($news) ?>" alt="Preview"
-                        style="width: 100px; height: 100px;">
-                </div> -->
                 </div>
-                <!-- <div>
-                    <label for="content">Content:</label>
-                    <div id="summernote" placeholder="Enter content">
-                        <?= $news['content'] ?>
-                    </div>
-                    <input type="hidden" name="content" id="content">
-                </div> -->
                 <button type="submit" class="btn btn-dark">
                     <i class="fas fa-plus"></i>
                     <span> Edit News</span>

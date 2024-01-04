@@ -36,15 +36,16 @@ class ManageVehiculesPage
         $vehicules = $vehiculeController->getAllVehicules();
         ?>
         <div class="vehicules__table" id="vehiculesTable" style="display: none;">
-            <table class="table table-hover" id="vehiculeTable">
+            <table id="vehiculeTable" data-toggle="table" data-pagination="true" data-search="true"
+                class="table  table-striped table-borderless  table-hover" data-page-size="4">
                 <thead class="thead-light">
                     <tr>
-                        <th>Model</th>
-                        <th>Version</th>
-                        <th>Year</th>
-                        <th>Vehicle Picture</th>
-                        <th>Brand</th>
-                        <th>Action</th>
+                        <th data-field="model" data-sortable="true">Model</th>
+                        <th data-field="version" data-sortable="true">Version</th>
+                        <th data-field="year" data-sortable="true">Year</th>
+                        <th data-field="vehicle_picture">Vehicle Picture</th>
+                        <th data-field="brand">Brand</th>
+                        <th data-field="actions">Action</th>
                     </tr>
                 </thead>
                 <tbody>

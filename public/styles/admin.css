@@ -10,9 +10,6 @@
 }
 
 
-
-/* Path: public/styles/admin.css */
-
 .dashboard__page{
     width: 100%;
     height: 100vh;
@@ -190,13 +187,6 @@
     min-width: 100%;
     width: 100%;
     height: 100%;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: start;
-    padding: 20px;
-    overflow-y: scroll;
-    overflow-x: hidden; */
 }
 .brands__table > div , .vehicules__table > div{
     width: 100%;
@@ -225,7 +215,6 @@
 
 }
 
-
 ::-webkit-scrollbar {
     width: 5px;
     border-radius: 100%;
@@ -248,11 +237,10 @@ th{
     padding-right: 0 !important;
 }
 
-
-/***************/
-/*manager brands*
-/***************/
-.dashboard__header-brands , .dashboard__header-users , .dashboard__header-vehicules ,.dashboard__header-news{
+.dashboard__header-brands ,
+.dashboard__header-users , 
+.dashboard__header-vehicules ,
+.dashboard__header-news{
     width: 100%;
     height: 100px;
     display: flex;
@@ -263,7 +251,9 @@ th{
 }
 
 
-.brands__form , .vehicules__form , .news__form{
+.brands__form , 
+.vehicules__form , 
+.news__form{
     width: 100%;
     height: 100%;
     display: flex;
@@ -273,9 +263,11 @@ th{
     padding: 20px 20px 0 20px;
     overflow-y: scroll;
 }
-.brands__form form , .vehicules__form form , .news__form form, .guid__achat__form form{
+.brands__form form , 
+.vehicules__form form , 
+.news__form form, 
+.guid__achat__form form{
     width: 100%;
-    /* height: 100%; */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -368,9 +360,6 @@ th{
     transition: 1s;
 }
 
-/***************/
-/*manager vehicules*
-/***************/
 .vehicules__form__inputs__container {
     width: 100%;
     height: 100%;
@@ -429,9 +418,6 @@ th{
     color: var(--primary-color);
 }
 
-/* .brand_logo_input{
-    grid-row: span 2;
-} */
 
 .contact__informations__form{
     width: 100%;
@@ -443,9 +429,3 @@ th{
     padding: 20px 20px 0 20px;
     overflow-y: scroll;
 }
-
-
-
-
-
-

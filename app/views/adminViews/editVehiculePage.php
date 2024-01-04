@@ -147,10 +147,8 @@ class EditVehiculePage
                 </button>
             </form>
         </div>
-
         <?php
     }
-
 }
 
 
