@@ -68,4 +68,9 @@ class UserQueries
         return "SELECT COUNT(*) AS NB FROM userFavoriteVehicules WHERE user_id = ? AND vehicule_id = ?";
     }
 
+    public static function getNumberOfPendingUsers()
+    {
+        return "SELECT COUNT(*) AS NB FROM users WHERE status = 'PENDING'";
+    }
+
 }

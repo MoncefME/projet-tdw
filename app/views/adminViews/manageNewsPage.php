@@ -49,17 +49,17 @@ class ManageNewsPage
                         <input type="text" name="tags" id="tags" placeholder="Enter tags" required>
                     </div>
 
-                    <!-- <div>
+                    <div>
                         <label for="content">Content:</label>
                         <textarea name="content" id="content" placeholder="Enter content"></textarea>
-                    </div> -->
+                    </div>
 
                 </div>
-                <div>
+                <!-- <div>
                     <label for="content">Content:</label>
                     <div id="summernote" placeholder="Enter content"></div>
                     <input type="hidden" name="content" id="content">
-                </div>
+                </div> -->
                 <button type="submit" class="btn btn-dark">
                     <i class="fas fa-plus"></i>
                     <span> Add News</span>

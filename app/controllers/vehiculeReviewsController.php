@@ -67,4 +67,9 @@ class VehiculeReviewsController
         $vehiculeReviewModel = new VehiculeReviewsModel();
         return $vehiculeReviewModel->rejectVehiculeReview($vehiculeReviewId);
     }
+    public function getNumberOfPendingVehiculeReviews()
+    {
+        $vehiculeReviewModel = new VehiculeReviewsModel();
+        return $vehiculeReviewModel->getNumberOfPendingVehiculeReviews();
+    }
 }

@@ -33,17 +33,40 @@ class AdminDashboardPage
         <?php
     }
 
-    private function showLinkCard($Link)
+    private function showLinkCard($link)
     {
+        $notificationCount = "";
+
+        if ($link['alt'] == "user") {
+            $userController = new UserController();
+            $notificationCount = $userController->getNumberOfPendingUsers();
+        }
+
+        if ($link['alt'] == "reviews") {
+            $vehiculeReviewsController = new VehiculeReviewsController();
+            $brandReviewsController = new BrandReviewsController();
+            $notificationCountVehicule = $vehiculeReviewsController->getNumberOfPendingVehiculeReviews();
+            $notificationCountBrand = $brandReviewsController->getNumberOfPendingBrandReviews();
+            $notificationCount = $notificationCountVehicule + $notificationCountBrand;
+        }
         ?>
+
         <div class="dashboard__link__card">
-            <a href="<?= $Link['url'] ?>">
-                <img src="<?= $Link['img'] ?>" alt="<?= $Link['alt'] ?>">
+            <a href="<?= $link['url'] ?>">
+                <?php if ($link['alt'] == "user" || $link['alt'] == "reviews"): ?>
+                    <?php $notificationCount = $notificationCount > 0 ? "<i class='fa-solid fa-bell fa-shake'></i>" : ""; ?>
+                    <span class='notification__count'>
+                        <?= $notificationCount ?>
+                    </span>
+                <?php endif; ?>
+
+                <img src="<?= $link['img'] ?>" alt="<?= $link['alt'] ?>">
                 <p>
-                    <?= $Link['text'] ?>
+                    <?= $link['text'] ?>
                 </p>
             </a>
         </div>
+
         <?php
     }
 
@@ -81,7 +104,7 @@ class AdminDashboardPage
         [
             "url" => ApiRouter::ADMIN_MANAGE_REVIEWS_URL,
             "img" => "/CarLog/public/icons/admin-dashboard/manage-reviews.png",
-            "alt" => "settings",
+            "alt" => "reviews",
             "text" => "Manage Reviews"
         ]
     ];

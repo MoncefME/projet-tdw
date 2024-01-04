@@ -110,4 +110,15 @@ class VehiculeReviewsModel
         $dbController->disConnect($database);
         return $success !== false;
     }
+    public function getNumberOfPendingVehiculeReviews()
+    {
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
+
+        $query = ReviewQueries::getNumberOfPendingVehiculeReviews();
+        $numberOfPendingVehiculeReviews = $dbController->request($database, $query);
+
+        $dbController->disConnect($database);
+        return $numberOfPendingVehiculeReviews[0]['NB'];
+    }
 }

@@ -22,6 +22,7 @@ class NewsController
         $link = FormValidation::validateInput('link');
         $tags = FormValidation::validateInput('tags');
 
+        // TODO: upload file
         // $uploadHandler = new UploadFile();
         // $uploadedFileName = $uploadHandler->uploadNewsFile();
 

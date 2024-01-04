@@ -170,10 +170,6 @@ function previewInputImage(event) {
   reader.readAsDataURL(file);
 }
 
-/************************** */
-/** COMPARISION COMPARISON */
-/************************* */
-
 function handleBrandChange(brandSelect, vehiculeNumber) {
   var brandId = $(brandSelect).val();
   var modelSelect = $('[name="model-' + vehiculeNumber + '"]');
@@ -289,7 +285,6 @@ function handleYearsChange(yearSelect, vehiculeNumber) {
             '">'
         );
 
-        // Add animation
         card.hide().appendTo(resultDiv).fadeIn();
       },
       error: function (error) {
@@ -320,15 +315,9 @@ function showComparisionTable(isNewComparision) {
 
       if (response.error) {
         alert(response.error);
-        // Swal.fire({
-        //   icon: "error",
-        //   title: "Oops...",
-        //   text: response.error,
-        // });
         console.log(response.error);
       } else {
         var comparisionVehicules = response;
-        // remove null values
         comparisionVehicules = comparisionVehicules.filter(function (vehicule) {
           return vehicule !== null;
         });
@@ -343,7 +332,6 @@ function showComparisionTable(isNewComparision) {
         table.append(headerRow);
 
         var tableBody = $("<tbody></tbody>");
-        // SHOW THE IMAGE
         var imageRow = $("<tr><td>Image</td></tr>");
         comparisionVehicules.forEach(function (vehicule) {
           console.log(vehicule.vehiculePicture);
@@ -357,10 +345,8 @@ function showComparisionTable(isNewComparision) {
         });
         tableBody.append(imageRow);
 
-        //SHOW THE BRAND IMAGE
         var brandRow = $("<tr><td>Brand</td></tr>");
         comparisionVehicules.forEach(function (vehicule) {
-          // CALL THE API
           $.ajax({
             url: "/CarLog/app/api/comparisions/getBrandById.php",
             method: "POST",
@@ -399,10 +385,6 @@ function showComparisionTable(isNewComparision) {
         table.append(tableBody);
         table.show();
 
-        // $(".comparator-container").hide();
-        // if (!isNewComparision) {
-        //   $(".comparator-container").show();
-        // }
         if (isNewComparision) addComparision();
       }
     },
@@ -446,69 +428,7 @@ $(document).ready(function () {
     currentIndex = (currentIndex + 1) % totalImages;
     $(images[currentIndex]).css("z-index", 2);
   }
-
   setInterval(showNextImage, 2000);
-});
-
-$(document).ready(function () {
-  $("#userTable").DataTable({
-    pageLength: 4,
-    ordering: true,
-    searching: true,
-    responsive: true,
-    lengthMenu: [4],
-    columnDefs: [
-      { orderable: false, targets: [5, 7] },
-      { searchable: false, targets: [5, 7] },
-    ],
-  });
-  $("#brandTable").DataTable({
-    pageLength: 4,
-    ordering: true,
-    searching: true,
-    responsive: true,
-    lengthMenu: [4],
-    columnDefs: [{ orderable: false, targets: [2] }],
-  });
-  $("#vehiculeTable").DataTable({
-    pageLength: 4,
-    ordering: true,
-    searching: true,
-    responsive: true,
-    lengthMenu: [4],
-  });
-  $("#vehiculeReviewTable").DataTable({
-    pageLength: 4,
-    ordering: true,
-    searching: true,
-    responsive: true,
-    lengthMenu: [4],
-    columnDefs: [{ orderable: false, targets: [2] }],
-    initComplete: function () {
-      $("#loader").hide();
-      $("#vehiculeReviewTable").show();
-    },
-  });
-  $("#brandReviewTable").DataTable({
-    pageLength: 4,
-    ordering: true,
-    searching: true,
-    responsive: true,
-    lengthMenu: [4],
-    columnDefs: [{ orderable: false, targets: [2] }],
-    initComplete: function () {
-      $("#loader").hide();
-      $("#brandReviewTable").show();
-    },
-  });
-  $("#newTable").DataTable({
-    pageLength: 4,
-    ordering: true,
-    searching: true,
-    responsive: true,
-    lengthMenu: [4],
-    columnDefs: [{ orderable: false, targets: [2] }],
-  });
 });
 
 $(document).ready(function () {
@@ -555,16 +475,3 @@ function toggleHiddenBrands() {
     return $("#hiddenBrands").is(":visible") ? "Show less" : "Show more";
   });
 }
-
-$(document).ready(function () {
-  $("#summernote").summernote({
-    height: 300, // set the height of the editor
-    placeholder: "Enter content",
-    callbacks: {
-      onChange: function (contents, $editable) {
-        // Update the hidden input field with the editor content
-        $("#content").val(contents);
-      },
-    },
-  });
-});

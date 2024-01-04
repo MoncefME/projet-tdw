@@ -110,4 +110,15 @@ class BrandReviewsModel
         $dbController->disConnect($database);
         return $success !== false;
     }
+    public function getNumberOfPendingBrandReviews()
+    {
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
+
+        $query = ReviewQueries::getNumberOfPendingBrandReviews();
+        $numberOfPendingBrandReviews = $dbController->request($database, $query);
+
+        $dbController->disConnect($database);
+        return $numberOfPendingBrandReviews[0]['NB'];
+    }
 }

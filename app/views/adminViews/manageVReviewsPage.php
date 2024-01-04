@@ -30,8 +30,7 @@ class ManageVReviewsPage
         $vehiculeController = new VehiculeController();
         ?>
         <div class="vehicule__reviews__table">
-            <div id="loader">Loading...</div>
-            <table class=" table table-hover" id="vehiculeReviewTable" style="display: none;">
+            <table class=" table table-hover" id="vehiculeReviewTable">
                 <thead class="thead-light">
                     <tr>
                         <th>User</th>

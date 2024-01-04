@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3006
--- Generation Time: Jan 03, 2024 at 08:55 AM
+-- Generation Time: Jan 04, 2024 at 12:12 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `carlog2`
+-- Database: `carlog`
 --
 
 -- --------------------------------------------------------
@@ -41,7 +41,8 @@ CREATE TABLE `brandreviews` (
 --
 
 INSERT INTO `brandreviews` (`id`, `user_id`, `brand_id`, `status`, `comment`, `rating`) VALUES
-(58, 40, 35, 'PENDING', 'This brand is very cool', 4);
+(59, 1, 42, 'PENDING', 'comment', 3),
+(60, 1, 35, 'VALID', 'test', 2);
 
 -- --------------------------------------------------------
 
@@ -69,7 +70,8 @@ INSERT INTO `brands` (`id`, `name`, `originCountry`, `headquarter`, `year`, `bra
 (38, 'Chevrolet', 'USA', 'Detroit', 1911, 'chevrolet.jpg'),
 (39, 'Volkswagen', 'Germany', 'Wolfsburg', 1927, 'volkswagen.jpg'),
 (40, 'Nissan', 'Japan', 'Yokohama', 1933, 'nissan.png'),
-(41, 'Hyundai', 'South Korea', 'Seoul', 1967, 'hyundai.jpg');
+(41, 'Hyundai', 'South Korea', 'Seoul', 1967, 'hyundai.jpg'),
+(42, 'test', 'test', 'test', 2002, 'camry-xle-2023.png');
 
 -- --------------------------------------------------------
 
@@ -92,7 +94,55 @@ CREATE TABLE `comparisons` (
 
 INSERT INTO `comparisons` (`id`, `user_id`, `vehicule_1_id`, `vehicule_2_id`, `vehicule_3_id`, `vehicule_4_id`) VALUES
 (32, 1, NULL, NULL, 26, 28),
-(33, 1, NULL, NULL, 26, 28);
+(33, 1, NULL, NULL, 26, 28),
+(34, 1, NULL, NULL, 26, 28),
+(35, 1, NULL, NULL, 26, 28);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contactinformations`
+--
+
+CREATE TABLE `contactinformations` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `website` varchar(255) DEFAULT NULL,
+  `facebook_link` varchar(255) DEFAULT NULL,
+  `twitter_link` varchar(255) DEFAULT NULL,
+  `youtube_link` varchar(255) DEFAULT NULL,
+  `linkedin_link` varchar(255) DEFAULT NULL,
+  `instagram_link` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contactinformations`
+--
+
+INSERT INTO `contactinformations` (`id`, `email`, `phone`, `address`, `website`, `facebook_link`, `twitter_link`, `youtube_link`, `linkedin_link`, `instagram_link`) VALUES
+(1, 'ka_moussaoui@esi.dz', '0553383214', 'Oued Semar , Algiers', 'https://portfolio-moncefme.vercel.app/', 'https://www.facebook.com/moncef.moussaoui.79/', 'https://twitter.com/MoncefMoussaou5', 'https://www.youtube.com/@moncefm1472', 'https://www.linkedin.com/in/abdelmouncif-moussaoui-35021a206/', 'https://www.instagram.com/moncefon/');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `guidedachat`
+--
+
+CREATE TABLE `guidedachat` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `content` text DEFAULT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `guidedachat`
+--
+
+INSERT INTO `guidedachat` (`id`, `title`, `content`, `updated_at`) VALUES
+(1, 'This is buyer guide', 'this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , this is a buyer guide , ', '2024-01-03 20:53:00');
 
 -- --------------------------------------------------------
 
@@ -117,10 +167,11 @@ CREATE TABLE `news` (
 --
 
 INSERT INTO `news` (`id`, `title`, `content`, `link`, `created_at`, `updated_at`, `tags`, `views_count`, `likes_count`) VALUES
-(24, 'Breaking News: Major Discovery in Space Exploration', '<p>The scientific community is abuzz with excitement as astronomers have made a groundbreaking discovery in our universe. In a press conference held earlier today, researchers announced the identification of a new celestial phenomenon that challenges our current understanding of astrophysics.</p>\r\n<p>This unexpected finding opens up new possibilities for space exploration and has the potential to reshape our understanding of the cosmos. Scientists are now working tirelessly to analyze the data collected from various observatories around the world.</p>\r\n<ul>\r\n  <li><strong>Key Discoveries:</strong> Multiple exoplanets in the habitable zone, Unusual gamma-ray bursts</li>\r\n  <li><strong>Researchers:</strong> Dr. Emily Johnson, Dr. Michael Rodriguez, and the international team of astronomers</li>\r\n</ul>\r\n<p>Stay tuned for more updates on this extraordinary discovery as scientists delve deeper into the mysteries of the universe.</p>', 'test', '2024-01-01 22:49:46', '2024-01-01 22:49:46', 'test ,  news , car , good ', 0, 0),
-(25, 'Feature Article with Stylish Formatting', '<h1 style=\"font-size: 36px; text-align: start; color: #3498db;\">Tech Innovations Shaping the Future</h1>\r\n\r\n<p>In a world driven by technological advancements, innovation continues to redefine the way we live and work. From artificial intelligence to renewable energy, the following features highlight some of the remarkable tech trends shaping our future:</p>\r\n\r\n<ol>\r\n\r\n  <li><strong>The Rise of AI:</strong> Exploring the impact of artificial intelligence on industries and everyday life.</li>\r\n\r\n  <li><strong>Sustainable Tech:</strong> Innovations in green technology and their role in combating climate change.</li>\r\n\r\n  <li><strong>Immersive Experiences:</strong> Virtual reality and augmented reality transforming entertainment and education.</li>\r\n\r\n</ol>\r\n\r\n<p>Join us on a journey through the cutting-edge developments that promise to revolutionize our world.</p>\r\n\r\n', 'https://ckeditor.com/', '2024-01-01 22:58:33', '2024-01-01 23:12:55', 'new , amazing , nice , good , google', 0, 0),
-(26, 'test', '<p>asdfasdf</p><p>asdf</p><p>asdf</p><p>asd</p><p>fadfad</p><p>fad</p><p>fa</p><p>df</p><p>adsf</p><p>adf</p>', 'test', '2024-01-01 23:25:15', '2024-01-01 23:25:15', 'test', 0, 0),
-(27, 'asdfasdfasdf', '<h1>this is a big text</h1><p>nice one mojio jo jo</p><p><span style=\"background-color: rgb(255, 255, 0);\">hello this is&nbsp;</span></p><p><span style=\"background-color: rgb(255, 255, 0);\">what about having&nbsp;</span>&nbsp;asdf adf</p><p><br></p><ol><li><ol><li>this is amazing</li></ol></li></ol><p><ol></ol></p><p style=\"text-align: center; \">what about his&nbsp;</p><p style=\"text-align: center; \">this is amazing&nbsp;</p>', 'asdfasdfasdf', '2024-01-01 23:28:20', '2024-01-01 23:28:20', 'asdf,a,a,,a,a,a,a,a,a', 0, 0);
+(24, 'Breaking News: Major Discovery in Space Exploration', 'test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test ', 'test', '2024-01-01 22:49:46', '2024-01-03 23:11:35', 'test ,  news , car , good ', 0, 0),
+(25, 'Feature Article with Stylish Formatting', 'test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test ', 'https://ckeditor.com/', '2024-01-01 22:58:33', '2024-01-03 23:11:45', 'new , amazing , nice , good , google', 0, 0),
+(26, 'test', 'test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test ', 'test', '2024-01-01 23:25:15', '2024-01-03 23:11:54', 'test', 0, 0),
+(27, 'asdfasdfasdf', 'Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news, Hello this is a news...', 'asdfasdfasdf', '2024-01-01 23:28:20', '2024-01-03 20:50:49', 'asdf,a,a,,a,a,a,a,a,a', 0, 0),
+(28, 'test anothe rone ', '<p>test this is amazing</p><p><img src=\"data:image/png;base64,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\" data-filename=\"image.png\" style=\"width: 541.995px;\"></p><p>I hope you will get it&nbsp;</p>', 'here we go', '2024-01-03 12:23:56', '2024-01-03 12:23:56', 'I love youtuve', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -161,8 +212,7 @@ CREATE TABLE `userfavoritevehicules` (
 --
 
 INSERT INTO `userfavoritevehicules` (`user_id`, `vehicule_id`) VALUES
-(1, 26),
-(40, 26);
+(1, 26);
 
 -- --------------------------------------------------------
 
@@ -189,8 +239,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `password`, `username`, `firstName`, `lastName`, `role`, `birthDate`, `sex`, `status`, `profilePicture`) VALUES
 (1, '$2y$10$WQoAVvXzVvvZEAz5iv6nKOZyHKL.Aaa.YUrbOrHpOR1e0XebMGcK2', 'admin', 'admin', 'admin', 'ADMIN', '2023-12-11', 'MALE', 'VALID', 'Moncef.jpeg'),
-(35, '$2y$10$3hX6fz28TmsaPf75PZfRweRRolr6sOFftHgCvpilH/APLEiwnUkmC', 'user1', 'Moncefon', 'Moussaoui', 'ADMIN', '2002-07-29', 'MALE', 'VALID', 'Flag_of_Palestine.png'),
-(40, '$2y$10$MEKiGD0diu2fONc89ZAc3u/xG8//iu1gasCYpDyGg1HFf0zwvMnMG', 'user2', 'User8', 'Last8', 'USER', '1997-08-08', 'FEMALE', 'VALID', 'logo-mta.jpg');
+(35, '$2y$10$3hX6fz28TmsaPf75PZfRweRRolr6sOFftHgCvpilH/APLEiwnUkmC', 'user1', 'Moncefon', 'Moussaoui', 'ADMIN', '2002-07-29', 'MALE', 'VALID', 'Flag_of_Palestine.png');
 
 -- --------------------------------------------------------
 
@@ -212,7 +261,11 @@ CREATE TABLE `vehiculereviews` (
 --
 
 INSERT INTO `vehiculereviews` (`id`, `user_id`, `vehicule_id`, `status`, `comment`, `rating`) VALUES
-(68, 1, 26, 'VALID', 'This car is amazing ', 4);
+(68, 1, 26, 'VALID', 'This car is amazing ', 4),
+(69, 1, 28, 'PENDING', 'good car ', 2),
+(70, 1, 28, 'PENDING', 'nice looking car ', 4),
+(71, 1, 28, 'PENDING', 'I love it ', 2),
+(72, 1, 27, 'PENDING', 'this review is here', 3);
 
 -- --------------------------------------------------------
 
@@ -277,6 +330,18 @@ ALTER TABLE `comparisons`
   ADD KEY `user_fk` (`user_id`);
 
 --
+-- Indexes for table `contactinformations`
+--
+ALTER TABLE `contactinformations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `guidedachat`
+--
+ALTER TABLE `guidedachat`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `news`
 --
 ALTER TABLE `news`
@@ -332,25 +397,37 @@ ALTER TABLE `vehicules`
 -- AUTO_INCREMENT for table `brandreviews`
 --
 ALTER TABLE `brandreviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `comparisons`
 --
 ALTER TABLE `comparisons`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT for table `contactinformations`
+--
+ALTER TABLE `contactinformations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `guidedachat`
+--
+ALTER TABLE `guidedachat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `newsimages`
@@ -374,7 +451,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `vehiculereviews`
 --
 ALTER TABLE `vehiculereviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `vehicules`

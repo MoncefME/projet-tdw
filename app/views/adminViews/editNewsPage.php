@@ -39,27 +39,35 @@ class EditNewsPage
             <form method="POST" action="<?= ApiRouter::EDIT_NEWS_ENDPOINT($news['id']) ?>" enctype="multipart/form-data">
                 <div class="news__form__inputs__container">
                     <div>
-                        <label for="title">Title:</label>
+                        <label for="title">Title:
+                            <i class="fas fa-star-of-life"></i>
+                        </label>
                         <input type="text" name="title" id="title" placeholder="Enter title" required
                             value="<?php echo $news['title'] ?>">
                     </div>
 
                     <div>
-                        <label for="link">Link:</label>
+                        <label for="link">Link:
+                            <i class="fas fa-link"></i>
+                        </label>
                         <input type="text" name="link" id="link" placeholder="Enter link" required
                             value="<?php echo $news['link'] ?>">
                     </div>
 
                     <div>
-                        <label for="tags">Tags:</label>
+                        <label for="tags">Tags:
+                            <i class="fas fa-tags"></i>
+                        </label>
                         <input type="text" name="tags" id="tags" placeholder="Enter tags" required
                             value="<?php echo $news['tags'] ?>">
                     </div>
-                    <!-- <div>
-                        <label for="content">Content:</label>
+                    <div>
+                        <label for="content">Content:
+                            <i class="fas fa-file-alt"></i>
+                        </label>
                         <textarea name="content" id="content" placeholder="Enter content"
                             required><?= $news['content'] ?></textarea>
-                    </div> -->
+                    </div>
 
 
                     <!-- <div>
@@ -70,13 +78,13 @@ class EditNewsPage
                         style="width: 100px; height: 100px;">
                 </div> -->
                 </div>
-                <div>
+                <!-- <div>
                     <label for="content">Content:</label>
                     <div id="summernote" placeholder="Enter content">
                         <?= $news['content'] ?>
                     </div>
                     <input type="hidden" name="content" id="content">
-                </div>
+                </div> -->
                 <button type="submit" class="btn btn-dark">
                     <i class="fas fa-plus"></i>
                     <span> Edit News</span>

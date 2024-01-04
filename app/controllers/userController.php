@@ -130,6 +130,10 @@ class UserController
         return $userModel->deleteFavoriteVehicule($userId, $vehiculeId);
     }
 
-
+    public function getNumberOfPendingUsers()
+    {
+        $userModel = new UserModel();
+        return $userModel->getNumberOfPendingUsers();
+    }
 
 }
