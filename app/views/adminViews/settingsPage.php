@@ -12,8 +12,10 @@ class SettingsPage
             $sharedView->adminSideBar();
             ?>
             <div class="dashboard__content">
-                <h1>Settings Page</h1>
-                <?= $this->showGuidAchatForm(); ?>
+                <div class="settings__page">
+                    <?= $this->showGuidAchatForm(); ?>
+                    <?= $this->showContactForm(); ?>
+                </div>
 
             </div>
         </div>
@@ -25,6 +27,7 @@ class SettingsPage
         $contactInformations = $settingsController->getContactInformations();
         ?>
         <div class="contact__informations__form">
+            <h2>Edit Contact Informations</h2>
             <form action="<?= ApiRouter::EDIT_CONTACT_ENDPOINT ?>" method="post">
                 <div>
                     <label for="email">
@@ -94,8 +97,8 @@ class SettingsPage
                     <input type="text" name="instagram_link" id="instagram_link"
                         value="<?php echo $contactInformations['instagram_link']; ?>">
                 </div>
-                <button type="submit" name="update_contact_informations">Update</button>
             </form>
+            <button type="submit" class="btn btn-info" name="update_contact_informations">Update</button>
         </div>
         <?php
     }
@@ -108,7 +111,7 @@ class SettingsPage
         <div class="guid__achat__form">
             <form action="<?= ApiRouter::EDIT_GUIDE_ACHAT_ENDPOINT ?>" method="post">
                 <div>
-                    <p>Edit Buyer Guide</p>
+                    <h2>Edit Guide Achat</h2>
                     <p>Last modification :
                         <?php echo $guidAchat['updated_at']; ?>
                     </p>

@@ -302,6 +302,8 @@ th{
     color: var(--primary-color);
     margin-bottom: 5px;
 }
+.contact__informations__form input:not([type="file"]),
+.guid__achat__form input:not([type="file"]),
 .brands__form__inputs__container input:not([type="file"]), 
 .brands__form__inputs__container select,
 .vehicules__form__inputs__container input:not([type="file"]),
@@ -407,6 +409,18 @@ th{
 .news__form__inputs__container div:last-child{
     grid-column: 1 / -1; 
 }
+.guid__achat__form textarea{
+    width: 100%;
+    height: 260px;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--primary-color);
+    
+
+}
 .news__form__inputs__container textarea{
     width: 100%;
     height: 200px;
@@ -417,15 +431,25 @@ th{
     font-weight: 500;
     color: var(--primary-color);
 }
-
+.guid__achat__form{
+    height: 100%;
+}
 
 .contact__informations__form{
+    width: 70%;
+}
+
+.contact__informations__form form{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    overflow-y: scroll;
+}
+
+.settings__page{
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: start;
-    padding: 20px 20px 0 20px;
-    overflow-y: scroll;
+    gap: 30px;
 }
