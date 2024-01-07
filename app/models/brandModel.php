@@ -8,32 +8,32 @@ class BrandModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = BrandQueries::getBrandById();
+        $query = BrandQueries::getBrandById;
         $params = [$brandId];
         $brand = $dbController->request($database, $query, $params);
 
         $dbController->disConnect($database);
         return $brand[0];
     }
+
     public function getAllBrands()
     {
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = BrandQueries::getAllBrands();
+        $query = BrandQueries::getAllBrands;
         $brands = $dbController->request($database, $query);
 
         $dbController->disConnect($database);
         return $brands;
     }
 
-
     public function addBrand($name, $originCountry, $headquarter, $year, $brandPicture)
     {
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = BrandQueries::addBrand();
+        $query = BrandQueries::addBrand;
         $params = [$name, $originCountry, $headquarter, $year, $brandPicture];
         $success = $dbController->request($database, $query, $params);
 
@@ -46,19 +46,20 @@ class BrandModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = BrandQueries::deleteBrand();
+        $query = BrandQueries::deleteBrand;
         $params = [$brandId];
         $success = $dbController->request($database, $query, $params);
 
         $dbController->disConnect($database);
         return $success !== false;
     }
+
     public function updateBrand($brandId, $name, $originCountry, $headquarter, $year, $brandPicture)
     {
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = BrandQueries::updateBrand();
+        $query = BrandQueries::updateBrand;
         $params = [$name, $originCountry, $headquarter, $year, $brandPicture, $brandId];
         $success = $dbController->request($database, $query, $params);
 

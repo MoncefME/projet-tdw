@@ -8,7 +8,7 @@ class SettingsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = SettingQueries::getContactInformations();
+        $query = SettingQueries::getContactInformations;
         $contacts = $dbController->request($database, $query);
 
         $dbController->disConnect($database);
@@ -19,7 +19,7 @@ class SettingsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = SettingQueries::updateContactInformations();
+        $query = SettingQueries::updateContactInformations;
         $params = [$email, $phone, $address, $website, $facebook_link, $twitter_link, $youtube_link, $linkedin_link, $instagram_link];
         $success = $dbController->request($database, $query, $params);
 
@@ -32,7 +32,7 @@ class SettingsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = SettingQueries::getGuideAchat();
+        $query = SettingQueries::getGuideAchat;
         $guideAchat = $dbController->request($database, $query);
 
         $dbController->disConnect($database);
@@ -43,7 +43,7 @@ class SettingsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = SettingQueries::addGuideAchat();
+        $query = SettingQueries::addGuideAchat;
         $current_time = date("Y-m-d H:i:s");
         $params = [$title, $content, $current_time];
 
@@ -56,7 +56,7 @@ class SettingsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = SettingQueries::updateGuideAchat();
+        $query = SettingQueries::updateGuideAchat;
         $current_time = date("Y-m-d H:i:s");
         $params = [$title, $content, $current_time];
         $success = $dbController->request($database, $query, $params);

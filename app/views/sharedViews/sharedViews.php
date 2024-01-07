@@ -1,10 +1,11 @@
 <?php
 class SharedViews
 {
-
+   
     public function adminSideBar()
     {
-        ?>
+        
+?>
         <div class="dashboard__sidebar">
             <div class="dashboard__sidebar__logo">
                 <a href="/CarLog/">
@@ -15,7 +16,7 @@ class SharedViews
                 <ul>
                     <?php
                     foreach ($this->sidebarLinks as $link) {
-                        ?>
+                    ?>
                         <li class="<?= ($_SERVER['REQUEST_URI'] === $link['link']) ? 'active' : '' ?>">
                             <a href="<?= $link['link'] ?>">
                                 <img src="<?= $link['icon'] ?>" alt="icon">
@@ -24,13 +25,13 @@ class SharedViews
                                 </span>
                             </a>
                         </li>
-                        <?php
+                    <?php
                     }
                     ?>
                 </ul>
             </div>
         </div>
-        <?php
+    <?php
     }
 
     private $linksData = [
@@ -97,7 +98,7 @@ class SharedViews
 
     public function showHeader()
     {
-        ?>
+    ?>
         <div class="page__header">
             <div class="page__header__logo">
                 <a href="/CarLog/">
@@ -137,11 +138,11 @@ class SharedViews
     private function showSocialMedia()
     {
         foreach ($this->linksData as $linkData) {
-            ?>
+        ?>
             <a href="<?= $linkData['link']; ?>" target="_blank">
                 <img src="<?= $linkData['icon']; ?>" alt="social media icon" width="25px">
             </a>
-            <?php
+        <?php
         }
     }
 
@@ -168,6 +169,6 @@ class SharedViews
             <p> All rights reserved to &copy; Moncef Moussaoui 2023
             </p>
         </div>
-        <?php
+<?php
     }
 }

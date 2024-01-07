@@ -8,7 +8,7 @@ class VehiculeReviewsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = ReviewQueries::getVehiculeReviewById();
+        $query = ReviewQueries::getVehiculeReviewById;
         $params = [$vehiculeReviewId];
         $vehiculeReview = $dbController->request($database, $query, $params);
 
@@ -20,7 +20,7 @@ class VehiculeReviewsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = ReviewQueries::getAllVehiculeReviews();
+        $query = ReviewQueries::getAllVehiculeReviews;
         $vehiculeReviews = $dbController->request($database, $query);
 
         $dbController->disConnect($database);
@@ -31,7 +31,7 @@ class VehiculeReviewsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = ReviewQueries::getReviewsByVehicule();
+        $query = ReviewQueries::getReviewsByVehicule;
         $params = [$vehiculeId];
         $reviewsByVehicule = $dbController->request($database, $query, $params);
 
@@ -43,7 +43,7 @@ class VehiculeReviewsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = ReviewQueries::getValidReviewsByVehicule();
+        $query = ReviewQueries::getValidReviewsByVehicule;
         $params = [$vehiculeId];
         $reviewsByVehicule = $dbController->request($database, $query, $params);
 
@@ -55,7 +55,7 @@ class VehiculeReviewsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = ReviewQueries::addVehiculeReview();
+        $query = ReviewQueries::addVehiculeReview;
         $params = [$user_id, $vehicule_id, $status, $comment, $rating];
         $success = $dbController->request($database, $query, $params);
 
@@ -67,7 +67,7 @@ class VehiculeReviewsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = ReviewQueries::updateVehiculeReview();
+        $query = ReviewQueries::updateVehiculeReview;
         $params = [$user_id, $vehicule_id, $status, $comment, $rating, $vehiculeReviewId];
         $success = $dbController->request($database, $query, $params);
 
@@ -79,7 +79,7 @@ class VehiculeReviewsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = ReviewQueries::deleteVehiculeReview();
+        $query = ReviewQueries::deleteVehiculeReview;
         $params = [$vehiculeReviewId];
         $success = $dbController->request($database, $query, $params);
 
@@ -91,7 +91,7 @@ class VehiculeReviewsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = ReviewQueries::validateVehiculeReview();
+        $query = ReviewQueries::validateVehiculeReview;
         $params = [$vehiculeReviewId];
         $success = $dbController->request($database, $query, $params);
 
@@ -103,7 +103,7 @@ class VehiculeReviewsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = ReviewQueries::rejectVehiculeReview();
+        $query = ReviewQueries::rejectVehiculeReview;
         $params = [$vehiculeReviewId];
         $success = $dbController->request($database, $query, $params);
 
@@ -115,7 +115,7 @@ class VehiculeReviewsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = ReviewQueries::getNumberOfPendingVehiculeReviews();
+        $query = ReviewQueries::getNumberOfPendingVehiculeReviews;
         $numberOfPendingVehiculeReviews = $dbController->request($database, $query);
 
         $dbController->disConnect($database);

@@ -8,7 +8,7 @@ class VehiculeModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = VehiculeQueries::getVehiculeById();
+        $query = VehiculeQueries::getVehiculeById;
         $params = [$vehiculeId];
         $vehicule = $dbController->request($database, $query, $params);
 
@@ -20,7 +20,7 @@ class VehiculeModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = VehiculeQueries::getAllVehicules();
+        $query = VehiculeQueries::getAllVehicules;
         $vehicules = $dbController->request($database, $query);
 
         $dbController->disConnect($database);
@@ -31,7 +31,7 @@ class VehiculeModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = VehiculeQueries::getVehiculesByBrand();
+        $query = VehiculeQueries::getVehiculesByBrand;
         $params = [$brandId];
         $vehicules = $dbController->request($database, $query, $params);
 
@@ -43,7 +43,7 @@ class VehiculeModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = VehiculeQueries::addVehicule();
+        $query = VehiculeQueries::addVehicule;
         $params = [$model, $version, $year, $vehiculePicture, $length, $width, $height, $wheelbase, $engine, $performance, $price, $consumption, $note, $brand_id];
         $success = $dbController->request($database, $query, $params);
 
@@ -55,7 +55,7 @@ class VehiculeModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = VehiculeQueries::updateVehicule();
+        $query = VehiculeQueries::updateVehicule;
         $params = [$model, $version, $year, $vehiculePicture, $length, $width, $height, $wheelbase, $engine, $performance, $price, $consumption, $note, $brand_id, $vehiculeId];
         $success = $dbController->request($database, $query, $params);
 
@@ -67,7 +67,7 @@ class VehiculeModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = VehiculeQueries::deleteVehicule();
+        $query = VehiculeQueries::deleteVehicule;
         $params = [$vehiculeId];
         $success = $dbController->request($database, $query, $params);
 
@@ -80,7 +80,7 @@ class VehiculeModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = VehiculeQueries::getModelsByBrandId();
+        $query = VehiculeQueries::getModelsByBrandId;
         $params = [$brandId];
         $models = $dbController->request($database, $query, $params);
 
@@ -88,25 +88,13 @@ class VehiculeModel
         return $models;
     }
 
-    public function getYearsByBrandAndModel($brandId, $model)
-    {
-        $dbController = new DatabaseController();
-        $database = $dbController->connect();
-
-        $query = VehiculeQueries::getYearsByBrandAndModel();
-        $params = [$brandId, $model];
-        $years = $dbController->request($database, $query, $params);
-
-        $dbController->disConnect($database);
-        return $years;
-    }
 
     public function getVehiculeByBrandModelYear($brandId, $model, $year)
     {
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = VehiculeQueries::getVehiculeByBrandModelYear();
+        $query = VehiculeQueries::getVehiculeByBrandModelYear;
         $params = [$brandId, $model, $year];
         $vehicule = $dbController->request($database, $query, $params);
 

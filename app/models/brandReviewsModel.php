@@ -8,7 +8,7 @@ class BrandReviewsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = ReviewQueries::getBrandReviewById();
+        $query = ReviewQueries::getBrandReviewById;
         $params = [$brandReviewId];
         $brandReview = $dbController->request($database, $query, $params);
 
@@ -20,7 +20,7 @@ class BrandReviewsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = ReviewQueries::getAllBrandReviews();
+        $query = ReviewQueries::getAllBrandReviews;
         $brandReviews = $dbController->request($database, $query);
 
         $dbController->disConnect($database);
@@ -31,7 +31,7 @@ class BrandReviewsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = ReviewQueries::getReviewsByBrand();
+        $query = ReviewQueries::getReviewsByBrand;
         $params = [$brandId];
         $reviewsByBrand = $dbController->request($database, $query, $params);
 
@@ -43,7 +43,7 @@ class BrandReviewsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = ReviewQueries::getValidReviewsByBrand();
+        $query = ReviewQueries::getValidReviewsByBrand;
         $params = [$brandId];
         $reviewsByBrand = $dbController->request($database, $query, $params);
 
@@ -55,7 +55,7 @@ class BrandReviewsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = ReviewQueries::addBrandReview();
+        $query = ReviewQueries::addBrandReview;
         $params = [$user_id, $brand_id, $status, $comment, $rating];
         $success = $dbController->request($database, $query, $params);
 
@@ -67,7 +67,7 @@ class BrandReviewsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = ReviewQueries::updateBrandReview();
+        $query = ReviewQueries::updateBrandReview;
         $params = [$user_id, $brand_id, $status, $comment, $rating, $brandReviewId];
         $success = $dbController->request($database, $query, $params);
 
@@ -79,7 +79,7 @@ class BrandReviewsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = ReviewQueries::deleteBrandReview();
+        $query = ReviewQueries::deleteBrandReview;
         $params = [$brandReviewId];
         $success = $dbController->request($database, $query, $params);
 
@@ -91,7 +91,7 @@ class BrandReviewsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = ReviewQueries::validateBrandReview();
+        $query = ReviewQueries::validateBrandReview;
         $params = [$brandReviewId];
         $success = $dbController->request($database, $query, $params);
 
@@ -103,7 +103,7 @@ class BrandReviewsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = ReviewQueries::rejectBrandReview();
+        $query = ReviewQueries::rejectBrandReview;
         $params = [$brandReviewId];
         $success = $dbController->request($database, $query, $params);
 
@@ -115,7 +115,7 @@ class BrandReviewsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = ReviewQueries::getNumberOfPendingBrandReviews();
+        $query = ReviewQueries::getNumberOfPendingBrandReviews;
         $numberOfPendingBrandReviews = $dbController->request($database, $query);
 
         $dbController->disConnect($database);

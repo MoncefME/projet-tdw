@@ -8,7 +8,7 @@ class NewsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = NewsQueries::getNewsById();
+        $query = NewsQueries::getNewsById;
         $params = [$newsId];
         $news = $dbController->request($database, $query, $params);
 
@@ -20,7 +20,7 @@ class NewsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = NewsQueries::getAllNews();
+        $query = NewsQueries::getAllNews;
         $news = $dbController->request($database, $query);
 
         $dbController->disConnect($database);
@@ -31,7 +31,7 @@ class NewsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = NewsQueries::addNews();
+        $query = NewsQueries::addNews;
         $current_time = date("Y-m-d H:i:s");
         $params = [$title, $content, $link, $tags, $current_time, $current_time];
         $success = $dbController->request($database, $query, $params);
@@ -44,7 +44,7 @@ class NewsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = NewsQueries::updateNews();
+        $query = NewsQueries::updateNews;
         $current_time = date("Y-m-d H:i:s");
         $params = [$title, $content, $link, $current_time, $tags, $newsId];
         $success = $dbController->request($database, $query, $params);
@@ -57,7 +57,7 @@ class NewsModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = NewsQueries::deleteNews();
+        $query = NewsQueries::deleteNews;
         $params = [$newsId];
         $success = $dbController->request($database, $query, $params);
 

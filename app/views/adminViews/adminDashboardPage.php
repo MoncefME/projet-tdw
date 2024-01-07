@@ -5,7 +5,7 @@ class AdminDashboardPage
     public function showPage()
     {
         $sharedView = new SharedViews();
-        ?>
+    ?>
         <div class="dashboard__page">
             <?php
             $sharedView->adminSideBar();
@@ -17,12 +17,12 @@ class AdminDashboardPage
                 ?>
             </div>
         </div>
-        <?php
+    <?php
     }
 
     public function showLinks()
     {
-        ?>
+    ?>
         <div class="dashboard__links">
             <?php
             foreach ($this->linksData as $link) {
@@ -30,7 +30,7 @@ class AdminDashboardPage
             }
             ?>
         </div>
-        <?php
+    <?php
     }
 
     private function showLinkCard($link)
@@ -49,11 +49,11 @@ class AdminDashboardPage
             $notificationCountBrand = $brandReviewsController->getNumberOfPendingBrandReviews();
             $notificationCount = $notificationCountVehicule + $notificationCountBrand;
         }
-        ?>
+    ?>
 
         <div class="dashboard__link__card">
             <a href="<?= $link['url'] ?>">
-                <?php if ($link['alt'] == "user" || $link['alt'] == "reviews"): ?>
+                <?php if ($link['alt'] == "user" || $link['alt'] == "reviews") : ?>
                     <?php $notificationCount = $notificationCount > 0 ? "<i class='fa-solid fa-bell fa-shake'></i>" : ""; ?>
                     <span class='notification__count'>
                         <?= $notificationCount ?>
@@ -67,7 +67,7 @@ class AdminDashboardPage
             </a>
         </div>
 
-        <?php
+<?php
     }
 
     private $linksData = [
@@ -109,4 +109,3 @@ class AdminDashboardPage
         ]
     ];
 }
-

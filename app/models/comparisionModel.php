@@ -8,7 +8,7 @@ class ComparisionModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = ComparisionQueries::getComparisionById();
+        $query = ComparisionQueries::getComparisionById;
         $params = [$comparisionId];
         $comparision = $dbController->request($database, $query, $params);
 
@@ -20,7 +20,7 @@ class ComparisionModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = ComparisionQueries::getAllComparisions();
+        $query = ComparisionQueries::getAllComparisions;
         $comparisions = $dbController->request($database, $query);
 
         $dbController->disConnect($database);
@@ -32,7 +32,7 @@ class ComparisionModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = ComparisionQueries::addComparision();
+        $query = ComparisionQueries::addComparision;
         $params = [$user_id, $vehicule_1_id, $vehicule_2_id, $vehicule_3_id, $vehicule_4_id];
         $success = $dbController->request($database, $query, $params);
 
@@ -45,7 +45,7 @@ class ComparisionModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = ComparisionQueries::getComparisionsByVehiculeId();
+        $query = ComparisionQueries::getComparisionsByVehiculeId;
         $params = [$vehiculeId, $vehiculeId, $vehiculeId, $vehiculeId];
         $comparisions = $dbController->request($database, $query, $params);
 
@@ -59,7 +59,7 @@ class ComparisionModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = ComparisionQueries::getMostComparedVehiculePairs();
+        $query = ComparisionQueries::getMostComparedVehiculePairs;
         $mostComparedVehiculePairs = $dbController->request($database, $query);
 
         $dbController->disConnect($database);

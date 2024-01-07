@@ -8,7 +8,7 @@ class UserModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = UserQueries::getUserById();
+        $query = UserQueries::getUserById;
         $params = [$userId];
         $user = $dbController->request($database, $query, $params);
 
@@ -20,7 +20,7 @@ class UserModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = UserQueries::loginUser();
+        $query = UserQueries::loginUser;
         $params = [$username];
 
         $userMatchingusername = $dbController->request($database, $query, $params);
@@ -77,7 +77,7 @@ class UserModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = UserQueries::getAllUsers();
+        $query = UserQueries::getAllUsers;
         $params = [$userId];
         $users = $dbController->request($database, $query, $params);
 
@@ -89,7 +89,7 @@ class UserModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = UserQueries::addUser();
+        $query = UserQueries::addUser;
         $params = [$password, $username, $firstName, $lastName, $role, $birthDate, $sex, $status, $profilPicture];
         $success = $dbController->request($database, $query, $params);
 
@@ -113,7 +113,7 @@ class UserModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = UserQueries::deleteUser();
+        $query = UserQueries::deleteUser;
         $params = [$userId];
         $success = $dbController->request($database, $query, $params);
 
@@ -125,7 +125,7 @@ class UserModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = UserQueries::updateUserInfo();
+        $query = UserQueries::updateUserInfo;
         $params = [$username, $firstName, $lastName, $birthDate, $profilePicture, $userId];
         $success = $dbController->request($database, $query, $params);
 
@@ -137,7 +137,7 @@ class UserModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = UserQueries::validateUser();
+        $query = UserQueries::validateUser;
         $params = [$userId];
         $success = $dbController->request($database, $query, $params);
 
@@ -149,7 +149,7 @@ class UserModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = UserQueries::rejectUser();
+        $query = UserQueries::rejectUser;
         $params = [$userId];
         $success = $dbController->request($database, $query, $params);
 
@@ -161,7 +161,7 @@ class UserModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = UserQueries::updateUserRole();
+        $query = UserQueries::updateUserRole;
         $params = [$userId, $newRole];
         $success = $dbController->request($database, $query, $params);
 
@@ -173,7 +173,7 @@ class UserModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = UserQueries::getUserFavoriteVehicules();
+        $query = UserQueries::getUserFavoriteVehicules;
         $params = [$userId];
         $userFavoriteVehicules = $dbController->request($database, $query, $params);
 
@@ -185,9 +185,7 @@ class UserModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = UserQueries::addFavoriteVehicule();
-        // remove like
-        $qury2 = UserQueries::deleteFavoriteVehicule();
+        $query = UserQueries::addFavoriteVehicule;
         $params = [$userId, $vehiculeId];
         $success = $dbController->request($database, $query, $params);
 
@@ -199,7 +197,7 @@ class UserModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = UserQueries::deleteFavoriteVehicule();
+        $query = UserQueries::deleteFavoriteVehicule;
         $params = [$userId, $vehiculeId];
         $success = $dbController->request($database, $query, $params);
 
@@ -212,7 +210,7 @@ class UserModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = UserQueries::isVehicleLikedByUser();
+        $query = UserQueries::isVehicleLikedByUser;
         $params = [$userId, $vehiculeId];
         $result = $dbController->request($database, $query, $params);
 
@@ -224,12 +222,10 @@ class UserModel
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
-        $query = UserQueries::getNumberOfPendingUsers();
+        $query = UserQueries::getNumberOfPendingUsers;
         $result = $dbController->request($database, $query);
 
         $dbController->disConnect($database);
         return $result[0]['NB'];
     }
-
 }
-
