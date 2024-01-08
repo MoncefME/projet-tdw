@@ -5,9 +5,15 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/sharedVi
 class EditNewsPage
 {
     private $id;
+    private $news;
     public function __construct($id)
     {
         $this->id = $id;
+        $newsController = new NewsController();
+        $this->news = $newsController->getNewsById($id);
+        if ($this->news == null) {
+            header('Location: /CarLog/notFound');
+        }
     }
 
     public function showPage()
@@ -32,8 +38,9 @@ class EditNewsPage
 
     private function showNewsForm()
     {
-        $newsController = new NewsController();
-        $news = $newsController->getNewsById($this->id);
+        // $newsController = new NewsController();
+        // $news = $newsController->getNewsById($this->id);
+        $news = $this->news;
         ?>
         <div class="news__form">
             <form method="POST" action="<?= ApiRouter::EDIT_NEWS_ENDPOINT($news['id']) ?>" enctype="multipart/form-data">

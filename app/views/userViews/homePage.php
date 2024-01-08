@@ -26,12 +26,22 @@ class HomePage
 
     private function showSlider()
     {
+        $settingsController = new SettingsController();
+        $sliderImages = $settingsController->getSliderImages();
+
         ?>
         <div class="homepage__slider">
-            <p>//TODO : Slider</p>
-            <!-- <img src="/CarLog/public/images/slider/background-1.jpg" alt="slider1">
-            <img src="/CarLog/public/images/slider/background-2.jpg" alt="slider2">
-            <img src="/CarLog/public/images/slider/background-3.jpg" alt="slider3"> -->
+            <div class="slider__container">
+                <?php
+                foreach ($sliderImages as $sliderImage) {
+                    ?>
+                    <a href="/CarLog/news/?id=<?php echo $sliderImage['news_id']; ?>">
+                        <img src="<?= ImageUtility::getSliderImage($sliderImage) ?>" alt="" width="100" height="auto">
+                    </a>
+                    <?php
+                }
+                ?>
+            </div>
         </div>
         <?php
     }

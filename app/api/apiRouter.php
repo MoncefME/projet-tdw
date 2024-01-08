@@ -162,4 +162,7 @@ class ApiRouter
     }
     const EDIT_CONTACT_ENDPOINT = API_BASE_URL . '/settings/updateContactInformations.php';
     const EDIT_GUIDE_ACHAT_ENDPOINT = API_BASE_URL . '/settings/updateGuideAchat.php';
+
+    /* OTHERS */
+    const ADD_SLIDER_IMAGE_ENDPOINT = API_BASE_URL . '/settings/addSliderImage.php';
 }

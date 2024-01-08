@@ -9,7 +9,7 @@ class UploadFile
         $uploadOk = 1;
 
         $fileType = $_FILES["brandPicture"]["type"];
-        $allowedTypes = ["image/jpeg", "image/png", "image/svg+xml"];
+        $allowedTypes = ["image/jpeg", "image/png", "image/svg+xml", "image/jpg"];
         if (!in_array($fileType, $allowedTypes)) {
             $uploadOk = 0;
         }
@@ -35,7 +35,7 @@ class UploadFile
         $uploadOk = 1;
 
         $fileType = $_FILES["vehiculePicture"]["type"];
-        $allowedTypes = ["image/jpeg", "image/png", "image/svg+xml"];
+        $allowedTypes = ["image/jpeg", "image/png", "image/svg+xml", "image/jpg"];
         if (!in_array($fileType, $allowedTypes)) {
             $uploadOk = 0;
         }
@@ -61,7 +61,7 @@ class UploadFile
         $uploadOk = 1;
 
         $fileType = $_FILES["newsPicture"]["type"];
-        $allowedTypes = ["image/jpeg", "image/png", "image/svg+xml"];
+        $allowedTypes = ["image/jpeg", "image/png", "image/svg+xml", "image/jpg"];
         if (!in_array($fileType, $allowedTypes)) {
             $uploadOk = 0;
         }
@@ -87,7 +87,7 @@ class UploadFile
         $uploadOk = 1;
 
         $fileType = $_FILES["profilePicture"]["type"];
-        $allowedTypes = ["image/jpeg", "image/png", "image/svg+xml"];
+        $allowedTypes = ["image/jpeg", "image/png", "image/svg+xml", "image/jpg"];
         if (!in_array($fileType, $allowedTypes)) {
             $uploadOk = 0;
         }
@@ -100,6 +100,32 @@ class UploadFile
         if ($uploadOk == 1) {
             if (move_uploaded_file($_FILES["profilePicture"]["tmp_name"], $uploadFile)) {
                 return basename($_FILES["profilePicture"]["name"]);
+            }
+        }
+
+        return false;
+    }
+
+    public function uploadSliderImage()
+    {
+        $uploadDir = $_SERVER['DOCUMENT_ROOT'] . "/CarLog/public/uploads/slider/";
+        $uploadFile = $uploadDir . $_FILES["sliderImage"]["name"];
+        $uploadOk = 1;
+
+        $fileType = $_FILES["sliderImage"]["type"];
+        $allowedTypes = ["image/jpeg", "image/png", "image/svg+xml", "image/jpg"];
+        if (!in_array($fileType, $allowedTypes)) {
+            $uploadOk = 0;
+        }
+
+        $maxFileSize = 4 * 1024 * 1024;
+        if ($_FILES["sliderImage"]["size"] > $maxFileSize) {
+            $uploadOk = 0;
+        }
+
+        if ($uploadOk == 1) {
+            if (move_uploaded_file($_FILES["sliderImage"]["tmp_name"], $uploadFile)) {
+                return basename($_FILES["sliderImage"]["name"]);
             }
         }
 

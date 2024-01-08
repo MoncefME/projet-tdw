@@ -1,10 +1,10 @@
 <?php
 class SharedViews
 {
-   
+
     public function adminSideBar()
     {
-        
+
 ?>
         <div class="dashboard__sidebar">
             <div class="dashboard__sidebar__logo">

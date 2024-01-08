@@ -7,9 +7,15 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/controllers/vehiculeReview
 class SingleVehiculePage
 {
     private $id;
+    private $vehicule;
     public function __construct($id)
     {
         $this->id = $id;
+        $vehiculeController = new VehiculeController();
+        $this->vehicule = $vehiculeController->getVehiculeById($id);
+        if ($this->vehicule == null) {
+           header('Location: /CarLog/notFound');
+        } 
     }
 
     public function showPage()
@@ -31,8 +37,9 @@ class SingleVehiculePage
 
     public function showVehiculeInfo()
     {
-        $vehiculeController = new VehiculeController();
-        $vehicule = $vehiculeController->getVehiculeById($this->id);
+        // $vehiculeController = new VehiculeController();
+        // $vehicule = $vehiculeController->getVehiculeById($this->id);
+        $vehicule = $this->vehicule;
 
         ?>
         <div class="vehicule__information__container">

@@ -1,6 +1,7 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/app/models/settingsModel.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/config/utils/formValidation.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/config/utils/uploadFile.php');
 class SettingsController
 {
     public function getContactInformations()
@@ -47,4 +48,39 @@ class SettingsController
 
         return $settingsModel->updateGuideAchat($title, $content);
     }
+
+    public function getSliderImages(){
+        $settingsModel = new SettingsModel();
+        return $settingsModel->getSliderImages();
+    }
+
+    public function getSliderImageById($id){
+        $settingsModel = new SettingsModel();
+        return $settingsModel->getSliderImageById($id);
+    } 
+
+    public function deleteSliderImage($id){
+        $settingsModel = new SettingsModel();
+        return $settingsModel->deleteSliderImage($id);
+    }
+
+    public function addSliderImage(){
+        $settingsModel = new SettingsModel();
+        $news_id = FormValidation::validateInput('news_id');
+
+        $uploadHandler = new UploadFile();
+        $uploadedFileName = $uploadHandler->uploadSliderImage();
+        return $settingsModel->addSliderImage($uploadedFileName, $news_id);
+    }
+
+    public function updateImageSlider($id){
+        $settingsModel = new SettingsModel();
+        $news_id = FormValidation::validateInput('news_id');
+
+        $uploadHandler = new UploadFile();
+        $uploadedFileName = $uploadHandler->uploadSliderImage();
+
+        return $settingsModel->updateImageSlider($uploadedFileName, $news_id, $id);
+    }
+    
 }

@@ -49,4 +49,15 @@ class ImageUtility
         return $pictureUrl;
     }
 
+    public static function getSliderImage($sliderImage){
+        $picture = $sliderImage['image_url'];
+        $picturePath = "/CarLog/public/uploads/slider/" . $picture;
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . $picturePath)) {
+            $pictureUrl = $picturePath;
+        } else {
+            $pictureUrl = "/CarLog/public/images/defaults/slider.jpg";
+        }
+        return $pictureUrl;
+    }
+
 }

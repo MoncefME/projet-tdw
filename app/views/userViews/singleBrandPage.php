@@ -6,9 +6,16 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/controllers/brandReviewsCo
 class SingleBrandPage
 {
     private $id;
+    private $brand;
+
     public function __construct($id)
     {
         $this->id = $id;
+        $brandController = new BrandController();
+        $this->brand = $brandController->getBrandById($id);
+        if ($this->brand == null) {
+            header('Location: /CarLog/notFound');
+        }
     }
 
 
@@ -35,8 +42,9 @@ class SingleBrandPage
     }
     private function showBrandInfo()
     {
-        $brandController = new BrandController();
-        $brand = $brandController->getBrandById($this->id);
+        // $brandController = new BrandController();
+        // $brand = $brandController->getBrandById($this->id);
+        $brand = $this->brand;
 
         ?>
         <div class="brand__information__container">

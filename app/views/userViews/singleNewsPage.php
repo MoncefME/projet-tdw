@@ -4,9 +4,15 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/controllers/newsController
 class SingleNewsPage
 {
     private $id;
+    private $news;
     public function __construct($id)
     {
         $this->id = $id;
+        $newsController = new NewsController();
+        $this->news = $newsController->getNewsById($id);
+        if ($this->news == null) {
+            header('Location: /CarLog/notFound');
+        }
     }
 
     public function showPage()
@@ -25,8 +31,9 @@ class SingleNewsPage
 
     private function showNewsContent()
     {
-        $newsController = new NewsController();
-        $news = $newsController->getNewsById($this->id);
+        // $newsController = new NewsController();
+        // $news = $newsController->getNewsById($this->id);
+        $news = $this->news;
         $tags = explode(',', $news['tags']);
         ?>
         <div class="single__news__content">

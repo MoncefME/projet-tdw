@@ -14,18 +14,12 @@ class SingleComparisionPage
         $brandController = new BrandController();
         $this->vehiculeA = $vehiculeController->getVehiculeById($vehiculeA);
         $this->vehiculeB = $vehiculeController->getVehiculeById($vehiculeB);
+        if($this->vehiculeA == null || $this->vehiculeB == null){
+            header('Location: /CarLog/notFound');
+        }
         $this->brands = $brandController->getAllBrands();
     }
 
-    // public function showPage()
-    // {
-    //     $shardViews = new SharedViews();
-    //     $shardViews->showHeader();
-    //     echo "<h1>Comparing " . $this->vehiculeA['model'] . " with " . $this->vehiculeB['model'] . "</h1>";
-    //     $this->showComparator();
-    //     // $this->showPopularComparisons();
-    //     $shardViews->showFooter();
-    // }
 
     public function showPage()
     {

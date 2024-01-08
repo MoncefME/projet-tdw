@@ -20,7 +20,6 @@
 
     <!-- Custom Scripts -->
     <script src="/CarLog/public/scripts/main.js"></script>
-
 </head>
 
 <body>

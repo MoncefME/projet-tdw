@@ -6,26 +6,26 @@ class SettingsPage
     public function showPage()
     {
         $sharedView = new SharedViews();
-        ?>
+?>
         <div class="dashboard__page">
             <?php
             $sharedView->adminSideBar();
             ?>
             <div class="dashboard__content">
                 <div class="settings__page">
-                    <?= $this->showGuidAchatForm(); ?>
-                    <?= $this->showContactForm(); ?>
+                    <?= $this->showSliderImageForm(); ?>
+                    <?= $this->showSliderImagePreview(); ?>
                 </div>
 
             </div>
         </div>
-        <?php
+    <?php
     }
     public function showContactForm()
     {
         $settingsController = new SettingsController();
         $contactInformations = $settingsController->getContactInformations();
-        ?>
+    ?>
         <div class="contact__informations__form">
             <h2>Edit Contact Informations</h2>
             <form action="<?= ApiRouter::EDIT_CONTACT_ENDPOINT ?>" method="post">
@@ -62,52 +62,47 @@ class SettingsPage
                         <i class="fab fa-facebook"></i>
                         Facebook Link
                     </label>
-                    <input type="text" name="facebook_link" id="facebook_link"
-                        value="<?php echo $contactInformations['facebook_link']; ?>">
+                    <input type="text" name="facebook_link" id="facebook_link" value="<?php echo $contactInformations['facebook_link']; ?>">
                 </div>
                 <div>
                     <label for="twitter_link">
                         <i class="fab fa-twitter"></i>
                         Twitter Link
                     </label>
-                    <input type="text" name="twitter_link" id="twitter_link"
-                        value="<?php echo $contactInformations['twitter_link']; ?>">
+                    <input type="text" name="twitter_link" id="twitter_link" value="<?php echo $contactInformations['twitter_link']; ?>">
                 </div>
                 <div>
                     <label for="youtube_link">
                         <i class="fab fa-youtube"></i>
                         Youtube Link
                     </label>
-                    <input type="text" name="youtube_link" id="youtube_link"
-                        value="<?php echo $contactInformations['youtube_link']; ?>">
+                    <input type="text" name="youtube_link" id="youtube_link" value="<?php echo $contactInformations['youtube_link']; ?>">
                 </div>
                 <div>
                     <label for="linkedin_link">
                         <i class="fab fa-linkedin"></i>
                         Linkedin Link
                     </label>
-                    <input type="text" name="linkedin_link" id="linkedin_link"
-                        value="<?php echo $contactInformations['linkedin_link']; ?>">
+                    <input type="text" name="linkedin_link" id="linkedin_link" value="<?php echo $contactInformations['linkedin_link']; ?>">
                 </div>
                 <div>
                     <label for="instagram_link">
                         <i class="fab fa-instagram"></i>
                         Instagram Link
                     </label>
-                    <input type="text" name="instagram_link" id="instagram_link"
-                        value="<?php echo $contactInformations['instagram_link']; ?>">
+                    <input type="text" name="instagram_link" id="instagram_link" value="<?php echo $contactInformations['instagram_link']; ?>">
                 </div>
             </form>
             <button type="submit" class="btn btn-info" name="update_contact_informations">Update</button>
         </div>
-        <?php
+    <?php
     }
 
     public function showGuidAchatForm()
     {
         $settingsController = new SettingsController();
         $guidAchat = $settingsController->getGuideAchat();
-        ?>
+    ?>
         <div class="guid__achat__form">
             <form action="<?= ApiRouter::EDIT_GUIDE_ACHAT_ENDPOINT ?>" method="post">
                 <div>
@@ -127,6 +122,58 @@ class SettingsPage
                 <button class="btn btn-danger" type="submit" name="update_guid_achat">Update</button>
             </form>
         </div>
-        <?php
+    <?php
+    }
+
+    public function showSliderImageForm()
+    {
+        $newsController = new NewsController();
+        $news = $newsController->getAllNews();
+    ?>
+        <div class="slider__settings__container">
+            <form action="<?= ApiRouter::ADD_SLIDER_IMAGE_ENDPOINT ?>" method="post" enctype="multipart/form-data">
+                <div>
+                    <label for="sliderImage">Picture:</label>
+                    <input type="file" name="sliderImage" id="sliderImage" accept="image/*" required onChange="previewInputImage(event)">
+                    <img id="previewImage" src="#" alt="Preview" style="display: none; width: 100px; height: 100px;">
+
+                    <select name="news_id" id="news_id" required>
+                        <?php
+                        foreach ($news as $new) {
+                        ?>
+                            <option value="<?php echo $new['id']; ?>">
+                                <?php echo $new['title']; ?>
+                            </option>
+                        <?php
+                        }
+                        ?>
+                    </select>
+                </div>
+                <button class="btn btn-info" type="submit" name="add_slider_image">Add</button>
+            </form>
+        </div>
+    <?php
+    }
+
+    public function showSliderImagePreview()
+    {
+        $settingsController = new SettingsController();
+        $sliderImages = $settingsController->getSliderImages();
+    ?>
+        <div class="slider_images_list">
+            <?php
+            foreach ($sliderImages as $sliderImage) {
+            ?>
+                <div class="single__image__preview">
+                    <a href="/CarLog/news/?id=<?php echo $sliderImage['news_id']; ?>">
+                        <img src="<?= ImageUtility::getSliderImage($sliderImage) ?>" alt="" width="100" height="auto">
+                    </a>
+                </div>
+            <?php
+            }
+            ?>
+        </div>
+<?php
     }
 }
+?>

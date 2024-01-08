@@ -6,9 +6,17 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/sharedVi
 class EditVehiculePage
 {
     private $id;
+    private $vehicule;
+
     public function __construct($id)
     {
         $this->id = $id;
+        $vehiculeController = new VehiculeController();
+        $this->vehicule = $vehiculeController->getVehiculeById($id);
+        if ($this->vehicule == null) {
+            header('Location: /CarLog/notFound');
+        }
+
     }
     public function showPage()
     {
@@ -33,9 +41,10 @@ class EditVehiculePage
 
     private function showVehiculeFrom()
     {
-        $vehiculeController = new VehiculeController();
+        // $vehiculeController = new VehiculeController();
+        // $vehicule = $vehiculeController->getVehiculeById($this->id);
+        $vehicule = $this->vehicule;
         $brandController = new BrandController();
-        $vehicule = $vehiculeController->getVehiculeById($this->id);
         $brands = $brandController->getAllBrands();
         ?>
         <div class="vehicules__form" id="vehiculeForm">

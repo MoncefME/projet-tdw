@@ -65,5 +65,62 @@ class SettingsModel
         return $success !== false;
     }
 
+    public function getSliderImages(){
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
+
+        $query = SettingQueries::getSliderImages;
+        $sliderImage = $dbController->request($database, $query);
+
+        $dbController->disConnect($database);
+        return $sliderImage;
+    }
+
+    public function deleteSliderImage(){
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
+
+        $query = SettingQueries::deleteSliderImage;
+        $success = $dbController->request($database, $query);
+
+        $dbController->disConnect($database);
+        return $success !== false;
+    }
+
+    public function addSliderImage($image_url , $newsId){
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
+
+        $query = SettingQueries::addSliderImage;
+        $params = [$image_url , $newsId];
+        $success = $dbController->request($database, $query , $params);
+
+        $dbController->disConnect($database);
+        return $success !== false;
+    }
+
+    public function updateImageSlider($image_url , $newsId){
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
+
+        $query = SettingQueries::updateImageSlider;
+        $params = [$image_url , $newsId];
+        $success = $dbController->request($database, $query , $params);
+
+        $dbController->disConnect($database);
+        return $success !== false;
+    }
+
+    public function getSliderImageById($id){
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
+
+        $query = SettingQueries::getSliderImageById;
+        $params = [$id];
+        $sliderImage = $dbController->request($database, $query , $params);
+
+        $dbController->disConnect($database);
+        return $sliderImage[0];
+    }
 
 }

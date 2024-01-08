@@ -453,3 +453,13 @@ th{
     display: flex;
     gap: 30px;
 }
+
+.slider__settings__container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    padding: 20px;
+}
