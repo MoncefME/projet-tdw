@@ -418,19 +418,6 @@ function addComparision() {
   });
 }
 
-// $(document).ready(function () {
-//   let currentIndex = 0;
-//   const images = $(".homepage__slider img");
-//   const totalImages = images.length;
-
-//   function showNextImage() {
-//     $(images[currentIndex]).css("z-index", 1);
-//     currentIndex = (currentIndex + 1) % totalImages;
-//     $(images[currentIndex]).css("z-index", 2);
-//   }
-//   setInterval(showNextImage, 2000);
-// });
-
 $(document).ready(function () {
   $("#brandsTable").show();
   $("#toggleButtonBrand").click(function () {
@@ -468,19 +455,6 @@ $(document).ready(function () {
     $("#toggleButtonNews span").text(buttonText);
   });
 
-  /***TODO */
-  $("#sliderImagesTable").show();
-  $("#toggleButtonSliderImages").click(function () {
-    $("#sliderImagesTable").toggle();
-    $("#sliderImageForm").toggle();
-
-    var buttonText = $("#sliderImagesTable").is(":visible")
-      ? "Show Form"
-      : "Show Table";
-
-    $("#toggleButtonSliderImages span").text(buttonText);
-  });
-  /***TODO */
 });
 
 function toggleHiddenBrands() {

@@ -18,7 +18,7 @@ p{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color: gainsboro;
+    background-color: white;
 }
 .page__header{
     width: 100%;
@@ -590,4 +590,6 @@ p{
     right: 20px;
     text-decoration: none;
 }
+
+
 

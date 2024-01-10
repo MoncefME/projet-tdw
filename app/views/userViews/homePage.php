@@ -14,7 +14,7 @@ class HomePage
             $shardViews = new SharedViews();
             $shardViews->showHeader();
             $this->showSlider();
-            $this->showNavBar();
+            $shardViews->showNavBar();
             $brandsPage->showBrandsCards();
             $this->showComparator();
             $shardViews->showFooter();
@@ -46,22 +46,7 @@ class HomePage
         <?php
     }
 
-    private function showNavBar()
-    {
-        ?>
-        <div class="homepage__navbar">
-            <ul>
-                <li><a href="/CarLog/">Home</a></li>
-                <li><a href="/CarLog/brandsPage/">Brands</a></li>
-                <li><a href="/CarLog/comparatorPage/">Comparator</a></li>
-                <li><a href="/CarLog/newsPage/">News</a></li>
-                <li><a href="/CarLog/guidePage/">Guide d'achat</a></li>
-                <li><a href="/CarLog/contactPage/">Contact</a></li>
-                <li><a href="/CarLog/reviewsPage/">Reviews</a></li>
-            </ul>
-        </div>
-        <?php
-    }
+
 
     private function showComparator()
     {

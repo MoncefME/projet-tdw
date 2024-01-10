@@ -10,6 +10,7 @@ class GuidePage
         <div class="page__content">
             <?php
             $shardViews->showHeader();
+            $shardViews->showNavBar();
             $this->showGuideAchat();
             $shardViews->showFooter();
             ?>

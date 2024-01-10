@@ -16,7 +16,6 @@ class SettingsPage
                     <?= $this->showSliderImageForm(); ?>
                     <?= $this->showSliderImagePreview(); ?>
                 </div>
-
             </div>
         </div>
     <?php

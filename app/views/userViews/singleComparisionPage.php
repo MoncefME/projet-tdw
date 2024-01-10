@@ -28,6 +28,7 @@ class SingleComparisionPage
         <div class="page__content">
             <?php
             $shardViews->showHeader();
+            $shardViews->showNavBar();
             $this->showComparator();
             $shardViews->showFooter();
             ?>

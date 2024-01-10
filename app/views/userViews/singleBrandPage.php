@@ -26,6 +26,7 @@ class SingleBrandPage
         <div class="page__content">
             <?php
             $shardViews->showHeader();
+            $shardViews->showNavBar();
             $this->showBrandInfo();
             ?>
             <div class="vehicule__main__section">

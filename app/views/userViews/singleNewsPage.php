@@ -22,6 +22,7 @@ class SingleNewsPage
         <div class="page__content">
             <?php
             $shardViews->showHeader();
+            $shardViews->showNavBar();
             $this->showNewsContent();
             $shardViews->showFooter();
             ?>
@@ -31,8 +32,6 @@ class SingleNewsPage
 
     private function showNewsContent()
     {
-        // $newsController = new NewsController();
-        // $news = $newsController->getNewsById($this->id);
         $news = $this->news;
         $tags = explode(',', $news['tags']);
         ?>

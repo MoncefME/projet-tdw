@@ -1,73 +1,45 @@
 <?php
 session_start();
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/config/config.php");
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/api/apiRouter.php");
+/** Utils */
 require_once(APIROUTER_PATH);
 require_once(IMAGE_UTILITY_PATH);
 require_once(FORM_VALIDATION_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/config/utils/imageUtility.php");
-// require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/config/utils/formValidation.php');
 
 /** User Pages */
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/brandsPage.php");
 require_once(BRANDS_PAGE_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/comparatorPage.php");
 require_once(COMPARATOR_PAGE_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/contactPage.php");
 require_once(CONTACT_PAGE_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/guidePage.php");
 require_once(GUIDE_PAGE_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/homePage.php");
 require_once(HOME_PAGE_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/newsPage.php");
 require_once(NEWS_PAGE_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/profilePage.php");
 require_once(PROFILE_PAGE_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/reviewsPage.php");
 require_once(REVIEWS_PAGE_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/singleBrandPage.php");
 require_once(SINGLE_BRAND_PAGE_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/singleVehiculePage.php");
 require_once(SINGLE_VEHICLE_PAGE_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/singleNewsPage.php");
 require_once(SINGLE_NEWS_PAGE_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/singleComparisionPage.php");
 require_once(SINGLE_COMPARISON_PAGE_PATH);
 
 /** Admin Pages */
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/manageBrandsPage.php");
 require_once(MANAGE_BRANDS_PAGE_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/manageNewsPage.php");
 require_once(MANAGE_NEWS_PAGE_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/manageReviewsPage.php");
 require_once(MANAGE_REVIEWS_PAGE_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/manageBReviewsPage.php");
 require_once(MANAGE_BREVIEWS_PAGE_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/manageVReviewsPage.php");
 require_once(MANAGE_VREVIEWS_PAGE_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/manageUsersPage.php");
 require_once(MANAGE_USERS_PAGE_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/adminDashboardPage.php");
 require_once(ADMIN_DASHBOARD_PAGE_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/manageVehiculesPage.php");
 require_once(MANAGE_VEHICLES_PAGE_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/settingsPage.php");
 require_once(SETTINGS_PAGE_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/editBrandPage.php");
 require_once(EDIT_BRAND_PAGE_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/editVehiculePage.php");
 require_once(EDIT_VEHICLE_PAGE_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/editNewsPage.php");
 require_once(EDIT_NEWS_PAGE_PATH);
 
-/** Shared Pages */
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/logInPage.php");
+/** Auth Pages */
 require_once(LOGIN_PAGE_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/signUpPage.php");
 require_once(SIGNUP_PAGE_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/pageNotFound.php");
+
+/** Error Pages */  
 require_once(PAGE_NOT_FOUND_PATH);
-// require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/unAuthorizedPage.php");
 require_once(UNAUTHORIZED_PAGE_PATH);
 
 /** Controllers */

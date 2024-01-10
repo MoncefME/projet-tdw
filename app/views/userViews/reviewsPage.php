@@ -10,6 +10,7 @@ class ReviewsPage
         <div class="page__content">
             <?php
             $shardViews->showHeader();
+            $shardViews->showNavBar();
             echo "reviews page";
             $shardViews->showFooter();
             ?>
