@@ -10,7 +10,7 @@ class NewsPage
         <div class="page__content">
             <?php
             $shardViews->showHeader();
-            $shardViews->showNavBar();
+            // $shardViews->showNavBar();
             $this->showNewsCards();
             $shardViews->showFooter();
             ?>

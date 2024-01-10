@@ -1,6 +1,8 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/Config/queries/vehiculeQueries.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/app/controllers/databaseController.php');
+// require_once(DATABASE_CONTROLLER);
+require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/Config/queries/vehiculeQueries.php");
+// require_once(VEHICULE_QUERIES);
 class VehiculeModel
 {
     public function getVehiculeById($vehiculeId)

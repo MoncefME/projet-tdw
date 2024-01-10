@@ -10,7 +10,7 @@ class BrandsPage
         <div class="page__content">
             <?php
             $shardViews->showHeader();
-            $shardViews->showNavBar();
+            // $shardViews->showNavBar();
             $this->showBrandsCards();
             $shardViews->showFooter();
             ?>

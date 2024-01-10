@@ -21,6 +21,7 @@ define('SINGLE_BRAND_PAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/
 define('SINGLE_VEHICLE_PAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/singleVehiculePage.php");
 define('SINGLE_NEWS_PAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/singleNewsPage.php");
 define('SINGLE_COMPARISON_PAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/singleComparisionPage.php");
+define('SINGLE_VEHICLE_REVIEWS_PAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/userViews/singleVehiculeReviewsPage.php");
 
 define('MANAGE_BRANDS_PAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/manageBrandsPage.php");
 define('MANAGE_NEWS_PAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/adminViews/manageNewsPage.php");
@@ -39,4 +40,5 @@ define('LOGIN_PAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedV
 define('SIGNUP_PAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/signUpPage.php");
 define('PAGE_NOT_FOUND_PATH', $_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/pageNotFound.php");
 define('UNAUTHORIZED_PAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/views/sharedViews/unAuthorizedPage.php");
+
 

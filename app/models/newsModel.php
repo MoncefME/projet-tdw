@@ -1,6 +1,8 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/Config/queries/newsQueries.php");
+// require_once(NEWS_QUERIES);
 require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/app/controllers/databaseController.php');
+// require_once(DATABASE_CONTROLLER);
 class NewsModel
 {
     public function getNewsById($newsId)

@@ -26,7 +26,7 @@ class SingleBrandPage
         <div class="page__content">
             <?php
             $shardViews->showHeader();
-            $shardViews->showNavBar();
+            // $shardViews->showNavBar();
             $this->showBrandInfo();
             ?>
             <div class="vehicule__main__section">
@@ -104,7 +104,7 @@ class SingleBrandPage
                         </p>
                         <img src="<?= ImageUtility::getVehiculePicture($vehicule); ?>"
                             alt="<?php echo $vehicule['vehiculePicture'] ?>" width="100px" height="auto">
-                        <a href="/CarLog/vehicule/?id=<?php echo $vehicule["id"] ?>"> Show Details </a>
+                        <a href="/CarLog/vehicule/?id=<?= $vehicule["id"] ?>"> Show Details </a>
                     </div>
                     <?php
                 } ?>

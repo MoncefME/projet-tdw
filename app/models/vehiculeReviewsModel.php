@@ -1,6 +1,8 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/app/controllers/databaseController.php');
+// require_once(DATABASE_CONTROLLER);
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/Config/queries/reviewQueries.php");
+// require_once(REVIEW_QUERIES);
 class VehiculeReviewsModel
 {
     public function getVehiculeReviewById($vehiculeReviewId)
@@ -15,6 +17,7 @@ class VehiculeReviewsModel
         $dbController->disConnect($database);
         return $vehiculeReview;
     }
+
     public function getAllVehiculeReviews()
     {
         $dbController = new DatabaseController();
@@ -26,6 +29,7 @@ class VehiculeReviewsModel
         $dbController->disConnect($database);
         return $vehiculeReviews;
     }
+
     public function getReviewsByVehicule($vehiculeId)
     {
         $dbController = new DatabaseController();
@@ -38,6 +42,7 @@ class VehiculeReviewsModel
         $dbController->disConnect($database);
         return $reviewsByVehicule;
     }
+
     public function getValidReviewsByVehicule($vehiculeId)
     {
         $dbController = new DatabaseController();
@@ -50,6 +55,19 @@ class VehiculeReviewsModel
         $dbController->disConnect($database);
         return $reviewsByVehicule;
     }
+
+    public function getTopReviewsByVehicule($vehiculeId){
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
+
+        $query = ReviewQueries::getTopReviewsByVehicule;
+        $params = [$vehiculeId];
+        $reviewsByVehicule = $dbController->request($database, $query, $params);
+
+        $dbController->disConnect($database);
+        return $reviewsByVehicule;
+    }
+
     public function addVehiculeReview($user_id, $vehicule_id, $status, $comment, $rating)
     {
         $dbController = new DatabaseController();
@@ -62,6 +80,7 @@ class VehiculeReviewsModel
         $dbController->disConnect($database);
         return $success !== false;
     }
+
     public function updateVehiculeReview($vehiculeReviewId, $user_id, $vehicule_id, $status, $comment, $rating)
     {
         $dbController = new DatabaseController();
@@ -74,6 +93,7 @@ class VehiculeReviewsModel
         $dbController->disConnect($database);
         return $success !== false;
     }
+
     public function deleteVehiculeReview($vehiculeReviewId)
     {
         $dbController = new DatabaseController();
@@ -86,6 +106,7 @@ class VehiculeReviewsModel
         $dbController->disConnect($database);
         return $success !== false;
     }
+
     public function validateVehiculeReview($vehiculeReviewId)
     {
         $dbController = new DatabaseController();
@@ -98,6 +119,7 @@ class VehiculeReviewsModel
         $dbController->disConnect($database);
         return $success !== false;
     }
+
     public function rejectVehiculeReview($vehiculeReviewId)
     {
         $dbController = new DatabaseController();
@@ -110,6 +132,7 @@ class VehiculeReviewsModel
         $dbController->disConnect($database);
         return $success !== false;
     }
+    
     public function getNumberOfPendingVehiculeReviews()
     {
         $dbController = new DatabaseController();

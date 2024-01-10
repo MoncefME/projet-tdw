@@ -7,6 +7,7 @@ class ReviewQueries
     const getAllBrandReviews = "SELECT * FROM brandreviews";
     const getReviewsByBrand = "SELECT * FROM brandreviews WHERE brand_id = ?";
     const getValidReviewsByBrand = "SELECT * FROM brandreviews WHERE brand_id = ? AND status = 'VALID'";
+    const getTopReviewsByBrand = "SELECT * FROM brandreviews WHERE brand_id = ? AND status = 'VALID' ORDER BY rating DESC LIMIT 3";
     const addBrandReview = "INSERT INTO brandreviews (user_id, brand_id, status, comment, rating) VALUES (?, ?, ?, ?, ?)";
     const updateBrandReview = "UPDATE brandreviews SET user_id = ?, brand_id = ?, status = ?, comment = ?, rating = ? WHERE id = ?";
     const deleteBrandReview = "DELETE FROM brandreviews WHERE id = ?";
@@ -20,6 +21,7 @@ class ReviewQueries
     const getAllVehiculeReviews = "SELECT * FROM vehiculereviews";
     const getReviewsByVehicule = "SELECT * FROM vehiculereviews WHERE vehicule_id = ?";
     const getValidReviewsByVehicule = "SELECT * FROM vehiculereviews WHERE vehicule_id = ? AND status = 'VALID'";
+    const getTopReviewsByVehicule = "SELECT * FROM vehiculereviews WHERE vehicule_id = ? AND status = 'VALID' ORDER BY rating DESC LIMIT 3";
     const addVehiculeReview = "INSERT INTO vehiculereviews (user_id, vehicule_id, status, comment, rating) VALUES (?, ?, ?, ?, ?)";
     const updateVehiculeReview = "UPDATE vehiculereviews SET user_id = ?, vehicule_id = ?, status = ?, comment = ?, rating = ? WHERE id = ?";
     const deleteVehiculeReview = "DELETE FROM vehiculereviews WHERE id = ?";

@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/config/imports.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/config/config.php");
 /** Utils */
 require_once(APIROUTER_PATH);
@@ -19,6 +20,7 @@ require_once(SINGLE_BRAND_PAGE_PATH);
 require_once(SINGLE_VEHICLE_PAGE_PATH);
 require_once(SINGLE_NEWS_PAGE_PATH);
 require_once(SINGLE_COMPARISON_PAGE_PATH);
+require_once(SINGLE_VEHICLE_REVIEWS_PAGE_PATH);
 
 /** Admin Pages */
 require_once(MANAGE_BRANDS_PAGE_PATH);
@@ -79,6 +81,14 @@ switch ($request) {
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $view = new SingleVehiculePage($id);
+        } else {
+            $view = new PageNotFound();
+        }
+        break;
+    case '/CarLog/vehiculeReviews/':
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $view = new SingleVehiculeReviewsPage($id);
         } else {
             $view = new PageNotFound();
         }

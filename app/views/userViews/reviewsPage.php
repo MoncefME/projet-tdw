@@ -10,8 +10,8 @@ class ReviewsPage
         <div class="page__content">
             <?php
             $shardViews->showHeader();
-            $shardViews->showNavBar();
-            echo "reviews page";
+            // $shardViews->showNavBar();
+            $this->showVehiculeReviewsLinks();
             $shardViews->showFooter();
             ?>
         </div>
@@ -20,7 +20,6 @@ class ReviewsPage
 
     public static function showReviews()
     {
-
         ?>
         <div class="rating">
             <input value="5" name="rating" id="star5" type="radio">
@@ -36,4 +35,16 @@ class ReviewsPage
         </div>
         <?php
     }
+
+    public function showVehiculeReviewsLinks(){
+        $vehiculeController = new VehiculeController();
+        $vehicules = $vehiculeController->getAllVehicules();
+
+        foreach($vehicules as $vehicule){
+            ?>
+            <a href="/CarLog/vehiculeReviews/?id=<?=$vehicule['id']?>"><?= $vehicule['model']?></a>
+            <?php
+        }
+    }
+
 }

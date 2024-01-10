@@ -4,7 +4,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/controllers/vehiculeContro
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/controllers/brandController.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/controllers/userController.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/controllers/vehiculeReviewsController.php");
-class SingleVehiculePage
+class SingleVehiculeReviewsPage
 {
     private $id;
     private $vehicule;
@@ -24,11 +24,11 @@ class SingleVehiculePage
 ?>
         <div class="page__content">
             <?= $shardViews->showHeader(); ?>
-            <div class="vehicule__main__section">
+            <div class="vehicule__main__section-single">
                 <?php
                     $this->showVehiculeInfo();
                 ?>
-                <div class="reviews__section">
+                <div class="reviews__section-single">
                     <?= $this->showVehiculeReviews(); ?>
                 </div>
             </div>
@@ -42,25 +42,13 @@ class SingleVehiculePage
         $vehicule = $this->vehicule;
 
     ?>
-        <div class="vehicule__information__container">
+        <div class="vehicule__information__container-single">
             <?= $this->showVehiculeLikeButton($vehicule); ?>
             <div>
                 <img src="<?= ImageUtility::getVehiculePicture($vehicule); ?>" alt="<?= $vehicule['vehiculePicture'] ?>" width="400" height="auto">
             </div>
             <div>
-                <div class="information-grid">
-                    <?php foreach ($vehicule as $key => $value) {
-                        if ($key == 'id' || $key == 'brand_id' || $key == 'vehiculePicture')
-                            continue;
-                    ?>
-                        <div class="vehicule__information__card">
-                            <p>
-                                <?= ucfirst($key) ?>:
-                                <?= $value ?>
-                            </p>
-                        </div>
-                    <?php } ?>
-                </div>
+                <h1><?= $vehicule['version'] . '-' . $vehicule['model'] . '-' . $vehicule['year']?></h1>
             </div>
         </div>
     <?php
@@ -74,8 +62,8 @@ class SingleVehiculePage
         $userController = new UserController();
     ?>
         <h1>Reviews</h1>
-        <div class="reviews__table">
-            <table class="table table-striped">
+        <div class="reviews__table-single">
+            <table class="table table-striped" >
                 <thead>
                     <tr>
                         <th>User</th>
@@ -103,57 +91,10 @@ class SingleVehiculePage
                     } ?>
                 </tbody>
             </table>
-            <a href="/CarLog/vehiculeReviews/?id=<?= $this->id?>">See more reviews</a>
-            <?php
-            if (isset($_SESSION['USER']) && $_SESSION['USER']['role'] != 'GUEST') {
-                $this->showVehiculeReviewForm();
-            } else {
-            ?>
-                <div class="review-message">
-                    <p>You must be logged in to add a review</p>
-                </div>
-            <?php
-            }
-            ?>
         </div>
     <?php
     }
 
-
-
-    private function showReviewMessage()
-    {
-    ?>
-        <div class="review-message">
-            <?php
-            if (isset($_SESSION['REVIEW-MESSAGE'])) {
-                echo $_SESSION['REVIEW-MESSAGE'];
-                unset($_SESSION['REVIEW-MESSAGE']);
-            }
-            ?>
-        </div>
-    <?php
-    }
-
-    public function showVehiculeReviewForm()
-    {
-    ?>
-        <div class="add__review__form">
-            <form method="POST" action="/CarLog/app/api/reviews/vehicule/addReview.php?vehiculeId=<?php echo $this->id ?>" class="login-form">
-                <div>
-                    <div class="comment__input">
-                        <input type="text" name="comment" id="comment" placeholder="Enter comment" required>
-                    </div>
-                    <?= ReviewsPage::showReviews(); ?>
-                    <div>
-                        <button type="submit" class="btn btn-info">Add Review</button>
-                        <?= $this->showReviewMessage(); ?>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <?php
-    }
 
     public function showVehiculeLikeButton($vehicule)
     {
