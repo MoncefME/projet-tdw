@@ -15,6 +15,8 @@ class SettingsPage
                 <div class="settings__page">
                     <?= $this->showSliderImageForm(); ?>
                     <?= $this->showSliderImagePreview(); ?>
+                    <?= $this->showGuidAchatForm(); ?>
+                    <?= $this->showContactForm(); ?>
                 </div>
             </div>
         </div>

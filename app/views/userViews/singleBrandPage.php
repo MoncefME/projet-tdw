@@ -26,7 +26,7 @@ class SingleBrandPage
         <div class="page__content">
             <?php
             $shardViews->showHeader();
-            // $shardViews->showNavBar();
+            $shardViews->showNavBar();
             $this->showBrandInfo();
             ?>
             <div class="vehicule__main__section">
@@ -43,8 +43,7 @@ class SingleBrandPage
     }
     private function showBrandInfo()
     {
-        // $brandController = new BrandController();
-        // $brand = $brandController->getBrandById($this->id);
+
         $brand = $this->brand;
 
         ?>

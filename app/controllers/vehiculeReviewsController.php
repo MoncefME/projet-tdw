@@ -72,4 +72,5 @@ class VehiculeReviewsController
         $vehiculeReviewModel = new VehiculeReviewsModel();
         return $vehiculeReviewModel->getNumberOfPendingVehiculeReviews();
     }
+
 }

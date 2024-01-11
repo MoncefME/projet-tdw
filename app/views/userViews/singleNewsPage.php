@@ -22,7 +22,7 @@ class SingleNewsPage
         <div class="page__content">
             <?php
             $shardViews->showHeader();
-            // $shardViews->showNavBar();
+            $shardViews->showNavBar();
             $this->showNewsContent();
             $shardViews->showFooter();
             ?>

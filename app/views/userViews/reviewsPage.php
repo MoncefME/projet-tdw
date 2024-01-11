@@ -6,21 +6,21 @@ class ReviewsPage
     public function showPage()
     {
         $shardViews = new SharedViews();
-        ?>
+?>
         <div class="page__content">
             <?php
             $shardViews->showHeader();
-            // $shardViews->showNavBar();
-            $this->showVehiculeReviewsLinks();
+            $shardViews->showNavBar();
+            $this->showBrandVehicles();
             $shardViews->showFooter();
             ?>
         </div>
-        <?php
+    <?php
     }
 
     public static function showReviews()
     {
-        ?>
+    ?>
         <div class="rating">
             <input value="5" name="rating" id="star5" type="radio">
             <label for="star5"></label>
@@ -33,18 +33,38 @@ class ReviewsPage
             <input value="1" name="rating" id="star1" type="radio">
             <label for="star1"></label>
         </div>
-        <?php
+    <?php
     }
 
-    public function showVehiculeReviewsLinks(){
+    private function showBrandVehicles()
+    {
         $vehiculeController = new VehiculeController();
         $vehicules = $vehiculeController->getAllVehicules();
-
-        foreach($vehicules as $vehicule){
-            ?>
-            <a href="/CarLog/vehiculeReviews/?id=<?=$vehicule['id']?>"><?= $vehicule['model']?></a>
-            <?php
-        }
+        ?>
+        <div class="brand__vehicules__container">
+            <h1>Vehicles</h1>
+            <div class="vehicles__list">
+                <?php
+                foreach ($vehicules as $vehicule) {
+                    ?>
+                    <div class="vehicle__info__card">
+                        <p>Model:
+                            <?= $vehicule['model']; ?>
+                        </p>
+                        <p>Version:
+                            <?= $vehicule['version']; ?>
+                        </p>
+                        <p>Year:
+                            <?= $vehicule['year']; ?>
+                        </p>
+                        <img src="<?= ImageUtility::getVehiculePicture($vehicule); ?>"
+                            alt="<?php echo $vehicule['vehiculePicture'] ?>" width="100px" height="auto">
+                        <a href="/CarLog/vehiculeReviews/?id=<?= $vehicule["id"] ?>"> Show Details </a>
+                    </div>
+                    <?php
+                } ?>
+            </div>
+        </div>
+        <?php
     }
-
 }

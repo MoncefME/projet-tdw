@@ -10,7 +10,7 @@ class GuidePage
         <div class="page__content">
             <?php
             $shardViews->showHeader();
-            // $shardViews->showNavBar();
+            $shardViews->showNavBar();
             $this->showGuideAchat();
             $shardViews->showFooter();
             ?>
@@ -23,6 +23,7 @@ class GuidePage
         $guideAchat = $settingsController->getGuideAchat();
         ?>
         <div class="guide_achat__container">
+            <h2><?= $guideAchat['title']?></h2>
             <?= $guideAchat['content'] ?>
         </div>
         <?php

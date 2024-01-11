@@ -230,4 +230,15 @@ class UserModel
         $dbController->disConnect($database);
         return $result[0]['NB'];
     }
+
+    // public function getMyReviews(){
+    //     $dbController = new DatabaseController();
+    //     $database = $dbController->connect();
+
+    //     $query = UserQueries::getMyReviews;
+    //     $result = $dbController->request($database, $query);
+
+    //     $dbController->disConnect($database);
+    //     return $result;
+    // }
 }

@@ -12,11 +12,13 @@ class HomePage
         <div class="page__content">
             <?php
             $shardViews = new SharedViews();
+            $comparatorPage = new ComparatorPage();
             $shardViews->showHeader();
             $this->showSlider();
             $shardViews->showNavBar();
             $brandsPage->showBrandsCards();
             $this->showComparator();
+            $comparatorPage->showPopularComparisons();
             $shardViews->showFooter();
             ?>
         </div>

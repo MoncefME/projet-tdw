@@ -11,7 +11,7 @@ class ProfilePage
             <?php
             $shardViews = new SharedViews();
             $shardViews->showHeader();
-            // $shardViews->showNavBar();
+            $shardViews->showNavBar();
             $this->showUserInformation();
             if (isset($_SESSION['USER']))
                 $this->showUserFavoriteVehicules();
@@ -137,6 +137,11 @@ class ProfilePage
         <?php
     }
 
+
+    private function showMyReviews(){
+
+
+    }
 
 
 }

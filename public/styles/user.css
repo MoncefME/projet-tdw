@@ -340,11 +340,43 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: translateX(150%);
+  animation: slider 16s infinite ease-in-out;
 }
 
 .slider__container img {
-  width: 10vw;
+  width: 100vw;
   height: 100%;
   object-fit: cover;
+  transform: translateX(150%);
+}
+
+@keyframes slider {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-100%);
+  }
+  45% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(-200%);
+  }
+  70% {
+    transform: translateX(-200%);
+  }
+  75% {
+    transform: translateX(-100%);
+  }
+  95% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+  
 }

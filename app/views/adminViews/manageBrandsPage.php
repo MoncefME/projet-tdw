@@ -104,6 +104,10 @@ class ManageBrandsPage
                                     width="50px" height="50px">
                             </td>
                             <td class="table__action__btn">
+                                <a class="btn btn-info"
+                                    href="/CarLog/admin/manageVehiculesPage/?brandId=<?= $brand['id']?>">
+                                    <i class="fas fa-car"></i>
+                                </a>
                                 <button class="btn btn-primary"
                                     onclick="location.href='<?= ApiRouter::EDIT_BRAND_URL($brand['id']) ?>'">
                                     <i class="fas fa-edit"></i>

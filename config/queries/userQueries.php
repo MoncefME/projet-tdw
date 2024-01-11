@@ -16,6 +16,5 @@ class UserQueries
     const deleteFavoriteVehicule = "DELETE FROM userFavoriteVehicules WHERE user_id = ? AND vehicule_id = ?";
     const isVehicleLikedByUser = "SELECT COUNT(*) AS NB FROM userFavoriteVehicules WHERE user_id = ? AND vehicule_id = ?";
     const getNumberOfPendingUsers = "SELECT COUNT(*) AS NB FROM users WHERE status = 'PENDING'";
-
 }
 

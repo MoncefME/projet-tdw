@@ -33,7 +33,11 @@ class ManageVehiculesPage
     {
         $brandController = new BrandController();
         $vehiculeController = new VehiculeController();
-        $vehicules = $vehiculeController->getAllVehicules();
+        if(isset($_GET['brandId'])){
+            $vehicules = $vehiculeController->getVehiculesByBrand($_GET['brandId']);
+        }else{
+            $vehicules = $vehiculeController->getAllVehicules();
+        }
         ?>
         <div class="vehicules__table" id="vehiculesTable" style="display: none;">
             <table id="vehiculeTable" data-toggle="table" data-pagination="true" data-search="true"

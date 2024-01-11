@@ -21,7 +21,7 @@ class ComparatorPage
         <div class="page__content">
             <?php
             $shardViews->showHeader();
-            // $shardViews->showNavBar();
+            $shardViews->showNavBar();
             ?>
             <h1>Compare your car</h1>
             <p>Select minimum 2 distinct Cars</p>
@@ -96,7 +96,7 @@ class ComparatorPage
         <?php
     }
 
-    private function showPopularComparisons()
+    public function showPopularComparisons()
     {
         $comparisionController = new ComparisionController();
         $mostComparedVehiculePairs = $comparisionController->getMostComparedVehiculePairs();
