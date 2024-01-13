@@ -17,9 +17,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
     <script src="https://kit.fontawesome.com/06aa4f4a0c.js" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- Custom Scripts -->
     <script src="/CarLog/public/scripts/main.js"></script>
+
 </head>
 
 <body>

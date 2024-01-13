@@ -631,3 +631,17 @@ p{
     right: 20px;
     text-decoration: none;
 }
+
+.slider__title{
+    background-color: white;
+    position : absolute;
+    bottom: 25%;
+    left: 30px;
+    color: black;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.carousel-item{
+    position: relative;
+}

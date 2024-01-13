@@ -38,8 +38,6 @@ class EditNewsPage
 
     private function showNewsForm()
     {
-        // $newsController = new NewsController();
-        // $news = $newsController->getNewsById($this->id);
         $news = $this->news;
         ?>
         <div class="news__form">

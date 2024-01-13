@@ -86,21 +86,21 @@ class ManageBrandsPage
                     <?php foreach ($brands as $brand) { ?>
                         <tr>
                             <td>
-                                <?php echo $brand['name'] ?>
+                                <?= $brand['name'] ?>
                             </td>
                             <td>
-                                <?php echo $brand['originCountry'] ?>
+                                <?= $brand['originCountry'] ?>
                             </td>
                             <td>
-                                <?php echo $brand['headquarter'] ?>
+                                <?= $brand['headquarter'] ?>
                             </td>
                             <td>
                                 <span class="badge badge-info">
-                                    <?php echo $brand['year'] ?>
+                                    <?= $brand['year'] ?>
                                 </span>
                             </td>
                             <td>
-                                <img src="<?= ImageUtility::getBrandLogo($brand); ?>" alt="<?php echo $brand['brandPicture'] ?>"
+                                <img src="<?= ImageUtility::getBrandLogo($brand); ?>" alt="<?= $brand['brandPicture'] ?>"
                                     width="50px" height="50px">
                             </td>
                             <td class="table__action__btn">

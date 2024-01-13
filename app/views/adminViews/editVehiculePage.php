@@ -41,8 +41,6 @@ class EditVehiculePage
 
     private function showVehiculeFrom()
     {
-        // $vehiculeController = new VehiculeController();
-        // $vehicule = $vehiculeController->getVehiculeById($this->id);
         $vehicule = $this->vehicule;
         $brandController = new BrandController();
         $brands = $brandController->getAllBrands();

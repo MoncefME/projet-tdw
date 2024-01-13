@@ -28,25 +28,43 @@ class HomePage
 
     private function showSlider()
     {
-        $settingsController = new SettingsController();
-        $sliderImages = $settingsController->getSliderImages();
-
         ?>
         <div class="homepage__slider">
-            <div class="slider__container">
-                <?php
-                foreach ($sliderImages as $sliderImage) {
-                    ?>
-                    <a href="/CarLog/news/?id=<?php echo $sliderImage['news_id']; ?>">
-                        <img src="<?= ImageUtility::getSliderImage($sliderImage) ?>" alt="" width="100" height="auto">
-                    </a>
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
                     <?php
-                }
-                ?>
+                    $settingsController = new SettingsController();
+                    $sliderImages = $settingsController->getSliderImages();
+                    $i = 0;
+                    foreach ($sliderImages as $sliderImage) {
+                        ?>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $i; ?>" class="<?php echo $i == 0 ? 'active' : ''; ?>"></li>
+                        <?php
+                        $i++;
+                    }
+                    ?>
+                </ol>
+                <div class="carousel-inner">
+                    <?php
+                    $i = 0;
+                    foreach ($sliderImages as $sliderImage) {
+                        ?>
+                        <div class="carousel-item <?php echo $i == 0 ? 'active' : ''; ?>">
+                            <a href="/CarLog/news/?id=<?php echo $sliderImage['news_id']; ?>">
+                                <p class="slider__title"><?php echo $sliderImage['title']; ?></p>
+                                <img class="d-block w-100" src="<?= ImageUtility::getSliderImage($sliderImage) ?>" alt="Slide">
+                            </a>
+                        </div>
+                        <?php
+                        $i++;
+                    }
+                    ?>
+                </div>
             </div>
         </div>
         <?php
     }
+    
 
 
 
