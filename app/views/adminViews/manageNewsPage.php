@@ -48,12 +48,18 @@ class ManageNewsPage
                         <label for="tags">Tags:</label>
                         <input type="text" name="tags" id="tags" placeholder="Enter tags" required>
                     </div>
+                    <div>
+                        <label for="newsImage">News Picture:</label>
+                        <input type="file" name="newsImage" id="newsImage" accept="image/*" required
+                            onChange="previewInputImage(event)">
+                        <img id="previewImage" src="#" alt="Preview" style="display: none; width: 100px; height: 100px;">
+                    </div>
 
                     <div>
                         <label for="content">Content:</label>
                         <textarea name="content" id="content" placeholder="Enter content"></textarea>
                     </div>
-
+                    
                 </div>
                 <button type="submit" class="btn btn-dark">
                     <i class="fas fa-plus"></i>

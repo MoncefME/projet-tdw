@@ -39,7 +39,7 @@ class ImageUtility
 
     public static function getNewsPicture($news)
     {
-        $picture = $news['title'];
+        $picture = $news['newsImage'];
         $picturePath = "/CarLog/public/uploads/news/" . $picture;
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . $picturePath)) {
             $pictureUrl = $picturePath;

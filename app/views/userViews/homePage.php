@@ -18,13 +18,13 @@ class HomePage
             $shardViews->showNavBar();
             $brandsPage->showBrandsCards();
             $this->showComparator();
+            $this->showGuideAchatLink();
             $comparatorPage->showPopularComparisons();
             $shardViews->showFooter();
             ?>
         </div>
         <?php
     }
-
 
     private function showSlider()
     {
@@ -64,9 +64,6 @@ class HomePage
         </div>
         <?php
     }
-    
-
-
 
     private function showComparator()
     {
@@ -84,5 +81,18 @@ class HomePage
         <?php
     }
 
+    private function showGuideAchatLink(){
+        $settingsController = new SettingsController();
+        $guideAchat = $settingsController->getGuideAchat();
+        ?>
+        <div class="link_to_guide_achat">
+            <img src="/CarLog/public/images/background-1.jpg" alt="">
+            <h1><?= $guideAchat['title'] ?></h1>
+            <a class="btn btn-info" href="<?= GUIDE_PAGE_PATH ?>">
+                Buyer Guide
+            </a>
+        </div>
+        <?php
+    }
 }
 

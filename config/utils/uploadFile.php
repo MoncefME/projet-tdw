@@ -2,6 +2,7 @@
 
 class UploadFile
 {
+    public static $max_size = 4 * 1024 * 1024;
     public function uploadBrandFile()
     {
         $uploadDir = $_SERVER['DOCUMENT_ROOT'] . "/CarLog/public/uploads/brands/";
@@ -57,23 +58,23 @@ class UploadFile
     public function uploadNewsFile()
     {
         $uploadDir = $_SERVER['DOCUMENT_ROOT'] . "/CarLog/public/uploads/news/";
-        $uploadFile = $uploadDir . $_FILES["newsPicture"]["name"];
+        $uploadFile = $uploadDir . $_FILES["newsImage"]["name"];
         $uploadOk = 1;
 
-        $fileType = $_FILES["newsPicture"]["type"];
+        $fileType = $_FILES["newsImage"]["type"];
         $allowedTypes = ["image/jpeg", "image/png", "image/svg+xml", "image/jpg"];
         if (!in_array($fileType, $allowedTypes)) {
             $uploadOk = 0;
         }
 
         $maxFileSize = 4 * 1024 * 1024;
-        if ($_FILES["newsPicture"]["size"] > $maxFileSize) {
+        if ($_FILES["newsImage"]["size"] > $maxFileSize) {
             $uploadOk = 0;
         }
 
         if ($uploadOk == 1) {
-            if (move_uploaded_file($_FILES["newsPicture"]["tmp_name"], $uploadFile)) {
-                return basename($_FILES["newsPicture"]["name"]);
+            if (move_uploaded_file($_FILES["newsImage"]["tmp_name"], $uploadFile)) {
+                return basename($_FILES["newsImage"]["name"]);
             }
         }
 

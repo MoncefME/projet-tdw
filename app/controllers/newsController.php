@@ -1,6 +1,7 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/app/models/newsModel.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/config/utils/formValidation.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/config/utils/uploadFile.php');
 class NewsController
 {
     public function getNewsById($newsId)
@@ -23,10 +24,10 @@ class NewsController
         $tags = FormValidation::validateInput('tags');
 
         // TODO: upload file
-        // $uploadHandler = new UploadFile();
-        // $uploadedFileName = $uploadHandler->uploadNewsFile();
+        $uploadHandler = new UploadFile();
+        $uploadedFileName = $uploadHandler->uploadNewsFile();
 
-        return $newModel->addNews($title, $content, $link, $tags);
+        return $newModel->addNews($title, $content, $link, $tags, $uploadedFileName);
     }
     public function updateNews($newsId)
     {

@@ -28,14 +28,14 @@ class NewsModel
         $dbController->disConnect($database);
         return $news;
     }
-    public function addNews($title, $content, $link, $tags)
+    public function addNews($title, $content, $link, $tags, $newsImage)
     {
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
         $query = NewsQueries::addNews;
         $current_time = date("Y-m-d H:i:s");
-        $params = [$title, $content, $link, $tags, $current_time, $current_time];
+        $params = [$title, $content, $link, $tags, $current_time, $current_time, $newsImage];
         $success = $dbController->request($database, $query, $params);
 
         $dbController->disConnect($database);

@@ -350,33 +350,28 @@
   transform: translateX(150%);
 }
 
-@keyframes slider {
-  0% {
-    transform: translateX(0);
-  }
-  20% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-100%);
-  }
-  45% {
-    transform: translateX(-100%);
-  }
-  50% {
-    transform: translateX(-200%);
-  }
-  70% {
-    transform: translateX(-200%);
-  }
-  75% {
-    transform: translateX(-100%);
-  }
-  95% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0%);
-  }
-  
+.link_to_guide_achat{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position : relative;
+}
+.link_to_guide_achat img {
+  width: 100vw;
+  height: 20vw;
+  object-fit: cover;
+  opacity: 0.6;
+}
+.link_to_guide_achat button{
+  position : absolute;
+  left: 5%;
+  bottom: 10%;
+  color : white;
+}
+.link_to_guide_achat h1{
+  position: absolute;
+  left: 5%;
+  bottom: auto;
+  color : rgb(0, 0, 0);
 }

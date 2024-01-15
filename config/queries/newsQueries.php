@@ -5,8 +5,8 @@ class NewsQueries
 {
     const getNewsById = "SELECT * FROM news WHERE id = ?";
     const getAllNews = "SELECT * FROM news";
-    const addNews = "INSERT INTO news (title, content, link,tags, created_at, updated_at, views_count, likes_count) 
-                          VALUES (    ?,       ?,    ?,   ?,    ?     ,    ?,           0,           0)";
+    const addNews = "INSERT INTO news (title, content, link,tags, created_at, updated_at, views_count, likes_count, newsImage) 
+                          VALUES (    ?,       ?,    ?,   ?,    ?     ,    ?,           0,           0, ?)";
     const updateNews = "UPDATE news SET title=?, content=?, link=?, updated_at=?, tags=? WHERE id = ?";
     const deleteNews = "DELETE FROM news WHERE id = ?";
 

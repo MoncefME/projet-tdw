@@ -9,11 +9,11 @@ class SignUpPage
     private function showSignUpMesage()
     {
         if (isset($_SESSION['SIGNUP-MESSAGE'])) {
-            ?>
+?>
             <div class="error__message">
                 <?php echo $_SESSION['SIGNUP-MESSAGE']; ?>
             </div>
-            <?php
+        <?php
             unset($_SESSION['SIGNUP-MESSAGE']);
         }
     }
@@ -23,7 +23,7 @@ class SignUpPage
 
         ?>
         <div class="login__page">
-            <form method="POST" action="<?= ApiRouter::SIGNUP_ENDPOINT ?>" class="signup__form">
+            <form method="POST" action="<?= ApiRouter::SIGNUP_ENDPOINT ?>" class="signup__form" enctype="multipart/form-data">
                 <div class="login__form__header">
                     <h1>Signup</h1>
                     <img src="<?= CARLOG_LOGO ?>" alt="logo" width="40%" height="auto" onclick="location.href='/CarLog/'" />
@@ -69,8 +69,13 @@ class SignUpPage
                             <label for="birthDate">Birth Date</label>
                             <input type="date" name="birthDate" id="birthDate" required />
                         </div>
-                        <div>
+                        <!-- <div>
                             <input type="file" name="profilePicture" id="profilePicture" accept="image/*" />
+                        </div> -->
+                        <div>
+                            <label for="profilePicture">Profile Picture:</label>
+                            <input type="file" name="profilePicture" id="profilePicture" accept="image/*" onChange="previewInputImage(event)">
+                            <img id="previewImage" src="#" alt="Preview" style="width: 30px; height: auto;display:hidden;">
                         </div>
                     </div>
                     <div>
@@ -80,6 +85,6 @@ class SignUpPage
                 <a href="/CarLog/loginPage/">Already a member? Login Here</a>
             </form>
         </div>
-        <?php
+<?php
     }
 }

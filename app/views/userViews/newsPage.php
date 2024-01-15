@@ -37,6 +37,7 @@ class NewsPage
         ?>
         <div class="news__card">
             <div class="news__card__body">
+                <img src="<?= ImageUtility::getNewsPicture($news); ?>" alt="News Image" >
                 <h3>
                     <?= $news['title']; ?>
                 </h3>

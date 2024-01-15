@@ -129,7 +129,7 @@ p{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(224, 228, 255);
+    /* background-color: rgb(224, 228, 255); */
     padding: 20px 0 ;
 }
 .brands__view__title{
@@ -622,14 +622,18 @@ p{
     align-items: start;
     gap: 20px;
     background-color: white;
-    padding: 20px;
     position: relative;
 }
 .news__card__body a{
     position: absolute;
-    bottom: 20px;
-    right: 20px;
+    bottom: 0;
+    right: 0;
     text-decoration: none;
+}
+.news__card__body img{
+    width: 100%;
+    height: 20vh;
+    object-fit: cover;
 }
 
 .slider__title{
