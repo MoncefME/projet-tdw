@@ -48,6 +48,10 @@ class ManageBrandsPage
                         <label for="year">Year Established:</label>
                         <input type="number" name="year" id="year" placeholder="Enter year" required>
                     </div>
+                    <div class="two__columns">
+                        <label for="description">Description:</label>
+                        <textarea name="description" id="description" placeholder="Enter description" required></textarea>
+                    </div>
                     <div>
                         <label for="brandPicture">Brand Picture:</label>
                         <input type="file" name="brandPicture" id="brandPicture" accept="image/*" required

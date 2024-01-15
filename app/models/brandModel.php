@@ -28,13 +28,13 @@ class BrandModel
         return $brands;
     }
 
-    public function addBrand($name, $originCountry, $headquarter, $year, $brandPicture)
+    public function addBrand($name, $originCountry, $headquarter, $year, $brandPicture,$description)
     {
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
         $query = BrandQueries::addBrand;
-        $params = [$name, $originCountry, $headquarter, $year, $brandPicture];
+        $params = [$name, $originCountry, $headquarter, $year, $brandPicture,$description];
         $success = $dbController->request($database, $query, $params);
 
         $dbController->disConnect($database);
@@ -54,13 +54,13 @@ class BrandModel
         return $success !== false;
     }
 
-    public function updateBrand($brandId, $name, $originCountry, $headquarter, $year, $brandPicture)
+    public function updateBrand($brandId, $name, $originCountry, $headquarter, $year, $brandPicture , $description)
     {
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
         $query = BrandQueries::updateBrand;
-        $params = [$name, $originCountry, $headquarter, $year, $brandPicture, $brandId];
+        $params = [$name, $originCountry, $headquarter, $year, $brandPicture,$description, $brandId];
         $success = $dbController->request($database, $query, $params);
 
         $dbController->disConnect($database);

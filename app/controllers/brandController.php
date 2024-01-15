@@ -24,11 +24,12 @@ class BrandController
         $originCountry = FormValidation::validateInput('originCountry');
         $headquarter = FormValidation::validateInput('headquarter');
         $year = FormValidation::validateInput('year');
+        $description = FormValidation::validateInput('description');
 
         $uploadHandler = new UploadFile();
         $uploadedFileName = $uploadHandler->uploadBrandFile();
 
-        return $uploadedFileName ? $brandModel->addBrand($name, $originCountry, $headquarter, $year, $uploadedFileName) : false;
+        return $uploadedFileName ? $brandModel->addBrand($name, $originCountry, $headquarter, $year, $uploadedFileName,$description) : false;
     }
 
     public function deleteBrand($brandId)
@@ -45,6 +46,7 @@ class BrandController
         $originCountry = FormValidation::validateInput('originCountry');
         $headquarter = FormValidation::validateInput('headquarter');
         $year = FormValidation::validateInput('year');
+        $description = FormValidation::validateInput('description');
 
         $uploadHandler = new UploadFile();
         $uploadedFileName = $uploadHandler->uploadBrandFile();
@@ -53,6 +55,6 @@ class BrandController
             $uploadedFileName = FormValidation::validateInput('currentPicture');
         }
 
-        return $brandModel->updateBrand($brandId, $name, $originCountry, $headquarter, $year, $uploadedFileName);
+        return $brandModel->updateBrand($brandId, $name, $originCountry, $headquarter, $year, $uploadedFileName,$description);
     }
 }

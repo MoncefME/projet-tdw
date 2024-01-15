@@ -91,7 +91,7 @@ class ComparatorPage
     private function showComparatorResult()
     {
         ?>
-        <table class="comparision-result-table table table-striped table-bordered" style="display: none;">
+        <table class="comparision-result-table table table-striped table-bordered" style="display: none;" >
         </table>
         <?php
     }

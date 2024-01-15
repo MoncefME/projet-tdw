@@ -22,7 +22,7 @@ class SingleBrandPage
     public function showPage()
     {
         $shardViews = new SharedViews();
-        ?>
+?>
         <div class="page__content">
             <?php
             $shardViews->showHeader();
@@ -39,58 +39,57 @@ class SingleBrandPage
             $shardViews->showFooter();
             ?>
         </div>
-        <?php
+    <?php
     }
     private function showBrandInfo()
     {
 
         $brand = $this->brand;
 
-        ?>
+    ?>
         <div class="brand__information__container">
             <div>
-                <img src="<?= ImageUtility::getBrandLogo($brand) ?>" alt="<?php echo $brand['brandPicture'] ?>" width="150"
-                    height="auto">
+                <img src="<?= ImageUtility::getBrandLogo($brand) ?>" alt="<?php echo $brand['brandPicture'] ?>" width="150" height="auto">
             </div>
             <div>
                 <div class="brand__information__summary">
-                    <p>Name:
+                    <p><b>Name:</b>
+                        <i class="fas fa-car-side"></i>
                         <?= $brand['name']; ?>
                     </p>
-                    <p>Origin Country:
+                    <p><b>Origin Country:</b>
+                        <i class="fas fa-globe-americas"></i>
                         <?= $brand['originCountry']; ?>
                     </p>
-                    <p>Headquarter:
+                    <p><b>Headquarter:</b>
+                        <i class="fas fa-building"></i>
                         <?= $brand['headquarter']; ?>
                     </p>
-                    <p>Year:
+                    <p><i>Year:</i>
+                        <i class="fas fa-calendar-alt"></i>
                         <?= $brand['year']; ?>
                     </p>
                 </div>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo delectus earum, natus saepe mollitia,
-                    accusamus
-                    vero voluptatum quasi maxime aliquam laborum tempore quas, repudiandae laboriosam ad est beatae
-                    similique
-                    placeat?
+                    <?= $brand['description']; ?>
                 </p>
             </div>
 
         </div>
-        <?php
+    <?php
     }
 
     private function showBrandVehicles()
     {
         $vehiculeController = new VehiculeController();
         $vehicules = $vehiculeController->getVehiculesByBrand($this->id);
-        ?>
+    ?>
         <div class="brand__vehicules__container">
             <h1>Vehicles</h1>
             <div class="vehicles__list">
                 <?php
                 foreach ($vehicules as $vehicule) {
-                    ?>
+                ?>
                     <div class="vehicle__info__card">
                         <p>Model:
                             <?= $vehicule['model']; ?>
@@ -101,15 +100,14 @@ class SingleBrandPage
                         <p>Year:
                             <?= $vehicule['year']; ?>
                         </p>
-                        <img src="<?= ImageUtility::getVehiculePicture($vehicule); ?>"
-                            alt="<?php echo $vehicule['vehiculePicture'] ?>" width="100px" height="auto">
+                        <img src="<?= ImageUtility::getVehiculePicture($vehicule); ?>" alt="<?php echo $vehicule['vehiculePicture'] ?>" width="100px" height="auto">
                         <a href="/CarLog/vehicule/?id=<?= $vehicule["id"] ?>"> Show Details </a>
                     </div>
-                    <?php
+                <?php
                 } ?>
             </div>
         </div>
-        <?php
+    <?php
     }
 
     public function showBrandReviews()
@@ -117,7 +115,7 @@ class SingleBrandPage
         $brandReviewsController = new BrandReviewsController();
         $brandReviews = $brandReviewsController->getValidReviewsByBrand($this->id);
         $userController = new UserController();
-        ?>
+    ?>
         <div class="reviews__section">
             <h1>Reviews</h1>
             <div class="reviews__table">
@@ -133,11 +131,10 @@ class SingleBrandPage
                         <?php
                         foreach ($brandReviews as $review) {
                             $user = $userController->getUserById($review['user_id']);
-                            ?>
+                        ?>
                             <tr>
                                 <td>
-                                    <img src="<?= ImageUtility::getUserProfilePicture($user) ?>" alt="user profile picture"
-                                        width="50px" height="50px">
+                                    <img src="<?= ImageUtility::getUserProfilePicture($user) ?>" alt="user profile picture" width="50px" height="50px">
                                 </td>
                                 <td>
                                     <?php echo $review['comment']; ?>
@@ -146,7 +143,7 @@ class SingleBrandPage
                                     <?php echo $review['rating']; ?>
                                 </td>
                             </tr>
-                            <?php
+                        <?php
                         } ?>
                     </tbody>
                 </table>
@@ -155,20 +152,20 @@ class SingleBrandPage
             if (isset($_SESSION['USER']) && $_SESSION['USER']['role'] != 'GUEST') {
                 $this->showBrandReviewForm();
             } else {
-                ?>
+            ?>
                 <div class="review-message">
                     <p>You must be logged in to add a review</p>
                 </div>
-                <?php
+            <?php
             }
             ?>
         </div>
-        <?php
+    <?php
     }
 
     private function showReviewMessage()
     {
-        ?>
+    ?>
         <div class="review-message">
             <?php
             if (isset($_SESSION['REVIEW-MESSAGE'])) {
@@ -177,12 +174,12 @@ class SingleBrandPage
             }
             ?>
         </div>
-        <?php
+    <?php
     }
 
     public function showBrandReviewForm()
     {
-        ?>
+    ?>
         <div class="add__review__form">
             <form method="POST" action="/CarLog/app/api/reviews/brand/addReview.php?brandId=<?php echo $this->id ?>">
                 <div>
@@ -197,19 +194,6 @@ class SingleBrandPage
                 </div>
             </form>
         </div>
-        <?php
+<?php
     }
-
-
 }
-
-
-
-
-
-
-
-
-
-
-

@@ -15,7 +15,7 @@ class UploadFile
             $uploadOk = 0;
         }
 
-        $maxFileSize = 4 * 1024 * 1024;
+        $maxFileSize = 6 * 1024 * 1024;
         if ($_FILES["brandPicture"]["size"] > $maxFileSize) {
             $uploadOk = 0;
         }

@@ -37,8 +37,6 @@ class EditBrandPage
 
     private function showBrandForm()
     {
-        // $brandController = new BrandController();
-        // $brand = $brandController->getBrandById($this->id);
         $brand = $this->brand;
         ?>
         <div class="brands__form" id="brandForm">
@@ -63,6 +61,10 @@ class EditBrandPage
                         <label for="year">Year Established:</label>
                         <input type="number" name="year" id="year" placeholder="Enter year" required
                             value="<?php echo $brand['year'] ?>">
+                    </div>
+                    <div class="two__columns">
+                        <label for="description">Description:</label>
+                        <textarea name="description" id="description" placeholder="Enter description" required><?php echo $brand['description'] ?></textarea>
                     </div>
                     <div>
                         <label for="brandPicture">Brand Picture:</label>

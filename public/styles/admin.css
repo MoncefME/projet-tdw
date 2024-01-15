@@ -409,6 +409,15 @@ th{
 .news__form__inputs__container div:last-child{
     grid-column: 1 / -1; 
 }
+.brands__form__inputs__container textarea{
+    width: 100%;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--primary-color);
+}
 .guid__achat__form textarea{
     width: 100%;
     height: 260px;
@@ -418,8 +427,6 @@ th{
     font-size: 16px;
     font-weight: 500;
     color: var(--primary-color);
-    
-
 }
 .news__form__inputs__container textarea{
     width: 100%;
@@ -475,4 +482,7 @@ th{
     justify-content: flex-start;
     align-items: start;
     padding: 20px;
+}
+.two__columns{
+    grid-column: 1 / -1;
 }

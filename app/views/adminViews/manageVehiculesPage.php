@@ -41,7 +41,7 @@ class ManageVehiculesPage
         ?>
         <div class="vehicules__table" id="vehiculesTable" style="display: none;">
             <table id="vehiculeTable" data-toggle="table" data-pagination="true" data-search="true"
-                class="table  table-striped table-borderless  table-hover" data-page-size="4">
+                class="table  table-striped table-borderless  table-hover" data-page-size="3">
                 <thead class="thead-light">
                     <tr>
                         <th data-field="model" data-sortable="true">Model</th>
