@@ -28,4 +28,5 @@ class ReviewQueries
     const validateVehiculeReview = "UPDATE vehiculereviews SET status = 'VALID' WHERE id = ?";
     const rejectVehiculeReview = "UPDATE vehiculereviews SET status = 'REJECTED' WHERE id = ?";
     const getNumberOfPendingVehiculeReviews = "SELECT COUNT(*) AS NB FROM vehiculereviews WHERE status = 'PENDING'";
+    const getTopVehiculeReviews = "SELECT * FROM vehiculereviews WHERE vehicule_id = ? AND status = 'VALID' ORDER BY rating DESC LIMIT 3";
 }

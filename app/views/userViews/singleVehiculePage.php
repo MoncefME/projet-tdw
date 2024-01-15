@@ -24,9 +24,10 @@ class SingleVehiculePage
 ?>
         <div class="page__content">
             <?= $shardViews->showHeader(); ?>
+            <?= $shardViews->showNavBar();?>
             <div class="vehicule__main__section">
                 <?php
-                    $this->showVehiculeInfo();
+                $this->showVehiculeInfo();
                 ?>
                 <div class="reviews__section">
                     <?= $this->showVehiculeReviews(); ?>
@@ -49,18 +50,61 @@ class SingleVehiculePage
             </div>
             <div>
                 <div class="information-grid">
-                    <?php foreach ($vehicule as $key => $value) {
-                        if ($key == 'id' || $key == 'brand_id' || $key == 'vehiculePicture')
-                            continue;
-                    ?>
-                        <div class="vehicule__information__card">
-                            <p>
-                                <?= ucfirst($key) ?>:
-                                <?= $value ?>
-                            </p>
-                        </div>
-                    <?php } ?>
+                    <div class="vehicule__information__card">
+                        <p>Model: <?= $vehicule['model'] ?></p>
+                    </div>
+                    <div class="vehicule__information__card">
+                        <p>Version: <?= $vehicule['version'] ?></p>
+                    </div>
+                    <div class="vehicule__information__card">
+                        <p>Year: <?= $vehicule['year'] ?></p>
+                    </div>
+                    <div class="vehicule__information__card">
+                        <p>Length: <?= $vehicule['length'] ?>
+                        <i class="fas fa-ruler-horizontal"></i>
+                    </p>
+                    </div>
+                    <div class="vehicule__information__card">
+                        <p>Width: <?= $vehicule['width'] ?>
+                        <i class="fas fa-ruler-horizontal"></i>
+                    </p>
+                    </div>
+                    <div class="vehicule__information__card">
+                        <p>Height: <?= $vehicule['height'] ?>
+                        <i class="fas fa-ruler-horizontal"></i>
+                    </p>
+                    </div>
+                    <div class="vehicule__information__card">
+                        <p>Wheel Base: <?= $vehicule['wheelBase'] ?>
+                        <i class="fas fa-ruler-horizontal"></i>
+                    </p>
+                    </div>
+                    <div class="vehicule__information__card">
+                        <p>Engine: <?= $vehicule['engine'] ?>
+                        <i class="fas fa-cogs"></i>
+                    </p>
+                    </div>
+                    <div class="vehicule__information__card">
+                        <p>Performance: <?= $vehicule['performance'] ?>
+                        <i class="fas fa-tachometer-alt"></i>
+                    </p>
+                    </div>
+                    <div class="vehicule__information__card">
+                        <p>Price: 
+                            <?= $vehicule['price'] ?>
+                            <i class="fas fa-dollar-sign"></i>
+                        </p>
+                    </div>
+                    <div class="vehicule__information__card">
+                        <p>Consumption: <?= $vehicule['consumption'] ?>
+                        <i class="fas fa-gas-pump"></i>
+                    </p>
+                    </div>
+                    <div class="vehicule__information__card">
+                        <p>Note: <?= $vehicule['note'] ?></p>
+                    </div>
                 </div>
+
             </div>
         </div>
     <?php
@@ -70,7 +114,7 @@ class SingleVehiculePage
     public function showVehiculeReviews()
     {
         $vehiculeReviewsController = new VehiculeReviewsController();
-        $vehiculeReviews = $vehiculeReviewsController->getValidReviewsByVehicule($this->id);
+        $vehiculeReviews = $vehiculeReviewsController->getTopVehiculeReviews($this->id);
         $userController = new UserController();
     ?>
         <h1>Reviews</h1>
@@ -103,7 +147,16 @@ class SingleVehiculePage
                     } ?>
                 </tbody>
             </table>
-            <a href="/CarLog/vehiculeReviews/?id=<?= $this->id?>">See more reviews</a>
+            <?php
+            if (count($vehiculeReviews) == 0) {
+            ?>
+                <div class="review-message">
+                    <p>No reviews yet</p>
+                </div>
+            <?php
+            }
+            ?>
+            <a href="/CarLog/vehiculeReviews/?id=<?= $this->id ?>">See more reviews</a>
             <?php
             if (isset($_SESSION['USER']) && $_SESSION['USER']['role'] != 'GUEST') {
                 $this->showVehiculeReviewForm();

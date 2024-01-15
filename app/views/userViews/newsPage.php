@@ -42,11 +42,11 @@ class NewsPage
                     <?= $news['title']; ?>
                 </h3>
                 <p>
+                    <?= substr($news['content'], 0, 50) . "..."; ?>
+                </p>
+                <p>
                     <?= $news['created_at']; ?>
                 </p>
-                <!-- <p>
-                    <?= substr($news['content'], 0, strpos($news['content'], "\n") ?: strlen($news['content'])); ?>
-                </p> -->
                 <a href="/CarLog/news/?id=<?= $news['id']; ?>" class="btn btn-dark">Read More</a>
             </div>
         </div>

@@ -24,6 +24,7 @@ class SingleVehiculeReviewsPage
 ?>
         <div class="page__content">
             <?= $shardViews->showHeader(); ?>
+            <?= $shardViews->showNavBar();?>    
             <div class="vehicule__main__section-single">
                 <?php
                     $this->showVehiculeInfo();

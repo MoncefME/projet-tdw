@@ -38,7 +38,7 @@ class SingleNewsPage
         <div class="single__news__content">
             <div class="news__header">
                 <div class="news__cover__img">
-                    <img src="/CarLog/public/images/background-1.jpg">
+                    <img src="/CarLog/public/images/background-1.jpg" style="opacity: 0.3;">
                 </div>
                 <div class="news__title">
                     <h1>
@@ -65,9 +65,10 @@ class SingleNewsPage
                 </div>
             </div>
             <div class="news__body">
-                <p>
+                <p style="white-space: break-spaces">
                     <?php echo $news['content']; ?>
                 </p>
+                <img src="<?= ImageUtility::getNewsPicture($news); ?>" alt="News Image" width="100%" height="auto">
             </div>
         </div>
         <?php

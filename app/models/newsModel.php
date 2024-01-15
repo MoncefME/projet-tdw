@@ -41,14 +41,14 @@ class NewsModel
         $dbController->disConnect($database);
         return $success !== false;
     }
-    public function updateNews($newsId, $title, $content, $link, $tags)
+    public function updateNews($newsId, $title, $content, $link, $tags, $newsImage)
     {
         $dbController = new DatabaseController();
         $database = $dbController->connect();
 
         $query = NewsQueries::updateNews;
         $current_time = date("Y-m-d H:i:s");
-        $params = [$title, $content, $link, $current_time, $tags, $newsId];
+        $params = [$title, $content, $link, $current_time, $tags,$newsImage, $newsId];
         $success = $dbController->request($database, $query, $params);
 
         $dbController->disConnect($database);

@@ -53,20 +53,23 @@ class SingleBrandPage
             </div>
             <div>
                 <div class="brand__information__summary">
-                    <p><b>Name:</b>
-                        <i class="fas fa-car-side"></i>
+                    <p>
+                    <i class="fas fa-car-side"></i>
+                        <b>Name:</b>
                         <?= $brand['name']; ?>
                     </p>
-                    <p><b>Origin Country:</b>
-                        <i class="fas fa-globe-americas"></i>
+                    <p>
+                    <i class="fas fa-globe-americas"></i>
+                        <b>Country:</b>
                         <?= $brand['originCountry']; ?>
                     </p>
-                    <p><b>Headquarter:</b>
-                        <i class="fas fa-building"></i>
+                    <p>
+                    <i class="fas fa-building"></i>
+                        <b>Headquarter:</b>
                         <?= $brand['headquarter']; ?>
                     </p>
-                    <p><i>Year:</i>
-                        <i class="fas fa-calendar-alt"></i>
+                    <p>
+                        <i class="fas fa-calendar-alt"></i>                        
                         <?= $brand['year']; ?>
                     </p>
                 </div>

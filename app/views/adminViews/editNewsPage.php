@@ -67,6 +67,14 @@ class EditNewsPage
                             value="<?php echo $news['tags'] ?>">
                     </div>
                     <div>
+                        <label for="newsImage">News Picture:
+                            <i class="fas fa-image"></i>
+                        </label>
+                        <input type="file" name="newsImage" id="newsImage" accept="image/*" required
+                            onChange="previewInputImage(event)">
+                        <img id="previewImage" src="#" alt="Preview" style="display: none; width: 100px; height: 100px;">
+                    </div>
+                    <div>
                         <label for="content">Content:
                             <i class="fas fa-file-alt"></i>
                         </label>

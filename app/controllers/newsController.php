@@ -23,7 +23,6 @@ class NewsController
         $link = FormValidation::validateInput('link');
         $tags = FormValidation::validateInput('tags');
 
-        // TODO: upload file
         $uploadHandler = new UploadFile();
         $uploadedFileName = $uploadHandler->uploadNewsFile();
 
@@ -37,8 +36,10 @@ class NewsController
         $content = FormValidation::validateInput('content');
         $link = FormValidation::validateInput('link');
         $tags = FormValidation::validateInput('tags');
+        $uploadHandler = new UploadFile();
+        $uploadedFileName = $uploadHandler->uploadNewsFile();
 
-        return $newModel->updateNews($newsId, $title, $content, $link, $tags);
+        return $newModel->updateNews($newsId, $title, $content, $link, $tags, $uploadedFileName);
     }
     public function deleteNews($newsId)
     {

@@ -1,8 +1,6 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/CarLog/app/controllers/databaseController.php');
-// require_once(DATABASE_CONTROLLER);
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/Config/queries/reviewQueries.php");
-// require_once(REVIEW_QUERIES);
 class VehiculeReviewsModel
 {
     public function getVehiculeReviewById($vehiculeReviewId)
@@ -143,5 +141,17 @@ class VehiculeReviewsModel
 
         $dbController->disConnect($database);
         return $numberOfPendingVehiculeReviews[0]['NB'];
+    }
+
+    public function getTopVehiculeReviews($vehiculeId){
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
+
+        $query = ReviewQueries::getTopVehiculeReviews;
+        $params = [$vehiculeId];
+        $topVehiculeReviews = $dbController->request($database, $query, $params);
+
+        $dbController->disConnect($database);
+        return $topVehiculeReviews;
     }
 }
