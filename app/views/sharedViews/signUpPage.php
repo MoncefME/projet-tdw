@@ -69,9 +69,6 @@ class SignUpPage
                             <label for="birthDate">Birth Date</label>
                             <input type="date" name="birthDate" id="birthDate" required />
                         </div>
-                        <!-- <div>
-                            <input type="file" name="profilePicture" id="profilePicture" accept="image/*" />
-                        </div> -->
                         <div>
                             <label for="profilePicture">Profile Picture:</label>
                             <input type="file" name="profilePicture" id="profilePicture" accept="image/*" onChange="previewInputImage(event)">

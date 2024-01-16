@@ -7,7 +7,7 @@ class ManageVehiculesPage
     public function showPage()
     {
         $sharedView = new SharedViews();
-        ?>
+?>
         <div class="dashboard__page">
             <?php
             $sharedView->adminSideBar();
@@ -26,22 +26,21 @@ class ManageVehiculesPage
                 ?>
             </div>
         </div>
-        <?php
+    <?php
     }
 
     private function showVehiculesTable()
     {
         $brandController = new BrandController();
         $vehiculeController = new VehiculeController();
-        if(isset($_GET['brandId'])){
+        if (isset($_GET['brandId'])) {
             $vehicules = $vehiculeController->getVehiculesByBrand($_GET['brandId']);
-        }else{
+        } else {
             $vehicules = $vehiculeController->getAllVehicules();
         }
-        ?>
+    ?>
         <div class="vehicules__table" id="vehiculesTable" style="display: none;">
-            <table id="vehiculeTable" data-toggle="table" data-pagination="true" data-search="true"
-                class="table  table-striped table-borderless  table-hover" data-page-size="3">
+            <table id="vehiculeTable" data-toggle="table" data-pagination="true" data-search="true" class="table  table-striped table-borderless  table-hover" data-page-size="3">
                 <thead class="thead-light">
                     <tr>
                         <th data-field="model" data-sortable="true">Model</th>
@@ -55,7 +54,7 @@ class ManageVehiculesPage
                 <tbody>
                     <?php
                     foreach ($vehicules as $vehicule) {
-                        ?>
+                    ?>
                         <tr>
                             <td>
                                 <?= $vehicule['model'] ?>
@@ -67,21 +66,18 @@ class ManageVehiculesPage
                                 <?= $vehicule['year'] ?>
                             </td>
                             <td>
-                                <img src="<?= ImageUtility::getVehiculePicture($vehicule); ?>"
-                                    alt="<?= $vehicule['vehiculePicture'] ?>" width="100px" height="auto">
+                                <img src="<?= ImageUtility::getVehiculePicture($vehicule); ?>" alt="<?= $vehicule['vehiculePicture'] ?>" width="100px" height="auto">
                             </td>
                             <td>
                                 <?php
                                 $brand = $brandController->getBrandById($vehicule['brand_id']);
                                 ?>
                                 <a href="/CarLog/brand/?id=<?= $brand['id'] ?>">
-                                <img src="<?= ImageUtility::getBrandLogo($brand); ?>" alt="<?= $brand['brandPicture'] ?>"
-                                    width="50px" height="50px">
+                                    <img src="<?= ImageUtility::getBrandLogo($brand); ?>" alt="<?= $brand['brandPicture'] ?>" width="50px" height="50px">
                                 </a>
                             </td>
                             <td class="table__action__btn">
-                                <button class="btn btn-primary"
-                                    onclick="location.href='<?= ApiRouter::EDIT_VEHICULE_URL($vehicule['id']) ?>'">
+                                <button class="btn btn-primary" onclick="location.href='<?= ApiRouter::EDIT_VEHICULE_URL($vehicule['id']) ?>'">
                                     <i class="fas fa-edit"></i>
                                 </button>
                                 <button class="btn btn-danger" onclick="deleteVehicule(<?= $vehicule['id'] ?>)">
@@ -89,13 +85,13 @@ class ManageVehiculesPage
                                 </button>
                             </td>
                         </tr>
-                        <?php
+                    <?php
                     }
                     ?>
                 </tbody>
             </table>
         </div>
-        <?php
+    <?php
     }
 
     private function addVehiculeForm()
@@ -103,7 +99,7 @@ class ManageVehiculesPage
 
         $brandController = new BrandController();
         $brands = $brandController->getAllBrands();
-        ?>
+    ?>
         <div class="vehicules__form" id="vehiculeForm" style="display:none;">
             <form method="POST" action="<?= ApiRouter::ADD_VEHICULE_ENDPOINT ?>" enctype="multipart/form-data">
                 <div class="vehicules__form__inputs__container">
@@ -121,8 +117,7 @@ class ManageVehiculesPage
                     </div>
                     <div>
                         <label for="vehiculePicture">Vehicle Picture:</label>
-                        <input type="file" name="vehiculePicture" id="vehiculePicture" accept="image/*" required
-                            onChange="previewInputImage(event)">
+                        <input type="file" name="vehiculePicture" id="vehiculePicture" accept="image/*" required onChange="previewInputImage(event)">
                         <img id="previewImage" src="#" alt="Preview" style="display: none; width: 100px; height: 100px;">
                     </div>
                     <div>
@@ -130,11 +125,11 @@ class ManageVehiculesPage
                         <select name="brand_id" id="brand_id" required>
                             <?php
                             foreach ($brands as $brand) {
-                                ?>
+                            ?>
                                 <option value="<?= $brand['id']; ?>">
                                     <?= $brand['name']; ?>
                                 </option>
-                                <?php
+                            <?php
                             }
                             ?>
                         </select>
@@ -183,6 +178,6 @@ class ManageVehiculesPage
                 </button>
             </form>
         </div>
-        <?php
+<?php
     }
 }

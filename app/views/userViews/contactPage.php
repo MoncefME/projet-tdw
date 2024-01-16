@@ -6,7 +6,7 @@ class ContactPage
     public function showPage()
     {
         $shardViews = new SharedViews();
-        ?>
+?>
         <div class="page__content">
             <?php
             $shardViews->showHeader();
@@ -15,13 +15,13 @@ class ContactPage
             $shardViews->showFooter();
             ?>
         </div>
-        <?php
+    <?php
     }
     private function showContactInformations()
     {
         $contactInformations = new SettingsController();
         $contactInformations = $contactInformations->getContactInformations();
-        ?>
+    ?>
         <div class="contactpage__container">
             <div class="contact__form">
                 <form>
@@ -58,8 +58,7 @@ class ContactPage
                     </li>
                     <li>
                         <i class="fas fa-map-marker-alt"></i>
-                        <a href="https://www.google.com/maps/search/?api=1&query=<?= urlencode($contactInformations['address']) ?>"
-                            target="_blank">
+                        <a href="https://www.google.com/maps/search/?api=1&query=<?= urlencode($contactInformations['address']) ?>" target="_blank">
                             <?= $contactInformations['address'] ?>
                         </a>
                     </li>
@@ -99,6 +98,6 @@ class ContactPage
                 </ul>
             </div>
         </div>
-        <?php
+<?php
     }
 }

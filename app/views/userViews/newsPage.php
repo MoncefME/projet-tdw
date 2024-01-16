@@ -6,7 +6,7 @@ class NewsPage
     public function showPage()
     {
         $shardViews = new SharedViews();
-        ?>
+?>
         <div class="page__content">
             <?php
             $shardViews->showHeader();
@@ -15,13 +15,13 @@ class NewsPage
             $shardViews->showFooter();
             ?>
         </div>
-        <?php
+    <?php
     }
     public function showNewsCards()
     {
         $newsController = new NewsController();
         $news = $newsController->getAllNews();
-        ?>
+    ?>
         <div class="news__list__container">
             <?php
             foreach ($news as $singleNews) {
@@ -29,15 +29,15 @@ class NewsPage
             }
             ?>
         </div>
-        <?php
+    <?php
     }
 
     private function showNewsCard($news)
     {
-        ?>
+    ?>
         <div class="news__card">
             <div class="news__card__body">
-                <img src="<?= ImageUtility::getNewsPicture($news); ?>" alt="News Image" >
+                <img src="<?= ImageUtility::getNewsPicture($news); ?>" alt="News Image">
                 <h3>
                     <?= $news['title']; ?>
                 </h3>
@@ -50,13 +50,13 @@ class NewsPage
                 <a href="/CarLog/news/?id=<?= $news['id']; ?>" class="btn btn-dark">Read More</a>
             </div>
         </div>
-        <?php
+    <?php
     }
 
     public function showNothing()
     {
         $news = [];
-        ?>
+    ?>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -72,7 +72,7 @@ class NewsPage
             <tbody>
                 <?php
                 foreach ($news as $news) {
-                    ?>
+                ?>
                     <tr>
                         <td>
                             <?php echo $news['title']; ?>
@@ -96,12 +96,11 @@ class NewsPage
 
                         </td>
                     </tr>
-                    <?php
+                <?php
                 }
                 ?>
             </tbody>
         </table>
-        <?php
+<?php
     }
 }
-

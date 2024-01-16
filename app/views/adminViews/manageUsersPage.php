@@ -159,9 +159,8 @@ class ManageUsersPage
             <?php
             }
             ?>
-            <div class="reviews__table" >
-            <table  data-toggle="table" data-pagination="true" 
-                class="table  table-striped table-borderless  table-hover" data-page-size="3">
+            <div class="reviews__table">
+                <table data-toggle="table" data-pagination="true" class="table  table-striped table-borderless  table-hover" data-page-size="3">
                     <thead>
                         <tr>
                             <th>User</th>

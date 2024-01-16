@@ -68,14 +68,6 @@ class ProfilePage
                     <label for="lastName">Last Name:</label>
                     <input type="text" id="lastName" name="lastName" value="<?= $user['lastName']; ?>"><br>
                 </div>
-                <!-- <div>
-                    <label for="password">NewPassword:</label>
-                    <input type="password" id="password" name="password"><br>
-                </div>
-                <div>
-                    <label for="confirmPassword">Confirm Password:</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword"><br>
-                </div> -->
                 <div>
                     <label for="birthDate">Birth Date:</label>
                     <input type="date" id="birthDate" name="birthDate" value="<?php echo $user['birthDate']; ?>">
@@ -158,8 +150,7 @@ class ProfilePage
             }
             ?>
             <div class="reviews__table">
-            <table  data-toggle="table" data-pagination="true" data-search="true"
-                class="table  table-striped table-borderless  table-hover" data-page-size="4">
+                <table data-toggle="table" data-pagination="true" data-search="true" class="table  table-striped table-borderless  table-hover" data-page-size="4">
                     <thead>
                         <tr>
                             <th>User</th>

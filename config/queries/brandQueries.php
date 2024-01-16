@@ -7,5 +7,4 @@ class BrandQueries
         VALUES                     (  ? ,       ?      ,      ?     ,  ?  ,       ?     ,     ?)";
     const deleteBrand = "DELETE FROM brands WHERE id = ?";
     const updateBrand = "UPDATE brands SET name = ?, originCountry = ?, headquarter = ?, year = ?, brandPicture = ?, description = ? WHERE id = ?";
-
 }

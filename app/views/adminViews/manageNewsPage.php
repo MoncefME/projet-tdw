@@ -6,7 +6,7 @@ class ManageNewsPage
     public function showPage()
     {
         $sharedView = new SharedViews();
-        ?>
+?>
         <div class="dashboard__page">
             <?php
             $sharedView->adminSideBar();
@@ -25,12 +25,12 @@ class ManageNewsPage
                 ?>
             </div>
         </div>
-        <?php
+    <?php
     }
 
     public function addNewsForm()
     {
-        ?>
+    ?>
         <div class="news__form" id="newForm" style="display:none;">
             <form method="POST" action="<?= ApiRouter::ADD_NEWS_ENDPOINT ?>" enctype="multipart/form-data">
                 <div class="news__form__inputs__container">
@@ -50,8 +50,7 @@ class ManageNewsPage
                     </div>
                     <div>
                         <label for="newsImage">News Picture:</label>
-                        <input type="file" name="newsImage" id="newsImage" accept="image/*" required
-                            onChange="previewInputImage(event)">
+                        <input type="file" name="newsImage" id="newsImage" accept="image/*" required onChange="previewInputImage(event)">
                         <img id="previewImage" src="#" alt="Preview" style="display: none; width: 100px; height: 100px;">
                     </div>
 
@@ -59,7 +58,7 @@ class ManageNewsPage
                         <label for="content">Content:</label>
                         <textarea name="content" id="content" placeholder="Enter content"></textarea>
                     </div>
-                    
+
                 </div>
                 <button type="submit" class="btn btn-dark">
                     <i class="fas fa-plus"></i>
@@ -67,16 +66,15 @@ class ManageNewsPage
                 </button>
             </form>
         </div>
-        <?php
+    <?php
     }
     public function showNewsTable()
     {
         $newsController = new NewsController();
         $news = $newsController->getAllNews();
-        ?>
+    ?>
         <div class="news__table" id="newsTable" style="display: none;">
-            <table id="newTable" data-toggle="table" data-pagination="true" data-search="true"
-                class="table  table-striped table-borderless  table-hover" data-page-size="4">
+            <table id="newTable" data-toggle="table" data-pagination="true" data-search="true" class="table  table-striped table-borderless  table-hover" data-page-size="4">
                 <thead class="thead-light">
                     <tr>
                         <th data-field="title" data-sortable="true">Title</th>
@@ -110,8 +108,7 @@ class ManageNewsPage
                                 ?>
                             </td>
                             <td class="table__action__btn">
-                                <button class="btn btn-primary"
-                                    onclick="location.href='/CarLog/admin/news/?id=<?php echo $item['id']; ?>'">
+                                <button class="btn btn-primary" onclick="location.href='/CarLog/admin/news/?id=<?php echo $item['id']; ?>'">
                                     <i class="fas fa-edit"></i>
                                 </button>
                                 <button class="btn btn-danger" onclick="deleteNews(<?= $item['id']; ?>)">
@@ -123,9 +120,6 @@ class ManageNewsPage
                 </tbody>
             </table>
         </div>
-        <?php
+<?php
     }
 }
-
-
-

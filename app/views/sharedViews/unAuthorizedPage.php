@@ -8,7 +8,7 @@ class UnAuthorizedPage
 
     private function renderAunAuthorizedPage()
     {
-        ?>
+?>
         <div class="shared__pages">
             <div>
                 <img src="<?= CARLOG_LOGO ?>" alt="logo" width="40%" height="auto" onclick="location.href='/CarLog/'" />
@@ -17,6 +17,6 @@ class UnAuthorizedPage
                 <p>Please <a href="/CarLog/loginPage">Login</a> to gain access !</p>
             </div>
         </div>
-        <?php
+<?php
     }
 }

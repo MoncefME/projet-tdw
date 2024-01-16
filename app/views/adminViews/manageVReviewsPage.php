@@ -5,7 +5,7 @@ class ManageVReviewsPage
     public function showPage()
     {
         $sharedView = new SharedViews();
-        ?>
+?>
         <div class="dashboard__page">
             <?php
             $sharedView->adminSideBar();
@@ -19,7 +19,7 @@ class ManageVReviewsPage
                 ?>
             </div>
         </div>
-        <?php
+    <?php
     }
 
     public function showVehiculeReviewsTable()
@@ -28,10 +28,9 @@ class ManageVReviewsPage
         $reviews = $vehiculeReviewsController->getAllVehiculeReviews();
         $userController = new UserController();
         $vehiculeController = new VehiculeController();
-        ?>
+    ?>
         <div class="vehicule__reviews__table">
-            <table data-toggle="table" data-pagination="true" data-search="true"
-                class="table  table-striped table-borderless  table-hover" data-page-size="4" id="vehiculeReviewTable">
+            <table data-toggle="table" data-pagination="true" data-search="true" class="table  table-striped table-borderless  table-hover" data-page-size="4" id="vehiculeReviewTable">
                 <thead class="thead-light">
                     <tr>
                         <th data-field="user" data-sortable="true">User</th>
@@ -49,15 +48,13 @@ class ManageVReviewsPage
                                 <?php
                                 $user = $userController->getUserById($review['user_id']);
                                 ?>
-                                <img src="<?= ImageUtility::getUserProfilePicture($user) ?>" alt="User Picture" width="50"
-                                    height="auto">
+                                <img src="<?= ImageUtility::getUserProfilePicture($user) ?>" alt="User Picture" width="50" height="auto">
                             </td>
                             <td>
                                 <?php
                                 $vehicule = $vehiculeController->getVehiculeById($review['vehicule_id']);
                                 ?>
-                                <img src="<?= ImageUtility::getVehiculePicture($vehicule) ?>" alt="Vehicule Picture" width="50"
-                                    height="auto">
+                                <img src="<?= ImageUtility::getVehiculePicture($vehicule) ?>" alt="Vehicule Picture" width="50" height="auto">
                             </td>
                             <td>
                                 <?php echo $review['rating']; ?>
@@ -66,8 +63,7 @@ class ManageVReviewsPage
                                 <?php echo $review['comment']; ?>
                             </td>
                             <td>
-                                <p
-                                    class="badge <?= $review['status'] === 'PENDING' ? 'badge-warning' : ($review['status'] === 'VALID' ? 'badge-success' : 'badge-danger') ?>">
+                                <p class="badge <?= $review['status'] === 'PENDING' ? 'badge-warning' : ($review['status'] === 'VALID' ? 'badge-success' : 'badge-danger') ?>">
                                     <?= $review['status'] ?>
                                 </p>
                             </td>
@@ -87,9 +83,6 @@ class ManageVReviewsPage
                 </tbody>
             </table>
         </div>
-        <?php
+<?php
     }
-
 }
-
-

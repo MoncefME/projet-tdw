@@ -26,17 +26,6 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-/* .signup__form{
-      width: 50%;
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 20px;
-      background: #fff;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, .3);
-  
-  } */
-
 /* Login Form Header */
 .login__form__header {
   text-align: center;
@@ -143,7 +132,6 @@
 
 .signup__form__inputs input[type="file"]::file-selector-button {
   border: none;
-  /* Remove border */
   border-radius: 4px;
   height: 40px;
   cursor: pointer;
@@ -333,10 +321,9 @@
   align-items: center;
   background-color: gray;
 }
-.homepage__slider div{
+.homepage__slider div {
   width: 100%;
   height: 100%;
-
 }
 .homepage__slider img {
   width: 100vw;
@@ -360,12 +347,12 @@
   transform: translateX(150%);
 }
 
-.link_to_guide_achat{
+.link_to_guide_achat {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  position : relative;
+  position: relative;
 }
 .link_to_guide_achat img {
   width: 100vw;
@@ -373,15 +360,15 @@
   object-fit: cover;
   opacity: 0.2;
 }
-.link_to_guide_achat a{
-  position : absolute;
+.link_to_guide_achat a {
+  position: absolute;
   left: 5%;
   bottom: 10%;
-  color : white;
+  color: white;
 }
-.link_to_guide_achat h1{
+.link_to_guide_achat h1 {
   position: absolute;
   left: 5%;
   bottom: auto;
-  color : rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
 }

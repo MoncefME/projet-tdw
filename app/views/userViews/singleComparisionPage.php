@@ -57,9 +57,9 @@ class SingleComparisionPage
     ?>
         <div class="comparator__container">
             <?php
-            if($this->vehiculeA == null){
+            if ($this->vehiculeA == null) {
                 $this->showVehiculeComparisonForm('1');
-            }else{
+            } else {
                 $this->showExistingVehiculeComparisonForm('1', $this->vehiculeA);
             }
             if ($this->vehiculeB == null) {
@@ -121,25 +121,25 @@ class SingleComparisionPage
                 </div>
             </form>
             <div class="result-<?= $vehiculeNumber; ?>">
-            <div class="vehicle__info__card">
-                        <a href="/CarLog/vehicule/?id=<?= $vehicule["id"] ?>">
-                            <img src="<?= ImageUtility::getVehiculePicture($vehicule); ?>" alt="<?php echo $vehicule['vehiculePicture'] ?>" width="100%" height="auto" style="border-radius: 5px;">
-                        </a>
-                        <p>
-                            <b>Model:</b>
-                            <?= $vehicule['model']; ?>
-                        </p>
-                        <p>
-                            <b>Version:</b>
-                            <?= $vehicule['version']; ?>
-                        </p>
-                        <p>
-                            <b>Year:</b>
-                            <?= $vehicule['year']; ?>
-                        </p>
-                        <input type="hidden" name="vehiculeId-<?php echo $vehiculeNumber; ?>" value="<?php echo $vehicule['id']; ?>">
-                    </div>
-                
+                <div class="vehicle__info__card">
+                    <a href="/CarLog/vehicule/?id=<?= $vehicule["id"] ?>">
+                        <img src="<?= ImageUtility::getVehiculePicture($vehicule); ?>" alt="<?php echo $vehicule['vehiculePicture'] ?>" width="100%" height="auto" style="border-radius: 5px;">
+                    </a>
+                    <p>
+                        <b>Model:</b>
+                        <?= $vehicule['model']; ?>
+                    </p>
+                    <p>
+                        <b>Version:</b>
+                        <?= $vehicule['version']; ?>
+                    </p>
+                    <p>
+                        <b>Year:</b>
+                        <?= $vehicule['year']; ?>
+                    </p>
+                    <input type="hidden" name="vehiculeId-<?php echo $vehiculeNumber; ?>" value="<?php echo $vehicule['id']; ?>">
+                </div>
+
             </div>
         </div>
     <?php

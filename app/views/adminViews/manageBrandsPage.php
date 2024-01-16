@@ -5,7 +5,7 @@ class ManageBrandsPage
     public function showPage()
     {
         $sharedView = new SharedViews();
-        ?>
+?>
         <div class="dashboard__page">
             <?php
             $sharedView->adminSideBar();
@@ -24,11 +24,11 @@ class ManageBrandsPage
                 ?>
             </div>
         </div>
-        <?php
+    <?php
     }
     private function addBrandForm()
     {
-        ?>
+    ?>
         <div class="brands__form" id="brandForm" style="display:none;">
             <form method="POST" action="<?= ApiRouter::ADD_BRAND_ENDPOINT ?>" enctype="multipart/form-data">
                 <div class="brands__form__inputs__container">
@@ -54,8 +54,7 @@ class ManageBrandsPage
                     </div>
                     <div>
                         <label for="brandPicture">Brand Picture:</label>
-                        <input type="file" name="brandPicture" id="brandPicture" accept="image/*" required
-                            onChange="previewInputImage(event)">
+                        <input type="file" name="brandPicture" id="brandPicture" accept="image/*" required onChange="previewInputImage(event)">
                         <img id="previewImage" src="#" alt="Preview" style="display: none; width: 100px; height: 100px;">
                     </div>
                 </div>
@@ -65,17 +64,16 @@ class ManageBrandsPage
                 </button>
             </form>
         </div>
-        <?php
+    <?php
     }
 
     private function showBrandsTable()
     {
         $brandController = new BrandController();
         $brands = $brandController->getAllBrands();
-        ?>
+    ?>
         <div class="brands__table" id="brandsTable" style="display: none;">
-            <table data-toggle="table" data-pagination="true" data-search="true"
-                class="table  table-striped table-borderless  table-hover" data-page-size="4" id="brandTable">
+            <table data-toggle="table" data-pagination="true" data-search="true" class="table  table-striped table-borderless  table-hover" data-page-size="4" id="brandTable">
                 <thead class="thead-light">
                     <tr>
                         <th data-field="name">Name</th>
@@ -105,17 +103,14 @@ class ManageBrandsPage
                             </td>
                             <td>
                                 <a href="/CarLog/brand/?id=<?= $brand['id'] ?>">
-                                <img src="<?= ImageUtility::getBrandLogo($brand); ?>" alt="<?= $brand['brandPicture'] ?>"
-                                    width="50px" height="50px">
+                                    <img src="<?= ImageUtility::getBrandLogo($brand); ?>" alt="<?= $brand['brandPicture'] ?>" width="50px" height="50px">
                                 </a>
                             </td>
                             <td class="table__action__btn">
-                                <a class="btn btn-info"
-                                    href="/CarLog/admin/manageVehiculesPage/?brandId=<?= $brand['id']?>">
+                                <a class="btn btn-info" href="/CarLog/admin/manageVehiculesPage/?brandId=<?= $brand['id'] ?>">
                                     <i class="fas fa-car"></i>
                                 </a>
-                                <button class="btn btn-primary"
-                                    onclick="location.href='<?= ApiRouter::EDIT_BRAND_URL($brand['id']) ?>'">
+                                <button class="btn btn-primary" onclick="location.href='<?= ApiRouter::EDIT_BRAND_URL($brand['id']) ?>'">
                                     <i class="fas fa-edit"></i>
                                 </button>
                                 <button class="btn btn-danger" onclick="deleteBrand(<?= $brand['id'] ?>)">
@@ -127,6 +122,6 @@ class ManageBrandsPage
                 </tbody>
             </table>
         </div>
-        <?php
+<?php
     }
 }

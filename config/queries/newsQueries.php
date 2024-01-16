@@ -9,5 +9,4 @@ class NewsQueries
                           VALUES (    ?,       ?,    ?,   ?,    ?     ,    ?,           0,           0, ?)";
     const updateNews = "UPDATE news SET title=?, content=?, link=?, updated_at=?, tags=?,newsImage=? WHERE id = ?";
     const deleteNews = "DELETE FROM news WHERE id = ?";
-
 }

@@ -9,7 +9,7 @@ class ManageReviewsPage
         $notificationCountVehicule = $vehiculeReviewsController->getNumberOfPendingVehiculeReviews();
         $brandReviewsController = new BrandReviewsController();
         $notificationCountBrand = $brandReviewsController->getNumberOfPendingBrandReviews();
-        ?>
+?>
         <div class="dashboard__page">
             <?php
             $sharedView->adminSideBar();
@@ -46,7 +46,6 @@ class ManageReviewsPage
                 </div>
             </div>
         </div>
-        <?php
+<?php
     }
-
 }

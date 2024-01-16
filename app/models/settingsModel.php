@@ -1,8 +1,6 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/app/controllers/databaseController.php");
-// require_once(DATABASE_CONTROLLER);
 require_once($_SERVER['DOCUMENT_ROOT'] . "/CarLog/config/queries/settingQueries.php");
-// require_once(SETTINGS_QUERIES);
 class SettingsModel
 {
     public function getContactInformations()

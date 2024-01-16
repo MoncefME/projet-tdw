@@ -148,10 +148,6 @@ class ComparatorPage
                 <a href="<?= ApiRouter::COMPARISION_URL($vehiculeA['id'], $vehiculeB['id']); ?>">
                 <i class="fas fa-balance-scale"></i>
                 </a>
-                <!-- <p>
-                    <i class="fas fa-eye"></i>
-                    <?= $pair_occurrence_count; ?>
-                </p> -->
             </div>
         </div>
         <?php

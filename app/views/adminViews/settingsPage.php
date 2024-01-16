@@ -110,7 +110,8 @@ class SettingsPage
                 <div>
                     <h2>
                         <i class="fas fa-book"></i>
-                        Edit Guide Achat</h2>
+                        Edit Guide Achat
+                    </h2>
                     <p>Last modification :
                         <?php echo $guidAchat['updated_at']; ?>
                     </p>

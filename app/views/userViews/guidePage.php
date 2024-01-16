@@ -6,7 +6,7 @@ class GuidePage
     public function showPage()
     {
         $shardViews = new SharedViews();
-        ?>
+?>
         <div class="page__content">
             <?php
             $shardViews->showHeader();
@@ -15,21 +15,20 @@ class GuidePage
             $shardViews->showFooter();
             ?>
         </div>
-        <?php
+    <?php
     }
     public function showGuideAchat()
     {
         $settingsController = new SettingsController();
         $guideAchat = $settingsController->getGuideAchat();
-        ?>
+    ?>
         <div class="guide_achat__container">
             <img src="/CarLog/public/images/buyer-guide.jpg" width="100%" height="auto">
-            <h2><?= $guideAchat['title']?></h2>
+            <h2><?= $guideAchat['title'] ?></h2>
             <p style="white-space: break-spaces">
-            <?= $guideAchat['content'] ?>
+                <?= $guideAchat['content'] ?>
             </p>
         </div>
-        <?php
+<?php
     }
 }
-

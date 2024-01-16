@@ -132,6 +132,4 @@ class UploadFile
 
         return false;
     }
-
-
 }

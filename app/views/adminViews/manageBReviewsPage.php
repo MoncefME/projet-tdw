@@ -5,7 +5,7 @@ class ManageBReviewsPage
     public function showPage()
     {
         $sharedView = new SharedViews();
-        ?>
+?>
         <div class="dashboard__page">
             <?php
             $sharedView->adminSideBar();
@@ -19,7 +19,7 @@ class ManageBReviewsPage
                 ?>
             </div>
         </div>
-        <?php
+    <?php
     }
 
     public function showBrandReviewsTable()
@@ -28,10 +28,9 @@ class ManageBReviewsPage
         $reviews = $brandReviewsController->getAllBrandReviews();
         $userController = new UserController();
         $brandConroller = new BrandController();
-        ?>
+    ?>
         <div class="brand__reviews__table">
-            <table data-toggle="table" data-pagination="true" data-search="true"
-                class="table  table-striped table-borderless  table-hover" data-page-size="4" id="brandReviewTable">
+            <table data-toggle="table" data-pagination="true" data-search="true" class="table  table-striped table-borderless  table-hover" data-page-size="4" id="brandReviewTable">
                 <thead>
                     <tr>
                         <th data-field="user">User</th>
@@ -49,8 +48,7 @@ class ManageBReviewsPage
                                 <?php
                                 $user = $userController->getUserById($review['user_id']);
                                 ?>
-                                <img src="<?= ImageUtility::getUserProfilePicture($user) ?>" alt="User Picture" width="50"
-                                    height="auto">
+                                <img src="<?= ImageUtility::getUserProfilePicture($user) ?>" alt="User Picture" width="50" height="auto">
                             </td>
                             <td>
                                 <?php
@@ -65,8 +63,7 @@ class ManageBReviewsPage
                                 <?php echo $review['comment']; ?>
                             </td>
                             <td>
-                                <p
-                                    class="badge <?= $review['status'] === 'PENDING' ? 'badge-warning' : ($review['status'] === 'VALID' ? 'badge-success' : 'badge-danger') ?>">
+                                <p class="badge <?= $review['status'] === 'PENDING' ? 'badge-warning' : ($review['status'] === 'VALID' ? 'badge-success' : 'badge-danger') ?>">
                                     <?= $review['status'] ?>
                                 </p>
                             </td>
@@ -86,9 +83,6 @@ class ManageBReviewsPage
                 </tbody>
             </table>
         </div>
-        <?php
+<?php
     }
-
 }
-
-

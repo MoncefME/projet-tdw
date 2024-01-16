@@ -18,7 +18,7 @@ class EditBrandPage
     public function showPage()
     {
         $sharedView = new SharedViews();
-        ?>
+?>
         <div class="dashboard__page">
             <?php
             $sharedView->adminSideBar();
@@ -32,35 +32,31 @@ class EditBrandPage
                 ?>
             </div>
         </div>
-        <?php
+    <?php
     }
 
     private function showBrandForm()
     {
         $brand = $this->brand;
-        ?>
+    ?>
         <div class="brands__form" id="brandForm">
             <form method="POST" action="<?= ApiRouter::EDIT_BRAND_ENDPOINT($brand['id']) ?>" enctype="multipart/form-data">
                 <div class="brands__form__inputs__container">
                     <div>
                         <label for="name">Brand Name:</label>
-                        <input type="text" name="name" id="name" placeholder="Enter brand name" required
-                            value="<?php echo $brand['name'] ?>">
+                        <input type="text" name="name" id="name" placeholder="Enter brand name" required value="<?php echo $brand['name'] ?>">
                     </div>
                     <div>
                         <label for="originCountry">Origin Country:</label>
-                        <input type="text" name="originCountry" id="originCountry" placeholder="Enter origin country" required
-                            value="<?php echo $brand['originCountry'] ?>">
+                        <input type="text" name="originCountry" id="originCountry" placeholder="Enter origin country" required value="<?php echo $brand['originCountry'] ?>">
                     </div>
                     <div>
                         <label for="headquarter">Headquarter:</label>
-                        <input type="text" name="headquarter" id="headquarter" placeholder="Enter headquarter" required
-                            value="<?php echo $brand['headquarter'] ?>">
+                        <input type="text" name="headquarter" id="headquarter" placeholder="Enter headquarter" required value="<?php echo $brand['headquarter'] ?>">
                     </div>
                     <div>
                         <label for="year">Year Established:</label>
-                        <input type="number" name="year" id="year" placeholder="Enter year" required
-                            value="<?php echo $brand['year'] ?>">
+                        <input type="number" name="year" id="year" placeholder="Enter year" required value="<?php echo $brand['year'] ?>">
                     </div>
                     <div class="two__columns">
                         <label for="description">Description:</label>
@@ -68,11 +64,9 @@ class EditBrandPage
                     </div>
                     <div>
                         <label for="brandPicture">Brand Picture:</label>
-                        <input type="file" name="brandPicture" id="brandPicture" accept="image/*"
-                            onChange="previewInputImage(event)">
+                        <input type="file" name="brandPicture" id="brandPicture" accept="image/*" onChange="previewInputImage(event)">
                         <input type="hidden" name="currentPicture" value="<?php echo $brand['brandPicture'] ?>">
-                        <img id="previewImage" src="<?= ImageUtility::getBrandLogo($brand) ?>" alt="Preview"
-                            style="width: 100px; height: 100px;">
+                        <img id="previewImage" src="<?= ImageUtility::getBrandLogo($brand) ?>" alt="Preview" style="width: 100px; height: 100px;">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-dark">
@@ -80,17 +74,6 @@ class EditBrandPage
                 </button>
             </form>
         </div>
-        <?php
+<?php
     }
 }
-
-
-
-
-
-
-
-
-
-
-

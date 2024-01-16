@@ -18,4 +18,3 @@ class UserQueries
     const getNumberOfPendingUsers = "SELECT COUNT(*) AS NB FROM users WHERE status = 'PENDING'";
     const getUserReviews = "SELECT * FROM vehiculereviews WHERE user_id = ?";
 }
-

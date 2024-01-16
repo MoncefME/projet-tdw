@@ -11,11 +11,11 @@ class LoginPage
     private function showLoginError()
     {
         if (isset($_SESSION['LOGIN-MESSAGE'])) {
-            ?>
+?>
             <div class="error__message">
                 <?php echo $_SESSION['LOGIN-MESSAGE']; ?>
             </div>
-            <?php
+        <?php
             unset($_SESSION['LOGIN-MESSAGE']);
         }
     }
@@ -52,6 +52,6 @@ class LoginPage
                 <a href="/CarLog/signUpPage/">New member? Sign up here</a>
             </form>
         </div>
-        <?php
+<?php
     }
 }

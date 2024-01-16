@@ -50,16 +50,16 @@ class ReviewsPage
             <div style="display: flex; gap: 20px;align-items:center">
                 <?php if ($page > 1) : ?>
                     <a href="/CarLog/reviewsPage/?page=<?= $page - 1 ?>" class="btn btn-primary">
-                    <i class="fas fa-arrow-left"></i>
-                </a>
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
                 <?php endif; ?>
 
                 <h1>Vehicles</h1>
 
                 <?php if ($page < $totalPages) : ?>
                     <a href="/CarLog/reviewsPage/?page=<?= $page + 1 ?>" class="btn btn-primary">
-                    <i class="fas fa-arrow-right"></i>
-                </a>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 <?php endif; ?>
             </div>
 
@@ -84,19 +84,19 @@ class ReviewsPage
                             <?= $vehicule['year']; ?>
                         </p>
                         <p style="position: absolute;bottom:15px;right:15px;">
-                        <?php
-                        $averageRating = $vehicule['average_rating'];
-                        if ($averageRating >= 4.5) {
-                            $starColor = 'gold'; 
-                        } elseif ($averageRating >= 4) {
-                            $starColor = 'green'; 
-                        } elseif ($averageRating >= 3) {
-                            $starColor = 'orange'; 
-                        } else {
-                            $starColor = 'gray'; 
-                        }
-                        ?>
-                        <i class="fas fa-star" style="color: <?= $starColor ?>"></i>
+                            <?php
+                            $averageRating = $vehicule['average_rating'];
+                            if ($averageRating >= 4.5) {
+                                $starColor = 'gold';
+                            } elseif ($averageRating >= 4) {
+                                $starColor = 'green';
+                            } elseif ($averageRating >= 3) {
+                                $starColor = 'orange';
+                            } else {
+                                $starColor = 'gray';
+                            }
+                            ?>
+                            <i class="fas fa-star" style="color: <?= $starColor ?>"></i>
                             <?= $averageRating ?>
                         </p>
                     </div>

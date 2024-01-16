@@ -160,12 +160,12 @@ class SharedViews
                 <li><a href="/CarLog/reviewsPage/">Reviews</a></li>
             </ul>
         </div>
-        <?php
+    <?php
     }
 
     public function showFooter()
     {
-        ?>
+    ?>
         <div class="page__footer">
             <div class="page__footer__links">
                 <ul>

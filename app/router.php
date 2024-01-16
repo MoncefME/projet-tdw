@@ -40,7 +40,7 @@ require_once(EDIT_NEWS_PAGE_PATH);
 require_once(LOGIN_PAGE_PATH);
 require_once(SIGNUP_PAGE_PATH);
 
-/** Error Pages */  
+/** Error Pages */
 require_once(PAGE_NOT_FOUND_PATH);
 require_once(UNAUTHORIZED_PAGE_PATH);
 

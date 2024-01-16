@@ -18,7 +18,7 @@ class SingleNewsPage
     public function showPage()
     {
         $shardViews = new SharedViews();
-        ?>
+?>
         <div class="page__content">
             <?php
             $shardViews->showHeader();
@@ -27,14 +27,14 @@ class SingleNewsPage
             $shardViews->showFooter();
             ?>
         </div>
-        <?php
+    <?php
     }
 
     private function showNewsContent()
     {
         $news = $this->news;
         $tags = explode(',', $news['tags']);
-        ?>
+    ?>
         <div class="single__news__content">
             <div class="news__header">
                 <div class="news__cover__img">
@@ -71,6 +71,6 @@ class SingleNewsPage
                 <img src="<?= ImageUtility::getNewsPicture($news); ?>" alt="News Image" width="100%" height="auto">
             </div>
         </div>
-        <?php
+<?php
     }
 }
