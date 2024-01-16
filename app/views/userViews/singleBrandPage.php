@@ -54,22 +54,22 @@ class SingleBrandPage
             <div>
                 <div class="brand__information__summary">
                     <p>
-                    <i class="fas fa-car-side"></i>
+                        <i class="fas fa-car-side"></i>
                         <b>Name:</b>
                         <?= $brand['name']; ?>
                     </p>
                     <p>
-                    <i class="fas fa-globe-americas"></i>
+                        <i class="fas fa-globe-americas"></i>
                         <b>Country:</b>
                         <?= $brand['originCountry']; ?>
                     </p>
                     <p>
-                    <i class="fas fa-building"></i>
+                        <i class="fas fa-building"></i>
                         <b>Headquarter:</b>
                         <?= $brand['headquarter']; ?>
                     </p>
                     <p>
-                        <i class="fas fa-calendar-alt"></i>                        
+                        <i class="fas fa-calendar-alt"></i>
                         <?= $brand['year']; ?>
                     </p>
                 </div>
@@ -94,17 +94,21 @@ class SingleBrandPage
                 foreach ($vehicules as $vehicule) {
                 ?>
                     <div class="vehicle__info__card">
-                        <p>Model:
+                        <a href="/CarLog/vehicule/?id=<?= $vehicule["id"] ?>">
+                            <img src="<?= ImageUtility::getVehiculePicture($vehicule); ?>" alt="<?php echo $vehicule['vehiculePicture'] ?>" width="100%" height="auto" style="border-radius: 5px;">
+                        </a>
+                        <p>
+                            <b>Model:</b>
                             <?= $vehicule['model']; ?>
                         </p>
-                        <p>Version:
+                        <p>
+                            <b>Version:</b>
                             <?= $vehicule['version']; ?>
                         </p>
-                        <p>Year:
+                        <p>
+                            <b>Year:</b>
                             <?= $vehicule['year']; ?>
                         </p>
-                        <img src="<?= ImageUtility::getVehiculePicture($vehicule); ?>" alt="<?php echo $vehicule['vehiculePicture'] ?>" width="100px" height="auto">
-                        <a href="/CarLog/vehicule/?id=<?= $vehicule["id"] ?>"> Show Details </a>
                     </div>
                 <?php
                 } ?>

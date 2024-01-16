@@ -98,8 +98,8 @@ switch ($request) {
         break;
     case '/CarLog/comparision/':
         if (isset($_GET['idA']) || isset($_GET['idB'])) {
-            $vehiculeA = $_GET['idA'];
-            $vehiculeB = $_GET['idB'];
+            $vehiculeA = $_GET['idA'] ?? null;
+            $vehiculeB = $_GET['idB'] ?? null;
             $view = new SingleComparisionPage($vehiculeA, $vehiculeB);
         } else {
             $view = new PageNotFound();

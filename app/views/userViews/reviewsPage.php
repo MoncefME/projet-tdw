@@ -48,18 +48,21 @@ class ReviewsPage
                 foreach ($vehicules as $vehicule) {
                     ?>
                     <div class="vehicle__info__card">
-                        <p>Model:
+                        <a href="/CarLog/vehiculeReviews/?id=<?= $vehicule["id"] ?>">
+                            <img src="<?= ImageUtility::getVehiculePicture($vehicule); ?>" alt="<?php echo $vehicule['vehiculePicture'] ?>" width="100%" height="auto" style="border-radius: 5px;">
+                        </a>
+                        <p>
+                            <b>Model:</b>
                             <?= $vehicule['model']; ?>
                         </p>
-                        <p>Version:
+                        <p>
+                            <b>Version:</b>
                             <?= $vehicule['version']; ?>
                         </p>
-                        <p>Year:
+                        <p>
+                            <b>Year:</b>
                             <?= $vehicule['year']; ?>
                         </p>
-                        <img src="<?= ImageUtility::getVehiculePicture($vehicule); ?>"
-                            alt="<?php echo $vehicule['vehiculePicture'] ?>" width="100px" height="auto">
-                        <a href="/CarLog/vehiculeReviews/?id=<?= $vehicule["id"] ?>"> Show Details </a>
                     </div>
                     <?php
                 } ?>

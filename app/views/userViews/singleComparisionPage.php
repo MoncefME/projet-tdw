@@ -12,19 +12,35 @@ class SingleComparisionPage
     {
         $vehiculeController = new VehiculeController();
         $brandController = new BrandController();
-        $this->vehiculeA = $vehiculeController->getVehiculeById($vehiculeA);
-        $this->vehiculeB = $vehiculeController->getVehiculeById($vehiculeB);
-        if($this->vehiculeA == null || $this->vehiculeB == null){
-            header('Location: /CarLog/notFound');
+
+        if ($vehiculeA !== null && $vehiculeB !== null) {
+            $this->vehiculeA = $vehiculeController->getVehiculeById($vehiculeA);
+            $this->vehiculeB = $vehiculeController->getVehiculeById($vehiculeB);
+
+            if ($this->vehiculeA === null && $this->vehiculeB === null) {
+                header('Location: /CarLog/notFound');
+            }
+        } else {
+            if ($vehiculeA !== null) {
+                $this->vehiculeA = $vehiculeController->getVehiculeById($vehiculeA);
+            } elseif ($vehiculeB !== null) {
+                $this->vehiculeB = $vehiculeController->getVehiculeById($vehiculeB);
+            }
+
+            if ($this->vehiculeA === null && $this->vehiculeB === null) {
+                header('Location: /CarLog/notFound');
+            }
         }
+
         $this->brands = $brandController->getAllBrands();
     }
+
 
 
     public function showPage()
     {
         $shardViews = new SharedViews();
-        ?>
+?>
         <div class="page__content">
             <?php
             $shardViews->showHeader();
@@ -33,22 +49,30 @@ class SingleComparisionPage
             $shardViews->showFooter();
             ?>
         </div>
-        <?php
+    <?php
     }
 
     public function showComparator()
     {
-        ?>
+    ?>
         <div class="comparator__container">
             <?php
-            $this->showExistingVehiculeComparisonForm('1', $this->vehiculeA);
-            $this->showExistingVehiculeComparisonForm('2', $this->vehiculeB);
+            if($this->vehiculeA == null){
+                $this->showVehiculeComparisonForm('1');
+            }else{
+                $this->showExistingVehiculeComparisonForm('1', $this->vehiculeA);
+            }
+            if ($this->vehiculeB == null) {
+                $this->showVehiculeComparisonForm('2');
+            } else {
+                $this->showExistingVehiculeComparisonForm('2', $this->vehiculeB);
+            }
             $this->showVehiculeComparisonForm('3');
             $this->showVehiculeComparisonForm('4');
             ?>
         </div>
         <button class="btn btn-primary" onclick="showComparisionTable(false)">Show Table</button>
-        <?php
+    <?php
         $this->showComparatorResult();
     }
 
@@ -67,7 +91,7 @@ class SingleComparisionPage
         $brand = $selectedBrand;
 
 
-        ?>
+    ?>
         <div class="vehicule__form__container">
 
             <form>
@@ -98,8 +122,7 @@ class SingleComparisionPage
             </form>
             <div class="result-<?= $vehiculeNumber; ?>">
                 <div class="vehicule__card">
-                    <img src="<?= ImageUtility::getVehiculePicture($vehicule) ?>" alt="<?php echo $vehicule['model']; ?>"
-                        width="80">
+                    <img src="<?= ImageUtility::getVehiculePicture($vehicule) ?>" alt="<?php echo $vehicule['model']; ?>" width="80">
                     <p>
                         <?php echo $vehicule['model']; ?>
                     </p>
@@ -109,17 +132,16 @@ class SingleComparisionPage
                     <p>Year:
                         <?php echo $vehicule['year']; ?>
                     </p>
-                    <input type="hidden" name="vehiculeId-<?php echo $vehiculeNumber; ?>"
-                        value="<?php echo $vehicule['id']; ?>">
+                    <input type="hidden" name="vehiculeId-<?php echo $vehiculeNumber; ?>" value="<?php echo $vehicule['id']; ?>">
                 </div>
             </div>
         </div>
-        <?php
+    <?php
     }
 
     private function showVehiculeComparisonForm($vehiculeNumber)
     {
-        ?>
+    ?>
         <div class="vehicule__form__container">
             <form>
                 <div>
@@ -135,15 +157,13 @@ class SingleComparisionPage
                 </div>
                 <div id="model-input-<?= $vehiculeNumber; ?>">
                     <label>Model</label>
-                    <select name="model-<?= $vehiculeNumber; ?>" onchange="handleModelChange(this,<?= $vehiculeNumber; ?>)"
-                        disabled="true">
+                    <select name="model-<?= $vehiculeNumber; ?>" onchange="handleModelChange(this,<?= $vehiculeNumber; ?>)" disabled="true">
                         <option value="0">Select a model</option>
                     </select>
                 </div>
                 <div id="year-input-<?= $vehiculeNumber; ?>">
                     <label>Year</label>
-                    <select name="year-<?= $vehiculeNumber; ?>" onchange="handleYearsChange(this,<?= $vehiculeNumber; ?>)"
-                        disabled="true">
+                    <select name="year-<?= $vehiculeNumber; ?>" onchange="handleYearsChange(this,<?= $vehiculeNumber; ?>)" disabled="true">
                         <option value="0">Select a year</option>
                     </select>
                 </div>
@@ -152,15 +172,14 @@ class SingleComparisionPage
 
             </div>
         </div>
-        <?php
+    <?php
     }
 
     private function showComparatorResult()
     {
-        ?>
+    ?>
         <table class="comparision-result-table table table-striped table-bordered">
         </table>
-        <?php
+<?php
     }
-
 }

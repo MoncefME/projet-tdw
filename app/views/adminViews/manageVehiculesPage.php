@@ -74,8 +74,10 @@ class ManageVehiculesPage
                                 <?php
                                 $brand = $brandController->getBrandById($vehicule['brand_id']);
                                 ?>
+                                <a href="/CarLog/brand/?id=<?= $brand['id'] ?>">
                                 <img src="<?= ImageUtility::getBrandLogo($brand); ?>" alt="<?= $brand['brandPicture'] ?>"
                                     width="50px" height="50px">
+                                </a>
                             </td>
                             <td class="table__action__btn">
                                 <button class="btn btn-primary"

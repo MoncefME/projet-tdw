@@ -123,8 +123,8 @@ class ComparatorPage
         ?>
         <div class="comparision__card">
             <div class="vehiculeA">
-                <a href="<?= ApiRouter::VEHICULE_URL($vehiculeA); ?>">
-                    <img src="<?= ImageUtility::getVehiculePicture($vehiculeA); ?>" width="50" height="auto">
+            <a href="<?= ApiRouter::VEHICULE_URL($vehiculeA['id']); ?>">
+                    <img src="<?= ImageUtility::getVehiculePicture($vehiculeA); ?>" width="80" height="auto">
                 </a>
                 <div>
                     <p>
@@ -137,7 +137,8 @@ class ComparatorPage
             </div>
             <div class="Versus">
                 <a href="<?= ApiRouter::COMPARISION_URL($vehiculeA['id'], $vehiculeB['id']); ?>">
-                    VS
+                <i class="fas fa-balance-scale"></i>
+
                 </a>
                 <p>
                     <i class="fas fa-eye"></i>
@@ -145,8 +146,8 @@ class ComparatorPage
                 </p>
             </div>
             <div class="vehiculeB">
-                <a href="<?= ApiRouter::VEHICULE_URL($vehiculeB); ?>">
-                    <img src="<?= ImageUtility::getVehiculePicture($vehiculeB); ?>" width="50" height="auto">
+                <a href="<?= ApiRouter::VEHICULE_URL($vehiculeB['id']); ?>">
+                    <img src="<?= ImageUtility::getVehiculePicture($vehiculeB); ?>" width="80" height="auto">
                 </a>
                 <div>
                     <p>

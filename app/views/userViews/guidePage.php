@@ -23,8 +23,11 @@ class GuidePage
         $guideAchat = $settingsController->getGuideAchat();
         ?>
         <div class="guide_achat__container">
+            <img src="/CarLog/public/images/buyer-guide.jpg" width="100%" height="auto">
             <h2><?= $guideAchat['title']?></h2>
+            <p style="white-space: break-spaces">
             <?= $guideAchat['content'] ?>
+            </p>
         </div>
         <?php
     }

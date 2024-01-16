@@ -104,8 +104,10 @@ class ManageBrandsPage
                                 </span>
                             </td>
                             <td>
+                                <a href="/CarLog/brand/?id=<?= $brand['id'] ?>">
                                 <img src="<?= ImageUtility::getBrandLogo($brand); ?>" alt="<?= $brand['brandPicture'] ?>"
                                     width="50px" height="50px">
+                                </a>
                             </td>
                             <td class="table__action__btn">
                                 <a class="btn btn-info"

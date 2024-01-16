@@ -268,12 +268,15 @@ function handleYearsChange(yearSelect, vehiculeNumber) {
 
         var card = $('<div class="vehicule__card"></div>');
         card.append(
-          '<img src="/CarLog/public/uploads/vehicules/' +
+          '<a href="/CarLog/vehicule/?id=' +
+            vehicule.id +
+            '"><img src="/CarLog/public/uploads/vehicules/' +
             vehicule.vehiculePicture +
             '" alt="' +
             vehicule.model +
-            '" width="80">'
+            '" width="80"></a>'
         );
+
         card.append("<p>" + vehicule.model + "</p>");
         card.append("<p>Version: " + vehicule.version + "</p>");
         card.append('<p">Year: ' + vehicule.year + "</p>");
@@ -454,7 +457,6 @@ $(document).ready(function () {
 
     $("#toggleButtonNews span").text(buttonText);
   });
-
 });
 
 function toggleHiddenBrands() {
@@ -464,10 +466,9 @@ function toggleHiddenBrands() {
   });
 }
 
-$(document).ready(function() {
-  $('.carousel').carousel({
-      interval: 5000, 
-      pause: false 
+$(document).ready(function () {
+  $(".carousel").carousel({
+    interval: 5000,
+    pause: false,
   });
 });
-

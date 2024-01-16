@@ -24,7 +24,7 @@ class SingleVehiculePage
 ?>
         <div class="page__content">
             <?= $shardViews->showHeader(); ?>
-            <?= $shardViews->showNavBar();?>
+            <?= $shardViews->showNavBar(); ?>
             <div class="vehicule__main__section">
                 <?php
                 $this->showVehiculeInfo();
@@ -45,6 +45,12 @@ class SingleVehiculePage
     ?>
         <div class="vehicule__information__container">
             <?= $this->showVehiculeLikeButton($vehicule); ?>
+            <div class="vehicule__compare__btn" style="top:100px">
+                <button onclick="window.location.href='/CarLog/comparision/?idA=<?= $vehicule['id'] ?>';">
+                    <i class="fa-solid fa-code-compare"></i>
+                </button>
+            </div>
+
             <div>
                 <img src="<?= ImageUtility::getVehiculePicture($vehicule); ?>" alt="<?= $vehicule['vehiculePicture'] ?>" width="400" height="auto">
             </div>
@@ -61,44 +67,44 @@ class SingleVehiculePage
                     </div>
                     <div class="vehicule__information__card">
                         <p>Length: <?= $vehicule['length'] ?>
-                        <i class="fas fa-ruler-horizontal"></i>
-                    </p>
+                            <i class="fas fa-ruler-horizontal"></i>
+                        </p>
                     </div>
                     <div class="vehicule__information__card">
                         <p>Width: <?= $vehicule['width'] ?>
-                        <i class="fas fa-ruler-horizontal"></i>
-                    </p>
+                            <i class="fas fa-ruler-horizontal"></i>
+                        </p>
                     </div>
                     <div class="vehicule__information__card">
                         <p>Height: <?= $vehicule['height'] ?>
-                        <i class="fas fa-ruler-horizontal"></i>
-                    </p>
+                            <i class="fas fa-ruler-horizontal"></i>
+                        </p>
                     </div>
                     <div class="vehicule__information__card">
                         <p>Wheel Base: <?= $vehicule['wheelBase'] ?>
-                        <i class="fas fa-ruler-horizontal"></i>
-                    </p>
+                            <i class="fas fa-ruler-horizontal"></i>
+                        </p>
                     </div>
                     <div class="vehicule__information__card">
                         <p>Engine: <?= $vehicule['engine'] ?>
-                        <i class="fas fa-cogs"></i>
-                    </p>
+                            <i class="fas fa-cogs"></i>
+                        </p>
                     </div>
                     <div class="vehicule__information__card">
                         <p>Performance: <?= $vehicule['performance'] ?>
-                        <i class="fas fa-tachometer-alt"></i>
-                    </p>
+                            <i class="fas fa-tachometer-alt"></i>
+                        </p>
                     </div>
                     <div class="vehicule__information__card">
-                        <p>Price: 
+                        <p>Price:
                             <?= $vehicule['price'] ?>
                             <i class="fas fa-dollar-sign"></i>
                         </p>
                     </div>
                     <div class="vehicule__information__card">
                         <p>Consumption: <?= $vehicule['consumption'] ?>
-                        <i class="fas fa-gas-pump"></i>
-                    </p>
+                            <i class="fas fa-gas-pump"></i>
+                        </p>
                     </div>
                     <div class="vehicule__information__card">
                         <p>Note: <?= $vehicule['note'] ?></p>
