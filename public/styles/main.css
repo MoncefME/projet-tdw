@@ -454,13 +454,8 @@ p{
     width: 100%;
 }
 .reviews__table{
-    width: 100%;
+    width: 80%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    gap: 20px;
     background-color: white;
 }
 

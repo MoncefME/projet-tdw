@@ -136,9 +136,8 @@ class UserController
         return $userModel->getNumberOfPendingUsers();
     }
 
-    // public function getMyReviews($userId)
-    // {
-    //     $userModel = new UserModel();
-    //     return $userModel->getMyReviews($userId);
-    // }
+    public function getUserReviews($userId){
+        $userModel = new UserModel();
+        return $userModel->getUserReviews($userId);
+    }
 }

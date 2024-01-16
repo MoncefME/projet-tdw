@@ -13,8 +13,10 @@ class ProfilePage
             $shardViews->showHeader();
             $shardViews->showNavBar();
             $this->showUserInformation();
-            if (isset($_SESSION['USER']))
+            if (isset($_SESSION['USER'])) {
                 $this->showUserFavoriteVehicules();
+                $this->showMyReviews();
+            }
             $shardViews->showFooter();
             ?>
         </div>
@@ -66,14 +68,14 @@ class ProfilePage
                     <label for="lastName">Last Name:</label>
                     <input type="text" id="lastName" name="lastName" value="<?= $user['lastName']; ?>"><br>
                 </div>
-                <div>
+                <!-- <div>
                     <label for="password">NewPassword:</label>
                     <input type="password" id="password" name="password"><br>
                 </div>
                 <div>
                     <label for="confirmPassword">Confirm Password:</label>
                     <input type="password" id="confirmPassword" name="confirmPassword"><br>
-                </div>
+                </div> -->
                 <div>
                     <label for="birthDate">Birth Date:</label>
                     <input type="date" id="birthDate" name="birthDate" value="<?php echo $user['birthDate']; ?>">
@@ -128,17 +130,74 @@ class ProfilePage
                         <b>Year:</b>
                         <?= $vehicule['year']; ?>
                     </p>
-                    <a href="/CarLog/vehicule/?id=<?php echo $vehicule["id"] ?>"> Show Details </a>
                 </div>
-                
+
             <?php
             } ?>
         </div>
-<?php
+    <?php
     }
-
 
     private function showMyReviews()
     {
+        $userController = new UserController();
+        $userReviews = $userController->getUserReviews($_SESSION['USER']['id']);
+    ?>
+
+        <div style="width: 100%;display:flex;flex-direction:column;align-items:center;">
+            <?php
+            if (count($userReviews) == 0) {
+            ?>
+                <p>No Reviews</p>
+            <?php
+                return;
+            } else {
+            ?>
+                <h1>My Reviews</h1>
+            <?php
+            }
+            ?>
+            <div class="reviews__table">
+            <table  data-toggle="table" data-pagination="true" data-search="true"
+                class="table  table-striped table-borderless  table-hover" data-page-size="4">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Comment</th>
+                            <th>Status</th>
+                            <th>Rating</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($userReviews as $review) {
+                            $user = $userController->getUserById($review['user_id']);
+                        ?>
+                            <tr>
+                                <td>
+                                    <img src="<?= ImageUtility::getUserProfilePicture($user) ?>" alt="user profile picture" width="50px" height="50px">
+                                </td>
+                                <td>
+                                    <a href="/CarLog/vehiculeReviews/?id=<?= $review['vehicule_id'] ?>">
+                                        <?php echo $review['comment']; ?>
+                                    </a>
+                                </td>
+
+                                <td>
+                                    <p class="badge <?= $review['status'] === 'PENDING' ? 'badge-warning' : ($review['status'] === 'VALID' ? 'badge-success' : 'badge-danger') ?>">
+                                        <?= $review['status'] ?>
+                                    </p>
+                                </td>
+                                <td>
+                                    <?php echo $review['rating']; ?>
+                                </td>
+                            </tr>
+                        <?php
+                        } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+<?php
     }
 }

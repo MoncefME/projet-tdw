@@ -39,6 +39,10 @@ class NewsController
         $uploadHandler = new UploadFile();
         $uploadedFileName = $uploadHandler->uploadNewsFile();
 
+        if (!$uploadedFileName) {
+            $uploadedFileName = FormValidation::validateInput('currentPicture');
+        }
+
         return $newModel->updateNews($newsId, $title, $content, $link, $tags, $uploadedFileName);
     }
     public function deleteNews($newsId)

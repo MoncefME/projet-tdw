@@ -231,14 +231,15 @@ class UserModel
         return $result[0]['NB'];
     }
 
-    // public function getMyReviews(){
-    //     $dbController = new DatabaseController();
-    //     $database = $dbController->connect();
+    public function getUserReviews($userId){
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
 
-    //     $query = UserQueries::getMyReviews;
-    //     $result = $dbController->request($database, $query);
+        $query = UserQueries::getUserReviews;
+        $params = [$userId];
+        $userReviews = $dbController->request($database, $query, $params);
 
-    //     $dbController->disConnect($database);
-    //     return $result;
-    // }
+        $dbController->disConnect($database);
+        return $userReviews;
+    }
 }

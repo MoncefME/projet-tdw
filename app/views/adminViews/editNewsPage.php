@@ -70,8 +70,9 @@ class EditNewsPage
                         <label for="newsImage">News Picture:
                             <i class="fas fa-image"></i>
                         </label>
-                        <input type="file" name="newsImage" id="newsImage" accept="image/*" required
+                        <input type="file" name="newsImage" id="newsImage" accept="image/*" 
                             onChange="previewInputImage(event)">
+                            <input type="hidden" name="currentPicture" value="<?php echo $news['newsImage'] ?>">
                         <img id="previewImage" src="#" alt="Preview" style="display: none; width: 100px; height: 100px;">
                     </div>
                     <div>

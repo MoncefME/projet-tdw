@@ -83,8 +83,6 @@ class ManageNewsPage
                         <th data-field="created_at" data-sortable="true">Created At</th>
                         <th data-field="updated_at" data-sortable="true">Updated At</th>
                         <th data-field="tags">Tags</th>
-                        <th data-field="views_count" data-sortable="true"><i class="fas fa-eye"></i></th>
-                        <th data-field="likes_count" data-sortable="true"><i class="fas fa-heart"></i></th>
                         <th data-field="actions">Actions</th>
                     </tr>
                 </thead>
@@ -110,13 +108,6 @@ class ManageNewsPage
                                     }
                                 }
                                 ?>
-                            </td>
-
-                            <td>
-                                <?php echo $item['views_count']; ?>
-                            </td>
-                            <td>
-                                <?php echo $item['likes_count']; ?>
                             </td>
                             <td class="table__action__btn">
                                 <button class="btn btn-primary"

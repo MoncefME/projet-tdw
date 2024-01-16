@@ -13,13 +13,15 @@ class ManageUsersPage
             $sharedView->adminSideBar();
             ?>
             <div class="dashboard__content">
-                <div class="dashboard__header-users">
-                    <h1>Manage Users</h1>
-                </div>
                 <?php
                 if (isset($_GET['userId'])) {
                     $this->showUserInformations($_GET['userId']);
                 } else {
+                ?>
+                    <div class="dashboard__header-users">
+                        <h1>Manage Users</h1>
+                    </div>
+                <?php
                     $this->showUsersTable();
                 }
                 ?>
@@ -115,16 +117,15 @@ class ManageUsersPage
         $userController = new UserController();
         $user = $userController->getUserById($userId);
     ?>
-        <div >
-            <div >
-
+        <div class="user-info-page-container">
+            <div class="user-info-page">
                 <h3>Full Name: <?= $user['firstName'] . " " . $user['lastName'] ?></h3>
                 <h3>Username: <?= $user['username'] ?></h3>
                 <h3 class="badge <?= $user['role'] === 'ADMIN' ? 'badge-primary' : 'badge-secondary' ?>">
                     <?= $user['role'] ?>
                 </h3>
-    
-                <div>
+
+                <div class="user-info-page-btns">
                     <button class="btn btn-danger" onclick="deleteUser(<?php echo $user['id'] ?>)">
                         <i class="fas fa-trash"></i>
                     </button>
@@ -136,11 +137,70 @@ class ManageUsersPage
                     </button>
                 </div>
             </div>
-            <div >
-            <img src="<?= ImageUtility::getUserProfilePicture($user); ?>" alt="profile picture" width="100px" height="auto">
+            <div>
+                <img src="<?= ImageUtility::getUserProfilePicture($user); ?>" alt="profile picture" width="150px" height="auto">
             </div>
-            
         </div>
+
+        <?php
+        $userController = new UserController();
+        $userReviews = $userController->getUserReviews($user['id']);
+        ?>
+        <div style="width: 100%;display:flex;flex-direction:column;align-items:center">
+            <?php
+            if (count($userReviews) == 0) {
+            ?>
+                <p>No Reviews</p>
+            <?php
+                return;
+            } else {
+            ?>
+                <h1>User Reviews</h1>
+            <?php
+            }
+            ?>
+            <div class="reviews__table" >
+            <table  data-toggle="table" data-pagination="true" 
+                class="table  table-striped table-borderless  table-hover" data-page-size="3">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Comment</th>
+                            <th>Status</th>
+                            <th>Rating</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($userReviews as $review) {
+                            $user = $userController->getUserById($review['user_id']);
+                        ?>
+                            <tr>
+                                <td>
+                                    <img src="<?= ImageUtility::getUserProfilePicture($user) ?>" alt="user profile picture" width="50px" height="50px">
+                                </td>
+                                <td>
+                                    <a href="/CarLog/vehiculeReviews/?id=<?= $review['vehicule_id'] ?>">
+                                        <?php echo $review['comment']; ?>
+                                    </a>
+                                </td>
+
+                                <td>
+                                    <p class="badge <?= $review['status'] === 'PENDING' ? 'badge-warning' : ($review['status'] === 'VALID' ? 'badge-success' : 'badge-danger') ?>">
+                                        <?= $review['status'] ?>
+                                    </p>
+                                </td>
+                                <td>
+                                    <?php echo $review['rating']; ?>
+                                </td>
+                            </tr>
+                        <?php
+                        } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
 <?php
     }
 }

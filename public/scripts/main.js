@@ -159,6 +159,7 @@ function addFavoriteVehicule(userId, vehiculeId) {
   });
 }
 
+
 function previewInputImage(event) {
   console.log("File input changed");
   var file = event.target.files[0];
