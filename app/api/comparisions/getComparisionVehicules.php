@@ -20,15 +20,14 @@ $vehiculesIds = [$vehicule1Id, $vehicule2Id, $vehicule3Id, $vehicule4Id];
 $vehicles = array_filter($vehiculesIds);
 
 if (count($vehicles) == 0 || count($vehicles) == 1) {
-    echo json_encode(['error' => 'You must select at least 2 vehicles']);
+    echo json_encode(['error' => 'Select at least two distinct vehicules']);
     return;
 } else {
     $uniqueVehiculesIds = array_unique($vehicles);
     if (count($uniqueVehiculesIds) < count($vehicles)) {
-        echo json_encode(['error' => 'You must select unique vehicles']);
+        echo json_encode(['error' => 'Vehicules must be unique']);
         return;
     } else {
-
         echo json_encode([$vehicule1, $vehicule2, $vehicule3, $vehicule4]);
         return;
     }

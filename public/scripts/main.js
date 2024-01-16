@@ -145,13 +145,13 @@ function deleteNews(newsId) {
 }
 
 function addFavoriteVehicule(userId, vehiculeId) {
-  // console.log(userId);
+
   $.ajax({
     url: "/CarLog/app/api/users/addFavoriteVehicule.php",
     method: "POST",
     data: { userId: userId, vehiculeId: vehiculeId },
     success: function (response) {
-      //location.reload();
+      location.reload();
     },
     error: function (error) {
       console.error(error);

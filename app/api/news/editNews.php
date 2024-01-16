@@ -6,5 +6,4 @@ $id = isset($_GET['newsId']) ? $_GET['newsId'] : null;
 $newsController = new NewsController();
 $responce = $newsController->updateNews($id);
 
-
 header("Location: /CarLog/admin/manageNewsPage/");
