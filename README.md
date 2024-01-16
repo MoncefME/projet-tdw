@@ -2,6 +2,16 @@
 
 CarLog is a web application developed as part of a Web Development project for learning purposes. The goal of the project is to create a user-friendly platform for comparing various vehicles based on specifications, prices, and user reviews. The website follows the Model-View-Controller (MVC) architecture and is implemented using HTML5, CSS3, PHP, JQuery, JavaScript, and Ajax technologies.
 
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
+![jQuery](https://img.shields.io/badge/jquery-%230769AD.svg?style=for-the-badge&logo=jquery&logoColor=white)
+
+<img width="178" alt="image" src="https://github.com/MoncefME/Projet-tdw/assets/77624873/4590f0cc-20aa-464e-a900-2df5f9b48544">
+
+
+
 ## Table of Contents
 - [Overview](#overview)
 - [Features](#features)
