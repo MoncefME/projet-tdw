@@ -33,12 +33,12 @@ class ManageBReviewsPage
             <table data-toggle="table" data-pagination="true" data-search="true" class="table  table-striped table-borderless  table-hover" data-page-size="4" id="brandReviewTable">
                 <thead>
                     <tr>
-                        <th data-field="user">User</th>
-                        <th data-field="brand">Brand</th>
+                        <th data-field="user" data-sortable="true">User</th>
+                        <th data-field="brand" data-sortable="true">Brand</th>
                         <th data-field="rating" data-sortable="true">Rating</th>
-                        <th data-field="comment">Comment</th>
-                        <th data-field="status">Status</th>
-                        <th data-field="actions">Actions</th>
+                        <th data-field="comment" data-sortable="true">Comment</th>
+                        <th data-field="status" data-sortable="true">Status</th>
+                        <th data-field="actions" data-sortable="true">Actions</th>
                     </tr>
                 </thead>
                 <tbody>

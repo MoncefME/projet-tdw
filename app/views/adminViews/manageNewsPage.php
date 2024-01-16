@@ -80,8 +80,8 @@ class ManageNewsPage
                         <th data-field="title" data-sortable="true">Title</th>
                         <th data-field="created_at" data-sortable="true">Created At</th>
                         <th data-field="updated_at" data-sortable="true">Updated At</th>
-                        <th data-field="tags">Tags</th>
-                        <th data-field="actions">Actions</th>
+                        <th data-field="tags" data-sortable="true">Tags</th>
+                        <th data-field="actions" >Actions</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -76,11 +76,11 @@ class ManageBrandsPage
             <table data-toggle="table" data-pagination="true" data-search="true" class="table  table-striped table-borderless  table-hover" data-page-size="4" id="brandTable">
                 <thead class="thead-light">
                     <tr>
-                        <th data-field="name">Name</th>
-                        <th data-field="originCountry">Country</th>
-                        <th data-field="headquarter">Headquarter</th>
+                        <th data-field="name" data-sortable="true">Name</th>
+                        <th data-field="originCountry" data-sortable="true">Country</th>
+                        <th data-field="headquarter" data-sortable="true" >Headquarter</th>
                         <th data-field="year" data-sortable="true">Year</th>
-                        <th data-field="brandPicture">Picture</th>
+                        <th data-field="brandPicture" data-sortable="true">Picture</th>
                         <th data-field="action">Action</th>
                     </tr>
                 </thead>

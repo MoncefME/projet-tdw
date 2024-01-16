@@ -47,7 +47,7 @@ class ManageVehiculesPage
                         <th data-field="version" data-sortable="true">Version</th>
                         <th data-field="year" data-sortable="true">Year</th>
                         <th data-field="vehicle_picture">Vehicle Picture</th>
-                        <th data-field="brand">Brand</th>
+                        <th data-field="brand" data-sortable="true">Brand</th>
                         <th data-field="actions">Action</th>
                     </tr>
                 </thead>

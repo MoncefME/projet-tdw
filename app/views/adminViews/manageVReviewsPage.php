@@ -36,7 +36,7 @@ class ManageVReviewsPage
                         <th data-field="user" data-sortable="true">User</th>
                         <th data-field="vehicle" data-sortable="true">Vehicle</th>
                         <th data-field="rating" data-sortable="true">Rating</th>
-                        <th data-field="comment">Comment</th>
+                        <th data-field="comment" data-sortable="true">Comment</th>
                         <th data-field="status" data-sortable="true">Status</th>
                         <th data-field="actions">Actions</th>
                     </tr>
