@@ -17,7 +17,7 @@ class ComparatorPage
     public function showPage()
     {
         $shardViews = new SharedViews();
-        ?>
+?>
         <div class="page__content">
             <?php
             $shardViews->showHeader();
@@ -31,12 +31,12 @@ class ComparatorPage
             $shardViews->showFooter();
             ?>
         </div>
-        <?php
+    <?php
     }
 
     public function showComparator()
     {
-        ?>
+    ?>
         <div class="comparator__container">
             <?php
             $this->showVehiculeComparisonForm('1');
@@ -46,13 +46,13 @@ class ComparatorPage
             ?>
         </div>
         <button class="btn btn-primary" onclick="showComparisionTable(true)">Compare</button>
-        <?php
+    <?php
         $this->showComparatorResult();
     }
 
     private function showVehiculeComparisonForm($vehiculeNumber)
     {
-        ?>
+    ?>
         <div class="vehicule__form__container">
             <form>
                 <div>
@@ -68,15 +68,13 @@ class ComparatorPage
                 </div>
                 <div id="model-input-<?= $vehiculeNumber; ?>">
                     <label>Model</label>
-                    <select name="model-<?= $vehiculeNumber; ?>" onchange="handleModelChange(this,<?= $vehiculeNumber; ?>)"
-                        disabled="true">
+                    <select name="model-<?= $vehiculeNumber; ?>" onchange="handleModelChange(this,<?= $vehiculeNumber; ?>)" disabled="true">
                         <option value="0">Select a model</option>
                     </select>
                 </div>
                 <div id="year-input-<?= $vehiculeNumber; ?>">
                     <label>Year</label>
-                    <select name="year-<?= $vehiculeNumber; ?>" onchange="handleYearsChange(this,<?= $vehiculeNumber; ?>)"
-                        disabled="true">
+                    <select name="year-<?= $vehiculeNumber; ?>" onchange="handleYearsChange(this,<?= $vehiculeNumber; ?>)" disabled="true">
                         <option value="0">Select a year</option>
                     </select>
                 </div>
@@ -85,22 +83,22 @@ class ComparatorPage
 
             </div>
         </div>
-        <?php
+    <?php
     }
 
     private function showComparatorResult()
     {
-        ?>
-        <table class="comparision-result-table table table-striped table-bordered" style="display: none;" >
+    ?>
+        <table class="comparision-result-table table table-striped table-bordered" style="display: none;">
         </table>
-        <?php
+    <?php
     }
 
     public function showPopularComparisons()
     {
         $comparisionController = new ComparisionController();
         $mostComparedVehiculePairs = $comparisionController->getMostComparedVehiculePairs();
-        ?>
+    ?>
         <div class="popular__comparisions__container">
             <h1>Popular Comparisons</h1>
             <div class="comparision__cards">
@@ -115,30 +113,30 @@ class ComparatorPage
                 ?>
             </div>
         </div>
-        <?php
+    <?php
     }
 
     private function showComparisionCard($vehiculeA, $vehiculeB, $pair_occurrence_count)
     {
-        ?>
+    ?>
         <div class="comparision__card">
             <div class="vehiculeA">
                 <div>
                     <a href="<?= ApiRouter::VEHICULE_URL($vehiculeA['id']); ?>">
-                            <img src="<?= ImageUtility::getVehiculePicture($vehiculeA); ?>" width="80" height="auto">
-                        </a>
-                        <p>
+                        <img src="<?= ImageUtility::getVehiculePicture($vehiculeA); ?>" width="80" height="auto">
+                    </a>
+                    <p>
                         <?= $vehiculeA['model']; ?>
                     </p>
                 </div>
 
             </div>
-            
+
             <div class="vehiculeB">
                 <div>
-                <a href="<?= ApiRouter::VEHICULE_URL($vehiculeB['id']); ?>">
-                    <img src="<?= ImageUtility::getVehiculePicture($vehiculeB); ?>" width="80" height="auto">
-                </a>
+                    <a href="<?= ApiRouter::VEHICULE_URL($vehiculeB['id']); ?>">
+                        <img src="<?= ImageUtility::getVehiculePicture($vehiculeB); ?>" width="80" height="auto">
+                    </a>
                     <p>
                         <?= $vehiculeB['model'];  ?>
                     </p>
@@ -146,14 +144,10 @@ class ComparatorPage
             </div>
             <div class="Versus">
                 <a href="<?= ApiRouter::COMPARISION_URL($vehiculeA['id'], $vehiculeB['id']); ?>">
-                <i class="fas fa-balance-scale"></i>
+                    <i class="fas fa-balance-scale"></i>
                 </a>
             </div>
         </div>
-        <?php
+<?php
     }
-
-
-
 }
-

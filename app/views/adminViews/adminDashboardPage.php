@@ -5,7 +5,7 @@ class AdminDashboardPage
     public function showPage()
     {
         $sharedView = new SharedViews();
-    ?>
+?>
         <div class="dashboard__page">
             <?php
             $sharedView->adminSideBar();

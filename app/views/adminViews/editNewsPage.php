@@ -19,7 +19,7 @@ class EditNewsPage
     public function showPage()
     {
         $sharedView = new SharedViews();
-        ?>
+?>
         <div class="dashboard__page">
             <?php
             $sharedView->adminSideBar();
@@ -33,13 +33,13 @@ class EditNewsPage
                 ?>
             </div>
         </div>
-        <?php
+    <?php
     }
 
     private function showNewsForm()
     {
         $news = $this->news;
-        ?>
+    ?>
         <div class="news__form">
             <form method="POST" action="<?= ApiRouter::EDIT_NEWS_ENDPOINT($news['id']) ?>" enctype="multipart/form-data">
                 <div class="news__form__inputs__container">
@@ -47,40 +47,35 @@ class EditNewsPage
                         <label for="title">Title:
                             <i class="fas fa-star-of-life"></i>
                         </label>
-                        <input type="text" name="title" id="title" placeholder="Enter title" required
-                            value="<?php echo $news['title'] ?>">
+                        <input type="text" name="title" id="title" placeholder="Enter title" required value="<?php echo $news['title'] ?>">
                     </div>
 
                     <div>
                         <label for="link">Link:
                             <i class="fas fa-link"></i>
                         </label>
-                        <input type="text" name="link" id="link" placeholder="Enter link" required
-                            value="<?php echo $news['link'] ?>">
+                        <input type="text" name="link" id="link" placeholder="Enter link" required value="<?php echo $news['link'] ?>">
                     </div>
 
                     <div>
                         <label for="tags">Tags:
                             <i class="fas fa-tags"></i>
                         </label>
-                        <input type="text" name="tags" id="tags" placeholder="Enter tags" required
-                            value="<?php echo $news['tags'] ?>">
+                        <input type="text" name="tags" id="tags" placeholder="Enter tags" required value="<?php echo $news['tags'] ?>">
                     </div>
                     <div>
                         <label for="newsImage">News Picture:
                             <i class="fas fa-image"></i>
                         </label>
-                        <input type="file" name="newsImage" id="newsImage" accept="image/*" 
-                            onChange="previewInputImage(event)">
-                            <input type="hidden" name="currentPicture" value="<?php echo $news['newsImage'] ?>">
+                        <input type="file" name="newsImage" id="newsImage" accept="image/*" onChange="previewInputImage(event)">
+                        <input type="hidden" name="currentPicture" value="<?php echo $news['newsImage'] ?>">
                         <img id="previewImage" src="#" alt="Preview" style="display: none; width: 100px; height: 100px;">
                     </div>
                     <div>
                         <label for="content">Content:
                             <i class="fas fa-file-alt"></i>
                         </label>
-                        <textarea name="content" id="content" placeholder="Enter content"
-                            required><?= $news['content'] ?></textarea>
+                        <textarea name="content" id="content" placeholder="Enter content" required><?= $news['content'] ?></textarea>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-dark">
@@ -89,20 +84,6 @@ class EditNewsPage
                 </button>
             </form>
         </div>
-        <?php
+<?php
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

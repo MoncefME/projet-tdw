@@ -8,7 +8,7 @@ class HomePage
     public function showPage()
     {
         $brandsPage = new BrandsPage();
-        ?>
+?>
         <div class="page__content">
             <?php
             $shardViews = new SharedViews();
@@ -23,12 +23,12 @@ class HomePage
             $shardViews->showFooter();
             ?>
         </div>
-        <?php
+    <?php
     }
 
     private function showSlider()
     {
-        ?>
+    ?>
         <div class="homepage__slider">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
@@ -37,9 +37,9 @@ class HomePage
                     $sliderImages = $settingsController->getSliderImages();
                     $i = 0;
                     foreach ($sliderImages as $sliderImage) {
-                        ?>
+                    ?>
                         <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $i; ?>" class="<?php echo $i == 0 ? 'active' : ''; ?>"></li>
-                        <?php
+                    <?php
                         $i++;
                     }
                     ?>
@@ -48,26 +48,26 @@ class HomePage
                     <?php
                     $i = 0;
                     foreach ($sliderImages as $sliderImage) {
-                        ?>
+                    ?>
                         <div class="carousel-item <?php echo $i == 0 ? 'active' : ''; ?>">
                             <a href="/CarLog/news/?id=<?php echo $sliderImage['news_id']; ?>">
                                 <p class="slider__title"><?php echo $sliderImage['title']; ?></p>
                                 <img class="d-block w-100" src="<?= ImageUtility::getSliderImage($sliderImage) ?>" alt="Slide">
                             </a>
                         </div>
-                        <?php
+                    <?php
                         $i++;
                     }
                     ?>
                 </div>
             </div>
         </div>
-        <?php
+    <?php
     }
 
     private function showComparator()
     {
-        ?>
+    ?>
         <div class="homepage__comparator">
             <?php
             $comparatorPage = new ComparatorPage();
@@ -78,13 +78,14 @@ class HomePage
             $comparatorPage->showComparator();
             ?>
         </div>
-        <?php
+    <?php
     }
 
-    private function showGuideAchatLink(){
+    private function showGuideAchatLink()
+    {
         $settingsController = new SettingsController();
         $guideAchat = $settingsController->getGuideAchat();
-        ?>
+    ?>
         <div class="link_to_guide_achat">
             <img src="/CarLog/public/images/background-1.jpg" alt="">
             <h1><?= $guideAchat['title'] ?></h1>
@@ -92,7 +93,6 @@ class HomePage
                 Buyer Guide
             </a>
         </div>
-        <?php
+<?php
     }
 }
-

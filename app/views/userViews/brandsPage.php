@@ -6,7 +6,7 @@ class BrandsPage
     public function showPage()
     {
         $shardViews = new SharedViews();
-        ?>
+?>
         <div class="page__content">
             <?php
             $shardViews->showHeader();
@@ -15,14 +15,14 @@ class BrandsPage
             $shardViews->showFooter();
             ?>
         </div>
-        <?php
+    <?php
     }
 
     public function showBrandsCards()
     {
         $brandController = new BrandController();
         $brands = $brandController->getAllBrands();
-        ?>
+    ?>
         <div class="brands__view__container">
             <div class="brands__view__title">
                 <h1>Brands</h1>
@@ -49,27 +49,26 @@ class BrandsPage
             </div>
             <?php
             if (count($brands) > 8) {
-                ?>
+            ?>
                 <a id="show-more" onclick="toggleHiddenBrands()">Show more</a>
-                <?php
+            <?php
             }
             ?>
         </div>
-        <?php
+    <?php
     }
 
     private function showBrandCard($brand)
     {
-        ?>
+    ?>
         <div class="brand__card">
             <a href="<?= ApiRouter::BRAND_URL($brand['id']) ?>">
-                <img src="<?= ImageUtility::getBrandLogo($brand) ?>" alt="<?= $brand['brandPicture'] ?>" width="50px"
-                    height="50px">
+                <img src="<?= ImageUtility::getBrandLogo($brand) ?>" alt="<?= $brand['brandPicture'] ?>" width="50px" height="50px">
                 <span>
                     <?php echo $brand['name']; ?>
                 </span>
             </a>
         </div>
-        <?php
+<?php
     }
 }
