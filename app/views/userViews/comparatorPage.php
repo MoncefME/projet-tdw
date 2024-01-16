@@ -123,44 +123,40 @@ class ComparatorPage
         ?>
         <div class="comparision__card">
             <div class="vehiculeA">
-            <a href="<?= ApiRouter::VEHICULE_URL($vehiculeA['id']); ?>">
-                    <img src="<?= ImageUtility::getVehiculePicture($vehiculeA); ?>" width="80" height="auto">
-                </a>
                 <div>
-                    <p>
+                    <a href="<?= ApiRouter::VEHICULE_URL($vehiculeA['id']); ?>">
+                            <img src="<?= ImageUtility::getVehiculePicture($vehiculeA); ?>" width="80" height="auto">
+                        </a>
+                        <p>
                         <?= $vehiculeA['model']; ?>
                     </p>
+                </div>
+
+            </div>
+            
+            <div class="vehiculeB">
+                <div>
+                <a href="<?= ApiRouter::VEHICULE_URL($vehiculeB['id']); ?>">
+                    <img src="<?= ImageUtility::getVehiculePicture($vehiculeB); ?>" width="80" height="auto">
+                </a>
                     <p>
-                        <?= $vehiculeA['year']; ?>
+                        <?= $vehiculeB['model'];  ?>
                     </p>
                 </div>
             </div>
             <div class="Versus">
                 <a href="<?= ApiRouter::COMPARISION_URL($vehiculeA['id'], $vehiculeB['id']); ?>">
                 <i class="fas fa-balance-scale"></i>
-
                 </a>
-                <p>
+                <!-- <p>
                     <i class="fas fa-eye"></i>
                     <?= $pair_occurrence_count; ?>
-                </p>
-            </div>
-            <div class="vehiculeB">
-                <a href="<?= ApiRouter::VEHICULE_URL($vehiculeB['id']); ?>">
-                    <img src="<?= ImageUtility::getVehiculePicture($vehiculeB); ?>" width="80" height="auto">
-                </a>
-                <div>
-                    <p>
-                        <?= $vehiculeB['model']; ?>
-                    </p>
-                    <p>
-                        <?= $vehiculeB['year']; ?>
-                    </p>
-                </div>
+                </p> -->
             </div>
         </div>
         <?php
     }
+
 
 
 }

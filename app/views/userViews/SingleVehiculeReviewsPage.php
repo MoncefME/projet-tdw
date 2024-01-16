@@ -24,10 +24,10 @@ class SingleVehiculeReviewsPage
 ?>
         <div class="page__content">
             <?= $shardViews->showHeader(); ?>
-            <?= $shardViews->showNavBar();?>    
+            <?= $shardViews->showNavBar(); ?>
             <div class="vehicule__main__section-single">
                 <?php
-                    $this->showVehiculeInfo();
+                $this->showVehiculeInfo();
                 ?>
                 <div class="reviews__section-single">
                     <?= $this->showVehiculeReviews(); ?>
@@ -46,10 +46,12 @@ class SingleVehiculeReviewsPage
         <div class="vehicule__information__container-single">
             <?= $this->showVehiculeLikeButton($vehicule); ?>
             <div>
-                <img src="<?= ImageUtility::getVehiculePicture($vehicule); ?>" alt="<?= $vehicule['vehiculePicture'] ?>" width="400" height="auto">
+                <a href="/CarLog/vehicule/?id=<?= $vehicule['id'] ?>">
+                    <img src="<?= ImageUtility::getVehiculePicture($vehicule); ?>" alt="<?= $vehicule['vehiculePicture'] ?>" width="400" height="auto">
+                </a>
             </div>
             <div>
-                <h1><?= $vehicule['version'] . '-' . $vehicule['model'] . '-' . $vehicule['year']?></h1>
+                <h1><?= $vehicule['version'] . '-' . $vehicule['model'] . '-' . $vehicule['year'] ?></h1>
             </div>
         </div>
     <?php
@@ -64,7 +66,7 @@ class SingleVehiculeReviewsPage
     ?>
         <h1>Reviews</h1>
         <div class="reviews__table-single">
-            <table class="table table-striped" >
+            <table data-toggle="table" data-pagination="true" class="table  table-striped table-borderless  table-hover" data-page-size="5">
                 <thead>
                     <tr>
                         <th>User</th>
@@ -85,7 +87,20 @@ class SingleVehiculeReviewsPage
                                 <?php echo $review['comment']; ?>
                             </td>
                             <td>
-                                <?php echo $review['rating']; ?>
+                                <?php
+                                $averageRating = $review['rating'];
+                                if ($averageRating >= 4.5) {
+                                    $starColor = 'gold';
+                                } elseif ($averageRating >= 4) {
+                                    $starColor = 'green';
+                                } elseif ($averageRating >= 3) {
+                                    $starColor = 'orange';
+                                } else {
+                                    $starColor = 'gray';
+                                }
+                                ?>
+                                <i class="fas fa-star" style="color: <?= $starColor ?>"></i>
+                                <?= $averageRating ?>
                             </td>
                         </tr>
                     <?php
@@ -93,7 +108,7 @@ class SingleVehiculeReviewsPage
                 </tbody>
             </table>
         </div>
-    <?php
+        <?php
     }
 
 

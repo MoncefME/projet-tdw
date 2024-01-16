@@ -60,5 +60,5 @@ class ComparisionQueries
         ) AS all_vehicle_pairs
         GROUP BY vehicule_id_A, vehicule_id_B
         ORDER BY pair_occurrence_count DESC
-        LIMIT 5";
+        LIMIT 3";
 }

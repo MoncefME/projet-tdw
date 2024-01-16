@@ -88,7 +88,7 @@ class HomePage
         <div class="link_to_guide_achat">
             <img src="/CarLog/public/images/background-1.jpg" alt="">
             <h1><?= $guideAchat['title'] ?></h1>
-            <a class="btn btn-info" href="<?= GUIDE_PAGE_PATH ?>">
+            <a class="btn btn-info" href="/CarLog/guidePage/">
                 Buyer Guide
             </a>
         </div>

@@ -39,15 +39,35 @@ class ReviewsPage
     private function showBrandVehicles()
     {
         $vehiculeController = new VehiculeController();
-        $vehicules = $vehiculeController->getAllVehicules();
-        ?>
+        $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+        $vehicules = $vehiculeController->getAllVehiculesWithRating();
+        $totalPages = ceil(count($vehicules) / 6);
+        $page = min($page, $totalPages);
+        $croppedVehicle = array_slice($vehicules, ($page - 1) * 6, 6);
+
+    ?>
         <div class="brand__vehicules__container">
-            <h1>Vehicles</h1>
+            <div style="display: flex; gap: 20px;align-items:center">
+                <?php if ($page > 1) : ?>
+                    <a href="/CarLog/reviewsPage/?page=<?= $page - 1 ?>" class="btn btn-primary">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <?php endif; ?>
+
+                <h1>Vehicles</h1>
+
+                <?php if ($page < $totalPages) : ?>
+                    <a href="/CarLog/reviewsPage/?page=<?= $page + 1 ?>" class="btn btn-primary">
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <?php endif; ?>
+            </div>
+
             <div class="vehicles__list">
                 <?php
-                foreach ($vehicules as $vehicule) {
-                    ?>
-                    <div class="vehicle__info__card">
+                foreach ($croppedVehicle as $vehicule) {
+                ?>
+                    <div class="vehicle__info__card" style="position: relative;">
                         <a href="/CarLog/vehiculeReviews/?id=<?= $vehicule["id"] ?>">
                             <img src="<?= ImageUtility::getVehiculePicture($vehicule); ?>" alt="<?php echo $vehicule['vehiculePicture'] ?>" width="100%" height="auto" style="border-radius: 5px;">
                         </a>
@@ -63,11 +83,27 @@ class ReviewsPage
                             <b>Year:</b>
                             <?= $vehicule['year']; ?>
                         </p>
+                        <p style="position: absolute;bottom:15px;right:15px;">
+                        <?php
+                        $averageRating = $vehicule['average_rating'];
+                        if ($averageRating >= 4.5) {
+                            $starColor = 'gold'; 
+                        } elseif ($averageRating >= 4) {
+                            $starColor = 'green'; 
+                        } elseif ($averageRating >= 3) {
+                            $starColor = 'orange'; 
+                        } else {
+                            $starColor = 'gray'; 
+                        }
+                        ?>
+                        <i class="fas fa-star" style="color: <?= $starColor ?>"></i>
+                            <?= $averageRating ?>
+                        </p>
                     </div>
-                    <?php
+                <?php
                 } ?>
             </div>
         </div>
-        <?php
+<?php
     }
 }

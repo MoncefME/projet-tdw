@@ -145,12 +145,13 @@ function deleteNews(newsId) {
 }
 
 function addFavoriteVehicule(userId, vehiculeId) {
+  // console.log(userId);
   $.ajax({
     url: "/CarLog/app/api/users/addFavoriteVehicule.php",
     method: "POST",
     data: { userId: userId, vehiculeId: vehiculeId },
     success: function (response) {
-      location.reload();
+      //location.reload();
     },
     error: function (error) {
       console.error(error);
@@ -266,7 +267,7 @@ function handleYearsChange(yearSelect, vehiculeNumber) {
       success: function (response) {
         var vehicule = JSON.parse(response);
 
-        var card = $('<div class="vehicule__card"></div>');
+        var card = $('<div class="vehicle__info__card"></div>');
         card.append(
           '<a href="/CarLog/vehicule/?id=' +
             vehicule.id +
@@ -274,12 +275,13 @@ function handleYearsChange(yearSelect, vehiculeNumber) {
             vehicule.vehiculePicture +
             '" alt="' +
             vehicule.model +
-            '" width="80"></a>'
+            '" width="100%" height="auto" style="border-radius: 5px;"></a>'
         );
 
-        card.append("<p>" + vehicule.model + "</p>");
-        card.append("<p>Version: " + vehicule.version + "</p>");
-        card.append('<p">Year: ' + vehicule.year + "</p>");
+        card.append("<p><b>Model:</b> " + vehicule.model + "</p>");
+        card.append("<p><b>Version:</b> " + vehicule.version + "</p>");
+        card.append("<p><b>Year:</b> " + vehicule.year + "</p>");
+        
         card.append(
           '<input type="hidden" name="vehiculeId-' +
             vehiculeNumber +

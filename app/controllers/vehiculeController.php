@@ -88,4 +88,15 @@ class VehiculeController
         return $vehiculeModel->getVehiculeByBrandModelYear($brandId, $model, $year);
     }
 
+    public function getAllVehiculesPerPage($page)
+    {
+        $vehiculeModel = new VehiculeModel();
+        return $vehiculeModel->getAllVehiculesPerPage($page);
+    }
+
+    public function getAllVehiculesWithRating(){
+        $vehiculeModel = new VehiculeModel();
+        return $vehiculeModel->getAllVehiculesWithRating();
+    }
+
 }

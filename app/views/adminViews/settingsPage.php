@@ -28,7 +28,8 @@ class SettingsPage
         $contactInformations = $settingsController->getContactInformations();
     ?>
         <div class="contact__informations__form">
-            <h2>Edit Contact Informations</h2>
+            <h2><i class="fas fa-address-card"></i>
+                Edit Contact Informations</h2>
             <form action="<?= ApiRouter::EDIT_CONTACT_ENDPOINT ?>" method="post">
                 <div>
                     <label for="email">
@@ -107,7 +108,9 @@ class SettingsPage
         <div class="guid__achat__form">
             <form action="<?= ApiRouter::EDIT_GUIDE_ACHAT_ENDPOINT ?>" method="post">
                 <div>
-                    <h2>Edit Guide Achat</h2>
+                    <h2>
+                        <i class="fas fa-book"></i>
+                        Edit Guide Achat</h2>
                     <p>Last modification :
                         <?php echo $guidAchat['updated_at']; ?>
                     </p>
@@ -120,7 +123,7 @@ class SettingsPage
                     <label>Conten</label>
                     <textarea name="content" cols="30" rows="10"><?php echo $guidAchat['content']; ?></textarea>
                 </div>
-                <button class="btn btn-danger" type="submit" name="update_guid_achat">Update</button>
+                <button class="btn btn-info" type="submit" name="update_guid_achat">Update</button>
             </form>
         </div>
     <?php
@@ -132,9 +135,11 @@ class SettingsPage
         $news = $newsController->getAllNews();
     ?>
         <div class="slider__settings__container">
+            <h2><i class="fas fa-images"></i>
+                Add Slider Image</h2>
             <form action="<?= ApiRouter::ADD_SLIDER_IMAGE_ENDPOINT ?>" method="post" enctype="multipart/form-data">
                 <div>
-                    <label for="sliderImage">Picture:</label>
+                    <label for="sliderImage">Picture: <small>(upload an image and link it to a news)</small></label>
                     <input type="file" name="sliderImage" id="sliderImage" accept="image/*" required onChange="previewInputImage(event)">
                     <img id="previewImage" src="#" alt="Preview" style="display: none; width: 100px; height: 100px;">
 

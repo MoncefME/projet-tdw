@@ -6,7 +6,7 @@ class ProfilePage
 
     public function showPage()
     {
-        ?>
+?>
         <div class="page__content">
             <?php
             $shardViews = new SharedViews();
@@ -18,7 +18,7 @@ class ProfilePage
             $shardViews->showFooter();
             ?>
         </div>
-        <?php
+    <?php
     }
     private function showUserInformation()
     {
@@ -26,15 +26,13 @@ class ProfilePage
         $userController = new UserController();
         $user = $userController->getUserById($_SESSION['USER']['id']);
         $_SESSION['USER'] = $user;
-        ?>
+    ?>
         <div class="user__profile__container">
             <div class="profile__header">
                 <h1>Profile</h1>
-                <img src="<?= ImageUtility::getUserProfilePicture($user); ?>" alt="Profile Picture"
-                    style="width: auto; height: 100px;">
+                <img src="<?= ImageUtility::getUserProfilePicture($user); ?>" alt="Profile Picture" style="width: auto; height: 100px;">
             </div>
-            <form class="edit-user-infos__form" action="<?= ApiRouter::EDIT_USER_INFOS ?>" method="POST"
-                enctype="multipart/form-data">
+            <form class="edit-user-infos__form" action="<?= ApiRouter::EDIT_USER_INFOS ?>" method="POST" enctype="multipart/form-data">
                 <div>
                     <label for="username">username:</label>
                     <input type="text" id="username" name="username" value="<?= $user['username']; ?>"><br>
@@ -54,8 +52,7 @@ class ProfilePage
                     </div>
                     <div>
                         <label for="status">Status:</label>
-                        <p
-                            class="badge <?= $user['status'] === 'PENDING' ? 'badge-warning' : ($user['status'] === 'VALID' ? 'badge-success' : 'badge-danger') ?>">
+                        <p class="badge <?= $user['status'] === 'PENDING' ? 'badge-warning' : ($user['status'] === 'VALID' ? 'badge-success' : 'badge-danger') ?>">
                             <?= $user['status'] ?>
                         </p>
                     </div>
@@ -84,11 +81,9 @@ class ProfilePage
 
                 <div>
                     <label for="profilePicture">Profile Picture:</label>
-                    <input type="file" name="profilePicture" id="profilePicture" accept="image/*"
-                        onChange="previewInputImage(event)">
+                    <input type="file" name="profilePicture" id="profilePicture" accept="image/*" onChange="previewInputImage(event)">
                     <input type="hidden" name="currentPicture" value="<?= $user['profilePicture'] ?>">
-                    <img id="previewImage" src="<?= ImageUtility::getUserProfilePicture($user); ?>" alt="Preview"
-                        style="width: 30px; height: auto;">
+                    <img id="previewImage" src="<?= ImageUtility::getUserProfilePicture($user); ?>" alt="Preview" style="width: 30px; height: auto;">
                 </div>
 
                 <button type="submit" name="submit">Update</button>
@@ -102,46 +97,48 @@ class ProfilePage
         $userController = new UserController();
         $userFavoriteVehicules = $userController->getUserFavoriteVehicules($_SESSION['USER']['id']);
         if (count($userFavoriteVehicules) == 0) {
-            ?>
+        ?>
             <p>No Favorite Vehicles</p>
-            <?php
+        <?php
             return;
         } else {
-            ?>
+        ?>
             <h1>Favorite Vehicles</h1>
-            <?php
+        <?php
         }
         ?>
 
         <div class="vehicles__list">
             <?php
             foreach ($userFavoriteVehicules as $vehicule) {
-                ?>
+            ?>
                 <div class="vehicle__info__card">
-                    <p>Model:
-                        <?php echo $vehicule['model']; ?>
+                    <a href="/CarLog/vehicule/?id=<?= $vehicule["id"] ?>" style="height:50%;">
+                        <img src="<?= ImageUtility::getVehiculePicture($vehicule); ?>" alt="<?php echo $vehicule['vehiculePicture'] ?>" width="100%" height="100%;" style="border-radius: 5px;object-fit:cover">
+                    </a>
+                    <p>
+                        <b>Model:</b>
+                        <?= $vehicule['model']; ?>
                     </p>
-                    <p>Version:
-                        <?php echo $vehicule['version']; ?>
+                    <p>
+                        <b>Version:</b>
+                        <?= $vehicule['version']; ?>
                     </p>
-                    <p>Year:
-                        <?php echo $vehicule['year']; ?>
+                    <p>
+                        <b>Year:</b>
+                        <?= $vehicule['year']; ?>
                     </p>
-                    <img src="<?= ImageUtility::getVehiculePicture($vehicule); ?>" alt="<?php echo $vehicule['vehiculePicture'] ?>"
-                        width="100px" height="auto">
                     <a href="/CarLog/vehicule/?id=<?php echo $vehicule["id"] ?>"> Show Details </a>
                 </div>
-                <?php
+                
+            <?php
             } ?>
         </div>
-        <?php
+<?php
     }
 
 
-    private function showMyReviews(){
-
-
+    private function showMyReviews()
+    {
     }
-
-
 }

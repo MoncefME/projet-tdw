@@ -121,19 +121,25 @@ class SingleComparisionPage
                 </div>
             </form>
             <div class="result-<?= $vehiculeNumber; ?>">
-                <div class="vehicule__card">
-                    <img src="<?= ImageUtility::getVehiculePicture($vehicule) ?>" alt="<?php echo $vehicule['model']; ?>" width="80">
-                    <p>
-                        <?php echo $vehicule['model']; ?>
-                    </p>
-                    <p>Version:
-                        <?php echo $vehicule['version']; ?>
-                    </p>
-                    <p>Year:
-                        <?php echo $vehicule['year']; ?>
-                    </p>
-                    <input type="hidden" name="vehiculeId-<?php echo $vehiculeNumber; ?>" value="<?php echo $vehicule['id']; ?>">
-                </div>
+            <div class="vehicle__info__card">
+                        <a href="/CarLog/vehicule/?id=<?= $vehicule["id"] ?>">
+                            <img src="<?= ImageUtility::getVehiculePicture($vehicule); ?>" alt="<?php echo $vehicule['vehiculePicture'] ?>" width="100%" height="auto" style="border-radius: 5px;">
+                        </a>
+                        <p>
+                            <b>Model:</b>
+                            <?= $vehicule['model']; ?>
+                        </p>
+                        <p>
+                            <b>Version:</b>
+                            <?= $vehicule['version']; ?>
+                        </p>
+                        <p>
+                            <b>Year:</b>
+                            <?= $vehicule['year']; ?>
+                        </p>
+                        <input type="hidden" name="vehiculeId-<?php echo $vehiculeNumber; ?>" value="<?php echo $vehicule['id']; ?>">
+                    </div>
+                
             </div>
         </div>
     <?php

@@ -24,5 +24,7 @@ class VehiculeQueries
                 WHERE id = ?";
     const getModelsByBrandId = "SELECT model FROM vehicules WHERE brand_id = ?";
     const getVehiculeByBrandModelYear = "SELECT * FROM vehicules WHERE brand_id = ? AND model = ? AND year = ?";
+    const getAllVehiculesPerPage = "SELECT * FROM vehicules LIMIT ?, ? ";
+    const getAllVehiculesWithRating = "SELECT v.*, round(AVG(r.rating),1) AS average_rating FROM vehicules v LEFT JOIN vehiculereviews r ON v.id = r.vehicule_id WHERE r.status = 'VALID'GROUP BY v.id;";
 }
 

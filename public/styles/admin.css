@@ -265,8 +265,7 @@ th{
 }
 .brands__form form , 
 .vehicules__form form , 
-.news__form form, 
-.guid__achat__form form{
+.news__form form{
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -306,8 +305,9 @@ th{
 .guid__achat__form input:not([type="file"]),
 .brands__form__inputs__container input:not([type="file"]), 
 .brands__form__inputs__container select,
+.slider__settings__container select,
+.slider__settings__container select,
 .vehicules__form__inputs__container input:not([type="file"]),
-.vehicules__form__inputs__container select,
 .news__form__inputs__container input:not([type="file"])
 {
     width: 100%;
@@ -322,6 +322,7 @@ th{
 }
 .brands__form__inputs__container input[type="file"],
 .vehicules__form__inputs__container input[type="file"],
+.slider__settings__container input[type="file"],
 .news__form__inputs__container input[type="file"]{
     width: 100%;
     height: 40px;
@@ -338,7 +339,8 @@ th{
 }
 .brands__form__inputs__container input[type="file"]::file-selector-button,
 .vehicules__form__inputs__container input[type="file"]::file-selector-button,
-.news__form__inputs__container input[type="file"]::file-selector-button
+.news__form__inputs__container input[type="file"]::file-selector-button,
+.slider__settings__container input[type="file"]::file-selector-button
 {
     border: none;
     padding: 0.2em 0.4em;
@@ -442,9 +444,7 @@ th{
     height: 100%;
 }
 
-.contact__informations__form{
-    width: 70%;
-}
+
 
 .contact__informations__form form{
     width: 100%;
@@ -481,7 +481,6 @@ th{
     flex-direction: column;
     justify-content: flex-start;
     align-items: start;
-    padding: 20px;
 }
 .two__columns{
     grid-column: 1 / -1;

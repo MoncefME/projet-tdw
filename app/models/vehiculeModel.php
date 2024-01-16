@@ -104,4 +104,29 @@ class VehiculeModel
         return $vehicule[0];
     }
 
+    public function getAllVehiculesPerPage($page)
+    {
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
+
+        $query = VehiculeQueries::getAllVehiculesPerPage;
+        $offset = max(0,( $page )*6);
+        $params = [$offset,6];
+        $vehicules = $dbController->request($database, $query, $params);
+
+        $dbController->disConnect($database);
+       return $vehicules;
+    }
+
+    public function getAllVehiculesWithRating(){
+        $dbController = new DatabaseController();
+        $database = $dbController->connect();
+
+        $query = VehiculeQueries::getAllVehiculesWithRating;
+        $vehicules = $dbController->request($database, $query);
+
+        $dbController->disConnect($database);
+        return $vehicules;
+    }
+
 }
